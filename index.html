@@ -7,11 +7,19 @@
 <style>
 :root{--wine:#651b37;--wine2:#892b4c;--wineSoft:#faedf2;--ink:#232732;--muted:#707786;--line:#e0e3e8;--bg:#f2f3f6;--white:#fff;--good:#166a47;--bad:#bb2946;--gold:#9a6210;--shadow:0 14px 45px rgba(28,24,38,.08)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}a{color:var(--wine)}.hidden{display:none!important}
-header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:10} .brand{display:flex;align-items:center;gap:12px}.brandmark{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--wine);color:#fff;font-weight:900;letter-spacing:-1px;font-size:17px}.brand strong{display:block;font-size:15px;letter-spacing:.1px}.brand small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pill{border:1px solid #ead1dc;background:#fff7fa;border-radius:100px;padding:7px 11px;font-size:12px;color:var(--wine);font-weight:700}.pill.online{border-color:#b8e4cf;background:#f0fbf5;color:var(--good)}.pill.offline{border-color:#f1bbc7;background:#fff4f6;color:var(--bad)}.wrap{max-width:1180px;margin:0 auto;padding:34px 22px 70px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:25px;align-items:center;padding:38px;border-radius:25px;background:linear-gradient(125deg,#56182e,#8d3754);color:white;box-shadow:var(--shadow)}.eyebrow{font-weight:700;letter-spacing:2px;font-size:11px;text-transform:uppercase;opacity:.76}.hero h1{font-size:clamp(29px,4vw,46px);line-height:1.08;margin:14px 0}.hero p{opacity:.87;max-width:540px;line-height:1.7}.hero-art{border:1px solid #ffffff48;border-radius:20px;padding:24px;background:#ffffff12}.hero-art .circle{width:100px;height:100px;border:10px solid #fff5;border-left-color:#fff;border-top-color:#fff;display:grid;place-items:center;border-radius:100%;margin:auto;font-size:28px;font-weight:900}.hero-art p{text-align:center;font-size:13px}.tabs{display:flex;gap:8px;background:#e9eaee;padding:5px;border-radius:13px;width:max-content;max-width:100%;margin:25px 0;flex-wrap:wrap}.tab{padding:11px 18px;border:0;background:transparent;color:#5d6070;border-radius:10px;font-weight:800}.tab.active{background:#fff;color:var(--wine);box-shadow:0 3px 12px #0001}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 3px 12px #11111105}.section-title{margin:0 0 5px;font-size:23px}.hint{color:var(--muted);font-size:13px;line-height:1.6}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field>span{font-size:12px;font-weight:800;color:#555d6b}.field input,.field select,.field textarea{width:100%;border:1px solid #d6d9e1;background:white;border-radius:10px;padding:11px 13px;color:var(--ink);min-width:0;outline:none}.field textarea{resize:vertical;min-height:86px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--wine2);box-shadow:0 0 0 3px #892b4c19}.btn{border:0;background:var(--wine);color:#fff;padding:12px 17px;border-radius:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:.18s}.btn:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}.btn.light{background:#f3e8ee;color:var(--wine)}.btn.neutral{background:#eef0f3;color:#333c4b}.btn.danger{background:#fdebf0;color:#ab2341}.btn.outline{background:white;color:var(--wine);border:1px solid #cfa9ba}.btn.small{padding:8px 12px;font-size:12px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.between{justify-content:space-between}.topgap{margin-top:20px}.stack{display:grid;gap:14px}.tile{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}.tile h3{margin:0 0 6px;font-size:17px}.tag{display:inline-flex;border-radius:99px;background:#f3f4f7;padding:6px 10px;color:#596174;font-size:11px;font-weight:800}.tag.good{color:var(--good);background:#eaf7ee}.tag.bad{color:var(--bad);background:#fff0f2}.tag.warn{color:var(--gold);background:#fff6e5}.tile p{margin:8px 0;color:#636b78;font-size:13px;line-height:1.5}.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.divider{height:1px;background:var(--line);margin:24px 0}.stat{padding:20px;border:1px solid var(--line);border-radius:14px;background:#fff}.stat b{font-size:30px;display:block;margin-top:7px;color:var(--wine)}.stat small{color:var(--muted);font-size:12px}.empty{text-align:center;padding:37px 12px;color:var(--muted);background:#f9f9fb;border:1px dashed #d9dce3;border-radius:14px}.notice{border:1px solid #e9d7af;background:#fffaf0;color:#775918;padding:13px 15px;border-radius:11px;font-size:13px;line-height:1.6}.notice.red{border-color:#f1bbc7;background:#fff4f6;color:#972e48}.notice.good{border-color:#b8e4cf;background:#f0fbf5;color:#176a47}.question-box{border:1px solid #dfd8dd;border-radius:15px;background:#fefcfd;padding:18px;margin-bottom:12px}.question-box h4{margin:0 0 13px}.options-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.question-editor-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px} .select-small{padding:9px;border:1px solid #d7dbe2;border-radius:8px}.tablewrap{overflow-x:auto}.report-table{width:100%;border-collapse:collapse;font-size:13px}.report-table th{text-align:left;background:#f5f5f7;color:#606878;padding:12px;white-space:nowrap}.report-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}.report-table tr:last-child td{border-bottom:0}.report-table .score{font-weight:900;font-size:17px;color:var(--wine)}.footer{font-size:12px;color:#7b8190;text-align:center;padding:18px}
-#examScreen{position:fixed;inset:0;z-index:100;background:#f2f3f6;overflow-y:auto;padding:28px 20px 55px}#examScreen:fullscreen{background:#f2f3f6}#examScreen:-webkit-full-screen{background:#f2f3f6}.exam-wrap{max-width:900px;margin:auto}.exam-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.timer-box{background:#fff;border:1px solid var(--line);padding:14px 17px;border-radius:14px;min-width:120px;text-align:center}.timer-box small{display:block;font-size:11px;color:var(--muted);margin-bottom:7px}.timer-box strong{font-size:25px;font-variant-numeric:tabular-nums}.timer-box.urgent{color:var(--bad);border-color:#ffbdc7;background:#fff7f8}.progress{height:8px;background:#dfe2e8;border-radius:100px;overflow:hidden;margin:23px 0}.progress div{height:100%;background:var(--wine);transition:width .2s}.question-main{padding:32px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}.question-main h2{font-size:clamp(20px,3vw,28px);line-height:1.4;margin:15px 0 27px}.answer{display:flex;align-items:center;gap:14px;border:2px solid #e3e5ea;border-radius:13px;padding:16px;margin:10px 0;cursor:pointer;font-size:15px;line-height:1.5}.answer:hover{border-color:#cba8b8;background:#fff9fb}.answer.selected{background:#f9edf2;border-color:var(--wine)}.answer input{accent-color:var(--wine);width:18px;height:18px;flex-shrink:0}.exam-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:25px;flex-wrap:wrap}.big-result{font-weight:900;font-size:60px;color:var(--wine);margin:8px 0}.mono{font-variant-numeric:tabular-nums} .fullspan{grid-column:1/-1}
-@media(max-width:760px){.hero{grid-template-columns:1fr;padding:24px}.hero-art{display:none}.grid2,.grid3,.tiles,.form-grid,.options-editor{grid-template-columns:1fr}.wrap{padding:20px 12px 50px}.card{padding:18px}.question-main{padding:20px}.brand strong{font-size:12px}.pill.hide-sm{display:none}.tabs{width:100%}.tab{flex:1;font-size:12px;padding:11px 8px}.exam-header{align-items:stretch}.timer-box{flex:1}.report-table{min-width:650px}}
+header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:10} .brand{display:flex;align-items:center;gap:12px}.brandmark{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--wine);color:#fff;font-weight:900;letter-spacing:-1px;font-size:17px}.brand strong{display:block;font-size:15px;letter-spacing:.1px}.brand small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pill{border:1px solid #ead1dc;background:#fff7fa;border-radius:100px;padding:7px 11px;font-size:12px;color:var(--wine);font-weight:700}.pill.online{border-color:#b8e4cf;background:#f0fbf5;color:var(--good)}.pill.offline{border-color:#f1bbc7;background:#fff4f6;color:var(--bad)}.wrap{max-width:1180px;margin:0 auto;padding:34px 22px 70px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:25px;align-items:center;padding:38px;border-radius:25px;background:linear-gradient(125deg,#56182e,#8d3754);color:white;box-shadow:var(--shadow)}.eyebrow{font-weight:700;letter-spacing:2px;font-size:11px;text-transform:uppercase;opacity:.76}.hero h1{font-size:clamp(29px,4vw,46px);line-height:1.08;margin:14px 0}.hero p{opacity:.87;max-width:540px;line-height:1.7}.hero-art{border:1px solid #ffffff48;border-radius:20px;padding:24px;background:#ffffff12}.hero-art .circle{width:100px;height:100px;border:10px solid #fff5;border-left-color:#fff;border-top-color:#fff;display:grid;place-items:center;border-radius:100%;margin:auto;font-size:28px;font-weight:900}.hero-art p{text-align:center;font-size:13px}.tabs{display:flex;gap:8px;background:#e9eaee;padding:5px;border-radius:13px;width:max-content;max-width:100%;margin:25px 0;flex-wrap:wrap}.tab{padding:11px 18px;border:0;background:transparent;color:#5d6070;border-radius:10px;font-weight:800}.tab.active{background:#fff;color:var(--wine);box-shadow:0 3px 12px #0001}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 3px 12px #11111105}.section-title{margin:0 0 5px;font-size:23px}.hint{color:var(--muted);font-size:13px;line-height:1.6}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field>span{font-size:12px;font-weight:800;color:#555d6b}.field input,.field select,.field textarea{width:100%;border:1px solid #d6d9e1;background:white;border-radius:10px;padding:11px 13px;color:var(--ink);min-width:0;outline:none}.field textarea{resize:vertical;min-height:86px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--wine2);box-shadow:0 0 0 3px #892b4c19}.btn{border:0;background:var(--wine);color:#fff;padding:12px 17px;border-radius:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:.18s}.btn:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}.btn.light{background:#f3e8ee;color:var(--wine)}.btn.neutral{background:#eef0f3;color:#333c4b}.btn.danger{background:#fdebf0;color:#ab2341}.btn.outline{background:white;color:var(--wine);border:1px solid #cfa9ba}.btn.small{padding:8px 12px;font-size:12px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.between{justify-content:space-between}.topgap{margin-top:20px}.stack{display:grid;gap:14px}.tile{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}.tile h3{margin:0 0 6px;font-size:17px}.tag{display:inline-flex;border-radius:99px;background:#f3f4f7;padding:6px 10px;color:#596174;font-size:11px;font-weight:800}.tag.good{color:var(--good);background:#eaf7ee}.tag.bad{color:var(--bad);background:#fff0f2}.tag.warn{color:var(--gold);background:#fff6e5}.tile p{margin:8px 0;color:#636b78;font-size:13px;line-height:1.5}.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.divider{height:1px;background:var(--line);margin:24px 0}.stat{padding:20px;border:1px solid var(--line);border-radius:14px;background:#fff}.stat b{font-size:30px;display:block;margin-top:7px;color:var(--wine)}.stat small{color:var(--muted);font-size:12px}.empty{text-align:center;padding:37px 12px;color:var(--muted);background:#f9f9fb;border:1px dashed #d9dce3;border-radius:14px}.notice{border:1px solid #e9d7af;background:#fffaf0;color:#775918;padding:13px 15px;border-radius:11px;font-size:13px;line-height:1.6}.notice.red{border-color:#f1bbc7;background:#fff4f6;color:#972e48}.notice.good{border-color:#b8e4cf;background:#f0fbf5;color:#176a47}.question-box{border:1px solid #dfd8dd;border-radius:15px;background:#fefcfd;padding:18px;margin-bottom:14px}.question-box h4{margin:0}.options-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.question-editor-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}.select-small{padding:9px;border:1px solid #d7dbe2;border-radius:8px;background:#fff}.tablewrap{overflow-x:auto}.report-table{width:100%;border-collapse:collapse;font-size:13px}.report-table th{text-align:left;background:#f5f5f7;color:#606878;padding:12px;white-space:nowrap}.report-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}.report-table tr:last-child td{border-bottom:0}.report-table .score{font-weight:900;font-size:17px;color:var(--wine)}.footer{font-size:12px;color:#7b8190;text-align:center;padding:18px}
+.math-matrix{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;background:#f8f6f9;padding:12px;border-radius:12px;border:1px solid #e6dfe6}
+.math-col-title{font-size:12px;font-weight:800;color:var(--wine);margin-bottom:6px;display:block}
+.combo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.combo-chip{border:2px solid #e3e5ea;border-radius:10px;padding:10px;text-align:center;font-weight:800;cursor:pointer;background:#fff;transition:.15s}
+.combo-chip:hover{border-color:#cba8b8;background:#fff9fb}
+.combo-chip.selected{background:#f9edf2;border-color:var(--wine);color:var(--wine)}
+.modal-backdrop{position:fixed;inset:0;background:rgba(20,22,30,.55);z-index:200;display:grid;place-items:center;padding:18px;overflow-y:auto}
+.modal-card{background:#fff;border-radius:20px;max-width:780px;width:100%;padding:26px;box-shadow:0 24px 60px rgba(0,0,0,.22);max-height:90vh;overflow-y:auto}
+#examScreen{position:fixed;inset:0;z-index:100;background:#f2f3f6;overflow-y:auto;padding:28px 20px 55px}#examScreen:fullscreen{background:#f2f3f6}#examScreen:-webkit-full-screen{background:#f2f3f6}.exam-wrap{max-width:900px;margin:auto}.exam-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.timer-box{background:#fff;border:1px solid var(--line);padding:14px 17px;border-radius:14px;min-width:120px;text-align:center}.timer-box small{display:block;font-size:11px;color:var(--muted);margin-bottom:7px}.timer-box strong{font-size:25px;font-variant-numeric:tabular-nums}.timer-box.urgent{color:var(--bad);border-color:#ffbdc7;background:#fff7f8}.progress{height:8px;background:#dfe2e8;border-radius:100px;overflow:hidden;margin:23px 0}.progress div{height:100%;background:var(--wine);transition:width .2s}.question-main{padding:32px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}.question-main h2{font-size:clamp(20px,3vw,28px);line-height:1.4;margin:15px 0 22px}.answer{display:flex;align-items:center;gap:14px;border:2px solid #e3e5ea;border-radius:13px;padding:16px;margin:10px 0;cursor:pointer;font-size:15px;line-height:1.5}.answer:hover{border-color:#cba8b8;background:#fff9fb}.answer.selected{background:#f9edf2;border-color:var(--wine)}.answer input{accent-color:var(--wine);width:18px;height:18px;flex-shrink:0}.exam-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:25px;flex-wrap:wrap}.big-result{font-weight:900;font-size:60px;color:var(--wine);margin:8px 0}.mono{font-variant-numeric:tabular-nums} .fullspan{grid-column:1/-1}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:24px}.hero-art{display:none}.grid2,.grid3,.tiles,.form-grid,.options-editor,.math-matrix{grid-template-columns:1fr}.combo-grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:20px 12px 50px}.card{padding:18px}.question-main{padding:20px}.brand strong{font-size:12px}.pill.hide-sm{display:none}.tabs{width:100%}.tab{flex:1;font-size:12px;padding:11px 8px}.exam-header{align-items:stretch}.timer-box{flex:1}.report-table{min-width:650px}}
 </style>
-<!-- Firebase SDKs Compat para funcionamiento global en la nube -->
+<!-- Firebase SDKs Compat -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
@@ -36,11 +44,11 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
     <div>
       <div class="eyebrow">Sistema de evaluaciones en la nube • JBP</div>
       <h1>Exámenes sincronizados en tiempo real desde cualquier lugar.</h1>
-      <p>Administra docentes, cursos, paralelos, materias, horarios, preguntas y resultados en la nube. Toda la información se sincroniza automáticamente en línea para ser consultada desde cualquier computadora o dispositivo.</p>
+      <p>Administra evaluaciones de opción múltiple, preguntas abiertas calificadas con IA o revisión docente, y ejercicios matemáticos con combinación de respuesta y procedimiento.</p>
     </div>
     <div class="hero-art">
       <div class="circle">10/10</div>
-      <p>Base de datos en línea · Acceso global · Reportes en tiempo real</p>
+      <p>Base de datos en línea · Evaluación IA & Manual · Publicación de notas</p>
     </div>
   </section>
 
@@ -71,7 +79,11 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
           <div id="studentCourse" class="hint"></div>
           <label class="field"><span>Examen disponible</span><select id="studentExam"><option value="">Seleccione un examen...</option></select></label>
           <div id="selectedExamInfo" class="hint"></div>
-          <button class="btn" id="startExamBtn">Comenzar examen en pantalla completa →</button>
+          
+          <div class="row">
+            <button class="btn" id="startExamBtn" style="flex:1">Comenzar examen en pantalla completa →</button>
+            <button class="btn outline" id="openMyGradesModalBtn" type="button">📊 Mis calificaciones</button>
+          </div>
           <div id="studentMessage" aria-live="polite"></div>
         </div>
       </div>
@@ -80,9 +92,9 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
         <h2 class="section-title">Reglas de evaluación</h2>
         <div class="stack topgap">
           <div class="notice red"><b>Política de infracciones:</b> durante el examen, minimizar la ventana, cambiar de pestaña, perder el foco de la página o salir de pantalla completa provocará la anulación inmediata y una calificación de <b>0/10</b>.</div>
-          <div class="tile"><b>⏱ Tiempo por pregunta</b><p>El sistema continúa automáticamente cuando el contador de la pregunta llega a cero. No es posible regresar.</p></div>
+          <div class="tile"><b>⏱ Publicación de calificaciones</b><p>Al terminar la prueba, tu nota no se muestra de inmediato. Podrás consultarla haciendo clic en <b>"Mis calificaciones"</b> una vez que el docente las haya revisado y publicado oficialmente.</p></div>
+          <div class="tile"><b>✍️ Preguntas abiertas y Matemáticas</b><p>En preguntas abiertas redactarás tu respuesta. En matemáticas podrás combinar la opción de resultado con su procedimiento (ej. A2).</p></div>
           <div class="tile"><b>☁️ Registro único en la nube</b><p>Una evaluación iniciada queda registrada en la base de datos global por número de cédula, evitando duplicados desde cualquier dispositivo.</p></div>
-          <div class="tile"><b>🗓 Ventana de acceso</b><p>El examen solo puede iniciarse y responderse durante la fecha y horas establecidas por el docente.</p></div>
         </div>
       </div>
     </div>
@@ -115,6 +127,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
           <p class="hint">Sincronización activa en tiempo real con la base de datos en la nube.</p>
         </div>
         <div class="row">
+          <button class="btn light small" id="aiSettingsBtn">⚙️ Configurar API IA</button>
           <button class="btn outline small" id="exportBackupBtn">Exportar respaldo JSON</button>
           <button class="btn neutral small" id="logoutBtn">Cerrar sesión</button>
         </div>
@@ -124,7 +137,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
 
       <div class="tabs">
         <button class="tab active" id="manageTab">Exámenes</button>
-        <button class="tab" id="resultsTab">Resultados</button>
+        <button class="tab" id="resultsTab">Resultados y Calificación</button>
         <button class="tab" id="rosterTab">Estudiantes</button>
       </div>
 
@@ -141,20 +154,20 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
               <div class="form-grid">
                 <label class="field fullspan"><span>Título del examen</span><input id="examTitle" placeholder="Ej. Evaluación del segundo trimestre" required maxlength="120"></label>
                 <label class="field"><span>Nombre del profesor</span><input id="examTeacher" placeholder="Nombre del docente" required maxlength="100" readonly></label>
-                <label class="field"><span>Materia</span><input id="examSubject" placeholder="Ej. Lengua y Literatura" required maxlength="100"></label>
+                <label class="field"><span>Materia</span><input id="examSubject" placeholder="Ej. Matemáticas / Lengua" required maxlength="100"></label>
                 <label class="field"><span>Nivel / Curso al que pertenece el examen</span><select id="examLevel" required></select></label>
                 <label class="field"><span>Paralelo</span><select id="examParallel" required></select></label>
                 <label class="field"><span>Fecha de inicio</span><input id="examDate" type="date" required></label>
                 <label class="field"><span>Hora de inicio</span><input id="examTime" type="time" required></label>
                 <label class="field"><span>Horas habilitado</span><input id="examHours" type="number" min="0.25" max="720" step="0.25" value="2" required></label>
-                <label class="field"><span>Segundos por pregunta</span><input id="examSeconds" type="number" min="5" max="3600" step="1" value="15" required></label>
+                <label class="field"><span>Segundos por pregunta</span><input id="examSeconds" type="number" min="5" max="3600" step="1" value="30" required></label>
               </div>
               <div class="divider" style="margin:5px 0"></div>
               <div class="row between">
                 <h3 style="margin:0">Banco de preguntas</h3>
                 <button class="btn light small" id="addQuestionBtn" type="button">+ Añadir pregunta</button>
               </div>
-              <p class="hint" style="margin:0">Cuatro opciones por pregunta y una única respuesta correcta. La nota se calcula automáticamente sobre 10.</p>
+              <p class="hint" style="margin:0">Puedes mezclar preguntas de <b>Opción Múltiple</b>, <b>Abiertas (IA o Manual)</b> y <b>Matemáticas (Opción + Procedimiento, ej. A2)</b>. La nota final se calcula sobre 10.</p>
               <div id="questionEditor"></div>
               <button type="submit" class="btn" id="saveExamBtn">Guardar examen en la nube</button>
               <div id="editorMessage" aria-live="polite"></div>
@@ -174,16 +187,20 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
         <div class="card">
           <div class="row between">
             <div>
-              <h3 style="margin:0">Reporte de calificaciones en tiempo real</h3>
-              <p class="hint">Incluye respuestas, resultados, motivo de infracciones y opción para reiniciar intentos.</p>
+              <h3 style="margin:0">Reporte de calificaciones, revisión y publicación</h3>
+              <p class="hint">Califica preguntas abiertas, publica las notas para que los alumnos puedan verlas en su sección y gestiona intentos.</p>
             </div>
-            <button class="btn outline small" id="exportCsvBtn">Exportar CSV</button>
+            <div class="row">
+              <button class="btn light small" id="publishAllBtn">📢 Publicar notas de este examen</button>
+              <button class="btn outline small" id="exportCsvBtn">Exportar CSV</button>
+            </div>
           </div>
           <div class="row topgap">
             <label class="field" style="min-width:220px">
               <span>Filtrar por examen</span>
               <select id="resultsFilter"><option value="all">Todos</option></select>
             </label>
+            <div id="examPublicationBadge" class="tag" style="align-self:flex-end;margin-bottom:6px">Estado de publicación: —</div>
           </div>
           <div class="tablewrap topgap" id="resultsTable"></div>
         </div>
@@ -219,6 +236,77 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
 
   <div class="footer">Unidad Educativa Particular “Jacinto Burgos Pinargote” · Plataforma Conectada a Firebase Cloud</div>
 </main>
+
+<!-- MODAL "MIS CALIFICACIONES" PARA ESTUDIANTES -->
+<div id="myGradesModal" class="modal-backdrop hidden">
+  <div class="modal-card" style="max-width:720px">
+    <div class="row between">
+      <div>
+        <span class="tag good">Consulta Estudiantil</span>
+        <h3 style="margin:6px 0 2px">Mis Calificaciones Publicadas</h3>
+        <p class="hint" id="myGradesStudentMeta" style="margin:0">Ingresa tu cédula para consultar tus notas ordenadas por materia.</p>
+      </div>
+      <button type="button" class="btn neutral small" id="closeMyGradesModal">Cerrar ✕</button>
+    </div>
+    <div class="stack topgap">
+      <label class="field" style="max-width:320px">
+        <span>Número de cédula (10 dígitos)</span>
+        <input id="myGradesCedulaInput" inputmode="numeric" maxlength="10" placeholder="0000000000">
+      </label>
+      <div id="myGradesContentArea" class="stack topgap">
+        <div class="empty">Introduce tu cédula para ver tus calificaciones oficiales.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE REVISIÓN Y CALIFICACIÓN (IA / MANUAL) -->
+<div id="reviewModal" class="modal-backdrop hidden">
+  <div class="modal-card">
+    <div class="row between">
+      <div>
+        <span class="tag">Detalle de Evaluación</span>
+        <h3 id="reviewStudentTitle" style="margin:6px 0 2px"></h3>
+        <p id="reviewExamSubtitle" class="hint" style="margin:0"></p>
+      </div>
+      <button type="button" class="btn neutral small" id="closeReviewModal">Cerrar ✕</button>
+    </div>
+    <div class="divider"></div>
+    <div id="reviewQuestionsBody" class="stack"></div>
+    <div class="divider"></div>
+    <div class="row between">
+      <div>
+        <small class="hint">Calificación Final Recalculada:</small>
+        <div style="font-size:24px;font-weight:900;color:var(--wine)" id="reviewFinalScore">0.00 / 10</div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn light" id="regradeAllAiBtn">✨ Calificar abiertas con IA</button>
+        <button type="button" class="btn" id="saveManualGradesBtn">Guardar calificación en la nube</button>
+      </div>
+    </div>
+    <div id="reviewModalMsg" class="topgap"></div>
+  </div>
+</div>
+
+<!-- MODAL CONFIGURACIÓN API IA -->
+<div id="aiModal" class="modal-backdrop hidden">
+  <div class="modal-card" style="max-width:520px">
+    <div class="row between">
+      <h3 style="margin:0">Configuración de Inteligencia Artificial</h3>
+      <button type="button" class="btn neutral small" id="closeAiModal">✕</button>
+    </div>
+    <p class="hint topgap">Opcional: Ingresa una API Key de <b>Google Gemini</b> para evaluar respuestas abiertas con análisis semántico profundo. Si lo dejas vacío, el sistema utilizará el motor inteligente integrado de comparación de conceptos clave y similitud textual.</p>
+    <label class="field topgap">
+      <span>Google Gemini API Key</span>
+      <input id="geminiApiKeyInput" type="password" placeholder="AIzaSy...">
+    </label>
+    <div class="row topgap">
+      <button type="button" class="btn" id="saveAiKeyBtn">Guardar configuración</button>
+      <button type="button" class="btn neutral" id="clearAiKeyBtn">Usar motor integrado</button>
+    </div>
+    <div id="aiKeyMsg" class="topgap"></div>
+  </div>
+</div>
 
 <!-- PANTALLA EXAMEN EN CURSO -->
 <section id="examScreen" class="hidden" aria-label="Examen en curso">
@@ -267,8 +355,8 @@ const INITIAL_ROSTER=[{"cedula":"1353005109","name":"CHINGA PARRAGA DEYFRE ALFRE
 
 const LEVELS=["Primero de Básica","Segundo de Básica","Tercero de Básica","Cuarto de Básica","Quinto de Básica","Sexto de Básica","Séptimo de Básica","Octavo de Básica","Noveno de Básica","Décimo de Básica","Primero de Bachillerato","Segundo de Bachillerato","Tercero de Bachillerato"];
 const parallelOptions=['GENERAL','A','B','C','D','E','F'];
+const MATH_COMBOS = ['A1','A2','A3','A4','B1','B2','B3','B4','C1','C2','C3','C4','D1','D2','D3','D4'];
 
-// Colecciones de Firestore en la nube
 const COL_EXAMS = 'jbp_exams';
 const COL_ATTEMPTS = 'jbp_attempts';
 const COL_TEACHERS = 'jbp_teachers';
@@ -277,7 +365,6 @@ const COL_STUDENTS = 'jbp_custom_students';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-// Estado global sincronizado en memoria desde Firestore
 let exams = [];
 let attempts = [];
 let teachers = [];
@@ -291,10 +378,8 @@ let editingQuestions = [];
 let live = null;
 let interval = null;
 let finalizing = false;
+let reviewingAttemptId = null;
 
-// ==========================================
-// 3. INICIALIZACIÓN Y SINCRONIZACIÓN CLOUD
-// ==========================================
 function setCloudStatus(ok, msg) {
   const pill = $('cloudStatusPill');
   pill.textContent = msg;
@@ -314,19 +399,16 @@ async function initCloud() {
     auth = firebase.auth();
     db = firebase.firestore();
     
-    // Intentar autenticación anónima sin bloquear si no está habilitada en la consola
     try {
       await auth.signInAnonymously();
     } catch (authErr) {
-      console.warn('Auth anónimo no habilitado o restringido, intentando conexión directa a Firestore:', authErr);
+      console.warn('Auth anónimo no habilitado:', authErr);
     }
 
-    // Probar lectura real en Firestore para confirmar permisos y conexión
     await db.collection(COL_EXAMS).limit(1).get();
     cloudReady = true;
     setCloudStatus(true, '✓ Nube Conectada');
 
-    // Escuchar exámenes en tiempo real
     db.collection(COL_EXAMS).onSnapshot(snap => {
       exams = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       renderStudent();
@@ -335,46 +417,34 @@ async function initCloud() {
         renderExamList();
         renderResults();
       }
-    }, err => console.error('Error escuchando exámenes:', err));
+    });
 
-    // Escuchar intentos / calificaciones en tiempo real
     db.collection(COL_ATTEMPTS).onSnapshot(snap => {
       attempts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       if (currentTeacher) {
         renderStats();
         renderResults();
       }
-    }, err => console.error('Error escuchando resultados:', err));
+    });
 
-    // Escuchar cuentas docentes
     db.collection(COL_TEACHERS).onSnapshot(snap => {
       teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    }, err => console.error('Error escuchando docentes:', err));
+    });
 
-    // Escuchar estudiantes agregados/editados en la nube
     db.collection(COL_STUDENTS).onSnapshot(snap => {
       customStudents = snap.docs.map(d => ({ cedula: d.id, ...d.data() }));
       mergeRoster();
       resolveStudent();
       if (currentTeacher) renderRoster();
-    }, err => console.error('Error escuchando estudiantes:', err));
+    });
 
   } catch (e) {
     console.error('Error Firebase:', e);
-    setCloudStatus(false, '⚠ Error: ' + (e.code || 'Sin conexión'));
-    let detalle = e.message;
-    if (e.code === 'permission-denied') {
-      detalle = 'Permiso denegado en Firestore. Ve a Firebase Console > Firestore Database > Reglas y permite lectura/escritura (allow read, write: if true;).';
-    } else if (e.code === 'failed-precondition' || e.message.includes('not found')) {
-      detalle = 'La base de datos Firestore aún no ha sido creada en tu proyecto Firebase.';
-    }
-    showMessage('studentMessage', 'No se pudo conectar con Firebase: ' + detalle);
+    setCloudStatus(false, '⚠ Error de conexión');
+    showMessage('studentMessage', 'No se pudo conectar con Firebase: ' + e.message);
   }
 }
 
-// ==========================================
-// 4. UTILIDADES Y HELPERS
-// ==========================================
 function fillLevels(id){$(id).innerHTML='<option value="">Seleccione el nivel...</option>'+LEVELS.map(l=>`<option value="${esc(l)}">${esc(l)}</option>`).join('')}
 function fillParallels(id){$(id).innerHTML=parallelOptions.map(x=>`<option value="${x}">${x==='GENERAL'?'General / sin paralelo':x}</option>`).join('')}
 
@@ -394,9 +464,50 @@ const status=e=>Date.now()<startAt(e)?'Próximamente':Date.now()>=endAt(e)?'Fina
 const formatClock=s=>{s=Math.max(0,Math.ceil(s));const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;return h>0?`${h}:${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`};
 const showMessage=(id,msg,type='red')=>{$(id).innerHTML=`<div class="notice ${type}">${esc(msg)}</div>`};
 
-// ==========================================
-// 5. GESTIÓN DE ESTUDIANTES (NUBE)
-// ==========================================
+function getGeminiApiKey() { return localStorage.getItem('jbp_gemini_api_key') || ''; }
+
+function normalizeTokens(text) {
+  const stopWords = new Set(['el','la','los','las','un','una','unos','unas','de','del','al','a','en','con','por','para','su','sus','que','se','es','son','como','mas','pero','si','no','lo','le','les','y','o','u']);
+  return String(text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
+}
+
+function localSemanticScore(studentAnswer, expectedRubric) {
+  const ans = String(studentAnswer || '').trim();
+  if (!ans) return { score: 0, feedback: 'Sin respuesta.' };
+  const rubric = String(expectedRubric || '').trim();
+  if (!rubric) return ans.length >= 12 ? { score: 1, feedback: 'Respuesta válida.' } : { score: 0.5, feedback: 'Muy breve.' };
+  const refTokens = normalizeTokens(rubric);
+  const stuTokens = new Set(normalizeTokens(ans));
+  if (!refTokens.length) return { score: 1, feedback: 'Evaluado.' };
+  let matches = 0;
+  refTokens.forEach(t => { if (stuTokens.has(t)) matches++; });
+  const ratio = matches / refTokens.length;
+  if (ratio >= 0.65) return { score: 1, feedback: `IA Integrada: Coincidencia alta (${Math.round(ratio * 100)}%).` };
+  if (ratio >= 0.35) return { score: 0.5, feedback: `IA Integrada: Coincidencia parcial (${Math.round(ratio * 100)}%).` };
+  return { score: 0, feedback: `IA Integrada: No cubre los conceptos clave (${Math.round(ratio * 100)}%).` };
+}
+
+async function evaluateOpenAnswerWithAI(questionText, rubric, studentAnswer) {
+  const ans = String(studentAnswer || '').trim();
+  if (!ans) return { score: 0, feedback: 'En blanco.' };
+  const apiKey = getGeminiApiKey();
+  if (!apiKey) return localSemanticScore(ans, rubric);
+  try {
+    const prompt = `Evalúa la respuesta de un estudiante sobre 1 punto (0, 0.25, 0.5, 0.75 o 1).\nPregunta: "${questionText}"\nRúbrica: "${rubric || 'Coherencia académica'}"\nRespuesta: "${ans}"\nJSON sin markdown: {"score": numero, "feedback": "explicacion breve"}`;
+    const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.1 } })
+    });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    const parsed = JSON.parse((data.candidates?.[0]?.content?.parts?.[0]?.text || '').replace(/```json|```/g, '').trim());
+    return { score: Math.max(0, Math.min(1, Number(parsed.score) || 0)), feedback: 'Gemini IA: ' + (parsed.feedback || 'Evaluado.') };
+  } catch (err) {
+    return localSemanticScore(ans, rubric);
+  }
+}
+
 function resolveStudent(){
   const cedula=$('studentCedula').value.trim();
   const s=students.find(s=>s.cedula===cedula);
@@ -408,7 +519,7 @@ function resolveStudent(){
     $('studentCourse').textContent='Materias habilitadas exclusivamente para tu curso.';
   } else {
     $('studentName').readOnly=false;
-    $('rosterIdentity').textContent=cedula.length===10?'La cédula no figura en la nómina. Completa tu nombre y utiliza el registro en la nube.':'Introduce tu cédula (10 dígitos) para encontrar tu curso.';
+    $('rosterIdentity').textContent=cedula.length===10?'La cédula no figura en la nómina. Completa tu nombre y regístrate.':'Introduce tu cédula (10 dígitos).';
     $('manualStudentPanel').classList.toggle('hidden',cedula.length!==10);
     $('studentCourse').textContent='';
   }
@@ -419,29 +530,18 @@ function resolveStudent(){
 $('studentCedula').addEventListener('input', resolveStudent);
 
 $('registerStudentBtn').onclick = async () => {
-  if (!cloudReady) { showMessage('studentMessage', 'Esperando conexión con la nube...'); return; }
-  const cedula=$('studentCedula').value.trim();
-  const name=$('studentName').value.trim().replace(/\s+/g,' ');
-  const level=$('manualStudentLevel').value;
-  const parallel=$('manualStudentParallel').value;
+  if (!cloudReady) return;
+  const cedula=$('studentCedula').value.trim(), name=$('studentName').value.trim().replace(/\s+/g,' ');
+  const level=$('manualStudentLevel').value, parallel=$('manualStudentParallel').value;
   if(!/^\d{10}$/.test(cedula)||name.split(' ').length<2||!level||!parallel){
-    showMessage('studentMessage','Para registrar al alumno, completa cédula, nombres, nivel y paralelo.');
+    showMessage('studentMessage','Completa todos los campos para registrar al alumno.');
     return;
   }
-  if(students.some(s=>s.cedula===cedula)){
-    showMessage('studentMessage','La cédula ya consta en la base.');
-    resolveStudent();
-    return;
-  }
-  const btn = $('registerStudentBtn');
-  btn.disabled = true; btn.textContent = 'Guardando en la nube...';
   try {
     await db.collection(COL_STUDENTS).doc(cedula).set({ cedula, name, level, parallel, manual: true, updatedAt: Date.now() });
     $('studentMessage').innerHTML='';
   } catch (e) {
-    showMessage('studentMessage', 'Error al guardar en la nube: ' + e.message);
-  } finally {
-    btn.disabled = false; btn.textContent = 'Registrar alumno en la nube y mostrar materias';
+    showMessage('studentMessage', 'Error: ' + e.message);
   }
 };
 
@@ -449,42 +549,33 @@ function renderRoster(){
   if(!currentTeacher)return;
   const q=($('rosterSearch').value||'').trim().toLocaleLowerCase('es');
   const matched=students.filter(s=>!q||s.cedula.includes(q)||s.name.toLocaleLowerCase('es').includes(q));
-  $('rosterTable').innerHTML=`<p class="hint">${matched.length} de ${students.length} estudiantes</p><table class="report-table"><thead><tr><th>Cédula</th><th>Estudiante</th><th>Curso</th><th>Paralelo</th><th>Origen</th></tr></thead><tbody>${matched.slice(0,250).map(s=>`<tr><td>${esc(s.cedula)}</td><td>${esc(s.name)}</td><td>${esc(s.level)}</td><td>${esc(s.parallel)}</td><td>${s.manual?'Nube (Manual)':'Base institucional'}</td></tr>`).join('')}</tbody></table>`;
+  $('rosterTable').innerHTML=`<p class="hint">${matched.length} de ${students.length} estudiantes</p><table class="report-table"><thead><tr><th>Cédula</th><th>Estudiante</th><th>Curso</th><th>Paralelo</th><th>Origen</th></tr></thead><tbody>${matched.slice(0,250).map(s=>`<tr><td>${esc(s.cedula)}</td><td>${esc(s.name)}</td><td>${esc(s.level)}</td><td>${esc(s.parallel)}</td><td>${s.manual?'Nube':'Institucional'}</td></tr>`).join('')}</tbody></table>`;
 }
 $('rosterSearch').oninput=renderRoster;
 
 $('rosterSaveBtn').onclick = async () => {
   if(!currentTeacher || !cloudReady) return;
-  const cedula=$('rosterCedula').value.trim();
-  const name=$('rosterName').value.trim().replace(/\s+/g,' ');
-  const level=$('rosterLevel').value;
-  const parallel=$('rosterParallel').value;
+  const cedula=$('rosterCedula').value.trim(), name=$('rosterName').value.trim().replace(/\s+/g,' ');
+  const level=$('rosterLevel').value, parallel=$('rosterParallel').value;
   if(!/^\d{10}$/.test(cedula)||name.split(' ').length<2||!level||!parallel){
-    showMessage('rosterMessage','Verifica que los datos del estudiante estén completos.');
+    showMessage('rosterMessage','Completa los datos del estudiante.');
     return;
   }
-  const btn = $('rosterSaveBtn');
-  btn.disabled = true; btn.textContent = 'Guardando...';
   try {
     await db.collection(COL_STUDENTS).doc(cedula).set({ cedula, name, level, parallel, manual: true, updatedAt: Date.now() });
-    showMessage('rosterMessage','Estudiante sincronizado en la nube correctamente.','good');
-    $('rosterCedula').value = ''; $('rosterName').value = '';
+    showMessage('rosterMessage','Estudiante guardado.','good');
+    $('rosterCedula').value=''; $('rosterName').value='';
   } catch (e) {
-    showMessage('rosterMessage', 'Error al guardar: ' + e.message);
-  } finally {
-    btn.disabled = false; btn.textContent = 'Guardar estudiante en la nube';
+    showMessage('rosterMessage','Error: '+e.message);
   }
 };
 
 $('rosterExportBtn').onclick=()=>{
   if(!currentTeacher)return;
-  const rows=[['Cédula','Nombres','Curso','Paralelo','Origen'],...students.map(s=>[s.cedula,s.name,s.level,s.parallel,s.manual?'Nube (Manual)':'Institucional'])];
-  exportFile('nomina_estudiantes_JBP.csv','﻿'+rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'),'text/csv;charset=utf-8');
+  const rows=[['Cédula','Nombres','Curso','Paralelo','Origen'],...students.map(s=>[s.cedula,s.name,s.level,s.parallel,s.manual?'Nube':'Institucional'])];
+  exportFile('nomina_JBP.csv','\uFEFF'+rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'),'text/csv;charset=utf-8');
 };
 
-// ==========================================
-// 6. NAVEGACIÓN Y AUTENTICACIÓN DOCENTE (NUBE)
-// ==========================================
 function switchRole(role){
   $('studentView').classList.toggle('hidden',role!=='student');
   $('teacherView').classList.toggle('hidden',role!=='teacher');
@@ -505,23 +596,87 @@ function renderStudent(){
 
 function renderSelection(){
   const e=exams.find(e=>e.id===$('studentExam').value);
-  $('selectedExamInfo').innerHTML=e?`<div class="tile"><b>${esc(e.subject)} · ${esc(e.teacher)}</b><p>Curso: ${esc(e.level||"Sin asignar")} · ${esc(e.parallel||"General")}<br>Inicio: ${esc(formatDate(startAt(e)))}<br>Fin: ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} segundos cada una · <b>${status(e)}</b></p></div>`:'';
+  $('selectedExamInfo').innerHTML=e?`<div class="tile"><b>${esc(e.subject)} · ${esc(e.teacher)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>Inicio: ${esc(formatDate(startAt(e)))}<br>Fin: ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg · <b>${status(e)}</b></p></div>`:'';
 }
 $('studentExam').onchange=renderSelection;
+
+// BOTÓN "MIS CALIFICACIONES" ESTUDIANTE
+$('openMyGradesModalBtn').onclick = () => {
+  const cedula = $('studentCedula').value.trim();
+  $('myGradesCedulaInput').value = cedula;
+  renderStudentGrades(cedula);
+  $('myGradesModal').classList.remove('hidden');
+};
+$('closeMyGradesModal').onclick = () => $('myGradesModal').classList.add('hidden');
+$('myGradesCedulaInput').oninput = e => renderStudentGrades(e.target.value.trim());
+
+function renderStudentGrades(cedula) {
+  const container = $('myGradesContentArea');
+  if (!/^\d{10}$/.test(cedula)) {
+    container.innerHTML = '<div class="hint">Introduce un número de cédula válido de 10 dígitos para consultar tus notas.</div>';
+    return;
+  }
+  const pupilAttempts = attempts.filter(a => a.cedula === cedula);
+  if (!pupilAttempts.length) {
+    container.innerHTML = '<div class="empty">No se registran evaluaciones rendidas con esta cédula.</div>';
+    return;
+  }
+
+  // Agrupar por materia
+  const bySubject = {};
+  pupilAttempts.forEach(att => {
+    const exam = exams.find(e => e.id === att.examId);
+    const subject = att.subject || (exam ? exam.subject : 'Sin materia');
+    if (!bySubject[subject]) bySubject[subject] = [];
+    bySubject[subject].push({ ...att, exam });
+  });
+
+  let html = '';
+  for (const [subject, list] of Object.entries(bySubject)) {
+    html += `
+      <div class="tile">
+        <h3 style="color:var(--wine);margin-bottom:8px">📚 ${esc(subject)}</h3>
+        <div class="stack" style="gap:10px">
+          ${list.map(att => {
+            const isPublished = att.published === true;
+            const examTitle = att.examTitle || (att.exam ? att.exam.title : 'Evaluación');
+            const teacherName = att.teacher || (att.exam ? att.exam.teacher : 'Docente');
+            return `
+              <div style="border:1px solid var(--line);border-radius:10px;padding:12px;background:#fcfcfd">
+                <div class="row between">
+                  <b>${esc(examTitle)}</b>
+                  <span class="tag ${isPublished?'good':'warn'}">${isPublished?'Calificación Publicada':'Pendiente de publicación'}</span>
+                </div>
+                <p class="hint" style="margin:4px 0">Docente: ${esc(teacherName)} · Rendido: ${esc(formatDate(att.startedAt))}</p>
+                ${isPublished ? `
+                  <div class="row between topgap" style="align-items:center">
+                    <span style="font-size:18px;font-weight:900;color:var(--wine)">Nota: ${Number(att.score||0).toFixed(2)} / 10</span>
+                    <span class="tag ${att.status==='infraccion'?'bad':'good'}">${att.status==='infraccion'?'Anulado (Infracción)':att.status==='pendiente_revision'?'Revisado parcialmente':'Finalizado'}</span>
+                  </div>
+                  ${att.reason?`<p class="hint" style="margin-top:6px"><b>Observación:</b> ${esc(att.reason)}</p>`:''}
+                ` : `
+                  <p class="hint" style="color:var(--gold);margin-top:4px">🔒 Tu examen ha sido recibido, pero el docente aún no publica las calificaciones oficiales.</p>
+                `}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+  container.innerHTML = html;
+}
 
 function authReady(){
   $('loginModeBtn').classList.toggle('active',authMode==='login');
   $('registerModeBtn').classList.toggle('active',authMode==='register');
   $('confirmPasswordField').classList.toggle('hidden',authMode!=='register');
   $('authTitle').textContent=authMode==='register'?'Crear cuenta docente en la nube':'Acceso de docentes';
-  $('authSubtitle').textContent=authMode==='register'?'Registra tu nombre completo y crea una contraseña exclusiva para administrar tus evaluaciones desde cualquier lugar.':'Ingresa con el nombre y la contraseña que registraste.';
+  $('authSubtitle').textContent=authMode==='register'?'Registra tu nombre y contraseña para administrar tus evaluaciones.':'Ingresa con tu cuenta registrada.';
   $('adminLoginBtn').textContent=authMode==='register'?'Crear mi cuenta en la nube':'Iniciar sesión';
-  $('adminPassword').autocomplete=authMode==='register'?'new-password':'current-password';
 }
 
-function setAuthMode(mode){
-  authMode=mode;$('authMessage').innerHTML='';$('adminPassword').value='';$('confirmTeacherPassword').value='';authReady();
-}
+function setAuthMode(mode){ authMode=mode; $('authMessage').innerHTML=''; authReady(); }
 $('loginModeBtn').onclick=()=>setAuthMode('login');
 $('registerModeBtn').onclick=()=>setAuthMode('register');
 
@@ -538,8 +693,6 @@ function renderTeacher(){
   }
 }
 
-const normName=s=>s.trim().replace(/\s+/g,' ').toLocaleLowerCase('es');
-
 async function hashText(v){
   if(globalThis.crypto?.subtle){
     const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));
@@ -549,51 +702,39 @@ async function hashText(v){
 }
 
 $('adminLoginBtn').onclick = async () => {
-  if (!cloudReady) { showMessage('authMessage', 'Conectando con la nube, intenta en unos segundos...'); return; }
-  const name=$('teacherNameLogin').value.trim().replace(/\s+/g,' '),password=$('adminPassword').value;
+  if (!cloudReady) return;
+  const name=$('teacherNameLogin').value.trim().replace(/\s+/g,' '), password=$('adminPassword').value;
   if(name.split(' ').length<2){showMessage('authMessage','Escribe tus nombres y apellidos completos.');return}
-  
-  const btn = $('adminLoginBtn');
-  btn.disabled = true;
   try {
     if(authMode==='register'){
-      if(password.length<8){showMessage('authMessage','La contraseña debe tener al menos 8 caracteres.');return}
+      if(password.length<8){showMessage('authMessage','Mínimo 8 caracteres.');return}
       if(password!==$('confirmTeacherPassword').value){showMessage('authMessage','Las contraseñas no coinciden.');return}
-      if(teachers.some(t=>normName(t.name)===normName(name))){showMessage('authMessage','Ya existe un docente registrado con ese nombre en la nube. Inicia sesión con su contraseña.');return}
-      
-      const id = uid();
-      const salt = uid();
-      const passwordHash = await hashText(salt+'|'+password);
-      const teacher = { id, name, salt, passwordHash, createdAt: Date.now() };
+      if(teachers.some(t=>normName(t.name)===normName(name))){showMessage('authMessage','El docente ya existe.');return}
+      const id=uid(), salt=uid(), passwordHash=await hashText(salt+'|'+password);
+      const teacher={id, name, salt, passwordHash, createdAt:Date.now()};
       await db.collection(COL_TEACHERS).doc(id).set(teacher);
-      currentTeacher = teacher;
+      currentTeacher=teacher;
     } else {
-      let teacher = teachers.find(t=>normName(t.name)===normName(name));
-      if (!teacher) {
-        // Consultar directamente a Firestore por si aún no termina de cargar el snapshot inicial
-        const snap = await db.collection(COL_TEACHERS).get();
-        teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        teacher = teachers.find(t=>normName(t.name)===normName(name));
+      let teacher=teachers.find(t=>normName(t.name)===normName(name));
+      if(!teacher){
+        const snap=await db.collection(COL_TEACHERS).get();
+        teachers=snap.docs.map(d=>({id:d.id,...d.data()}));
+        teacher=teachers.find(t=>normName(t.name)===normName(name));
       }
-      if(!teacher || await hashText(teacher.salt+'|'+password)!==teacher.passwordHash){
-        showMessage('authMessage','Nombre o contraseña incorrectos. Verifica los datos o crea tu cuenta.');
+      if(!teacher||await hashText(teacher.salt+'|'+password)!==teacher.passwordHash){
+        showMessage('authMessage','Datos incorrectos.');
         return;
       }
-      currentTeacher = teacher;
+      currentTeacher=teacher;
     }
-    $('adminPassword').value='';$('confirmTeacherPassword').value='';$('authMessage').innerHTML='';
-    resetEditor();
-    renderTeacher();
-  } catch (e) {
-    showMessage('authMessage', 'Error de conexión con la nube: ' + e.message);
-  } finally {
-    btn.disabled = false;
-  }
+    $('adminPassword').value=''; $('confirmTeacherPassword').value=''; $('authMessage').innerHTML='';
+    resetEditor(); renderTeacher();
+  } catch(e){ showMessage('authMessage','Error: '+e.message); }
 };
 
 $('logoutBtn').onclick=()=>{currentTeacher=null;resetEditor();renderTeacher()};
-$('manageTab').onclick=()=>{setTeacherTab('manage')};
-$('resultsTab').onclick=()=>{setTeacherTab('results')};
+$('manageTab').onclick=()=>setTeacherTab('manage');
+$('resultsTab').onclick=()=>setTeacherTab('results');
 $('rosterTab').onclick=()=>setTeacherTab('roster');
 
 function setTeacherTab(type){
@@ -609,374 +750,437 @@ function setTeacherTab(type){
 function renderStats(){
   const mine=myAttempts();
   const avg=mine.length?mine.reduce((s,a)=>s+Number(a.score||0),0)/mine.length:0;
-  $('stats').innerHTML=[['Exámenes en la nube',myExams().length],['Intentos registrados',mine.length],['Promedio general',avg.toFixed(2)+'/10']].map(([a,b])=>`<div class="stat"><small>${a}</small><b>${b}</b></div>`).join('');
+  $('stats').innerHTML=[['Exámenes',myExams().length],['Intentos',mine.length],['Promedio',avg.toFixed(2)+'/10']].map(([a,b])=>`<div class="stat"><small>${a}</small><b>${b}</b></div>`).join('');
 }
 
-// ==========================================
-// 7. EDITOR Y CRUD DE EXÁMENES EN FIREBASE
-// ==========================================
+$('aiSettingsBtn').onclick = () => {
+  $('geminiApiKeyInput').value = getGeminiApiKey();
+  $('aiKeyMsg').innerHTML = '';
+  $('aiModal').classList.remove('hidden');
+};
+$('closeAiModal').onclick = () => $('aiModal').classList.add('hidden');
+$('saveAiKeyBtn').onclick = () => {
+  const val = $('geminiApiKeyInput').value.trim();
+  if(val){ localStorage.setItem('jbp_gemini_api_key', val); showMessage('aiKeyMsg','Guardado.','good'); }
+  else { localStorage.removeItem('jbp_gemini_api_key'); showMessage('aiKeyMsg','Usando motor integrado.','good'); }
+};
+$('clearAiKeyBtn').onclick = () => { localStorage.removeItem('jbp_gemini_api_key'); $('geminiApiKeyInput').value=''; showMessage('aiKeyMsg','Restablecido.','good'); };
+
+function defaultQuestionObj(type='multiple'){
+  return {type, text:'', options:['','','',''], correct:0, rubric:'', gradingMode:'ai', procedures:['','','',''], correctCombo:'A1', requireWrittenProc:false};
+}
+
 function resetEditor(){
-  editingId=null;editingQuestions=[];$('examForm').reset();
+  editingId=null; editingQuestions=[]; $('examForm').reset();
   $('examTeacher').value=currentTeacher?.name||'';
-  $('examDate').value=localDateValue();$('examTime').value=localTimeValue();
-  $('examLevel').value='';$('examParallel').value='GENERAL';$('examHours').value=2;$('examSeconds').value=15;
-  $('editorTitle').textContent='Crear examen';$('saveExamBtn').textContent='Guardar examen en la nube';
-  $('newExamBtn').classList.add('hidden');$('editorMessage').innerHTML='';
+  $('examDate').value=localDateValue(); $('examTime').value=localTimeValue();
+  $('examLevel').value=''; $('examParallel').value='GENERAL'; $('examHours').value=2; $('examSeconds').value=30;
+  $('editorTitle').textContent='Crear examen'; $('saveExamBtn').textContent='Guardar examen en la nube';
+  $('newExamBtn').classList.add('hidden'); $('editorMessage').innerHTML='';
   addQuestion();
 }
 
-function addQuestion(q={text:'',options:['','','',''],correct:0}){
-  editingQuestions.push({text:q.text,options:[...q.options],correct:q.correct});
+function addQuestion(q=defaultQuestionObj('multiple')){
+  editingQuestions.push({
+    type:q.type||'multiple', text:q.text||'', options:Array.isArray(q.options)?[...q.options]:['','','',''],
+    correct:Number(q.correct??0), rubric:q.rubric||'', gradingMode:q.gradingMode||'ai',
+    procedures:Array.isArray(q.procedures)?[...q.procedures]:['','','',''], correctCombo:q.correctCombo||'A1', requireWrittenProc:Boolean(q.requireWrittenProc)
+  });
   renderQuestionEditor();
 }
 
 function syncQuestions(){
   const boxes=[...document.querySelectorAll('#questionEditor [data-q]')];
-  editingQuestions=boxes.map(box=>({text:box.querySelector('[data-text]').value,options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value),correct:Number(box.querySelector('[data-correct]').value)}));
+  editingQuestions=boxes.map(box=>{
+    const type=box.querySelector('[data-type]').value, text=box.querySelector('[data-text]').value;
+    if(type==='open'){
+      return {type:'open', text, rubric:box.querySelector('[data-rubric]').value, gradingMode:box.querySelector('[data-grading-mode]').value};
+    } else if(type==='math_combo'){
+      return {type:'math_combo', text, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), procedures:[...box.querySelectorAll('[data-proc]')].map(x=>x.value), correctCombo:box.querySelector('[data-combo]').value, requireWrittenProc:box.querySelector('[data-req-proc]').checked};
+    } else {
+      return {type:'multiple', text, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), correct:Number(box.querySelector('[data-correct]').value)};
+    }
+  });
 }
 
 function renderQuestionEditor(){
-  $('questionEditor').innerHTML=editingQuestions.map((q,i)=>`<article class="question-box" data-q="${i}"><div class="row between"><h4>Pregunta ${i+1}</h4><button type="button" class="btn danger small" data-remove="${i}" ${editingQuestions.length===1?'disabled':''}>Eliminar</button></div><label class="field"><span>Enunciado de la pregunta</span><textarea data-text placeholder="Escribe la pregunta..." required>${esc(q.text)}</textarea></label><div class="options-editor topgap">${q.options.map((o,j)=>`<label class="field"><span>Opción ${'ABCD'[j]}</span><input data-opt="${j}" value="${esc(o)}" required placeholder="Respuesta ${'ABCD'[j]}"></label>`).join('')}</div><div class="question-editor-actions"><span class="hint">Selecciona la opción correcta</span><select class="select-small" data-correct>${[0,1,2,3].map(j=>`<option value="${j}" ${q.correct===j?'selected':''}>Correcta: ${'ABCD'[j]}</option>`).join('')}</select></div></article>`).join('');
-  document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{syncQuestions();editingQuestions.splice(Number(b.dataset.remove),1);renderQuestionEditor()});
+  $('questionEditor').innerHTML=editingQuestions.map((q,i)=>{
+    const qType=q.type||'multiple'; let bodyHtml='';
+    if(qType==='open'){
+      bodyHtml=`<div class="stack topgap"><label class="field"><span>Rúbrica / Palabras clave</span><textarea data-rubric placeholder="Conceptos esperados...">${esc(q.rubric||'')}</textarea></label><div class="question-editor-actions"><span class="hint">Calificación:</span><select class="select-small" data-grading-mode><option value="ai" ${q.gradingMode!=='manual'?'selected':''}>Automática con IA</option><option value="manual" ${q.gradingMode==='manual'?'selected':''}>Revisión manual docente</option></select></div></div>`;
+    } else if(qType==='math_combo'){
+      bodyHtml=`<div class="math-matrix"><div><span class="math-col-title">Opciones (A-D)</span><div class="stack" style="gap:8px">${(q.options||['','','','']).map((o,j)=>`<label class="field"><span>Opción ${'ABCD'[j]}</span><input data-opt="${j}" value="${esc(o)}" required></label>`).join('')}</div></div><div><span class="math-col-title">Procedimientos (1-4)</span><div class="stack" style="gap:8px">${(q.procedures||['','','','']).map((p,j)=>`<label class="field"><span>Procedimiento ${j+1}</span><input data-proc="${j}" value="${esc(p)}" required></label>`).join('')}</div></div></div><div class="question-editor-actions"><label class="row" style="font-size:12px;cursor:pointer"><input type="checkbox" data-req-proc ${q.requireWrittenProc?'checked':''}><span>Pedir texto de procedimiento</span></label><div class="row"><span class="hint">Combinación correcta:</span><select class="select-small" data-combo>${MATH_COMBOS.map(c=>`<option value="${c}" ${q.correctCombo===c?'selected':''}>${c}</option>`).join('')}</select></div></div>`;
+    } else {
+      bodyHtml=`<div class="options-editor topgap">${(q.options||['','','','']).map((o,j)=>`<label class="field"><span>Opción ${'ABCD'[j]}</span><input data-opt="${j}" value="${esc(o)}" required></label>`).join('')}</div><div class="question-editor-actions"><span class="hint">Opción correcta</span><select class="select-small" data-correct>${[0,1,2,3].map(j=>`<option value="${j}" ${q.correct===j?'selected':''}>Correcta: ${'ABCD'[j]}</option>`).join('')}</select></div>`;
+    }
+    return `<article class="question-box" data-q="${i}"><div class="row between" style="margin-bottom:12px"><div class="row"><h4>Pregunta ${i+1}</h4><select class="select-small" data-type><option value="multiple" ${qType==='multiple'?'selected':''}>Opción Múltiple</option><option value="open" ${qType==='open'?'selected':''}>Abierta</option><option value="math_combo" ${qType==='math_combo'?'selected':''}>Matemática (ej. A2)</option></select></div><button type="button" class="btn danger small" data-remove="${i}" ${editingQuestions.length===1?'disabled':''}>Eliminar</button></div><label class="field"><span>Enunciado</span><textarea data-text required>${esc(q.text)}</textarea></label>${bodyHtml}</article>`;
+  }).join('');
+
+  document.querySelectorAll('[data-type]').forEach(sel=>{
+    sel.onchange=()=>{
+      const box=sel.closest('[data-q]'), idx=Number(box.dataset.q), currentText=box.querySelector('[data-text]').value;
+      const fresh=defaultQuestionObj(sel.value); fresh.text=currentText; editingQuestions[idx]=fresh; renderQuestionEditor();
+    };
+  });
+  document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{ syncQuestions(); editingQuestions.splice(Number(b.dataset.remove),1); renderQuestionEditor(); });
 }
 
 $('addQuestionBtn').onclick=()=>{syncQuestions();addQuestion()};
 $('newExamBtn').onclick=resetEditor;
 
 $('examForm').onsubmit = async event => {
-  event.preventDefault();
-  syncQuestions();
-  if(!currentTeacher || !cloudReady){showMessage('editorMessage','Debes iniciar sesión como docente y estar conectado.');return;}
-  
-  const title=$('examTitle').value.trim(),teacher=currentTeacher.name,subject=$('examSubject').value.trim(),level=$('examLevel').value,parallel=$('examParallel').value,date=$('examDate').value,time=$('examTime').value,hours=Number($('examHours').value),seconds=Number($('examSeconds').value);
-  if(!title||!teacher||!subject||!level||!parallel||!date||!time||!(hours>=.25&&hours<=720)||!(seconds>=5&&seconds<=3600)||!editingQuestions.length||editingQuestions.some(q=>!q.text.trim()||q.options.some(o=>!o.trim())||new Set(q.options.map(o=>o.trim().toLowerCase())).size<4)){
-    showMessage('editorMessage','Revisa los campos: cada pregunta debe tener un enunciado y cuatro opciones diferentes.');
-    return;
-  }
-  const old=myExams().find(x=>x.id===editingId);
-  if(editingId&&!old){showMessage('editorMessage','No tienes permiso para modificar este examen.');return;}
-  
-  const examId = editingId || uid();
-  const item={
-    id: examId,
-    ownerId: currentTeacher.id,
-    title, teacher, subject, level, parallel, date, time, hours, seconds,
-    questions: editingQuestions.map(q=>({text:q.text.trim(),options:q.options.map(o=>o.trim()),correct:q.correct})),
-    createdAt: old?.createdAt || Date.now(),
-    updatedAt: Date.now()
-  };
+  event.preventDefault(); syncQuestions();
+  if(!currentTeacher||!cloudReady)return;
+  const title=$('examTitle').value.trim(), subject=$('examSubject').value.trim(), level=$('examLevel').value, parallel=$('examParallel').value;
+  const date=$('examDate').value, time=$('examTime').value, hours=Number($('examHours').value), seconds=Number($('examSeconds').value);
 
-  const btn = $('saveExamBtn');
-  btn.disabled = true; btn.textContent = 'Sincronizando...';
+  let validQuestions=editingQuestions.length>0;
+  for(const q of editingQuestions){
+    if(!q.text.trim())validQuestions=false;
+    if(q.type==='multiple'&&q.options.some(o=>!o.trim()))validQuestions=false;
+    if(q.type==='math_combo'&&(q.options.some(o=>!o.trim())||q.procedures.some(p=>!p.trim())))validQuestions=false;
+  }
+  if(!title||!subject||!level||!parallel||!date||!time||!validQuestions){
+    showMessage('editorMessage','Completa todos los campos obligatorios.'); return;
+  }
+
+  const examId=editingId||uid();
+  const cleanQuestions=editingQuestions.map(q=>{
+    if(q.type==='open') return {type:'open', text:q.text.trim(), rubric:q.rubric.trim(), gradingMode:q.gradingMode};
+    if(q.type==='math_combo') return {type:'math_combo', text:q.text.trim(), options:q.options.map(o=>o.trim()), procedures:q.procedures.map(p=>p.trim()), correctCombo:q.correctCombo, requireWrittenProc:q.requireWrittenProc};
+    return {type:'multiple', text:q.text.trim(), options:q.options.map(o=>o.trim()), correct:q.correct};
+  });
+
+  const item={ id:examId, ownerId:currentTeacher.id, title, teacher:currentTeacher.name, subject, level, parallel, date, time, hours, seconds, questions:cleanQuestions, createdAt:Date.now(), updatedAt:Date.now() };
+
+  const btn=$('saveExamBtn'); btn.disabled=true; btn.textContent='Guardando...';
   try {
     await db.collection(COL_EXAMS).doc(examId).set(item);
-    resetEditor();
-    showMessage('editorMessage','Examen guardado y publicado en la nube correctamente.','good');
-  } catch (e) {
-    showMessage('editorMessage', 'Error al guardar en la nube: ' + e.message);
-  } finally {
-    btn.disabled = false; btn.textContent = 'Guardar examen en la nube';
-  }
+    resetEditor(); showMessage('editorMessage','Examen guardado en la nube.','good');
+  } catch(e){ showMessage('editorMessage','Error: '+e.message); }
+  finally { btn.disabled=false; btn.textContent='Guardar examen en la nube'; }
 };
 
 function renderExamList(){
   const mine=myExams();
-  $('examList').innerHTML=mine.length?mine.map(e=>`<div class="tile"><div class="row between"><h3>${esc(e.subject)}</h3><span class="tag ${status(e)==='Disponible'?'good':status(e)==='Próximamente'?'warn':''}">${status(e)}</span></div><b style="font-size:13px">${esc(e.title)}</b><p>Docente: ${esc(e.teacher)}<br>Curso: ${esc(e.level||"No asignado")} · ${esc(e.parallel||"GENERAL")}<br>${esc(formatDate(startAt(e)))} — ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/pregunta</p><div class="row"><button class="btn light small" data-edit="${esc(e.id)}">Editar</button><button class="btn danger small" data-delete="${esc(e.id)}">Eliminar</button></div></div>`).join(''):'<div class="empty">Todavía no hay exámenes en la nube. Crea el primero en el formulario.</div>';
-  
+  $('examList').innerHTML=mine.length?mine.map(e=>`<div class="tile"><div class="row between"><h3>${esc(e.subject)}</h3><span class="tag ${status(e)==='Disponible'?'good':'warn'}">${status(e)}</span></div><b style="font-size:13px">${esc(e.title)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>${esc(formatDate(startAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg</p><div class="row"><button class="btn light small" data-edit="${esc(e.id)}">Editar</button><button class="btn danger small" data-delete="${esc(e.id)}">Eliminar</button></div></div>`).join(''):'<div class="empty">No hay exámenes.</div>';
+
   document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editExam(b.dataset.edit));
-  document.querySelectorAll('[data-delete]').forEach(b=>b.onclick = async () => {
+  document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=async()=>{
     const e=myExams().find(x=>x.id===b.dataset.delete);
-    if(!e)return;
-    if(confirm(`¿Eliminar el examen "${e.title}" de la nube? Los resultados existentes se conservarán.`)){
-      try {
-        await db.collection(COL_EXAMS).doc(e.id).delete();
-        if(editingId===e.id)resetEditor();
-      } catch (err) {
-        alert('Error al eliminar: ' + err.message);
-      }
-    }
+    if(e&&confirm(`¿Eliminar examen "${e.title}"?`)){ await db.collection(COL_EXAMS).doc(e.id).delete(); if(editingId===e.id)resetEditor(); }
   });
 }
 
 function editExam(id){
-  const e=myExams().find(x=>x.id===id);if(!e)return;
-  editingId=id;$('examTitle').value=e.title;$('examTeacher').value=e.teacher;$('examSubject').value=e.subject;$('examLevel').value=e.level||'';$('examParallel').value=e.parallel||'GENERAL';$('examDate').value=e.date;$('examTime').value=e.time;$('examHours').value=e.hours;$('examSeconds').value=e.seconds;
-  editingQuestions=JSON.parse(JSON.stringify(e.questions));renderQuestionEditor();
-  $('editorTitle').textContent='Editar examen';$('saveExamBtn').textContent='Actualizar examen en la nube';$('newExamBtn').classList.remove('hidden');$('editorMessage').innerHTML='';
+  const e=myExams().find(x=>x.id===id); if(!e)return;
+  editingId=id; $('examTitle').value=e.title; $('examSubject').value=e.subject; $('examLevel').value=e.level||''; $('examParallel').value=e.parallel||'GENERAL'; $('examDate').value=e.date; $('examTime').value=e.time; $('examHours').value=e.hours; $('examSeconds').value=e.seconds;
+  editingQuestions=JSON.parse(JSON.stringify(e.questions)); renderQuestionEditor();
+  $('editorTitle').textContent='Editar examen'; $('saveExamBtn').textContent='Actualizar examen en la nube'; $('newExamBtn').classList.remove('hidden');
   window.scrollTo({top:520,behavior:'smooth'});
 }
 
 // ==========================================
-// 8. CONSULTA DE CALIFICACIONES Y REINICIO (NUBE)
+// RESULTADOS Y PUBLICACIÓN DE NOTAS
 // ==========================================
 function renderResults(){
-  const sel=$('resultsFilter'),old=sel.value;
-  sel.innerHTML='<option value="all">Todos mis exámenes</option>'+myExams().map(e=>`<option value="${esc(e.id)}">${esc(e.subject)} — ${esc(e.title)}</option>`).join('');
-  if(old==='all'||myExams().some(e=>e.id===old))sel.value=old;
-  
-  const subset=myAttempts().filter(a=>sel.value==='all'||a.examId===sel.value).sort((a,b)=>b.startedAt-a.startedAt);
-  $('resultsTable').innerHTML=subset.length?`<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Evaluación</th><th>Curso</th><th>Inicio</th><th>Resultado</th><th>Observación</th><th>Acción</th></tr></thead><tbody>${subset.map(a=>`<tr><td><b>${esc(a.name)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><span class="hint">${esc(a.examTitle)}</span></td><td>${esc(a.level||"—")} / ${esc(a.parallel||"—")}</td><td>${esc(formatDate(a.startedAt))}</td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><span class="tag ${a.status==='infraccion'?'bad':a.status==='completado'?'good':'warn'}">${a.status==='infraccion'?'Infracción':a.status==='completado'?'Finalizado':'En curso / Interrumpido'}</span><br><span class="hint">${esc(a.reason||'Sin observaciones')}</span></td><td><button class="btn danger small" onclick="resetAttempt('${esc(a.id)}', '${esc(a.name)}')">Reiniciar</button></td></tr>`).join('')}</tbody></table>`:'<div class="empty">Todavía no hay intentos registrados en la nube para este filtro.</div>';
+  const sel=$('resultsFilter'), old=sel.value;
+  const mineExams = myExams();
+  sel.innerHTML='<option value="all">Todos mis exámenes</option>'+mineExams.map(e=>`<option value="${esc(e.id)}">${esc(e.subject)} — ${esc(e.title)}</option>`).join('');
+  if(old==='all'||mineExams.some(e=>e.id===old))sel.value=old;
+
+  const selectedExamId = sel.value;
+  const targetExam = mineExams.find(e => e.id === selectedExamId);
+
+  // Mostrar estado de publicación
+  const badge = $('examPublicationBadge');
+  if (targetExam) {
+    const isPub = targetExam.published === true;
+    badge.textContent = `Estado: ${isPub ? '📢 Publicado para estudiantes' : '🔒 No publicado (Oculto)'}`;
+    badge.className = 'tag ' + (isPub ? 'good' : 'warn');
+    $('publishAllBtn').textContent = isPub ? '🔒 Ocultar calificaciones' : '📢 Publicar notas de este examen';
+  } else {
+    badge.textContent = 'Selecciona un examen específico para publicar';
+    badge.className = 'tag';
+    $('publishAllBtn').textContent = '📢 Publicar notas';
+  }
+
+  const subset=myAttempts().filter(a=>selectedExamId==='all'||a.examId===selectedExamId).sort((a,b)=>b.startedAt-a.startedAt);
+  $('resultsTable').innerHTML=subset.length?`<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Evaluación</th><th>Curso</th><th>Nota</th><th>Estado</th><th>Publicado</th><th>Acciones</th></tr></thead><tbody>${subset.map(a=>`<tr><td><b>${esc(a.name)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><span class="hint">${esc(a.examTitle)}</span></td><td>${esc(a.level)} / ${esc(a.parallel)}</td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><span class="tag ${a.status==='infraccion'?'bad':a.status==='pendiente_revision'?'warn':'good'}">${a.status==='infraccion'?'Infracción':a.status==='pendiente_revision'?'Pend. revisión':'Completado'}</span></td><td><span class="tag ${a.published?'good':'warn'}">${a.published?'Sí':'No'}</span></td><td><div class="row"><button class="btn light small" onclick="openReviewModal('${esc(a.id)}')">Revisar</button><button class="btn neutral small" onclick="togglePublishAttempt('${esc(a.id)}')">${a.published?'Ocultar':'Publicar'}</button><button class="btn danger small" onclick="resetAttempt('${esc(a.id)}','${esc(a.name)}')">Reiniciar</button></div></td></tr>`).join('')}</tbody></table>`:'<div class="empty">No hay intentos registrados.</div>';
 }
 $('resultsFilter').onchange=renderResults;
 
-window.resetAttempt = async (attemptId, studentName) => {
-  if (!confirm(`¿Eliminar el intento de ${studentName} en la nube para permitirle rendir el examen nuevamente?`)) return;
+// Botón global para publicar/ocultar todo un examen
+$('publishAllBtn').onclick = async () => {
+  const selectedExamId = $('resultsFilter').value;
+  if (selectedExamId === 'all') {
+    alert('Selecciona un examen específico en el filtro para publicar sus notas.');
+    return;
+  }
+  const exam = myExams().find(e => e.id === selectedExamId);
+  if (!exam) return;
+
+  const newPubState = !(exam.published === true);
+  const confirmMsg = newPubState ? `¿Publicar las calificaciones de "${exam.title}" para que los estudiantes puedan verlas?` : `¿Ocultar las calificaciones de "${exam.title}"?`;
+  if (!confirm(confirmMsg)) return;
+
   try {
-    await db.collection(COL_ATTEMPTS).doc(attemptId).delete();
+    // Actualizar examen
+    await db.collection(COL_EXAMS).doc(exam.id).update({ published: newPubState });
+    // Actualizar todos los intentos de ese examen
+    const batch = db.batch();
+    const relatedAttempts = attempts.filter(a => a.examId === exam.id);
+    relatedAttempts.forEach(att => {
+      const ref = db.collection(COL_ATTEMPTS).doc(att.id);
+      batch.update(ref, { published: newPubState });
+    });
+    await batch.commit();
+    alert('Estado de publicación actualizado con éxito.');
   } catch (e) {
-    alert('No se pudo reiniciar el intento: ' + e.message);
+    alert('Error al actualizar publicación: ' + e.message);
   }
 };
 
+window.togglePublishAttempt = async (attemptId) => {
+  const att = attempts.find(a => a.id === attemptId);
+  if (!att) return;
+  try {
+    await db.collection(COL_ATTEMPTS).doc(attemptId).update({ published: !att.published });
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+};
+
+window.openReviewModal = (attemptId) => {
+  const attempt = attempts.find(a => a.id === attemptId); if(!attempt) return;
+  const exam = exams.find(e => e.id === attempt.examId); reviewingAttemptId = attemptId;
+  $('reviewStudentTitle').textContent=`${attempt.name} (${attempt.cedula})`;
+  $('reviewExamSubtitle').textContent=`${attempt.subject} — ${attempt.examTitle}`;
+  $('reviewModalMsg').innerHTML='';
+
+  const questions=exam?exam.questions:[]; const ansList=attempt.answers||[];
+  $('reviewQuestionsBody').innerHTML=questions.map((q,idx)=>{
+    const ans=ansList.find(x=>x.question===idx)||{}; const qType=q.type||'multiple'; const earned=Number(ans.points??(ans.correct?1:0));
+    let detailHtml='';
+    if(qType==='open') detailHtml=`<p style="margin:6px 0"><b>Respuesta:</b><br><span style="display:block;background:#f5f6f9;padding:10px;border-radius:8px;margin-top:4px">${esc(ans.textAnswer||'(Sin respuesta)')}</span></p>${ans.aiFeedback?`<p class="hint" style="color:var(--wine)">${esc(ans.aiFeedback)}</p>`:''}`;
+    else if(qType==='math_combo') detailHtml=`<p style="margin:6px 0"><b>Elegido:</b> <span class="tag ${ans.comboChoice===q.correctCombo?'good':'bad'}">${esc(ans.comboChoice||'—')}</span> · <b>Correcto:</b> <span class="tag good">${esc(q.correctCombo)}</span>${ans.writtenProcedure?`<br><b>Proc:</b> ${esc(ans.writtenProcedure)}`:''}</p>`;
+    else { const c=ans.choice; const txt=(c!==null&&c!==undefined&&q.options[c])?`${'ABCD'[c]}. ${q.options[c]}`:'(Sin responder)'; detailHtml=`<p style="margin:6px 0"><b>Respondió:</b> ${esc(txt)}<br><b>Correcta:</b> ${esc('ABCD'[q.correct])}. ${esc(q.options[q.correct])}</p>`; }
+
+    return `<div class="tile" data-rev-q="${idx}"><div class="row between"><b>Pregunta ${idx+1} · ${qType}</b><div class="row"><span class="hint">Puntos (0-1):</span><input type="number" step="0.25" min="0" max="1" value="${earned}" data-rev-pts="${idx}" style="width:75px;padding:6px;border:1px solid #ccc;border-radius:8px;font-weight:800"></div></div><p style="font-weight:600;margin-top:6px">${esc(q.text)}</p>${detailHtml}</div>`;
+  }).join('');
+
+  const updatePrev=()=>{
+    const sum=[...document.querySelectorAll('[data-rev-pts]')].reduce((a,el)=>a+Math.max(0,Math.min(1,Number(el.value)||0)),0);
+    const final10=attempt.status==='infraccion'?0:Math.round((sum/(questions.length||1))*1000)/100;
+    $('reviewFinalScore').textContent=`${final10.toFixed(2)} / 10`;
+  };
+  document.querySelectorAll('[data-rev-pts]').forEach(inp=>inp.oninput=updatePrev); updatePrev();
+  $('reviewModal').classList.remove('hidden');
+};
+
+$('closeReviewModal').onclick=()=>{$('reviewModal').classList.add('hidden'); reviewingAttemptId=null;};
+
+$('regradeAllAiBtn').onclick=async()=>{
+  if(!reviewingAttemptId)return;
+  const attempt=attempts.find(a=>a.id===reviewingAttemptId), exam=exams.find(e=>e.id===attempt?.examId);
+  if(!attempt||!exam)return;
+  const btn=$('regradeAllAiBtn'); btn.disabled=true; btn.textContent='Evaluando...';
+  try {
+    for(let i=0;i<exam.questions.length;i++){
+      const q=exam.questions[i];
+      if(q.type==='open'){
+        const ans=(attempt.answers||[]).find(x=>x.question===i)||{question:i, textAnswer:''};
+        const res=await evaluateOpenAnswerWithAI(q.text, q.rubric, ans.textAnswer);
+        ans.points=res.score; ans.correct=res.score>=0.7; ans.aiFeedback=res.feedback;
+        const inp=document.querySelector(`[data-rev-pts="${i}"]`);
+        if(inp){inp.value=res.score; inp.dispatchEvent(new Event('input'));}
+      }
+    }
+    showMessage('reviewModalMsg','IA aplicada. Guarda los cambios.','good');
+  }catch(e){ showMessage('reviewModalMsg','Error: '+e.message); }
+  finally{ btn.disabled=false; btn.textContent='✨ Calificar abiertas con IA'; }
+};
+
+$('saveManualGradesBtn').onclick=async()=>{
+  if(!reviewingAttemptId||!cloudReady)return;
+  const attempt=attempts.find(a=>a.id===reviewingAttemptId), exam=exams.find(e=>e.id===attempt?.examId);
+  if(!attempt)return;
+  const inputs=[...document.querySelectorAll('[data-rev-pts]')];
+  const updatedAnswers=JSON.parse(JSON.stringify(attempt.answers||[]));
+  let sum=0;
+  inputs.forEach(inp=>{
+    const idx=Number(inp.dataset.revPts), pts=Math.max(0,Math.min(1,Number(inp.value)||0));
+    sum+=pts; let entry=updatedAnswers.find(x=>x.question===idx);
+    if(!entry){entry={question:idx}; updatedAnswers.push(entry);}
+    entry.points=pts; entry.correct=pts>=0.7;
+  });
+  const totalQ=(exam?exam.questions.length:attempt.total)||1;
+  const newScore=attempt.status==='infraccion'?0:Math.round((sum/totalQ)*1000)/100;
+  const btn=$('saveManualGradesBtn'); btn.disabled=true; btn.textContent='Guardando...';
+  try {
+    await db.collection(COL_ATTEMPTS).doc(attempt.id).update({
+      answers: updatedAnswers, score: newScore, correctCount: Math.round(sum*100)/100, status: attempt.status==='infraccion'?'infraccion':'completado', reason: attempt.status==='infraccion'?attempt.reason:'Revisado y calificado por docente'
+    });
+    showMessage('reviewModalMsg','Calificación guardada con éxito.','good');
+  }catch(e){ showMessage('reviewModalMsg','Error: '+e.message); }
+  finally{ btn.disabled=false; btn.textContent='Guardar calificación en la nube'; }
+};
+
+window.resetAttempt=async(attemptId, name)=>{
+  if(confirm(`¿Reiniciar intento de ${name}?`)) await db.collection(COL_ATTEMPTS).doc(attemptId).delete();
+};
+
 function exportFile(filename,content,mime){
-  const blob=new Blob([content],{type:mime});const a=document.createElement('a'),url=URL.createObjectURL(blob);
-  a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  const blob=new Blob([content],{type:mime}); const a=document.createElement('a'), url=URL.createObjectURL(blob);
+  a.href=url; a.download=filename; document.body.append(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
 $('exportCsvBtn').onclick=()=>{
-  const id=$('resultsFilter').value,subset=myAttempts().filter(a=>id==='all'||a.examId===id);
-  const cols=['Nombre completo','Cédula','Materia','Examen','Docente','Curso','Paralelo','Inicio','Estado','Calificación','Motivo'];
-  const rows=subset.map(a=>[a.name,a.cedula,a.subject,a.examTitle,a.teacher,a.level||"",a.parallel||"",formatDate(a.startedAt),a.status,Number(a.score||0).toFixed(2),a.reason||'']);
-  const csv=[cols,...rows].map(row=>row.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(';')).join('\n');
-  exportFile('reporte_calificaciones_JBP.csv','﻿'+csv,'text/csv;charset=utf-8');
+  const id=$('resultsFilter').value, subset=myAttempts().filter(a=>id==='all'||a.examId===id);
+  const rows=[['Nombre','Cédula','Materia','Examen','Curso','Nota','Estado','Publicado'],...subset.map(a=>[a.name,a.cedula,a.subject,a.examTitle,a.level,Number(a.score||0).toFixed(2),a.status,a.published?'Sí':'No'])];
+  exportFile('reporte_calificaciones.csv','\uFEFF'+rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'),'text/csv;charset=utf-8');
 };
 
-$('exportBackupBtn').onclick=()=>exportFile('respaldo_nube_JBP.json',JSON.stringify({teacher:currentTeacher?.name,exams:myExams(),attempts:myAttempts(),studentRoster:students,exportedAt:new Date().toISOString()},null,2),'application/json');
+$('exportBackupBtn').onclick=()=>exportFile('respaldo_JBP.json',JSON.stringify({exams:myExams(),attempts:myAttempts(),students},null,2),'application/json');
 
 // ==========================================
-// 9. EJECUCIÓN DEL EXAMEN Y CONTROL EN NUBE
+// EJECUCIÓN EXAMEN
 // ==========================================
 function studentIdKey(cedula,id){return cedula+'_'+id}
 
 async function beginExam(){
-  if (!cloudReady) { showMessage('studentMessage', 'Esperando conexión con la nube. Intenta en un momento.'); return; }
-  const name=$('studentName').value.trim().replace(/\s+/g,' ');
-  const cedula=$('studentCedula').value.trim();
-  const exam=exams.find(e=>e.id===$('studentExam').value);
-  const registered=students.find(s=>s.cedula===cedula);
+  if(!cloudReady)return;
+  const name=$('studentName').value.trim().replace(/\s+/g,' '), cedula=$('studentCedula').value.trim();
+  const exam=exams.find(e=>e.id===$('studentExam').value), registered=students.find(s=>s.cedula===cedula);
 
-  if(!registered){showMessage('studentMessage','Tu cédula no figura en la nómina. Regístrate antes de iniciar.');return}
-  if(registered.name!==name){showMessage('studentMessage','Los nombres no coinciden con el estudiante identificado.');return}
-  if(!exam||exam.level!==registered.level||exam.parallel!==registered.parallel){showMessage('studentMessage','El examen no corresponde al nivel y paralelo del estudiante.');return}
-  if(name.split(' ').length<2){showMessage('studentMessage','Ingresa tus nombres y apellidos completos.');return}
-  if(!/^\d{10}$/.test(cedula)){showMessage('studentMessage','La cédula debe tener exactamente 10 dígitos.');return}
-  if(!exam){showMessage('studentMessage','Selecciona un examen.');return}
-  if(status(exam)!=='Disponible'){showMessage('studentMessage','Este examen no se encuentra dentro de su horario de disponibilidad.');return}
+  if(!registered){showMessage('studentMessage','Tu cédula no figura en la nómina.');return}
+  if(registered.name!==name){showMessage('studentMessage','Los nombres no coinciden.');return}
+  if(!exam||exam.level!==registered.level||exam.parallel!==registered.parallel){showMessage('studentMessage','El examen no corresponde a tu curso.');return}
+  if(!/^\d{10}$/.test(cedula)){showMessage('studentMessage','Cédula inválida (10 dígitos).');return}
+  if(!exam||status(exam)!=='Disponible'){showMessage('studentMessage','Examen no disponible.');return}
 
-  const attemptDocId = studentIdKey(cedula, exam.id);
-  const btn = $('startExamBtn');
-  btn.disabled = true; btn.textContent = 'Verificando en la nube...';
-
+  const attemptId=studentIdKey(cedula, exam.id);
+  const btn=$('startExamBtn'); btn.disabled=true; btn.textContent='Verificando...';
   try {
-    // Verificación directa en Firestore para evitar duplicados desde múltiples dispositivos
-    const docRef = db.collection(COL_ATTEMPTS).doc(attemptDocId);
-    const existing = await docRef.get();
-    if (existing.exists) {
-      showMessage('studentMessage','Ya existe un intento registrado en la nube para esta cédula en este examen. No se permite repetirlo.');
-      btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →';
-      return;
+    const docRef=db.collection(COL_ATTEMPTS).doc(attemptId);
+    if((await docRef.get()).exists){
+      showMessage('studentMessage','Ya registraste un intento para este examen.');
+      btn.disabled=false; btn.textContent='Comenzar examen en pantalla completa →'; return;
     }
-
-    if(!document.fullscreenEnabled||!$('examScreen').requestFullscreen){
-      showMessage('studentMessage','Este navegador no permite activar pantalla completa. Utiliza un navegador compatible en un dispositivo autorizado.');
-      btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →';
-      return;
-    }
-
-    if(!confirm('Al iniciar se registra tu único intento en la nube. Cambiar de pestaña, minimizar o salir de pantalla completa anulará el examen y asignará 0/10. ¿Deseas comenzar?')) {
-      btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →';
-      return;
+    if(!confirm('Al iniciar se registra tu único intento. Minimizar o cambiar de pestaña anulará el examen (0/10). ¿Comenzar?')) {
+      btn.disabled=false; btn.textContent='Comenzar examen en pantalla completa →'; return;
     }
 
     $('examScreen').classList.remove('hidden');
-    try {
-      await $('examScreen').requestFullscreen({navigationUI:'hide'});
-    } catch(err) {
-      $('examScreen').classList.add('hidden');
-      showMessage('studentMessage','No se pudo activar la pantalla completa. Autoriza la solicitud del navegador e inténtalo de nuevo.');
-      btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →';
-      return;
-    }
+    await $('examScreen').requestFullscreen({navigationUI:'hide'});
 
-    const now = Date.now();
-    const record = {
-      id: attemptDocId,
-      examId: exam.id,
-      examTitle: exam.title,
-      teacher: exam.teacher,
-      subject: exam.subject,
-      level: exam.level,
-      parallel: exam.parallel,
-      name,
-      cedula,
-      startedAt: now,
-      finishedAt: null,
-      status: 'en_curso',
-      score: 0,
-      correctCount: 0,
-      total: exam.questions.length,
-      answers: [],
-      reason: ''
+    const record={
+      id:attemptId, examId:exam.id, examTitle:exam.title, teacher:exam.teacher, subject:exam.subject,
+      level:exam.level, parallel:exam.parallel, name, cedula, startedAt:Date.now(), finishedAt:null,
+      status:'en_curso', score:0, correctCount:0, total:exam.questions.length, answers:[], reason:'', published:false
     };
-
-    // Guardar registro inicial en Firestore
     await docRef.set(record);
 
-    live = {
-      exam: JSON.parse(JSON.stringify(exam)),
-      record,
-      index: 0,
-      questionDeadline: Math.min(now + exam.seconds * 1000, endAt(exam)),
-      endDeadline: endAt(exam),
-      selected: null
-    };
-
-    $('topBar').classList.add('hidden');
-    $('mainApp').classList.add('hidden');
-    $('liveTitle').textContent = exam.subject + ' · ' + exam.title;
-    $('liveStudent').textContent = name + ' · Cédula ' + cedula;
-    renderLiveQuestion();
-    interval = setInterval(tick, 200);
-    tick();
-
-  } catch (e) {
-    $('examScreen').classList.add('hidden');
-    showMessage('studentMessage', 'Error al conectar con la base de datos en línea: ' + e.message);
-  } finally {
-    btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →';
-  }
+    live={ exam:JSON.parse(JSON.stringify(exam)), record, index:0, questionDeadline:Math.min(Date.now()+exam.seconds*1000,endAt(exam)), endDeadline:endAt(exam), selected:null, textAnswer:'', comboChoice:null, writtenProcedure:'' };
+    $('topBar').classList.add('hidden'); $('mainApp').classList.add('hidden');
+    $('liveTitle').textContent=exam.subject+' · '+exam.title; $('liveStudent').textContent=name+' · Cédula '+cedula;
+    renderLiveQuestion(); interval=setInterval(tick,200); tick();
+  }catch(e){
+    $('examScreen').classList.add('hidden'); showMessage('studentMessage','Error: '+e.message);
+  }finally{ btn.disabled=false; btn.textContent='Comenzar examen en pantalla completa →'; }
 }
-
 $('startExamBtn').onclick=beginExam;
 
 function renderLiveQuestion(){
   if(!live)return;
-  const {exam,index}=live,q=exam.questions[index];
+  const {exam,index}=live, q=exam.questions[index];
   if(!q){finishExam('completado');return}
-  live.selected=null;
+  live.selected=null; live.textAnswer=''; live.comboChoice=null; live.writtenProcedure='';
+  const qType=q.type||'multiple';
   $('examProgress').style.width=((index+1)/exam.questions.length*100)+'%';
-  $('examQuestionArea').innerHTML=`<span class="tag">Pregunta ${index+1} de ${exam.questions.length}</span><h2>${esc(q.text)}</h2><div id="liveOptions">${q.options.map((opt,i)=>`<label class="answer"><input type="radio" name="answer" value="${i}"><span><b>${'ABCD'[i]}.</b> ${esc(opt)}</span></label>`).join('')}</div><div class="exam-bottom"><span class="hint">No podrás regresar a esta pregunta.</span><button class="btn" id="nextBtn">${index===exam.questions.length-1?'Finalizar examen':'Guardar y continuar →'}</button></div>`;
-  $('liveOptions').querySelectorAll('input').forEach(input=>input.onchange=()=>{
-    live.selected=Number(input.value);
-    document.querySelectorAll('.answer').forEach(el=>el.classList.toggle('selected',el.querySelector('input').checked));
-  });
-  $('nextBtn').onclick=()=>advanceQuestion();
-  $('examStatus').textContent='Responde antes de que el contador llegue a cero; una pregunta sin respuesta se califica como incorrecta.';
+
+  let html='';
+  if(qType==='open') html=`<div class="stack"><label class="field"><span>Respuesta desarrollada:</span><textarea id="liveOpenText" rows="5" placeholder="Escribe tu respuesta aquí..."></textarea></label></div>`;
+  else if(qType==='math_combo') html=`<div class="math-matrix"><div><span class="math-col-title">Opciones</span><div class="stack" style="gap:6px">${(q.options||[]).map((o,i)=>`<div class="tile" style="padding:10px"><b>${'ABCD'[i]}.</b> ${esc(o)}</div>`).join('')}</div></div><div><span class="math-col-title">Procedimientos</span><div class="stack" style="gap:6px">${(q.procedures||[]).map((p,i)=>`<div class="tile" style="padding:10px"><b>${i+1}.</b> ${esc(p)}</div>`).join('')}</div></div></div><div class="topgap"><span style="font-size:13px;font-weight:800;color:var(--wine)">Selecciona la combinación (ej. A2):</span><div class="combo-grid">${MATH_COMBOS.map(c=>`<button type="button" class="combo-chip" data-combo-val="${c}">${c}</button>`).join('')}</div></div>${q.requireWrittenProc?`<label class="field topgap"><span>Justifica tu cálculo:</span><textarea id="liveMathProcText" rows="3"></textarea></label>`:''}`;
+  else html=`<div id="liveOptions">${q.options.map((opt,i)=>`<label class="answer"><input type="radio" name="answer" value="${i}"><span><b>${'ABCD'[i]}.</b> ${esc(opt)}</span></label>`).join('')}</div>`;
+
+  $('examQuestionArea').innerHTML=`<span class="tag">Pregunta ${index+1} de ${exam.questions.length}</span><h2>${esc(q.text)}</h2>${html}<div class="exam-bottom"><span class="hint">No podrás regresar.</span><button class="btn" id="nextBtn">${index===exam.questions.length-1?'Finalizar examen':'Guardar y continuar →'}</button></div>`;
+
+  if(qType==='open') $('liveOpenText').oninput=e=>live.textAnswer=e.target.value;
+  else if(qType==='math_combo'){
+    document.querySelectorAll('[data-combo-val]').forEach(b=>b.onclick=()=>{live.comboChoice=b.dataset.comboVal; document.querySelectorAll('[data-combo-val]').forEach(x=>x.classList.toggle('selected',x===b));});
+    if($('liveMathProcText')) $('liveMathProcText').oninput=e=>live.writtenProcedure=e.target.value;
+  } else {
+    $('liveOptions').querySelectorAll('input').forEach(inp=>inp.onchange=()=>{live.selected=Number(inp.value); document.querySelectorAll('.answer').forEach(el=>el.classList.toggle('selected',el.querySelector('input').checked));});
+  }
+  $('nextBtn').onclick=advanceQuestion;
 }
 
 function advanceQuestion(){
   if(!live||finalizing)return;
-  const a=live.record;
-  a.answers.push({question:live.index,choice:live.selected,correct:live.selected===live.exam.questions[live.index].correct});
-  a.correctCount=a.answers.filter(x=>x.correct).length;
+  const a=live.record, q=live.exam.questions[live.index], qType=q.type||'multiple';
+  if(qType==='open') a.answers.push({question:live.index, type:'open', textAnswer:(live.textAnswer||'').trim(), points:0, correct:false});
+  else if(qType==='math_combo'){ const ok=live.comboChoice===q.correctCombo; a.answers.push({question:live.index, type:'math_combo', comboChoice:live.comboChoice, writtenProcedure:(live.writtenProcedure||'').trim(), points:ok?1:0, correct:ok}); }
+  else { const ok=live.selected===q.correct; a.answers.push({question:live.index, type:'multiple', choice:live.selected, points:ok?1:0, correct:ok}); }
+
   live.index++;
-  if(live.index>=live.exam.questions.length){
-    finishExam('completado');
-    return;
-  }
+  if(live.index>=live.exam.questions.length){ finishExam('completado'); return; }
   live.questionDeadline=Math.min(Date.now()+live.exam.seconds*1000,live.endDeadline);
-  renderLiveQuestion();
-  tick();
+  renderLiveQuestion(); tick();
 }
 
 function tick(){
   if(!live||finalizing)return;
-  const now=Date.now(),remainingWindow=(live.endDeadline-now)/1000,remainingQuestion=(live.questionDeadline-now)/1000;
-  $('questionTime').textContent=formatClock(remainingQuestion);
-  $('windowTime').textContent=formatClock(remainingWindow);
-  $('questionTimerBox').classList.toggle('urgent',remainingQuestion<=10);
-  $('windowTimerBox').classList.toggle('urgent',remainingWindow<=60);
-  if(remainingWindow<=0){finishExam('vencido','Se agotó el horario habilitado para el examen.');return}
-  if(remainingQuestion<=0)advanceQuestion();
+  const now=Date.now(), rw=(live.endDeadline-now)/1000, rq=(live.questionDeadline-now)/1000;
+  $('questionTime').textContent=formatClock(rq); $('windowTime').textContent=formatClock(rw);
+  if(rw<=0){finishExam('vencido','Horario finalizado.');return}
+  if(rq<=0)advanceQuestion();
 }
 
-function violation(reason){
-  if(!live||finalizing)return;
-  finishExam('infraccion',reason);
-}
+function violation(reason){ if(live&&!finalizing)finishExam('infraccion',reason); }
 
-function finishExam(state,reason=''){
-  if(!live||finalizing)return;
-  finalizing=true;
-  clearInterval(interval);
-  interval=null;
-  
-  const a=live.record;
-  a.finishedAt=Date.now();
-  a.status=state==='infraccion'?'infraccion':state==='completado'?'completado':'vencido';
-  a.reason=reason;
-  a.score=state==='infraccion'?0:Math.round((a.correctCount/a.total)*1000)/100;
-
-  // Mostrar resultado inmediatamente sin bloquear la pantalla del estudiante
-  const finalScore=a.score;
+async function finishExam(state,reason=''){
+  if(!live||finalizing)return; finalizing=true; clearInterval(interval); interval=null;
+  const finishedExam=live.exam, a=live.record; a.finishedAt=Date.now(); a.reason=reason; live=null;
   const infr=state==='infraccion';
-  const badge=infr?'ANULADO POR INFRACCIÓN':state==='vencido'?'HORARIO FINALIZADO':'EXAMEN FINALIZADO';
-  
-  $('examQuestionArea').innerHTML=`
-    <div style="text-align:center;padding:22px 5px">
-      <div class="tag ${infr?'bad':'good'}">${badge}</div>
-      <h2>Resultado registrado en la nube</h2>
-      <div class="big-result">${finalScore.toFixed(2)}<span style="font-size:25px;color:var(--muted)"> / 10</span></div>
-      <p>${infr?'La evaluación se anuló y se asignó una nota de cero.':`Respuestas correctas: ${a.correctCount} de ${a.total}.`}</p>
-      ${reason?`<div class="notice red">${esc(reason)}</div>`:''}
-      <p id="cloudSaveStatus" class="hint">Sincronizando calificación con el servidor en línea...</p>
-      <button id="returnBtn" class="btn topgap">Salir y volver al inicio</button>
-    </div>`;
-  
-  $('examStatus').textContent='';
-  $('questionTime').textContent='—';
-  $('windowTime').textContent='—';
-  live=null;
+  const hasManualOpen=!infr&&finishedExam.questions.some(q=>q.type==='open'&&q.gradingMode==='manual');
 
-  // Guardar resultado definitivo en Firestore en segundo plano
-  if (cloudReady && db) {
-    db.collection(COL_ATTEMPTS).doc(a.id).set(a, { merge: true })
-      .then(() => {
-        const st = $('cloudSaveStatus');
-        if (st) st.innerHTML = '<span style="color:var(--good);font-weight:700">✓ Calificación guardada en la nube con éxito.</span>';
-      })
-      .catch(err => {
-        const st = $('cloudSaveStatus');
-        if (st) st.innerHTML = `<span style="color:var(--bad)">Error al sincronizar: ${esc(err.message)}. Toma captura de esta pantalla.</span>`;
-      });
+  $('examQuestionArea').innerHTML=`<div style="text-align:center;padding:22px"><div class="tag ${infr?'bad':'good'}">EXAMEN FINALIZADO</div><h2>Sincronizando con la nube...</h2><p class="hint" id="cloudSaveStatus">Guardando respuestas en Firebase...</p></div>`;
+
+  if(!infr){
+    for(let i=0;i<finishedExam.questions.length;i++){
+      const q=finishedExam.questions[i];
+      if(q.type==='open'&&q.gradingMode!=='manual'){
+        let entry=a.answers.find(x=>x.question===i);
+        if(entry){ const res=await evaluateOpenAnswerWithAI(q.text, q.rubric, entry.textAnswer); entry.points=res.score; entry.correct=res.score>=0.7; entry.aiFeedback=res.feedback; }
+      }
+    }
   }
+
+  const totalPts=infr?0:a.answers.reduce((acc,x)=>acc+Number(x.points??(x.correct?1:0)),0);
+  a.correctCount=Math.round(totalPts*100)/100;
+  a.score=infr?0:Math.round((totalPts/a.total)*1000)/100;
+  a.status=infr?'infraccion':hasManualOpen?'pendiente_revision':(state==='completado'?'completado':'vencido');
+  a.published=false; // Por defecto no publicado hasta que el docente lo active
+
+  $('examQuestionArea').innerHTML=`<div style="text-align:center;padding:22px"><div class="tag good">¡EVALUACIÓN ENVIADA!</div><h2>Examen guardado correctamente</h2><p>Tus respuestas han sido registradas en la plataforma. <b>La calificación se encuentra retenida</b> y podrá ser consultada en la sección "Mis calificaciones" una vez que el docente las publique.</p>${reason?`<div class="notice red">${esc(reason)}</div>`:''}<button id="returnBtn" class="btn topgap">Salir y volver al inicio</button></div>`;
+  $('questionTime').textContent='—'; $('windowTime').textContent='—';
+
+  if(cloudReady&&db) await db.collection(COL_ATTEMPTS).doc(a.id).set(a, {merge:true}).catch(()=>{});
 
   $('returnBtn').onclick=async()=>{
     try{if(document.fullscreenElement)await document.exitFullscreen()}catch{}
-    $('examScreen').classList.add('hidden');
-    $('topBar').classList.remove('hidden');
-    $('mainApp').classList.remove('hidden');
-    $('studentMessage').innerHTML='';
-    renderStudent();
-    renderTeacher();
-    finalizing=false;
+    $('examScreen').classList.add('hidden'); $('topBar').classList.remove('hidden'); $('mainApp').classList.remove('hidden');
+    $('studentMessage').innerHTML=''; renderStudent(); renderTeacher(); finalizing=false;
   };
 }
 
-// Protecciones antifraude
-document.addEventListener('visibilitychange',()=>{if(document.hidden)violation('El estudiante cambió de pestaña o minimizó la ventana.');});
-document.addEventListener('fullscreenchange',()=>{if(live&&!document.fullscreenElement)violation('El estudiante salió del modo de pantalla completa.');});
-window.addEventListener('blur',()=>{if(!live)return;setTimeout(()=>{if(live&&!document.hasFocus())violation('El estudiante cambió de ventana o perdió el foco de la evaluación.');},200)});
-window.addEventListener('pagehide',()=>{
-  if(live&&!finalizing){
-    const a=live.record;
-    a.status='infraccion';
-    a.score=0;
-    a.finishedAt=Date.now();
-    a.reason='El estudiante cerró o abandonó la página durante el examen.';
-    if (cloudReady && db) {
-      db.collection(COL_ATTEMPTS).doc(a.id).set(a, { merge: true }).catch(()=>{});
-    }
-  }
-});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)violation('Cambió de pestaña o minimizó.');});
+document.addEventListener('fullscreenchange',()=>{if(live&&!document.fullscreenElement)violation('Salió de pantalla completa.');});
+window.addEventListener('blur',()=>{if(live)setTimeout(()=>{if(live&&!document.hasFocus())violation('Perdió el foco de la ventana.');},200)});
 
-// Arrancar aplicación y conectar nube
-$('examDate').value=localDateValue();
-$('examTime').value=localTimeValue();
-resetEditor();
-renderStudent();
-authReady();
-initCloud();
+$('examDate').value=localDateValue(); $('examTime').value=localTimeValue();
+resetEditor(); renderStudent(); authReady(); initCloud();
 </script>
 </body>
 </html>
