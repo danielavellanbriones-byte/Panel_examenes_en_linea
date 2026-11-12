@@ -53,8 +53,8 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
   </section>
 
   <nav class="tabs" aria-label="Tipo de acceso">
-    <button class="tab active" id="studentTab">Soy estudiante</button>
-    <button class="tab" id="teacherTab">Soy docente / administrador</button>
+    <button class="tab active" id="studentTab" type="button">Soy estudiante</button>
+    <button class="tab" id="teacherTab" type="button">Soy docente / administrador</button>
   </nav>
 
   <!-- VISTA ESTUDIANTE -->
@@ -382,8 +382,10 @@ let reviewingAttemptId = null;
 
 function setCloudStatus(ok, msg) {
   const pill = $('cloudStatusPill');
-  pill.textContent = msg;
-  pill.className = 'pill ' + (ok ? 'online' : 'offline');
+  if (pill) {
+    pill.textContent = msg;
+    pill.className = 'pill ' + (ok ? 'online' : 'offline');
+  }
 }
 
 function mergeRoster() {
@@ -445,8 +447,8 @@ async function initCloud() {
   }
 }
 
-function fillLevels(id){$(id).innerHTML='<option value="">Seleccione el nivel...</option>'+LEVELS.map(l=>`<option value="${esc(l)}">${esc(l)}</option>`).join('')}
-function fillParallels(id){$(id).innerHTML=parallelOptions.map(x=>`<option value="${x}">${x==='GENERAL'?'General / sin paralelo':x}</option>`).join('')}
+function fillLevels(id){const el=$(id); if(el) el.innerHTML='<option value="">Seleccione el nivel...</option>'+LEVELS.map(l=>`<option value="${esc(l)}">${esc(l)}</option>`).join('');}
+function fillParallels(id){const el=$(id); if(el) el.innerHTML=parallelOptions.map(x=>`<option value="${x}">${x==='GENERAL'?'General / sin paralelo':x}</option>`).join('');}
 
 for(const id of ['examLevel','manualStudentLevel','rosterLevel'])fillLevels(id);
 for(const id of ['examParallel','manualStudentParallel','rosterParallel'])fillParallels(id);
@@ -455,6 +457,17 @@ const myExams=()=>currentTeacher?exams.filter(e=>e.ownerId===currentTeacher.id):
 const myExamIds=()=>new Set(myExams().map(e=>e.id));
 const myAttempts=()=>attempts.filter(a=>myExamIds().has(a.examId));
 const uid=()=>String(Date.now())+'-'+Math.random().toString(36).slice(2,9);
+const normName=s=>String(s||'').trim().replace(/\s+/g,' ').toLocaleLowerCase('es');
+
+// Función SHA-256 para encriptar y verificar contraseñas
+async function hashText(v){
+  if(globalThis.crypto?.subtle){
+    const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(v));
+    return Array.from(new Uint8Array(bytes)).map(x => x.toString(16).padStart(2,'0')).join('');
+  }
+  return 'local-' + Array.from(v).map(c => c.charCodeAt(0).toString(16)).join('-');
+}
+
 const localDateValue=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 const localTimeValue=(d=new Date())=>`${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
 const startAt=e=>new Date(`${e.date}T${e.time}:00`).getTime();
@@ -462,7 +475,7 @@ const endAt=e=>startAt(e)+e.hours*3600000;
 const formatDate=ms=>new Date(ms).toLocaleString('es-EC',{dateStyle:'medium',timeStyle:'short'});
 const status=e=>Date.now()<startAt(e)?'Próximamente':Date.now()>=endAt(e)?'Finalizado':'Disponible';
 const formatClock=s=>{s=Math.max(0,Math.ceil(s));const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;return h>0?`${h}:${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`};
-const showMessage=(id,msg,type='red')=>{$(id).innerHTML=`<div class="notice ${type}">${esc(msg)}</div>`};
+const showMessage=(id,msg,type='red')=>{const el=$(id); if(el) el.innerHTML=`<div class="notice ${type}">${esc(msg)}</div>`;};
 
 function getGeminiApiKey() { return localStorage.getItem('jbp_gemini_api_key') || ''; }
 
@@ -509,109 +522,147 @@ async function evaluateOpenAnswerWithAI(questionText, rubric, studentAnswer) {
 }
 
 function resolveStudent(){
-  const cedula=$('studentCedula').value.trim();
-  const s=students.find(s=>s.cedula===cedula);
+  const cedulaInput = $('studentCedula');
+  if(!cedulaInput) return;
+  const cedula = cedulaInput.value.trim();
+  const s = students.find(s => s.cedula === cedula);
   if(s){
-    $('studentName').value=s.name;
-    $('studentName').readOnly=true;
-    $('rosterIdentity').innerHTML=`<b>Estudiante identificado:</b> ${esc(s.name)}<p style="margin:5px 0">${esc(s.level)} · Paralelo ${esc(s.parallel)}</p>`;
+    $('studentName').value = s.name;
+    $('studentName').readOnly = true;
+    $('rosterIdentity').innerHTML = `<b>Estudiante identificado:</b> ${esc(s.name)}<p style="margin:5px 0">${esc(s.level)} · Paralelo ${esc(s.parallel)}</p>`;
     $('manualStudentPanel').classList.add('hidden');
-    $('studentCourse').textContent='Materias habilitadas exclusivamente para tu curso.';
+    $('studentCourse').textContent = 'Materias habilitadas exclusivamente para tu curso.';
   } else {
-    $('studentName').readOnly=false;
-    $('rosterIdentity').textContent=cedula.length===10?'La cédula no figura en la nómina. Completa tu nombre y regístrate.':'Introduce tu cédula (10 dígitos).';
-    $('manualStudentPanel').classList.toggle('hidden',cedula.length!==10);
-    $('studentCourse').textContent='';
+    $('studentName').readOnly = false;
+    $('rosterIdentity').textContent = cedula.length === 10 ? 'La cédula no figura en la nómina. Completa tu nombre y regístrate.' : 'Introduce tu cédula (10 dígitos).';
+    $('manualStudentPanel').classList.toggle('hidden', cedula.length !== 10);
+    $('studentCourse').textContent = '';
   }
   renderStudent();
   return s;
 }
 
-$('studentCedula').addEventListener('input', resolveStudent);
+if($('studentCedula')) {
+  $('studentCedula').addEventListener('input', resolveStudent);
+}
 
-$('registerStudentBtn').onclick = async () => {
-  if (!cloudReady) return;
-  const cedula=$('studentCedula').value.trim(), name=$('studentName').value.trim().replace(/\s+/g,' ');
-  const level=$('manualStudentLevel').value, parallel=$('manualStudentParallel').value;
-  if(!/^\d{10}$/.test(cedula)||name.split(' ').length<2||!level||!parallel){
-    showMessage('studentMessage','Completa todos los campos para registrar al alumno.');
-    return;
-  }
-  try {
-    await db.collection(COL_STUDENTS).doc(cedula).set({ cedula, name, level, parallel, manual: true, updatedAt: Date.now() });
-    $('studentMessage').innerHTML='';
-  } catch (e) {
-    showMessage('studentMessage', 'Error: ' + e.message);
-  }
-};
+if($('registerStudentBtn')) {
+  $('registerStudentBtn').onclick = async () => {
+    if (!cloudReady) return;
+    const cedula = $('studentCedula').value.trim(), name = $('studentName').value.trim().replace(/\s+/g,' ');
+    const level = $('manualStudentLevel').value, parallel = $('manualStudentParallel').value;
+    if(!/^\d{10}$/.test(cedula) || name.split(' ').length < 2 || !level || !parallel){
+      showMessage('studentMessage', 'Completa todos los campos para registrar al alumno.');
+      return;
+    }
+    try {
+      await db.collection(COL_STUDENTS).doc(cedula).set({ cedula, name, level, parallel, manual: true, updatedAt: Date.now() });
+      $('studentMessage').innerHTML = '';
+    } catch (e) {
+      showMessage('studentMessage', 'Error: ' + e.message);
+    }
+  };
+}
 
 function renderRoster(){
-  if(!currentTeacher)return;
-  const q=($('rosterSearch').value||'').trim().toLocaleLowerCase('es');
-  const matched=students.filter(s=>!q||s.cedula.includes(q)||s.name.toLocaleLowerCase('es').includes(q));
-  $('rosterTable').innerHTML=`<p class="hint">${matched.length} de ${students.length} estudiantes</p><table class="report-table"><thead><tr><th>Cédula</th><th>Estudiante</th><th>Curso</th><th>Paralelo</th><th>Origen</th></tr></thead><tbody>${matched.slice(0,250).map(s=>`<tr><td>${esc(s.cedula)}</td><td>${esc(s.name)}</td><td>${esc(s.level)}</td><td>${esc(s.parallel)}</td><td>${s.manual?'Nube':'Institucional'}</td></tr>`).join('')}</tbody></table>`;
+  if(!currentTeacher) return;
+  const q = ($('rosterSearch').value || '').trim().toLocaleLowerCase('es');
+  const matched = students.filter(s => !q || s.cedula.includes(q) || s.name.toLocaleLowerCase('es').includes(q));
+  $('rosterTable').innerHTML = `<p class="hint">${matched.length} de ${students.length} estudiantes</p><table class="report-table"><thead><tr><th>Cédula</th><th>Estudiante</th><th>Curso</th><th>Paralelo</th><th>Origen</th></tr></thead><tbody>${matched.slice(0,250).map(s=>`<tr><td>${esc(s.cedula)}</td><td>${esc(s.name)}</td><td>${esc(s.level)}</td><td>${esc(s.parallel)}</td><td>${s.manual?'Nube':'Institucional'}</td></tr>`).join('')}</tbody></table>`;
 }
-$('rosterSearch').oninput=renderRoster;
+if($('rosterSearch')) {
+  $('rosterSearch').oninput = renderRoster;
+}
 
-$('rosterSaveBtn').onclick = async () => {
-  if(!currentTeacher || !cloudReady) return;
-  const cedula=$('rosterCedula').value.trim(), name=$('rosterName').value.trim().replace(/\s+/g,' ');
-  const level=$('rosterLevel').value, parallel=$('rosterParallel').value;
-  if(!/^\d{10}$/.test(cedula)||name.split(' ').length<2||!level||!parallel){
-    showMessage('rosterMessage','Completa los datos del estudiante.');
-    return;
-  }
-  try {
-    await db.collection(COL_STUDENTS).doc(cedula).set({ cedula, name, level, parallel, manual: true, updatedAt: Date.now() });
-    showMessage('rosterMessage','Estudiante guardado.','good');
-    $('rosterCedula').value=''; $('rosterName').value='';
-  } catch (e) {
-    showMessage('rosterMessage','Error: '+e.message);
-  }
-};
+if($('rosterSaveBtn')) {
+  $('rosterSaveBtn').onclick = async () => {
+    if(!currentTeacher || !cloudReady) return;
+    const cedula = $('rosterCedula').value.trim(), name = $('rosterName').value.trim().replace(/\s+/g,' ');
+    const level = $('rosterLevel').value, parallel = $('rosterParallel').value;
+    if(!/^\d{10}$/.test(cedula) || name.split(' ').length < 2 || !level || !parallel){
+      showMessage('rosterMessage', 'Completa los datos del estudiante.');
+      return;
+    }
+    try {
+      await db.collection(COL_STUDENTS).doc(cedula).set({ cedula, name, level, parallel, manual: true, updatedAt: Date.now() });
+      showMessage('rosterMessage', 'Estudiante guardado.', 'good');
+      $('rosterCedula').value = ''; $('rosterName').value = '';
+    } catch (e) {
+      showMessage('rosterMessage', 'Error: ' + e.message);
+    }
+  };
+}
 
-$('rosterExportBtn').onclick=()=>{
-  if(!currentTeacher)return;
-  const rows=[['Cédula','Nombres','Curso','Paralelo','Origen'],...students.map(s=>[s.cedula,s.name,s.level,s.parallel,s.manual?'Nube':'Institucional'])];
-  exportFile('nomina_JBP.csv','\uFEFF'+rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'),'text/csv;charset=utf-8');
-};
+if($('rosterExportBtn')) {
+  $('rosterExportBtn').onclick = () => {
+    if(!currentTeacher) return;
+    const rows = [['Cédula','Nombres','Curso','Paralelo','Origen'], ...students.map(s=>[s.cedula, s.name, s.level, s.parallel, s.manual?'Nube':'Institucional'])];
+    exportFile('nomina_JBP.csv', '\uFEFF' + rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'), 'text/csv;charset=utf-8');
+  };
+}
 
+// Navegación robusta entre accesos de Estudiante y Docente
 function switchRole(role){
-  $('studentView').classList.toggle('hidden',role!=='student');
-  $('teacherView').classList.toggle('hidden',role!=='teacher');
-  $('studentTab').classList.toggle('active',role==='student');
-  $('teacherTab').classList.toggle('active',role==='teacher');
-  if(role==='teacher')renderTeacher();else renderStudent();
+  const isStudent = (role === 'student');
+  if($('studentView')) $('studentView').classList.toggle('hidden', !isStudent);
+  if($('teacherView')) $('teacherView').classList.toggle('hidden', isStudent);
+  if($('studentTab')) $('studentTab').classList.toggle('active', isStudent);
+  if($('teacherTab')) $('teacherTab').classList.toggle('active', !isStudent);
+  
+  if(!isStudent) {
+    renderTeacher();
+  } else {
+    renderStudent();
+  }
 }
-$('studentTab').onclick=()=>switchRole('student');
-$('teacherTab').onclick=()=>switchRole('teacher');
+
+if($('studentTab')) {
+  $('studentTab').addEventListener('click', (e) => { e.preventDefault(); switchRole('student'); });
+}
+if($('teacherTab')) {
+  $('teacherTab').addEventListener('click', (e) => { e.preventDefault(); switchRole('teacher'); });
+}
 
 function renderStudent(){
-  const select=$('studentExam'),old=select.value,cedula=$('studentCedula').value.trim(),pupil=students.find(s=>s.cedula===cedula);
-  const allowed=pupil?exams.filter(e=>e.level===pupil.level&&e.parallel===pupil.parallel):[];
-  select.innerHTML='<option value="">'+(pupil?'Seleccione una materia / examen...':'Primero ingresa tu cédula...')+'</option>'+allowed.map(e=>`<option value="${esc(e.id)}">${esc(e.subject)} — ${esc(e.title)} (${status(e)})</option>`).join('');
-  if(allowed.some(e=>e.id===old))select.value=old;
+  const select = $('studentExam');
+  if(!select) return;
+  const old = select.value, cedula = $('studentCedula').value.trim(), pupil = students.find(s => s.cedula === cedula);
+  const allowed = pupil ? exams.filter(e => e.level === pupil.level && e.parallel === pupil.parallel) : [];
+  select.innerHTML = '<option value="">' + (pupil ? 'Seleccione una materia / examen...' : 'Primero ingresa tu cédula...') + '</option>' + allowed.map(e=>`<option value="${esc(e.id)}">${esc(e.subject)} — ${esc(e.title)} (${status(e)})</option>`).join('');
+  if(allowed.some(e=>e.id===old)) select.value = old;
   renderSelection();
 }
 
 function renderSelection(){
-  const e=exams.find(e=>e.id===$('studentExam').value);
-  $('selectedExamInfo').innerHTML=e?`<div class="tile"><b>${esc(e.subject)} · ${esc(e.teacher)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>Inicio: ${esc(formatDate(startAt(e)))}<br>Fin: ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg · <b>${status(e)}</b></p></div>`:'';
+  const select = $('studentExam');
+  const info = $('selectedExamInfo');
+  if(!select || !info) return;
+  const e = exams.find(ex => ex.id === select.value);
+  info.innerHTML = e ? `<div class="tile"><b>${esc(e.subject)} · ${esc(e.teacher)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>Inicio: ${esc(formatDate(startAt(e)))}<br>Fin: ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg · <b>${status(e)}</b></p></div>` : '';
 }
-$('studentExam').onchange=renderSelection;
+if($('studentExam')) {
+  $('studentExam').onchange = renderSelection;
+}
 
-// BOTÓN "MIS CALIFICACIONES" ESTUDIANTE
-$('openMyGradesModalBtn').onclick = () => {
-  const cedula = $('studentCedula').value.trim();
-  $('myGradesCedulaInput').value = cedula;
-  renderStudentGrades(cedula);
-  $('myGradesModal').classList.remove('hidden');
-};
-$('closeMyGradesModal').onclick = () => $('myGradesModal').classList.add('hidden');
-$('myGradesCedulaInput').oninput = e => renderStudentGrades(e.target.value.trim());
+// Botón "Mis Calificaciones" Estudiante
+if($('openMyGradesModalBtn')) {
+  $('openMyGradesModalBtn').onclick = () => {
+    const cedula = $('studentCedula').value.trim();
+    if($('myGradesCedulaInput')) $('myGradesCedulaInput').value = cedula;
+    renderStudentGrades(cedula);
+    if($('myGradesModal')) $('myGradesModal').classList.remove('hidden');
+  };
+}
+if($('closeMyGradesModal')) {
+  $('closeMyGradesModal').onclick = () => $('myGradesModal').classList.add('hidden');
+}
+if($('myGradesCedulaInput')) {
+  $('myGradesCedulaInput').oninput = e => renderStudentGrades(e.target.value.trim());
+}
 
 function renderStudentGrades(cedula) {
   const container = $('myGradesContentArea');
+  if(!container) return;
   if (!/^\d{10}$/.test(cedula)) {
     container.innerHTML = '<div class="hint">Introduce un número de cédula válido de 10 dígitos para consultar tus notas.</div>';
     return;
@@ -622,7 +673,6 @@ function renderStudentGrades(cedula) {
     return;
   }
 
-  // Agrupar por materia
   const bySubject = {};
   pupilAttempts.forEach(att => {
     const exam = exams.find(e => e.id === att.examId);
@@ -668,115 +718,128 @@ function renderStudentGrades(cedula) {
 }
 
 function authReady(){
-  $('loginModeBtn').classList.toggle('active',authMode==='login');
-  $('registerModeBtn').classList.toggle('active',authMode==='register');
-  $('confirmPasswordField').classList.toggle('hidden',authMode!=='register');
-  $('authTitle').textContent=authMode==='register'?'Crear cuenta docente en la nube':'Acceso de docentes';
-  $('authSubtitle').textContent=authMode==='register'?'Registra tu nombre y contraseña para administrar tus evaluaciones.':'Ingresa con tu cuenta registrada.';
-  $('adminLoginBtn').textContent=authMode==='register'?'Crear mi cuenta en la nube':'Iniciar sesión';
+  if($('loginModeBtn')) $('loginModeBtn').classList.toggle('active', authMode === 'login');
+  if($('registerModeBtn')) $('registerModeBtn').classList.toggle('active', authMode === 'register');
+  if($('confirmPasswordField')) $('confirmPasswordField').classList.toggle('hidden', authMode !== 'register');
+  if($('authTitle')) $('authTitle').textContent = authMode === 'register' ? 'Crear cuenta docente en la nube' : 'Acceso de docentes';
+  if($('authSubtitle')) $('authSubtitle').textContent = authMode === 'register' ? 'Registra tu nombre y contraseña para administrar tus evaluaciones.' : 'Ingresa con tu cuenta registrada.';
+  if($('adminLoginBtn')) $('adminLoginBtn').textContent = authMode === 'register' ? 'Crear mi cuenta en la nube' : 'Iniciar sesión';
 }
 
-function setAuthMode(mode){ authMode=mode; $('authMessage').innerHTML=''; authReady(); }
-$('loginModeBtn').onclick=()=>setAuthMode('login');
-$('registerModeBtn').onclick=()=>setAuthMode('register');
+function setAuthMode(mode){ authMode = mode; if($('authMessage')) $('authMessage').innerHTML = ''; authReady(); }
+if($('loginModeBtn')) $('loginModeBtn').onclick = () => setAuthMode('login');
+if($('registerModeBtn')) $('registerModeBtn').onclick = () => setAuthMode('register');
 
 function renderTeacher(){
   authReady();
-  $('teacherAuth').classList.toggle('hidden',!!currentTeacher);
-  $('teacherPanel').classList.toggle('hidden',!currentTeacher);
+  if($('teacherAuth')) $('teacherAuth').classList.toggle('hidden', !!currentTeacher);
+  if($('teacherPanel')) $('teacherPanel').classList.toggle('hidden', !currentTeacher);
   if(currentTeacher){
-    $('loggedTeacherLabel').textContent='Docente: '+currentTeacher.name;
-    $('examTeacher').value=currentTeacher.name;
+    if($('loggedTeacherLabel')) $('loggedTeacherLabel').textContent = 'Docente: ' + currentTeacher.name;
+    if($('examTeacher')) $('examTeacher').value = currentTeacher.name;
     renderStats();
     renderExamList();
     renderResults();
   }
 }
 
-async function hashText(v){
-  if(globalThis.crypto?.subtle){
-    const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v));
-    return Array.from(new Uint8Array(bytes)).map(x=>x.toString(16).padStart(2,'0')).join('');
-  }
-  return 'local-'+Array.from(v).map(c=>c.charCodeAt(0).toString(16)).join('-');
+if($('adminLoginBtn')) {
+  $('adminLoginBtn').onclick = async () => {
+    if (!cloudReady) return;
+    const name = $('teacherNameLogin').value.trim().replace(/\s+/g,' '), password = $('adminPassword').value;
+    if(name.split(' ').length < 2){ showMessage('authMessage', 'Escribe tus nombres y apellidos completos.'); return; }
+    try {
+      if(authMode === 'register'){
+        if(password.length < 8){ showMessage('authMessage', 'Mínimo 8 caracteres.'); return; }
+        if(password !== $('confirmTeacherPassword').value){ showMessage('authMessage', 'Las contraseñas no coinciden.'); return; }
+        if(teachers.some(t => normName(t.name) === normName(name))){ showMessage('authMessage', 'El docente ya existe.'); return; }
+        const id = uid(), salt = uid(), passwordHash = await hashText(salt + '|' + password);
+        const teacher = { id, name, salt, passwordHash, createdAt: Date.now() };
+        await db.collection(COL_TEACHERS).doc(id).set(teacher);
+        currentTeacher = teacher;
+      } else {
+        let teacher = teachers.find(t => normName(t.name) === normName(name));
+        if(!teacher){
+          const snap = await db.collection(COL_TEACHERS).get();
+          teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          teacher = teachers.find(t => normName(t.name) === normName(name));
+        }
+        if(!teacher || await hashText(teacher.salt + '|' + password) !== teacher.passwordHash){
+          showMessage('authMessage', 'Datos incorrectos.');
+          return;
+        }
+        currentTeacher = teacher;
+      }
+      if($('adminPassword')) $('adminPassword').value = ''; 
+      if($('confirmTeacherPassword')) $('confirmTeacherPassword').value = ''; 
+      if($('authMessage')) $('authMessage').innerHTML = '';
+      resetEditor(); 
+      renderTeacher();
+    } catch(e){ 
+      showMessage('authMessage', 'Error: ' + e.message); 
+    }
+  };
 }
 
-$('adminLoginBtn').onclick = async () => {
-  if (!cloudReady) return;
-  const name=$('teacherNameLogin').value.trim().replace(/\s+/g,' '), password=$('adminPassword').value;
-  if(name.split(' ').length<2){showMessage('authMessage','Escribe tus nombres y apellidos completos.');return}
-  try {
-    if(authMode==='register'){
-      if(password.length<8){showMessage('authMessage','Mínimo 8 caracteres.');return}
-      if(password!==$('confirmTeacherPassword').value){showMessage('authMessage','Las contraseñas no coinciden.');return}
-      if(teachers.some(t=>normName(t.name)===normName(name))){showMessage('authMessage','El docente ya existe.');return}
-      const id=uid(), salt=uid(), passwordHash=await hashText(salt+'|'+password);
-      const teacher={id, name, salt, passwordHash, createdAt:Date.now()};
-      await db.collection(COL_TEACHERS).doc(id).set(teacher);
-      currentTeacher=teacher;
-    } else {
-      let teacher=teachers.find(t=>normName(t.name)===normName(name));
-      if(!teacher){
-        const snap=await db.collection(COL_TEACHERS).get();
-        teachers=snap.docs.map(d=>({id:d.id,...d.data()}));
-        teacher=teachers.find(t=>normName(t.name)===normName(name));
-      }
-      if(!teacher||await hashText(teacher.salt+'|'+password)!==teacher.passwordHash){
-        showMessage('authMessage','Datos incorrectos.');
-        return;
-      }
-      currentTeacher=teacher;
-    }
-    $('adminPassword').value=''; $('confirmTeacherPassword').value=''; $('authMessage').innerHTML='';
-    resetEditor(); renderTeacher();
-  } catch(e){ showMessage('authMessage','Error: '+e.message); }
-};
-
-$('logoutBtn').onclick=()=>{currentTeacher=null;resetEditor();renderTeacher()};
-$('manageTab').onclick=()=>setTeacherTab('manage');
-$('resultsTab').onclick=()=>setTeacherTab('results');
-$('rosterTab').onclick=()=>setTeacherTab('roster');
+if($('logoutBtn')) $('logoutBtn').onclick = () => { currentTeacher = null; resetEditor(); renderTeacher(); };
+if($('manageTab')) $('manageTab').onclick = () => setTeacherTab('manage');
+if($('resultsTab')) $('resultsTab').onclick = () => setTeacherTab('results');
+if($('rosterTab')) $('rosterTab').onclick = () => setTeacherTab('roster');
 
 function setTeacherTab(type){
-  $('manageView').classList.toggle('hidden',type!=='manage');
-  $('resultsView').classList.toggle('hidden',type!=='results');
-  $('rosterView').classList.toggle('hidden',type!=='roster');
-  $('manageTab').classList.toggle('active',type==='manage');
-  $('resultsTab').classList.toggle('active',type==='results');
-  $('rosterTab').classList.toggle('active',type==='roster');
-  if(type==='roster')renderRoster();
+  if($('manageView')) $('manageView').classList.toggle('hidden', type !== 'manage');
+  if($('resultsView')) $('resultsView').classList.toggle('hidden', type !== 'results');
+  if($('rosterView')) $('rosterView').classList.toggle('hidden', type !== 'roster');
+  if($('manageTab')) $('manageTab').classList.toggle('active', type === 'manage');
+  if($('resultsTab')) $('resultsTab').classList.toggle('active', type === 'results');
+  if($('rosterTab')) $('rosterTab').classList.toggle('active', type === 'roster');
+  if(type === 'roster') renderRoster();
 }
 
 function renderStats(){
-  const mine=myAttempts();
-  const avg=mine.length?mine.reduce((s,a)=>s+Number(a.score||0),0)/mine.length:0;
-  $('stats').innerHTML=[['Exámenes',myExams().length],['Intentos',mine.length],['Promedio',avg.toFixed(2)+'/10']].map(([a,b])=>`<div class="stat"><small>${a}</small><b>${b}</b></div>`).join('');
+  const statsEl = $('stats');
+  if(!statsEl) return;
+  const mine = myAttempts();
+  const avg = mine.length ? mine.reduce((s,a)=>s+Number(a.score||0),0)/mine.length : 0;
+  statsEl.innerHTML = [['Exámenes', myExams().length],['Intentos', mine.length],['Promedio', avg.toFixed(2)+'/10']].map(([a,b])=>`<div class="stat"><small>${a}</small><b>${b}</b></div>`).join('');
 }
 
-$('aiSettingsBtn').onclick = () => {
-  $('geminiApiKeyInput').value = getGeminiApiKey();
-  $('aiKeyMsg').innerHTML = '';
-  $('aiModal').classList.remove('hidden');
-};
-$('closeAiModal').onclick = () => $('aiModal').classList.add('hidden');
-$('saveAiKeyBtn').onclick = () => {
-  const val = $('geminiApiKeyInput').value.trim();
-  if(val){ localStorage.setItem('jbp_gemini_api_key', val); showMessage('aiKeyMsg','Guardado.','good'); }
-  else { localStorage.removeItem('jbp_gemini_api_key'); showMessage('aiKeyMsg','Usando motor integrado.','good'); }
-};
-$('clearAiKeyBtn').onclick = () => { localStorage.removeItem('jbp_gemini_api_key'); $('geminiApiKeyInput').value=''; showMessage('aiKeyMsg','Restablecido.','good'); };
+if($('aiSettingsBtn')) {
+  $('aiSettingsBtn').onclick = () => {
+    if($('geminiApiKeyInput')) $('geminiApiKeyInput').value = getGeminiApiKey();
+    if($('aiKeyMsg')) $('aiKeyMsg').innerHTML = '';
+    if($('aiModal')) $('aiModal').classList.remove('hidden');
+  };
+}
+if($('closeAiModal')) $('closeAiModal').onclick = () => $('aiModal').classList.add('hidden');
+if($('saveAiKeyBtn')) {
+  $('saveAiKeyBtn').onclick = () => {
+    const val = $('geminiApiKeyInput').value.trim();
+    if(val){ localStorage.setItem('jbp_gemini_api_key', val); showMessage('aiKeyMsg','Guardado.','good'); }
+    else { localStorage.removeItem('jbp_gemini_api_key'); showMessage('aiKeyMsg','Usando motor integrado.','good'); }
+  };
+}
+if($('clearAiKeyBtn')) {
+  $('clearAiKeyBtn').onclick = () => { localStorage.removeItem('jbp_gemini_api_key'); if($('geminiApiKeyInput')) $('geminiApiKeyInput').value=''; showMessage('aiKeyMsg','Restablecido.','good'); };
+}
 
 function defaultQuestionObj(type='multiple'){
   return {type, text:'', options:['','','',''], correct:0, rubric:'', gradingMode:'ai', procedures:['','','',''], correctCombo:'A1', requireWrittenProc:false};
 }
 
 function resetEditor(){
-  editingId=null; editingQuestions=[]; $('examForm').reset();
-  $('examTeacher').value=currentTeacher?.name||'';
-  $('examDate').value=localDateValue(); $('examTime').value=localTimeValue();
-  $('examLevel').value=''; $('examParallel').value='GENERAL'; $('examHours').value=2; $('examSeconds').value=30;
-  $('editorTitle').textContent='Crear examen'; $('saveExamBtn').textContent='Guardar examen en la nube';
-  $('newExamBtn').classList.add('hidden'); $('editorMessage').innerHTML='';
+  editingId=null; editingQuestions=[]; if($('examForm')) $('examForm').reset();
+  if($('examTeacher') && currentTeacher) $('examTeacher').value = currentTeacher.name;
+  if($('examDate')) $('examDate').value = localDateValue(); 
+  if($('examTime')) $('examTime').value = localTimeValue();
+  if($('examLevel')) $('examLevel').value = ''; 
+  if($('examParallel')) $('examParallel').value = 'GENERAL'; 
+  if($('examHours')) $('examHours').value = 2; 
+  if($('examSeconds')) $('examSeconds').value = 30;
+  if($('editorTitle')) $('editorTitle').textContent = 'Crear examen'; 
+  if($('saveExamBtn')) $('saveExamBtn').textContent = 'Guardar examen en la nube';
+  if($('newExamBtn')) $('newExamBtn').classList.add('hidden'); 
+  if($('editorMessage')) $('editorMessage').innerHTML = '';
   addQuestion();
 }
 
@@ -804,7 +867,9 @@ function syncQuestions(){
 }
 
 function renderQuestionEditor(){
-  $('questionEditor').innerHTML=editingQuestions.map((q,i)=>{
+  const editorEl = $('questionEditor');
+  if(!editorEl) return;
+  editorEl.innerHTML=editingQuestions.map((q,i)=>{
     const qType=q.type||'multiple'; let bodyHtml='';
     if(qType==='open'){
       bodyHtml=`<div class="stack topgap"><label class="field"><span>Rúbrica / Palabras clave</span><textarea data-rubric placeholder="Conceptos esperados...">${esc(q.rubric||'')}</textarea></label><div class="question-editor-actions"><span class="hint">Calificación:</span><select class="select-small" data-grading-mode><option value="ai" ${q.gradingMode!=='manual'?'selected':''}>Automática con IA</option><option value="manual" ${q.gradingMode==='manual'?'selected':''}>Revisión manual docente</option></select></div></div>`;
@@ -825,121 +890,130 @@ function renderQuestionEditor(){
   document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{ syncQuestions(); editingQuestions.splice(Number(b.dataset.remove),1); renderQuestionEditor(); });
 }
 
-$('addQuestionBtn').onclick=()=>{syncQuestions();addQuestion()};
-$('newExamBtn').onclick=resetEditor;
+if($('addQuestionBtn')) $('addQuestionBtn').onclick = () => { syncQuestions(); addQuestion(); };
+if($('newExamBtn')) $('newExamBtn').onclick = resetEditor;
 
-$('examForm').onsubmit = async event => {
-  event.preventDefault(); syncQuestions();
-  if(!currentTeacher||!cloudReady)return;
-  const title=$('examTitle').value.trim(), subject=$('examSubject').value.trim(), level=$('examLevel').value, parallel=$('examParallel').value;
-  const date=$('examDate').value, time=$('examTime').value, hours=Number($('examHours').value), seconds=Number($('examSeconds').value);
+if($('examForm')) {
+  $('examForm').onsubmit = async event => {
+    event.preventDefault(); syncQuestions();
+    if(!currentTeacher || !cloudReady) return;
+    const title = $('examTitle').value.trim(), subject = $('examSubject').value.trim(), level = $('examLevel').value, parallel = $('examParallel').value;
+    const date = $('examDate').value, time = $('examTime').value, hours = Number($('examHours').value), seconds = Number($('examSeconds').value);
 
-  let validQuestions=editingQuestions.length>0;
-  for(const q of editingQuestions){
-    if(!q.text.trim())validQuestions=false;
-    if(q.type==='multiple'&&q.options.some(o=>!o.trim()))validQuestions=false;
-    if(q.type==='math_combo'&&(q.options.some(o=>!o.trim())||q.procedures.some(p=>!p.trim())))validQuestions=false;
-  }
-  if(!title||!subject||!level||!parallel||!date||!time||!validQuestions){
-    showMessage('editorMessage','Completa todos los campos obligatorios.'); return;
-  }
+    let validQuestions = editingQuestions.length > 0;
+    for(const q of editingQuestions){
+      if(!q.text.trim()) validQuestions = false;
+      if(q.type === 'multiple' && q.options.some(o => !o.trim())) validQuestions = false;
+      if(q.type === 'math_combo' && (q.options.some(o => !o.trim()) || q.procedures.some(p => !p.trim()))) validQuestions = false;
+    }
+    if(!title || !subject || !level || !parallel || !date || !time || !validQuestions){
+      showMessage('editorMessage', 'Completa todos los campos obligatorios.'); return;
+    }
 
-  const examId=editingId||uid();
-  const cleanQuestions=editingQuestions.map(q=>{
-    if(q.type==='open') return {type:'open', text:q.text.trim(), rubric:q.rubric.trim(), gradingMode:q.gradingMode};
-    if(q.type==='math_combo') return {type:'math_combo', text:q.text.trim(), options:q.options.map(o=>o.trim()), procedures:q.procedures.map(p=>p.trim()), correctCombo:q.correctCombo, requireWrittenProc:q.requireWrittenProc};
-    return {type:'multiple', text:q.text.trim(), options:q.options.map(o=>o.trim()), correct:q.correct};
-  });
+    const examId = editingId || uid();
+    const cleanQuestions = editingQuestions.map(q => {
+      if(q.type === 'open') return {type:'open', text:q.text.trim(), rubric:q.rubric.trim(), gradingMode:q.gradingMode};
+      if(q.type === 'math_combo') return {type:'math_combo', text:q.text.trim(), options:q.options.map(o=>o.trim()), procedures:q.procedures.map(p=>p.trim()), correctCombo:q.correctCombo, requireWrittenProc:q.requireWrittenProc};
+      return {type:'multiple', text:q.text.trim(), options:q.options.map(o=>o.trim()), correct:q.correct};
+    });
 
-  const item={ id:examId, ownerId:currentTeacher.id, title, teacher:currentTeacher.name, subject, level, parallel, date, time, hours, seconds, questions:cleanQuestions, createdAt:Date.now(), updatedAt:Date.now() };
+    const item = { id: examId, ownerId: currentTeacher.id, title, teacher: currentTeacher.name, subject, level, parallel, date, time, hours, seconds, questions: cleanQuestions, createdAt: Date.now(), updatedAt: Date.now() };
 
-  const btn=$('saveExamBtn'); btn.disabled=true; btn.textContent='Guardando...';
-  try {
-    await db.collection(COL_EXAMS).doc(examId).set(item);
-    resetEditor(); showMessage('editorMessage','Examen guardado en la nube.','good');
-  } catch(e){ showMessage('editorMessage','Error: '+e.message); }
-  finally { btn.disabled=false; btn.textContent='Guardar examen en la nube'; }
-};
+    const btn = $('saveExamBtn'); btn.disabled = true; btn.textContent = 'Guardando...';
+    try {
+      await db.collection(COL_EXAMS).doc(examId).set(item);
+      resetEditor(); showMessage('editorMessage', 'Examen guardado en la nube.', 'good');
+    } catch(e){ 
+      showMessage('editorMessage', 'Error: ' + e.message); 
+    } finally { 
+      btn.disabled = false; btn.textContent = 'Guardar examen en la nube'; 
+    }
+  };
+}
 
 function renderExamList(){
-  const mine=myExams();
-  $('examList').innerHTML=mine.length?mine.map(e=>`<div class="tile"><div class="row between"><h3>${esc(e.subject)}</h3><span class="tag ${status(e)==='Disponible'?'good':'warn'}">${status(e)}</span></div><b style="font-size:13px">${esc(e.title)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>${esc(formatDate(startAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg</p><div class="row"><button class="btn light small" data-edit="${esc(e.id)}">Editar</button><button class="btn danger small" data-delete="${esc(e.id)}">Eliminar</button></div></div>`).join(''):'<div class="empty">No hay exámenes.</div>';
+  const listEl = $('examList');
+  if(!listEl) return;
+  const mine = myExams();
+  listEl.innerHTML = mine.length ? mine.map(e=>`<div class="tile"><div class="row between"><h3>${esc(e.subject)}</h3><span class="tag ${status(e)==='Disponible'?'good':'warn'}">${status(e)}</span></div><b style="font-size:13px">${esc(e.title)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>${esc(formatDate(startAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg</p><div class="row"><button class="btn light small" data-edit="${esc(e.id)}">Editar</button><button class="btn danger small" data-delete="${esc(e.id)}">Eliminar</button></div></div>`).join('') : '<div class="empty">No hay exámenes.</div>';
 
   document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editExam(b.dataset.edit));
   document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=async()=>{
-    const e=myExams().find(x=>x.id===b.dataset.delete);
-    if(e&&confirm(`¿Eliminar examen "${e.title}"?`)){ await db.collection(COL_EXAMS).doc(e.id).delete(); if(editingId===e.id)resetEditor(); }
+    const e = myExams().find(x=>x.id===b.dataset.delete);
+    if(e && confirm(`¿Eliminar examen "${e.title}"?`)){ await db.collection(COL_EXAMS).doc(e.id).delete(); if(editingId===e.id) resetEditor(); }
   });
 }
 
 function editExam(id){
-  const e=myExams().find(x=>x.id===id); if(!e)return;
-  editingId=id; $('examTitle').value=e.title; $('examSubject').value=e.subject; $('examLevel').value=e.level||''; $('examParallel').value=e.parallel||'GENERAL'; $('examDate').value=e.date; $('examTime').value=e.time; $('examHours').value=e.hours; $('examSeconds').value=e.seconds;
-  editingQuestions=JSON.parse(JSON.stringify(e.questions)); renderQuestionEditor();
-  $('editorTitle').textContent='Editar examen'; $('saveExamBtn').textContent='Actualizar examen en la nube'; $('newExamBtn').classList.remove('hidden');
+  const e = myExams().find(x=>x.id===id); if(!e) return;
+  editingId = id; $('examTitle').value = e.title; $('examSubject').value = e.subject; $('examLevel').value = e.level||''; $('examParallel').value = e.parallel||'GENERAL'; $('examDate').value = e.date; $('examTime').value = e.time; $('examHours').value = e.hours; $('examSeconds').value = e.seconds;
+  editingQuestions = JSON.parse(JSON.stringify(e.questions)); renderQuestionEditor();
+  if($('editorTitle')) $('editorTitle').textContent = 'Editar examen'; 
+  if($('saveExamBtn')) $('saveExamBtn').textContent = 'Actualizar examen en la nube'; 
+  if($('newExamBtn')) $('newExamBtn').classList.remove('hidden');
   window.scrollTo({top:520,behavior:'smooth'});
 }
 
-// ==========================================
-// RESULTADOS Y PUBLICACIÓN DE NOTAS
-// ==========================================
+// Resultados y Publicación de notas
 function renderResults(){
-  const sel=$('resultsFilter'), old=sel.value;
+  const sel = $('resultsFilter');
+  if(!sel) return;
+  const old = sel.value;
   const mineExams = myExams();
-  sel.innerHTML='<option value="all">Todos mis exámenes</option>'+mineExams.map(e=>`<option value="${esc(e.id)}">${esc(e.subject)} — ${esc(e.title)}</option>`).join('');
-  if(old==='all'||mineExams.some(e=>e.id===old))sel.value=old;
+  sel.innerHTML = '<option value="all">Todos mis exámenes</option>' + mineExams.map(e=>`<option value="${esc(e.id)}">${esc(e.subject)} — ${esc(e.title)}</option>`).join('');
+  if(old === 'all' || mineExams.some(e=>e.id===old)) sel.value = old;
 
   const selectedExamId = sel.value;
   const targetExam = mineExams.find(e => e.id === selectedExamId);
 
-  // Mostrar estado de publicación
   const badge = $('examPublicationBadge');
-  if (targetExam) {
+  if (badge && targetExam) {
     const isPub = targetExam.published === true;
     badge.textContent = `Estado: ${isPub ? '📢 Publicado para estudiantes' : '🔒 No publicado (Oculto)'}`;
     badge.className = 'tag ' + (isPub ? 'good' : 'warn');
-    $('publishAllBtn').textContent = isPub ? '🔒 Ocultar calificaciones' : '📢 Publicar notas de este examen';
-  } else {
+    if($('publishAllBtn')) $('publishAllBtn').textContent = isPub ? '🔒 Ocultar calificaciones' : '📢 Publicar notas de este examen';
+  } else if (badge) {
     badge.textContent = 'Selecciona un examen específico para publicar';
     badge.className = 'tag';
-    $('publishAllBtn').textContent = '📢 Publicar notas';
+    if($('publishAllBtn')) $('publishAllBtn').textContent = '📢 Publicar notas';
   }
 
-  const subset=myAttempts().filter(a=>selectedExamId==='all'||a.examId===selectedExamId).sort((a,b)=>b.startedAt-a.startedAt);
-  $('resultsTable').innerHTML=subset.length?`<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Evaluación</th><th>Curso</th><th>Nota</th><th>Estado</th><th>Publicado</th><th>Acciones</th></tr></thead><tbody>${subset.map(a=>`<tr><td><b>${esc(a.name)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><span class="hint">${esc(a.examTitle)}</span></td><td>${esc(a.level)} / ${esc(a.parallel)}</td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><span class="tag ${a.status==='infraccion'?'bad':a.status==='pendiente_revision'?'warn':'good'}">${a.status==='infraccion'?'Infracción':a.status==='pendiente_revision'?'Pend. revisión':'Completado'}</span></td><td><span class="tag ${a.published?'good':'warn'}">${a.published?'Sí':'No'}</span></td><td><div class="row"><button class="btn light small" onclick="openReviewModal('${esc(a.id)}')">Revisar</button><button class="btn neutral small" onclick="togglePublishAttempt('${esc(a.id)}')">${a.published?'Ocultar':'Publicar'}</button><button class="btn danger small" onclick="resetAttempt('${esc(a.id)}','${esc(a.name)}')">Reiniciar</button></div></td></tr>`).join('')}</tbody></table>`:'<div class="empty">No hay intentos registrados.</div>';
+  const subset = myAttempts().filter(a => selectedExamId === 'all' || a.examId === selectedExamId).sort((a,b)=>b.startedAt-a.startedAt);
+  if($('resultsTable')) {
+    $('resultsTable').innerHTML = subset.length ? `<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Evaluación</th><th>Curso</th><th>Nota</th><th>Estado</th><th>Publicado</th><th>Acciones</th></tr></thead><tbody>${subset.map(a=>`<tr><td><b>${esc(a.name)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><span class="hint">${esc(a.examTitle)}</span></td><td>${esc(a.level)} / ${esc(a.parallel)}</td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><span class="tag ${a.status==='infraccion'?'bad':a.status==='pendiente_revision'?'warn':'good'}">${a.status==='infraccion'?'Infracción':a.status==='pendiente_revision'?'Pend. revisión':'Completado'}</span></td><td><span class="tag ${a.published?'good':'warn'}">${a.published?'Sí':'No'}</span></td><td><div class="row"><button class="btn light small" onclick="openReviewModal('${esc(a.id)}')">Revisar</button><button class="btn neutral small" onclick="togglePublishAttempt('${esc(a.id)}')">${a.published?'Ocultar':'Publicar'}</button><button class="btn danger small" onclick="resetAttempt('${esc(a.id)}','${esc(a.name)}')">Reiniciar</button></div></td></tr>`).join('')}</tbody></table>` : '<div class="empty">No hay intentos registrados.</div>';
+  }
 }
-$('resultsFilter').onchange=renderResults;
+if($('resultsFilter')) $('resultsFilter').onchange = renderResults;
 
-// Botón global para publicar/ocultar todo un examen
-$('publishAllBtn').onclick = async () => {
-  const selectedExamId = $('resultsFilter').value;
-  if (selectedExamId === 'all') {
-    alert('Selecciona un examen específico en el filtro para publicar sus notas.');
-    return;
-  }
-  const exam = myExams().find(e => e.id === selectedExamId);
-  if (!exam) return;
+if($('publishAllBtn')) {
+  $('publishAllBtn').onclick = async () => {
+    const selectedExamId = $('resultsFilter').value;
+    if (selectedExamId === 'all') {
+      alert('Selecciona un examen específico en el filtro para publicar sus notas.');
+      return;
+    }
+    const exam = myExams().find(e => e.id === selectedExamId);
+    if (!exam) return;
 
-  const newPubState = !(exam.published === true);
-  const confirmMsg = newPubState ? `¿Publicar las calificaciones de "${exam.title}" para que los estudiantes puedan verlas?` : `¿Ocultar las calificaciones de "${exam.title}"?`;
-  if (!confirm(confirmMsg)) return;
+    const newPubState = !(exam.published === true);
+    const confirmMsg = newPubState ? `¿Publicar las calificaciones de "${exam.title}" para que los estudiantes puedan verlas?` : `¿Ocultar las calificaciones de "${exam.title}"?`;
+    if (!confirm(confirmMsg)) return;
 
-  try {
-    // Actualizar examen
-    await db.collection(COL_EXAMS).doc(exam.id).update({ published: newPubState });
-    // Actualizar todos los intentos de ese examen
-    const batch = db.batch();
-    const relatedAttempts = attempts.filter(a => a.examId === exam.id);
-    relatedAttempts.forEach(att => {
-      const ref = db.collection(COL_ATTEMPTS).doc(att.id);
-      batch.update(ref, { published: newPubState });
-    });
-    await batch.commit();
-    alert('Estado de publicación actualizado con éxito.');
-  } catch (e) {
-    alert('Error al actualizar publicación: ' + e.message);
-  }
-};
+    try {
+      await db.collection(COL_EXAMS).doc(exam.id).update({ published: newPubState });
+      const batch = db.batch();
+      const relatedAttempts = attempts.filter(a => a.examId === exam.id);
+      relatedAttempts.forEach(att => {
+        const ref = db.collection(COL_ATTEMPTS).doc(att.id);
+        batch.update(ref, { published: newPubState });
+      });
+      await batch.commit();
+      alert('Estado de publicación actualizado con éxito.');
+    } catch (e) {
+      alert('Error al actualizar publicación: ' + e.message);
+    }
+  };
+}
 
 window.togglePublishAttempt = async (attemptId) => {
   const att = attempts.find(a => a.id === attemptId);
@@ -954,79 +1028,91 @@ window.togglePublishAttempt = async (attemptId) => {
 window.openReviewModal = (attemptId) => {
   const attempt = attempts.find(a => a.id === attemptId); if(!attempt) return;
   const exam = exams.find(e => e.id === attempt.examId); reviewingAttemptId = attemptId;
-  $('reviewStudentTitle').textContent=`${attempt.name} (${attempt.cedula})`;
-  $('reviewExamSubtitle').textContent=`${attempt.subject} — ${attempt.examTitle}`;
-  $('reviewModalMsg').innerHTML='';
+  if($('reviewStudentTitle')) $('reviewStudentTitle').textContent = `${attempt.name} (${attempt.cedula})`;
+  if($('reviewExamSubtitle')) $('reviewExamSubtitle').textContent = `${attempt.subject} — ${attempt.examTitle}`;
+  if($('reviewModalMsg')) $('reviewModalMsg').innerHTML = '';
 
-  const questions=exam?exam.questions:[]; const ansList=attempt.answers||[];
-  $('reviewQuestionsBody').innerHTML=questions.map((q,idx)=>{
-    const ans=ansList.find(x=>x.question===idx)||{}; const qType=q.type||'multiple'; const earned=Number(ans.points??(ans.correct?1:0));
-    let detailHtml='';
-    if(qType==='open') detailHtml=`<p style="margin:6px 0"><b>Respuesta:</b><br><span style="display:block;background:#f5f6f9;padding:10px;border-radius:8px;margin-top:4px">${esc(ans.textAnswer||'(Sin respuesta)')}</span></p>${ans.aiFeedback?`<p class="hint" style="color:var(--wine)">${esc(ans.aiFeedback)}</p>`:''}`;
-    else if(qType==='math_combo') detailHtml=`<p style="margin:6px 0"><b>Elegido:</b> <span class="tag ${ans.comboChoice===q.correctCombo?'good':'bad'}">${esc(ans.comboChoice||'—')}</span> · <b>Correcto:</b> <span class="tag good">${esc(q.correctCombo)}</span>${ans.writtenProcedure?`<br><b>Proc:</b> ${esc(ans.writtenProcedure)}`:''}</p>`;
-    else { const c=ans.choice; const txt=(c!==null&&c!==undefined&&q.options[c])?`${'ABCD'[c]}. ${q.options[c]}`:'(Sin responder)'; detailHtml=`<p style="margin:6px 0"><b>Respondió:</b> ${esc(txt)}<br><b>Correcta:</b> ${esc('ABCD'[q.correct])}. ${esc(q.options[q.correct])}</p>`; }
+  const questions = exam ? exam.questions : []; const ansList = attempt.answers || [];
+  if($('reviewQuestionsBody')) {
+    $('reviewQuestionsBody').innerHTML = questions.map((q,idx)=>{
+      const ans = ansList.find(x=>x.question===idx) || {}; const qType = q.type || 'multiple'; const earned = Number(ans.points??(ans.correct?1:0));
+      let detailHtml='';
+      if(qType==='open') detailHtml=`<p style="margin:6px 0"><b>Respuesta:</b><br><span style="display:block;background:#f5f6f9;padding:10px;border-radius:8px;margin-top:4px">${esc(ans.textAnswer||'(Sin respuesta)')}</span></p>${ans.aiFeedback?`<p class="hint" style="color:var(--wine)">${esc(ans.aiFeedback)}</p>`:''}`;
+      else if(qType==='math_combo') detailHtml=`<p style="margin:6px 0"><b>Elegido:</b> <span class="tag ${ans.comboChoice===q.correctCombo?'good':'bad'}">${esc(ans.comboChoice||'—')}</span> · <b>Correcto:</b> <span class="tag good">${esc(q.correctCombo)}</span>${ans.writtenProcedure?`<br><b>Proc:</b> ${esc(ans.writtenProcedure)}`:''}</p>`;
+      else { const c=ans.choice; const txt=(c!==null&&c!==undefined&&q.options[c])?`${'ABCD'[c]}. ${q.options[c]}`:'(Sin responder)'; detailHtml=`<p style="margin:6px 0"><b>Respondió:</b> ${esc(txt)}<br><b>Correcta:</b> ${esc('ABCD'[q.correct])}. ${esc(q.options[q.correct])}</p>`; }
 
-    return `<div class="tile" data-rev-q="${idx}"><div class="row between"><b>Pregunta ${idx+1} · ${qType}</b><div class="row"><span class="hint">Puntos (0-1):</span><input type="number" step="0.25" min="0" max="1" value="${earned}" data-rev-pts="${idx}" style="width:75px;padding:6px;border:1px solid #ccc;border-radius:8px;font-weight:800"></div></div><p style="font-weight:600;margin-top:6px">${esc(q.text)}</p>${detailHtml}</div>`;
-  }).join('');
+      return `<div class="tile" data-rev-q="${idx}"><div class="row between"><b>Pregunta ${idx+1} · ${qType}</b><div class="row"><span class="hint">Puntos (0-1):</span><input type="number" step="0.25" min="0" max="1" value="${earned}" data-rev-pts="${idx}" style="width:75px;padding:6px;border:1px solid #ccc;border-radius:8px;font-weight:800"></div></div><p style="font-weight:600;margin-top:6px">${esc(q.text)}</p>${detailHtml}</div>`;
+    }).join('');
+  }
 
-  const updatePrev=()=>{
-    const sum=[...document.querySelectorAll('[data-rev-pts]')].reduce((a,el)=>a+Math.max(0,Math.min(1,Number(el.value)||0)),0);
-    const final10=attempt.status==='infraccion'?0:Math.round((sum/(questions.length||1))*1000)/100;
-    $('reviewFinalScore').textContent=`${final10.toFixed(2)} / 10`;
+  const updatePrev = () => {
+    const sum = [...document.querySelectorAll('[data-rev-pts]')].reduce((a,el)=>a+Math.max(0,Math.min(1,Number(el.value)||0)),0);
+    const final10 = attempt.status === 'infraccion' ? 0 : Math.round((sum/(questions.length||1))*1000)/100;
+    if($('reviewFinalScore')) $('reviewFinalScore').textContent = `${final10.toFixed(2)} / 10`;
   };
   document.querySelectorAll('[data-rev-pts]').forEach(inp=>inp.oninput=updatePrev); updatePrev();
-  $('reviewModal').classList.remove('hidden');
+  if($('reviewModal')) $('reviewModal').classList.remove('hidden');
 };
 
-$('closeReviewModal').onclick=()=>{$('reviewModal').classList.add('hidden'); reviewingAttemptId=null;};
+if($('closeReviewModal')) $('closeReviewModal').onclick = () => { if($('reviewModal')) $('reviewModal').classList.add('hidden'); reviewingAttemptId = null; };
 
-$('regradeAllAiBtn').onclick=async()=>{
-  if(!reviewingAttemptId)return;
-  const attempt=attempts.find(a=>a.id===reviewingAttemptId), exam=exams.find(e=>e.id===attempt?.examId);
-  if(!attempt||!exam)return;
-  const btn=$('regradeAllAiBtn'); btn.disabled=true; btn.textContent='Evaluando...';
-  try {
-    for(let i=0;i<exam.questions.length;i++){
-      const q=exam.questions[i];
-      if(q.type==='open'){
-        const ans=(attempt.answers||[]).find(x=>x.question===i)||{question:i, textAnswer:''};
-        const res=await evaluateOpenAnswerWithAI(q.text, q.rubric, ans.textAnswer);
-        ans.points=res.score; ans.correct=res.score>=0.7; ans.aiFeedback=res.feedback;
-        const inp=document.querySelector(`[data-rev-pts="${i}"]`);
-        if(inp){inp.value=res.score; inp.dispatchEvent(new Event('input'));}
+if($('regradeAllAiBtn')) {
+  $('regradeAllAiBtn').onclick = async () => {
+    if(!reviewingAttemptId) return;
+    const attempt = attempts.find(a => a.id === reviewingAttemptId), exam = exams.find(e => e.id === attempt?.examId);
+    if(!attempt || !exam) return;
+    const btn = $('regradeAllAiBtn'); btn.disabled = true; btn.textContent = 'Evaluando...';
+    try {
+      for(let i=0; i<exam.questions.length; i++){
+        const q = exam.questions[i];
+        if(q.type === 'open'){
+          const ans = (attempt.answers || []).find(x => x.question === i) || {question:i, textAnswer:''};
+          const res = await evaluateOpenAnswerWithAI(q.text, q.rubric, ans.textAnswer);
+          ans.points = res.score; ans.correct = res.score>=0.7; ans.aiFeedback = res.feedback;
+          const inp = document.querySelector(`[data-rev-pts="${i}"]`);
+          if(inp){ inp.value = res.score; inp.dispatchEvent(new Event('input')); }
+        }
       }
+      showMessage('reviewModalMsg', 'IA aplicada. Guarda los cambios.', 'good');
+    } catch(e){ 
+      showMessage('reviewModalMsg', 'Error: ' + e.message); 
+    } finally { 
+      btn.disabled = false; btn.textContent = '✨ Calificar abiertas con IA'; 
     }
-    showMessage('reviewModalMsg','IA aplicada. Guarda los cambios.','good');
-  }catch(e){ showMessage('reviewModalMsg','Error: '+e.message); }
-  finally{ btn.disabled=false; btn.textContent='✨ Calificar abiertas con IA'; }
-};
+  };
+}
 
-$('saveManualGradesBtn').onclick=async()=>{
-  if(!reviewingAttemptId||!cloudReady)return;
-  const attempt=attempts.find(a=>a.id===reviewingAttemptId), exam=exams.find(e=>e.id===attempt?.examId);
-  if(!attempt)return;
-  const inputs=[...document.querySelectorAll('[data-rev-pts]')];
-  const updatedAnswers=JSON.parse(JSON.stringify(attempt.answers||[]));
-  let sum=0;
-  inputs.forEach(inp=>{
-    const idx=Number(inp.dataset.revPts), pts=Math.max(0,Math.min(1,Number(inp.value)||0));
-    sum+=pts; let entry=updatedAnswers.find(x=>x.question===idx);
-    if(!entry){entry={question:idx}; updatedAnswers.push(entry);}
-    entry.points=pts; entry.correct=pts>=0.7;
-  });
-  const totalQ=(exam?exam.questions.length:attempt.total)||1;
-  const newScore=attempt.status==='infraccion'?0:Math.round((sum/totalQ)*1000)/100;
-  const btn=$('saveManualGradesBtn'); btn.disabled=true; btn.textContent='Guardando...';
-  try {
-    await db.collection(COL_ATTEMPTS).doc(attempt.id).update({
-      answers: updatedAnswers, score: newScore, correctCount: Math.round(sum*100)/100, status: attempt.status==='infraccion'?'infraccion':'completado', reason: attempt.status==='infraccion'?attempt.reason:'Revisado y calificado por docente'
+if($('saveManualGradesBtn')) {
+  $('saveManualGradesBtn').onclick = async () => {
+    if(!reviewingAttemptId || !cloudReady) return;
+    const attempt = attempts.find(a => a.id === reviewingAttemptId), exam = exams.find(e => e.id === attempt?.examId);
+    if(!attempt) return;
+    const inputs = [...document.querySelectorAll('[data-rev-pts]')];
+    const updatedAnswers = JSON.parse(JSON.stringify(attempt.answers || []));
+    let sum = 0;
+    inputs.forEach(inp=>{
+      const idx = Number(inp.dataset.revPts), pts = Math.max(0,Math.min(1,Number(inp.value)||0));
+      sum += pts; let entry = updatedAnswers.find(x => x.question === idx);
+      if(!entry){ entry = {question:idx}; updatedAnswers.push(entry); }
+      entry.points = pts; entry.correct = pts>=0.7;
     });
-    showMessage('reviewModalMsg','Calificación guardada con éxito.','good');
-  }catch(e){ showMessage('reviewModalMsg','Error: '+e.message); }
-  finally{ btn.disabled=false; btn.textContent='Guardar calificación en la nube'; }
-};
+    const totalQ = (exam ? exam.questions.length : attempt.total) || 1;
+    const newScore = attempt.status === 'infraccion' ? 0 : Math.round((sum/totalQ)*1000)/100;
+    const btn = $('saveManualGradesBtn'); btn.disabled = true; btn.textContent = 'Guardando...';
+    try {
+      await db.collection(COL_ATTEMPTS).doc(attempt.id).update({
+        answers: updatedAnswers, score: newScore, correctCount: Math.round(sum*100)/100, status: attempt.status==='infraccion'?'infraccion':'completado', reason: attempt.status==='infraccion'?attempt.reason:'Revisado y calificado por docente'
+      });
+      showMessage('reviewModalMsg', 'Calificación guardada con éxito.', 'good');
+    } catch(e){ 
+      showMessage('reviewModalMsg', 'Error: ' + e.message); 
+    } finally { 
+      btn.disabled = false; btn.textContent = 'Guardar calificación en la nube'; 
+    }
+  };
+}
 
-window.resetAttempt=async(attemptId, name)=>{
+window.resetAttempt = async (attemptId, name) => {
   if(confirm(`¿Reiniciar intento de ${name}?`)) await db.collection(COL_ATTEMPTS).doc(attemptId).delete();
 };
 
@@ -1035,151 +1121,174 @@ function exportFile(filename,content,mime){
   a.href=url; a.download=filename; document.body.append(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
-$('exportCsvBtn').onclick=()=>{
-  const id=$('resultsFilter').value, subset=myAttempts().filter(a=>id==='all'||a.examId===id);
-  const rows=[['Nombre','Cédula','Materia','Examen','Curso','Nota','Estado','Publicado'],...subset.map(a=>[a.name,a.cedula,a.subject,a.examTitle,a.level,Number(a.score||0).toFixed(2),a.status,a.published?'Sí':'No'])];
-  exportFile('reporte_calificaciones.csv','\uFEFF'+rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'),'text/csv;charset=utf-8');
-};
+if($('exportCsvBtn')) {
+  $('exportCsvBtn').onclick = () => {
+    const id = $('resultsFilter').value, subset = myAttempts().filter(a => id==='all' || a.examId===id);
+    const rows = [['Nombre','Cédula','Materia','Examen','Curso','Nota','Estado','Publicado'], ...subset.map(a=>[a.name,a.cedula,a.subject,a.examTitle,a.level,Number(a.score||0).toFixed(2),a.status,a.published?'Sí':'No'])];
+    exportFile('reporte_calificaciones.csv', '\uFEFF' + rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'), 'text/csv;charset=utf-8');
+  };
+}
 
-$('exportBackupBtn').onclick=()=>exportFile('respaldo_JBP.json',JSON.stringify({exams:myExams(),attempts:myAttempts(),students},null,2),'application/json');
+if($('exportBackupBtn')) {
+  $('exportBackupBtn').onclick = () => exportFile('respaldo_JBP.json', JSON.stringify({exams:myExams(), attempts:myAttempts(), students}, null, 2), 'application/json');
+}
 
-// ==========================================
-// EJECUCIÓN EXAMEN
-// ==========================================
+// Ejecución Examen
 function studentIdKey(cedula,id){return cedula+'_'+id}
 
 async function beginExam(){
-  if(!cloudReady)return;
-  const name=$('studentName').value.trim().replace(/\s+/g,' '), cedula=$('studentCedula').value.trim();
-  const exam=exams.find(e=>e.id===$('studentExam').value), registered=students.find(s=>s.cedula===cedula);
+  if(!cloudReady) return;
+  const name = $('studentName').value.trim().replace(/\s+/g,' '), cedula = $('studentCedula').value.trim();
+  const exam = exams.find(e => e.id === $('studentExam').value), registered = students.find(s => s.cedula === cedula);
 
-  if(!registered){showMessage('studentMessage','Tu cédula no figura en la nómina.');return}
-  if(registered.name!==name){showMessage('studentMessage','Los nombres no coinciden.');return}
-  if(!exam||exam.level!==registered.level||exam.parallel!==registered.parallel){showMessage('studentMessage','El examen no corresponde a tu curso.');return}
-  if(!/^\d{10}$/.test(cedula)){showMessage('studentMessage','Cédula inválida (10 dígitos).');return}
-  if(!exam||status(exam)!=='Disponible'){showMessage('studentMessage','Examen no disponible.');return}
+  if(!registered){ showMessage('studentMessage','Tu cédula no figura en la nómina.'); return; }
+  if(registered.name !== name){ showMessage('studentMessage','Los nombres no coinciden.'); return; }
+  if(!exam || exam.level !== registered.level || exam.parallel !== registered.parallel){ showMessage('studentMessage','El examen no corresponde a tu curso.'); return; }
+  if(!/^\d{10}$/.test(cedula)){ showMessage('studentMessage','Cédula inválida (10 dígitos).'); return; }
+  if(!exam || status(exam) !== 'Disponible'){ showMessage('studentMessage','Examen no disponible.'); return; }
 
-  const attemptId=studentIdKey(cedula, exam.id);
-  const btn=$('startExamBtn'); btn.disabled=true; btn.textContent='Verificando...';
+  const attemptId = studentIdKey(cedula, exam.id);
+  const btn = $('startExamBtn'); btn.disabled = true; btn.textContent = 'Verificando...';
   try {
-    const docRef=db.collection(COL_ATTEMPTS).doc(attemptId);
+    const docRef = db.collection(COL_ATTEMPTS).doc(attemptId);
     if((await docRef.get()).exists){
       showMessage('studentMessage','Ya registraste un intento para este examen.');
-      btn.disabled=false; btn.textContent='Comenzar examen en pantalla completa →'; return;
+      btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →'; return;
     }
     if(!confirm('Al iniciar se registra tu único intento. Minimizar o cambiar de pestaña anulará el examen (0/10). ¿Comenzar?')) {
-      btn.disabled=false; btn.textContent='Comenzar examen en pantalla completa →'; return;
+      btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →'; return;
     }
 
-    $('examScreen').classList.remove('hidden');
+    if($('examScreen')) $('examScreen').classList.remove('hidden');
     await $('examScreen').requestFullscreen({navigationUI:'hide'});
 
-    const record={
-      id:attemptId, examId:exam.id, examTitle:exam.title, teacher:exam.teacher, subject:exam.subject,
-      level:exam.level, parallel:exam.parallel, name, cedula, startedAt:Date.now(), finishedAt:null,
-      status:'en_curso', score:0, correctCount:0, total:exam.questions.length, answers:[], reason:'', published:false
+    const record = {
+      id: attemptId, examId: exam.id, examTitle: exam.title, teacher: exam.teacher, subject: exam.subject,
+      level: exam.level, parallel: exam.parallel, name, cedula, startedAt: Date.now(), finishedAt: null,
+      status: 'en_curso', score: 0, correctCount: 0, total: exam.questions.length, answers: [], reason: '', published: false
     };
     await docRef.set(record);
 
-    live={ exam:JSON.parse(JSON.stringify(exam)), record, index:0, questionDeadline:Math.min(Date.now()+exam.seconds*1000,endAt(exam)), endDeadline:endAt(exam), selected:null, textAnswer:'', comboChoice:null, writtenProcedure:'' };
-    $('topBar').classList.add('hidden'); $('mainApp').classList.add('hidden');
-    $('liveTitle').textContent=exam.subject+' · '+exam.title; $('liveStudent').textContent=name+' · Cédula '+cedula;
-    renderLiveQuestion(); interval=setInterval(tick,200); tick();
-  }catch(e){
-    $('examScreen').classList.add('hidden'); showMessage('studentMessage','Error: '+e.message);
-  }finally{ btn.disabled=false; btn.textContent='Comenzar examen en pantalla completa →'; }
+    live = { exam: JSON.parse(JSON.stringify(exam)), record, index: 0, questionDeadline: Math.min(Date.now()+exam.seconds*1000,endAt(exam)), endDeadline: endAt(exam), selected: null, textAnswer: '', comboChoice: null, writtenProcedure: '' };
+    if($('topBar')) $('topBar').classList.add('hidden'); 
+    if($('mainApp')) $('mainApp').classList.add('hidden');
+    if($('liveTitle')) $('liveTitle').textContent = exam.subject + ' · ' + exam.title; 
+    if($('liveStudent')) $('liveStudent').textContent = name + ' · Cédula ' + cedula;
+    renderLiveQuestion(); interval = setInterval(tick, 200); tick();
+  } catch(e){
+    if($('examScreen')) $('examScreen').classList.add('hidden'); 
+    showMessage('studentMessage', 'Error: ' + e.message);
+  } finally { 
+    btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →'; 
+  }
 }
-$('startExamBtn').onclick=beginExam;
+if($('startExamBtn')) $('startExamBtn').onclick = beginExam;
 
 function renderLiveQuestion(){
-  if(!live)return;
-  const {exam,index}=live, q=exam.questions[index];
-  if(!q){finishExam('completado');return}
-  live.selected=null; live.textAnswer=''; live.comboChoice=null; live.writtenProcedure='';
-  const qType=q.type||'multiple';
-  $('examProgress').style.width=((index+1)/exam.questions.length*100)+'%';
+  if(!live) return;
+  const {exam, index} = live, q = exam.questions[index];
+  if(!q){ finishExam('completado'); return; }
+  live.selected = null; live.textAnswer = ''; live.comboChoice = null; live.writtenProcedure = '';
+  const qType = q.type || 'multiple';
+  if($('examProgress')) $('examProgress').style.width = ((index+1)/exam.questions.length*100)+'%';
 
-  let html='';
-  if(qType==='open') html=`<div class="stack"><label class="field"><span>Respuesta desarrollada:</span><textarea id="liveOpenText" rows="5" placeholder="Escribe tu respuesta aquí..."></textarea></label></div>`;
-  else if(qType==='math_combo') html=`<div class="math-matrix"><div><span class="math-col-title">Opciones</span><div class="stack" style="gap:6px">${(q.options||[]).map((o,i)=>`<div class="tile" style="padding:10px"><b>${'ABCD'[i]}.</b> ${esc(o)}</div>`).join('')}</div></div><div><span class="math-col-title">Procedimientos</span><div class="stack" style="gap:6px">${(q.procedures||[]).map((p,i)=>`<div class="tile" style="padding:10px"><b>${i+1}.</b> ${esc(p)}</div>`).join('')}</div></div></div><div class="topgap"><span style="font-size:13px;font-weight:800;color:var(--wine)">Selecciona la combinación (ej. A2):</span><div class="combo-grid">${MATH_COMBOS.map(c=>`<button type="button" class="combo-chip" data-combo-val="${c}">${c}</button>`).join('')}</div></div>${q.requireWrittenProc?`<label class="field topgap"><span>Justifica tu cálculo:</span><textarea id="liveMathProcText" rows="3"></textarea></label>`:''}`;
-  else html=`<div id="liveOptions">${q.options.map((opt,i)=>`<label class="answer"><input type="radio" name="answer" value="${i}"><span><b>${'ABCD'[i]}.</b> ${esc(opt)}</span></label>`).join('')}</div>`;
+  let html = '';
+  if(qType === 'open') html = `<div class="stack"><label class="field"><span>Respuesta desarrollada:</span><textarea id="liveOpenText" rows="5" placeholder="Escribe tu respuesta aquí..."></textarea></label></div>`;
+  else if(qType === 'math_combo') html = `<div class="math-matrix"><div><span class="math-col-title">Opciones</span><div class="stack" style="gap:6px">${(q.options||[]).map((o,i)=>`<div class="tile" style="padding:10px"><b>${'ABCD'[i]}.</b> ${esc(o)}</div>`).join('')}</div></div><div><span class="math-col-title">Procedimientos</span><div class="stack" style="gap:6px">${(q.procedures||[]).map((p,i)=>`<div class="tile" style="padding:10px"><b>${i+1}.</b> ${esc(p)}</div>`).join('')}</div></div></div><div class="topgap"><span style="font-size:13px;font-weight:800;color:var(--wine)">Selecciona la combinación (ej. A2):</span><div class="combo-grid">${MATH_COMBOS.map(c=>`<button type="button" class="combo-chip" data-combo-val="${c}">${c}</button>`).join('')}</div></div>${q.requireWrittenProc?`<label class="field topgap"><span>Justifica tu cálculo:</span><textarea id="liveMathProcText" rows="3"></textarea></label>`:''}`;
+  else html = `<div id="liveOptions">${q.options.map((opt,i)=>`<label class="answer"><input type="radio" name="answer" value="${i}"><span><b>${'ABCD'[i]}.</b> ${esc(opt)}</span></label>`).join('')}</div>`;
 
-  $('examQuestionArea').innerHTML=`<span class="tag">Pregunta ${index+1} de ${exam.questions.length}</span><h2>${esc(q.text)}</h2>${html}<div class="exam-bottom"><span class="hint">No podrás regresar.</span><button class="btn" id="nextBtn">${index===exam.questions.length-1?'Finalizar examen':'Guardar y continuar →'}</button></div>`;
-
-  if(qType==='open') $('liveOpenText').oninput=e=>live.textAnswer=e.target.value;
-  else if(qType==='math_combo'){
-    document.querySelectorAll('[data-combo-val]').forEach(b=>b.onclick=()=>{live.comboChoice=b.dataset.comboVal; document.querySelectorAll('[data-combo-val]').forEach(x=>x.classList.toggle('selected',x===b));});
-    if($('liveMathProcText')) $('liveMathProcText').oninput=e=>live.writtenProcedure=e.target.value;
-  } else {
-    $('liveOptions').querySelectorAll('input').forEach(inp=>inp.onchange=()=>{live.selected=Number(inp.value); document.querySelectorAll('.answer').forEach(el=>el.classList.toggle('selected',el.querySelector('input').checked));});
+  if($('examQuestionArea')) {
+    $('examQuestionArea').innerHTML = `<span class="tag">Pregunta ${index+1} de ${exam.questions.length}</span><h2>${esc(q.text)}</h2>${html}<div class="exam-bottom"><span class="hint">No podrás regresar.</span><button class="btn" id="nextBtn">${index===exam.questions.length-1?'Finalizar examen':'Guardar y continuar →'}</button></div>`;
   }
-  $('nextBtn').onclick=advanceQuestion;
+
+  if(qType === 'open') {
+    const ot = $('liveOpenText'); if(ot) ot.oninput = e => live.textAnswer = e.target.value;
+  } else if(qType === 'math_combo'){
+    document.querySelectorAll('[data-combo-val]').forEach(b=>b.onclick=()=>{live.comboChoice=b.dataset.comboVal; document.querySelectorAll('[data-combo-val]').forEach(x=>x.classList.toggle('selected',x===b));});
+    const mp = $('liveMathProcText'); if(mp) mp.oninput = e => live.writtenProcedure = e.target.value;
+  } else {
+    const lo = $('liveOptions');
+    if(lo) lo.querySelectorAll('input').forEach(inp=>inp.onchange=()=>{live.selected=Number(inp.value); document.querySelectorAll('.answer').forEach(el=>el.classList.toggle('selected',el.querySelector('input').checked));});
+  }
+  if($('nextBtn')) $('nextBtn').onclick = advanceQuestion;
 }
 
 function advanceQuestion(){
-  if(!live||finalizing)return;
-  const a=live.record, q=live.exam.questions[live.index], qType=q.type||'multiple';
-  if(qType==='open') a.answers.push({question:live.index, type:'open', textAnswer:(live.textAnswer||'').trim(), points:0, correct:false});
-  else if(qType==='math_combo'){ const ok=live.comboChoice===q.correctCombo; a.answers.push({question:live.index, type:'math_combo', comboChoice:live.comboChoice, writtenProcedure:(live.writtenProcedure||'').trim(), points:ok?1:0, correct:ok}); }
-  else { const ok=live.selected===q.correct; a.answers.push({question:live.index, type:'multiple', choice:live.selected, points:ok?1:0, correct:ok}); }
+  if(!live || finalizing) return;
+  const a = live.record, q = live.exam.questions[live.index], qType = q.type || 'multiple';
+  if(qType === 'open') a.answers.push({question:live.index, type:'open', textAnswer:(live.textAnswer||'').trim(), points:0, correct:false});
+  else if(qType === 'math_combo'){ const ok = live.comboChoice === q.correctCombo; a.answers.push({question:live.index, type:'math_combo', comboChoice:live.comboChoice, writtenProcedure:(live.writtenProcedure||'').trim(), points:ok?1:0, correct:ok}); }
+  else { const ok = live.selected === q.correct; a.answers.push({question:live.index, type:'multiple', choice:live.selected, points:ok?1:0, correct:ok}); }
 
   live.index++;
-  if(live.index>=live.exam.questions.length){ finishExam('completado'); return; }
-  live.questionDeadline=Math.min(Date.now()+live.exam.seconds*1000,live.endDeadline);
+  if(live.index >= live.exam.questions.length){ finishExam('completado'); return; }
+  live.questionDeadline = Math.min(Date.now()+live.exam.seconds*1000, live.endDeadline);
   renderLiveQuestion(); tick();
 }
 
 function tick(){
-  if(!live||finalizing)return;
-  const now=Date.now(), rw=(live.endDeadline-now)/1000, rq=(live.questionDeadline-now)/1000;
-  $('questionTime').textContent=formatClock(rq); $('windowTime').textContent=formatClock(rw);
-  if(rw<=0){finishExam('vencido','Horario finalizado.');return}
-  if(rq<=0)advanceQuestion();
+  if(!live || finalizing) return;
+  const now = Date.now(), rw = (live.endDeadline-now)/1000, rq = (live.questionDeadline-now)/1000;
+  if($('questionTime')) $('questionTime').textContent = formatClock(rq); 
+  if($('windowTime')) $('windowTime').textContent = formatClock(rw);
+  if(rw <= 0){ finishExam('vencido','Horario finalizado.'); return; }
+  if(rq <= 0) advanceQuestion();
 }
 
-function violation(reason){ if(live&&!finalizing)finishExam('infraccion',reason); }
+function violation(reason){ if(live && !finalizing) finishExam('infraccion',reason); }
 
 async function finishExam(state,reason=''){
-  if(!live||finalizing)return; finalizing=true; clearInterval(interval); interval=null;
-  const finishedExam=live.exam, a=live.record; a.finishedAt=Date.now(); a.reason=reason; live=null;
-  const infr=state==='infraccion';
-  const hasManualOpen=!infr&&finishedExam.questions.some(q=>q.type==='open'&&q.gradingMode==='manual');
+  if(!live || finalizing) return; finalizing = true; clearInterval(interval); interval = null;
+  const finishedExam = live.exam, a = live.record; a.finishedAt = Date.now(); a.reason = reason; live = null;
+  const infr = state === 'infraccion';
+  const hasManualOpen = !infr && finishedExam.questions.some(q => q.type === 'open' && q.gradingMode === 'manual');
 
-  $('examQuestionArea').innerHTML=`<div style="text-align:center;padding:22px"><div class="tag ${infr?'bad':'good'}">EXAMEN FINALIZADO</div><h2>Sincronizando con la nube...</h2><p class="hint" id="cloudSaveStatus">Guardando respuestas en Firebase...</p></div>`;
+  if($('examQuestionArea')) {
+    $('examQuestionArea').innerHTML = `<div style="text-align:center;padding:22px"><div class="tag ${infr?'bad':'good'}">EXAMEN FINALIZADO</div><h2>Sincronizando con la nube...</h2><p class="hint" id="cloudSaveStatus">Guardando respuestas en Firebase...</p></div>`;
+  }
 
   if(!infr){
-    for(let i=0;i<finishedExam.questions.length;i++){
-      const q=finishedExam.questions[i];
-      if(q.type==='open'&&q.gradingMode!=='manual'){
-        let entry=a.answers.find(x=>x.question===i);
-        if(entry){ const res=await evaluateOpenAnswerWithAI(q.text, q.rubric, entry.textAnswer); entry.points=res.score; entry.correct=res.score>=0.7; entry.aiFeedback=res.feedback; }
+    for(let i=0; i<finishedExam.questions.length; i++){
+      const q = finishedExam.questions[i];
+      if(q.type === 'open' && q.gradingMode !== 'manual'){
+        let entry = a.answers.find(x => x.question === i);
+        if(entry){ const res = await evaluateOpenAnswerWithAI(q.text, q.rubric, entry.textAnswer); entry.points = res.score; entry.correct = res.score>=0.7; entry.aiFeedback = res.feedback; }
       }
     }
   }
 
-  const totalPts=infr?0:a.answers.reduce((acc,x)=>acc+Number(x.points??(x.correct?1:0)),0);
-  a.correctCount=Math.round(totalPts*100)/100;
-  a.score=infr?0:Math.round((totalPts/a.total)*1000)/100;
-  a.status=infr?'infraccion':hasManualOpen?'pendiente_revision':(state==='completado'?'completado':'vencido');
-  a.published=false; // Por defecto no publicado hasta que el docente lo active
+  const totalPts = infr ? 0 : a.answers.reduce((acc,x)=>acc+Number(x.points??(x.correct?1:0)),0);
+  a.correctCount = Math.round(totalPts*100)/100;
+  a.score = infr ? 0 : Math.round((totalPts/a.total)*1000)/100;
+  a.status = infr ? 'infraccion' : hasManualOpen ? 'pendiente_revision' : (state === 'completado' ? 'completado' : 'vencido');
+  a.published = false;
 
-  $('examQuestionArea').innerHTML=`<div style="text-align:center;padding:22px"><div class="tag good">¡EVALUACIÓN ENVIADA!</div><h2>Examen guardado correctamente</h2><p>Tus respuestas han sido registradas en la plataforma. <b>La calificación se encuentra retenida</b> y podrá ser consultada en la sección "Mis calificaciones" una vez que el docente las publique.</p>${reason?`<div class="notice red">${esc(reason)}</div>`:''}<button id="returnBtn" class="btn topgap">Salir y volver al inicio</button></div>`;
-  $('questionTime').textContent='—'; $('windowTime').textContent='—';
+  if($('examQuestionArea')) {
+    $('examQuestionArea').innerHTML = `<div style="text-align:center;padding:22px"><div class="tag good">¡EVALUACIÓN ENVIADA!</div><h2>Examen guardado correctamente</h2><p>Tus respuestas han sido registradas en la plataforma. <b>La calificación se encuentra retenida</b> y podrá ser consultada en la sección "Mis calificaciones" una vez que el docente las publique.</p>${reason?`<div class="notice red">${esc(reason)}</div>`:''}<button id="returnBtn" class="btn topgap">Salir y volver al inicio</button></div>`;
+  }
+  if($('questionTime')) $('questionTime').textContent = '—'; 
+  if($('windowTime')) $('windowTime').textContent = '—';
 
-  if(cloudReady&&db) await db.collection(COL_ATTEMPTS).doc(a.id).set(a, {merge:true}).catch(()=>{});
+  if(cloudReady && db) await db.collection(COL_ATTEMPTS).doc(a.id).set(a, {merge:true}).catch(()=>{});
 
-  $('returnBtn').onclick=async()=>{
-    try{if(document.fullscreenElement)await document.exitFullscreen()}catch{}
-    $('examScreen').classList.add('hidden'); $('topBar').classList.remove('hidden'); $('mainApp').classList.remove('hidden');
-    $('studentMessage').innerHTML=''; renderStudent(); renderTeacher(); finalizing=false;
-  };
+  if($('returnBtn')) {
+    $('returnBtn').onclick = async () => {
+      try{ if(document.fullscreenElement) await document.exitFullscreen() }catch{}
+      if($('examScreen')) $('examScreen').classList.add('hidden'); 
+      if($('topBar')) $('topBar').classList.remove('hidden'); 
+      if($('mainApp')) $('mainApp').classList.remove('hidden');
+      if($('studentMessage')) $('studentMessage').innerHTML = ''; 
+      renderStudent(); renderTeacher(); finalizing = false;
+    };
+  }
 }
 
-document.addEventListener('visibilitychange',()=>{if(document.hidden)violation('Cambió de pestaña o minimizó.');});
-document.addEventListener('fullscreenchange',()=>{if(live&&!document.fullscreenElement)violation('Salió de pantalla completa.');});
-window.addEventListener('blur',()=>{if(live)setTimeout(()=>{if(live&&!document.hasFocus())violation('Perdió el foco de la ventana.');},200)});
+document.addEventListener('visibilitychange', () => { if(document.hidden) violation('Cambió de pestaña o minimizó.'); });
+document.addEventListener('fullscreenchange', () => { if(live && !document.fullscreenElement) violation('Salió de pantalla completa.'); });
+window.addEventListener('blur', () => { if(live) setTimeout(()=>{ if(live && !document.hasFocus()) violation('Perdió el foco de la ventana.'); },200); });
 
-$('examDate').value=localDateValue(); $('examTime').value=localTimeValue();
+if($('examDate')) $('examDate').value = localDateValue(); 
+if($('examTime')) $('examTime').value = localTimeValue();
 resetEditor(); renderStudent(); authReady(); initCloud();
 </script>
 </body>
