@@ -49,6 +49,10 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<!-- KaTeX para renderizar fórmulas matemáticas elegantes -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
 <header id="topBar">
@@ -56,11 +60,11 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
     <div class="brandmark">JBP</div>
     <div>
       <strong>UNIDAD EDUCATIVA JACINTO BURGOS PINARGOTE</strong>
-      <small>Plataforma de evaluaciones en línea · Nube Activa</small>
+      <small>Plataforma de evaluaciones en línea · Nube Activa Firebase</small>
     </div>
   </div>
   <div class="header-right">
-    <span class="pill" id="cloudStatusPill">Conectando nube...</span>
+    <span class="pill" id="cloudStatusPill">Conectando a la nube...</span>
     <span class="pill hide-sm">Calificación sobre 10 puntos</span>
   </div>
 </header>
@@ -68,13 +72,13 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
 <main class="wrap" id="mainApp">
   <section class="hero">
     <div>
-      <div class="eyebrow">Sistema de evaluaciones en la nube • JBP</div>
-      <h1>Exámenes sincronizados en tiempo real desde cualquier lugar.</h1>
-      <p>Administra evaluaciones de opción múltiple, preguntas abiertas calificadas con IA o revisión docente, y ejercicios matemáticos con combinación de respuesta y procedimiento.</p>
+      <div class="eyebrow">Sistema de evaluaciones • JBP</div>
+      <h1>Exámenes sincronizados 100% en la nube en tiempo real.</h1>
+      <p>Administra evaluaciones con soporte para pegar imágenes (Ctrl+V) y barra de símbolos matemáticos y especiales visuales.</p>
     </div>
     <div class="hero-art">
       <div class="circle">10/10</div>
-      <p>Base de datos en línea · Evaluación IA & Manual · Publicación de notas</p>
+      <p>Nube Global · Imágenes por Portapapeles & Ecuaciones Visuales</p>
     </div>
   </section>
 
@@ -88,22 +92,22 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
     <div class="grid2">
       <div class="card">
         <h2 class="section-title">Ingresar a un examen</h2>
-        <p class="hint">Escribe tu número de cédula para sincronizar tus datos y ver las evaluaciones disponibles en línea.</p>
+        <p class="hint">Escribe tu número de cédula para sincronizar tus datos desde la nube y ver las evaluaciones disponibles.</p>
         <div class="stack topgap">
           <label class="field"><span>Nombres y apellidos completos</span><input id="studentName" autocomplete="name" placeholder="Ej. María Fernanda López Zambrano" maxlength="110"></label>
           <label class="field"><span>Número de cédula (10 dígitos)</span><input id="studentCedula" inputmode="numeric" maxlength="10" placeholder="0000000000"></label>
           <div id="rosterIdentity" class="notice">Introduce tu cédula para identificar automáticamente tu nombre y curso.</div>
           
           <div id="manualStudentPanel" class="hidden tile">
-            <b>Registro de alumno no encontrado</b>
-            <p class="hint">Si no constas en el listado institucional, regístrate aquí. Tu perfil se guardará en la base de datos en línea.</p>
+            <b>Registro de alumno en la nube</b>
+            <p class="hint">Si no constas en el listado institucional, regístrate aquí para guardarte en la base de datos global.</p>
             <label class="field"><span>Nivel o curso</span><select id="manualStudentLevel"></select></label>
             <label class="field topgap"><span>Paralelo</span><select id="manualStudentParallel"></select></label>
             <button class="btn light small topgap" type="button" id="registerStudentBtn">Registrar alumno en la nube y mostrar materias</button>
           </div>
           
           <div id="studentCourse" class="hint"></div>
-          <label class="field"><span>Examen disponible</span><select id="studentExam"><option value="">Seleccione un examen...</option></select></label>
+          <label class="field"><span>Examen disponible en la nube</span><select id="studentExam"><option value="">Seleccione un examen...</option></select></label>
           <div id="selectedExamInfo" class="hint"></div>
           
           <div class="row">
@@ -118,9 +122,9 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
         <h2 class="section-title">Reglas de evaluación</h2>
         <div class="stack topgap">
           <div class="notice red"><b>Política de infracciones:</b> durante el examen, minimizar la ventana, cambiar de pestaña, perder el foco de la página o salir de pantalla completa provocará la anulación inmediata y una calificación de <b>0/10</b>.</div>
-          <div class="tile"><b>⏱ Publicación de calificaciones</b><p>Al terminar la prueba, tu nota no se muestra de inmediato. Podrás consultarla haciendo clic en <b>"Mis calificaciones"</b> una vez que el docente las haya revisado y publicado oficialmente.</p></div>
-          <div class="tile"><b>✍️ Preguntas abiertas y Matemáticas</b><p>En preguntas abiertas redactarás tu respuesta. En matemáticas podrás combinar la opción de resultado con su procedimiento (ej. A2).</p></div>
-          <div class="tile"><b>☁️ Registro único en la nube</b><p>Una evaluación iniciada queda registrada en la base de datos global por número de cédula, evitando duplicados desde cualquier dispositivo.</p></div>
+          <div class="tile"><b>⏱ Publicación de calificaciones</b><p>Al terminar la prueba, tu nota se guarda en la nube. Podrás consultarla haciendo clic en <b>"Mis calificaciones"</b> una vez que el docente las haya publicado oficialmente.</p></div>
+          <div class="tile"><b>📐 Gráficos y Ecuaciones</b><p>Los exámenes incluyen renderizado profesional de fórmulas matemáticas y diagramas ilustrativos.</p></div>
+          <div class="tile"><b>☁️ Sincronización Global</b><p>Cada intento y examen se almacena directamente en la base de datos en la nube de Firebase.</p></div>
         </div>
       </div>
     </div>
@@ -130,7 +134,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
   <section id="teacherView" class="hidden">
     <div class="card" id="teacherAuth">
       <h2 class="section-title" id="authTitle">Acceso de docentes</h2>
-      <p class="hint" id="authSubtitle">Cada docente ingresa con su cuenta sincronizada en la nube para administrar exámenes y calificaciones desde cualquier computadora.</p>
+      <p class="hint" id="authSubtitle">Cada docente ingresa con su cuenta sincronizada en la nube para administrar exámenes desde cualquier computadora.</p>
       <div class="tabs" style="margin:15px 0">
         <button type="button" class="tab active" id="loginModeBtn">Iniciar sesión</button>
         <button type="button" class="tab" id="registerModeBtn">Crear cuenta docente</button>
@@ -142,7 +146,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
         <button class="btn" id="adminLoginBtn">Iniciar sesión</button>
       </div>
       <div id="authMessage" class="topgap" aria-live="polite"></div>
-      <p class="hint">Tus credenciales y evaluaciones se almacenan en Firebase Firestore, permitiéndote iniciar sesión desde cualquier dispositivo con conexión a internet.</p>
+      <p class="hint">Tus credenciales y exámenes se almacenan en la nube para que puedas ingresar desde cualquier lugar.</p>
     </div>
 
     <div id="teacherPanel" class="hidden">
@@ -150,7 +154,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
         <div>
           <h2 class="section-title">Panel de docentes y evaluaciones</h2>
           <p id="loggedTeacherLabel" style="margin:5px 0;color:var(--wine);font-weight:800"></p>
-          <p class="hint">Sincronización activa en tiempo real con la base de datos en la nube.</p>
+          <p class="hint">Sincronización en tiempo real con Firebase Cloud.</p>
         </div>
         <div class="row">
           <button class="btn light small" id="aiSettingsBtn">⚙️ Configurar API IA</button>
@@ -193,7 +197,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
                 <h3 style="margin:0">Banco de preguntas</h3>
                 <button class="btn light small" id="addQuestionBtn" type="button">+ Añadir pregunta</button>
               </div>
-              <p class="hint" style="margin:0">Puedes mezclar preguntas de <b>Opción Múltiple</b>, <b>Abiertas (IA o Manual)</b> y <b>Matemáticas (Opción + Procedimiento, ej. A2)</b>. La nota final se calcula sobre 10.</p>
+              <p class="hint" style="margin:0">Puedes pegar imágenes (Ctrl+V) y utilizar los botones de ecuaciones y símbolos especiales.</p>
               <div id="questionEditor"></div>
               <button type="submit" class="btn" id="saveExamBtn">Guardar examen en la nube</button>
               <div id="editorMessage" aria-live="polite"></div>
@@ -201,8 +205,8 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
           </div>
 
           <div class="card">
-            <h3 style="margin:0 0 6px">Exámenes registrados en la nube</h3>
-            <p class="hint">Disponibles inmediatamente para tus estudiantes desde cualquier dispositivo.</p>
+            <h3 style="margin:0 0 6px">Exámenes en la nube</h3>
+            <p class="hint">Disponibles inmediatamente para tus estudiantes.</p>
             <div id="examList" class="stack topgap"></div>
           </div>
         </div>
@@ -214,7 +218,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
           <div class="row between">
             <div>
               <h3 style="margin:0">Reporte de calificaciones, revisión y publicación</h3>
-              <p class="hint">Califica preguntas abiertas, publica las notas para que los alumnos puedan verlas en su sección y gestiona intentos.</p>
+              <p class="hint">Califica preguntas abiertas, publica las notas y gestiona intentos en la nube.</p>
             </div>
             <div class="row">
               <button class="btn light small" id="publishAllBtn">📢 Publicar notas de este examen</button>
@@ -235,8 +239,8 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
       <!-- PESTAÑA ESTUDIANTES -->
       <section id="rosterView" class="hidden">
         <div class="card">
-          <h3 style="margin-top:0">Directorio de estudiantes</h3>
-          <p class="hint">La nómina institucional está precargada. Los estudiantes nuevos o editados se sincronizan automáticamente en la nube para todos los dispositivos.</p>
+          <h3 style="margin-top:0">Directorio de estudiantes en la nube</h3>
+          <p class="hint">La nómina institucional está sincronizada. Los estudiantes nuevos o editados se guardan directamente en Firebase.</p>
           <div class="row topgap">
             <label class="field" style="flex:1;min-width:200px">
               <span>Buscar estudiante por cédula o nombres</span>
@@ -260,7 +264,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
     </div>
   </section>
 
-  <div class="footer">Unidad Educativa Particular “Jacinto Burgos Pinargote” · Plataforma Conectada a Firebase Cloud</div>
+  <div class="footer">Unidad Educativa Particular “Jacinto Burgos Pinargote” · Nube Activa Firebase Cloud</div>
 </main>
 
 <!-- MODAL "MIS CALIFICACIONES" PARA ESTUDIANTES -->
@@ -270,7 +274,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
       <div>
         <span class="tag good">Consulta Estudiantil</span>
         <h3 style="margin:6px 0 2px">Mis Calificaciones Publicadas</h3>
-        <p class="hint" id="myGradesStudentMeta" style="margin:0">Ingresa tu cédula para consultar tus notas ordenadas por materia.</p>
+        <p class="hint" id="myGradesStudentMeta" style="margin:0">Ingresa tu cédula para consultar tus notas desde la nube.</p>
       </div>
       <button type="button" class="btn neutral small" id="closeMyGradesModal">Cerrar ✕</button>
     </div>
@@ -280,7 +284,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
         <input id="myGradesCedulaInput" inputmode="numeric" maxlength="10" placeholder="0000000000">
       </label>
       <div id="myGradesContentArea" class="stack topgap">
-        <div class="empty">Introduce tu cédula para ver tus calificaciones oficiales.</div>
+        <div class="empty">Introduce tu cédula para ver tus calificaciones oficiales en la nube.</div>
       </div>
     </div>
   </div>
@@ -336,7 +340,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
       <h3 style="margin:0">Configuración de Inteligencia Artificial</h3>
       <button type="button" class="btn neutral small" id="closeAiModal">✕</button>
     </div>
-    <p class="hint topgap">Opcional: Ingresa una API Key de <b>Google Gemini</b> para evaluar respuestas abiertas con análisis semántico profundo. Si lo dejas vacío, el sistema utilizará el motor inteligente integrado de comparación de conceptos clave y similitud textual.</p>
+    <p class="hint topgap">Opcional: Ingresa una API Key de <b>Google Gemini</b> para evaluar respuestas abiertas con análisis semántico profundo. Si lo dejas vacío, el sistema utilizará el motor inteligente integrado.</p>
     <label class="field topgap">
       <span>Google Gemini API Key</span>
       <input id="geminiApiKeyInput" type="password" placeholder="AIzaSy...">
@@ -373,7 +377,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
 'use strict';
 
 // ==========================================
-// 1. CONFIGURACIÓN DE FIREBASE EN LA NUBE
+// 1. CONFIGURACIÓN DE FIREBASE CLOUD
 // ==========================================
 const firebaseConfig = {
   apiKey: "AIzaSyCEwSJ8h92QuoOgJIdiMaL0mVru-zWPlwI",
@@ -445,7 +449,7 @@ async function initCloud() {
     try {
       await auth.signInAnonymously();
     } catch (authErr) {
-      console.warn('Auth anónimo no habilitado:', authErr);
+      console.warn('Auth anónimo:', authErr);
     }
 
     await db.collection(COL_EXAMS).limit(1).get();
@@ -483,8 +487,7 @@ async function initCloud() {
 
   } catch (e) {
     console.error('Error Firebase:', e);
-    setCloudStatus(false, '⚠ Error de conexión');
-    showMessage('studentMessage', 'No se pudo conectar con Firebase: ' + e.message);
+    setCloudStatus(false, '⚠ Sin conexión a la nube');
   }
 }
 
@@ -588,7 +591,7 @@ if($('studentCedula')) {
 
 if($('registerStudentBtn')) {
   $('registerStudentBtn').onclick = async () => {
-    if (!cloudReady) return;
+    if (!cloudReady || !db) { alert('No hay conexión con la nube.'); return; }
     const cedula = $('studentCedula').value.trim(), name = $('studentName').value.trim().replace(/\s+/g,' ');
     const level = $('manualStudentLevel').value, parallel = $('manualStudentParallel').value;
     if(!/^\d{10}$/.test(cedula) || name.split(' ').length < 2 || !level || !parallel){
@@ -598,6 +601,7 @@ if($('registerStudentBtn')) {
     try {
       await db.collection(COL_STUDENTS).doc(cedula).set({ cedula, name, level, parallel, manual: true, updatedAt: Date.now() });
       $('studentMessage').innerHTML = '';
+      resolveStudent();
     } catch (e) {
       showMessage('studentMessage', 'Error: ' + e.message);
     }
@@ -616,7 +620,7 @@ if($('rosterSearch')) {
 
 if($('rosterSaveBtn')) {
   $('rosterSaveBtn').onclick = async () => {
-    if(!currentTeacher || !cloudReady) return;
+    if(!currentTeacher || !cloudReady || !db) return;
     const cedula = $('rosterCedula').value.trim(), name = $('rosterName').value.trim().replace(/\s+/g,' ');
     const level = $('rosterLevel').value, parallel = $('rosterParallel').value;
     if(!/^\d{10}$/.test(cedula) || name.split(' ').length < 2 || !level || !parallel){
@@ -625,7 +629,7 @@ if($('rosterSaveBtn')) {
     }
     try {
       await db.collection(COL_STUDENTS).doc(cedula).set({ cedula, name, level, parallel, manual: true, updatedAt: Date.now() });
-      showMessage('rosterMessage', 'Estudiante guardado.', 'good');
+      showMessage('rosterMessage', 'Estudiante guardado en la nube.', 'good');
       $('rosterCedula').value = ''; $('rosterName').value = '';
     } catch (e) {
       showMessage('rosterMessage', 'Error: ' + e.message);
@@ -760,7 +764,7 @@ function authReady(){
   if($('registerModeBtn')) $('registerModeBtn').classList.toggle('active', authMode === 'register');
   if($('confirmPasswordField')) $('confirmPasswordField').classList.toggle('hidden', authMode !== 'register');
   if($('authTitle')) $('authTitle').textContent = authMode === 'register' ? 'Crear cuenta docente en la nube' : 'Acceso de docentes';
-  if($('authSubtitle')) $('authSubtitle').textContent = authMode === 'register' ? 'Registra tu nombre y contraseña para administrar tus evaluaciones.' : 'Ingresa con tu cuenta registrada.';
+  if($('authSubtitle')) $('authSubtitle').textContent = authMode === 'register' ? 'Registra tu nombre y contraseña en la nube.' : 'Ingresa con tu cuenta registrada.';
   if($('adminLoginBtn')) $('adminLoginBtn').textContent = authMode === 'register' ? 'Crear mi cuenta en la nube' : 'Iniciar sesión';
 }
 
@@ -783,7 +787,7 @@ function renderTeacher(){
 
 if($('adminLoginBtn')) {
   $('adminLoginBtn').onclick = async () => {
-    if (!cloudReady) return;
+    if(!cloudReady || !db) { showMessage('authMessage', 'Esperando conexión con la nube...'); return; }
     const name = $('teacherNameLogin').value.trim().replace(/\s+/g,' '), password = $('adminPassword').value;
     if(name.split(' ').length < 2){ showMessage('authMessage', 'Escribe tus nombres y apellidos completos.'); return; }
     try {
@@ -862,7 +866,7 @@ if($('clearAiKeyBtn')) {
 }
 
 function defaultQuestionObj(type='multiple'){
-  return {type, text:'', options:['','','',''], correct:0, rubric:'', gradingMode:'ai', procedures:['','','',''], correctCombo:'A1', requireWrittenProc:false};
+  return {type, text:'', imageUrl:'', options:['','','',''], correct:0, rubric:'', gradingMode:'ai', procedures:['','','',''], correctCombo:'A1', requireWrittenProc:false};
 }
 
 function resetEditor(){
@@ -883,7 +887,7 @@ function resetEditor(){
 
 function addQuestion(q=defaultQuestionObj('multiple')){
   editingQuestions.push({
-    type:q.type||'multiple', text:q.text||'', options:Array.isArray(q.options)?[...q.options]:['','','',''],
+    type:q.type||'multiple', text:q.text||'', imageUrl:q.imageUrl||'', options:Array.isArray(q.options)?[...q.options]:['','','',''],
     correct:Number(q.correct??0), rubric:q.rubric||'', gradingMode:q.gradingMode||'ai',
     procedures:Array.isArray(q.procedures)?[...q.procedures]:['','','',''], correctCombo:q.correctCombo||'A1', requireWrittenProc:Boolean(q.requireWrittenProc)
   });
@@ -893,13 +897,13 @@ function addQuestion(q=defaultQuestionObj('multiple')){
 function syncQuestions(){
   const boxes=[...document.querySelectorAll('#questionEditor [data-q]')];
   editingQuestions=boxes.map(box=>{
-    const type=box.querySelector('[data-type]').value, text=box.querySelector('[data-text]').value;
+    const type=box.querySelector('[data-type]').value, text=box.querySelector('[data-text]').value, imageUrl=box.querySelector('[data-image-preview]').src || box.querySelector('[data-image-input]').value.trim();
     if(type==='open'){
-      return {type:'open', text, rubric:box.querySelector('[data-rubric]').value, gradingMode:box.querySelector('[data-grading-mode]').value};
+      return {type:'open', text, imageUrl, rubric:box.querySelector('[data-rubric]').value, gradingMode:box.querySelector('[data-grading-mode]').value};
     } else if(type==='math_combo'){
-      return {type:'math_combo', text, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), procedures:[...box.querySelectorAll('[data-proc]')].map(x=>x.value), correctCombo:box.querySelector('[data-combo]').value, requireWrittenProc:box.querySelector('[data-req-proc]').checked};
+      return {type:'math_combo', text, imageUrl, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), procedures:[...box.querySelectorAll('[data-proc]')].map(x=>x.value), correctCombo:box.querySelector('[data-combo]').value, requireWrittenProc:box.querySelector('[data-req-proc]').checked};
     } else {
-      return {type:'multiple', text, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), correct:Number(box.querySelector('[data-correct]').value)};
+      return {type:'multiple', text, imageUrl, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), correct:Number(box.querySelector('[data-correct]').value)};
     }
   });
 }
@@ -916,17 +920,110 @@ function renderQuestionEditor(){
     } else {
       bodyHtml=`<div class="options-editor topgap">${(q.options||['','','','']).map((o,j)=>`<label class="field"><span>Opción ${'ABCD'[j]}</span><input data-opt="${j}" value="${esc(o)}" required></label>`).join('')}</div><div class="question-editor-actions"><span class="hint">Opción correcta</span><select class="select-small" data-correct>${[0,1,2,3].map(j=>`<option value="${j}" ${q.correct===j?'selected':''}>Correcta: ${'ABCD'[j]}</option>`).join('')}</select></div>`;
     }
-    return `<article class="question-box" data-q="${i}"><div class="row between" style="margin-bottom:12px"><div class="row"><h4>Pregunta ${i+1}</h4><select class="select-small" data-type><option value="multiple" ${qType==='multiple'?'selected':''}>Opción Múltiple</option><option value="open" ${qType==='open'?'selected':''}>Abierta</option><option value="math_combo" ${qType==='math_combo'?'selected':''}>Matemática (ej. A2)</option></select></div><button type="button" class="btn danger small" data-remove="${i}" ${editingQuestions.length===1?'disabled':''}>Eliminar</button></div><label class="field"><span>Enunciado</span><textarea data-text required>${esc(q.text)}</textarea></label>${bodyHtml}</article>`;
+    return `
+      <article class="question-box" data-q="${i}">
+        <div class="row between" style="margin-bottom:12px">
+          <div class="row">
+            <h4>Pregunta ${i+1}</h4>
+            <select class="select-small" data-type>
+              <option value="multiple" ${qType==='multiple'?'selected':''}>Opción Múltiple</option>
+              <option value="open" ${qType==='open'?'selected':''}>Abierta</option>
+              <option value="math_combo" ${qType==='math_combo'?'selected':''}>Matemática (ej. A2)</option>
+            </select>
+          </div>
+          <button type="button" class="btn danger small" data-remove="${i}" ${editingQuestions.length===1?'disabled':''}>Eliminar</button>
+        </div>
+
+        <label class="field"><span>Enunciado de la pregunta</span><textarea data-text required placeholder="Escribe tu enunciado aquí...">${esc(q.text)}</textarea></label>
+        
+        <!-- BARRA VISUAL DE ECUACIONES Y SÍMBOLOS -->
+        <div style="background:#f4f5f8;padding:8px;border-radius:10px;border:1px solid #e2e5ec;margin-top:8px">
+          <span style="font-size:11px;font-weight:800;color:var(--wine);display:block;margin-bottom:4px">📐 Editor visual de símbolos y ecuaciones (clic para insertar):</span>
+          <div class="row" style="gap:5px;flex-wrap:wrap">
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\frac{a}{b}')">➗ Fracción</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\sqrt{x}')">√ Raíz</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, 'x^{2}')">x² Potencia</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\infty')">∞</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\theta')">θ</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\pi')">π</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\sum')">∑</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\leq')">≤</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\geq')">≥</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\neq')">≠</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\alpha')">α</button>
+            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\beta')">β</button>
+          </div>
+        </div>
+
+        <!-- SECCIÓN DE IMAGEN (URL O PEGAR CON CTRL+V) -->
+        <div class="topgap" style="background:#fffcfd;border:1px dashed #d9c2cb;padding:12px;border-radius:10px">
+          <span style="font-size:12px;font-weight:800;color:var(--wine);display:block;margin-bottom:6px">🖼️ Imagen adjunta (Haz clic y presiona <b>Ctrl + V</b> para pegar una imagen del portapapeles)</span>
+          <div class="row">
+            <input type="text" data-image-input placeholder="Pega aquí la URL o presiona Ctrl+V en el cuadro de abajo..." value="${esc(q.imageUrl||'')}" style="flex:1">
+          </div>
+          <div class="topgap" style="text-align:center">
+            <img data-image-preview src="${esc(q.imageUrl||'')}" style="max-height:140px;max-width:100%;border-radius:8px;${q.imageUrl?'':'display:none'}">
+          </div>
+        </div>
+
+        ${bodyHtml}
+      </article>
+    `;
   }).join('');
 
   document.querySelectorAll('[data-type]').forEach(sel=>{
     sel.onchange=()=>{
-      const box=sel.closest('[data-q]'), idx=Number(box.dataset.q), currentText=box.querySelector('[data-text]').value;
-      const fresh=defaultQuestionObj(sel.value); fresh.text=currentText; editingQuestions[idx]=fresh; renderQuestionEditor();
+      const box=sel.closest('[data-q]'), idx=Number(box.dataset.q), currentText=box.querySelector('[data-text]').value, currentImg=box.querySelector('[data-image-preview]').src;
+      const fresh=defaultQuestionObj(sel.value); fresh.text=currentText; fresh.imageUrl=currentImg.startsWith('data:')||currentImg.startsWith('http')?currentImg:''; editingQuestions[idx]=fresh; renderQuestionEditor();
     };
   });
+
+  document.querySelectorAll('[data-q]').forEach(box=>{
+    const txtArea = box.querySelector('[data-text]');
+    const imgInput = box.querySelector('[data-image-input]');
+    const imgPrev = box.querySelector('[data-image-preview]');
+
+    const handlePaste = e => {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      for (const item of items) {
+        if (item.type.indexOf('image') === 0) {
+          e.preventDefault();
+          const blob = item.getAsFile();
+          const reader = new FileReader();
+          reader.onload = event => {
+            imgPrev.src = event.target.result;
+            imgPrev.style.display = 'block';
+            imgInput.value = event.target.result;
+          };
+          reader.readAsDataURL(blob);
+          break;
+        }
+      }
+    };
+
+    if(txtArea) txtArea.addEventListener('paste', handlePaste);
+    if(imgInput) {
+      imgInput.oninput = () => {
+        imgPrev.src = imgInput.value;
+        imgPrev.style.display = imgInput.value ? 'block' : 'none';
+      };
+    }
+  });
+
   document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{ syncQuestions(); editingQuestions.splice(Number(b.dataset.remove),1); renderQuestionEditor(); });
 }
+
+window.insertSymbol = (btn, symbol) => {
+  const box = btn.closest('[data-q]');
+  const textarea = box.querySelector('[data-text]');
+  const wrapped = `$${symbol}$`;
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  textarea.value = textarea.value.substring(0, start) + wrapped + textarea.value.substring(end);
+  textarea.focus();
+  textarea.selectionStart = textarea.selectionEnd = start + wrapped.length;
+};
 
 if($('addQuestionBtn')) $('addQuestionBtn').onclick = () => { syncQuestions(); addQuestion(); };
 if($('newExamBtn')) $('newExamBtn').onclick = resetEditor;
@@ -934,7 +1031,7 @@ if($('newExamBtn')) $('newExamBtn').onclick = resetEditor;
 if($('examForm')) {
   $('examForm').onsubmit = async event => {
     event.preventDefault(); syncQuestions();
-    if(!currentTeacher || !cloudReady) return;
+    if(!currentTeacher || !cloudReady || !db) { showMessage('editorMessage', 'Esperando conexión con la nube...'); return; }
     const title = $('examTitle').value.trim(), subject = $('examSubject').value.trim(), level = $('examLevel').value, parallel = $('examParallel').value;
     const date = $('examDate').value, time = $('examTime').value, hours = Number($('examHours').value), seconds = Number($('examSeconds').value);
 
@@ -950,17 +1047,18 @@ if($('examForm')) {
 
     const examId = editingId || uid();
     const cleanQuestions = editingQuestions.map(q => {
-      if(q.type === 'open') return {type:'open', text:q.text.trim(), rubric:q.rubric.trim(), gradingMode:q.gradingMode};
-      if(q.type === 'math_combo') return {type:'math_combo', text:q.text.trim(), options:q.options.map(o=>o.trim()), procedures:q.procedures.map(p=>p.trim()), correctCombo:q.correctCombo, requireWrittenProc:q.requireWrittenProc};
-      return {type:'multiple', text:q.text.trim(), options:q.options.map(o=>o.trim()), correct:q.correct};
+      const baseQ = { text: q.text.trim(), imageUrl: (q.imageUrl||'').trim() };
+      if(q.type === 'open') return {type:'open', ...baseQ, rubric:q.rubric.trim(), gradingMode:q.gradingMode};
+      if(q.type === 'math_combo') return {type:'math_combo', ...baseQ, options:q.options.map(o=>o.trim()), procedures:q.procedures.map(p=>p.trim()), correctCombo:q.correctCombo, requireWrittenProc:q.requireWrittenProc};
+      return {type:'multiple', ...baseQ, options:q.options.map(o=>o.trim()), correct:q.correct};
     });
 
     const item = { id: examId, ownerId: currentTeacher.id, title, teacher: currentTeacher.name, subject, level, parallel, date, time, hours, seconds, questions: cleanQuestions, createdAt: Date.now(), updatedAt: Date.now() };
 
-    const btn = $('saveExamBtn'); btn.disabled = true; btn.textContent = 'Guardando...';
+    const btn = $('saveExamBtn'); btn.disabled = true; btn.textContent = 'Guardando en la nube...';
     try {
       await db.collection(COL_EXAMS).doc(examId).set(item);
-      resetEditor(); showMessage('editorMessage', 'Examen guardado en la nube.', 'good');
+      resetEditor(); showMessage('editorMessage', 'Examen guardado en la nube con éxito.', 'good');
     } catch(e){ 
       showMessage('editorMessage', 'Error: ' + e.message); 
     } finally { 
@@ -973,12 +1071,15 @@ function renderExamList(){
   const listEl = $('examList');
   if(!listEl) return;
   const mine = myExams();
-  listEl.innerHTML = mine.length ? mine.map(e=>`<div class="tile"><div class="row between"><h3>${esc(e.subject)}</h3><span class="tag ${status(e)==='Disponible'?'good':'warn'}">${status(e)}</span></div><b style="font-size:13px">${esc(e.title)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>${esc(formatDate(startAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg</p><div class="row"><button class="btn light small" data-edit="${esc(e.id)}">Editar</button><button class="btn danger small" data-delete="${esc(e.id)}">Eliminar</button></div></div>`).join('') : '<div class="empty">No hay exámenes.</div>';
+  listEl.innerHTML = mine.length ? mine.map(e=>`<div class="tile"><div class="row between"><h3>${esc(e.subject)}</h3><span class="tag ${status(e)==='Disponible'?'good':'warn'}">${status(e)}</span></div><b style="font-size:13px">${esc(e.title)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>${esc(formatDate(startAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg</p><div class="row"><button class="btn light small" data-edit="${esc(e.id)}">Editar</button><button class="btn danger small" data-delete="${esc(e.id)}">Eliminar</button></div></div>`).join('') : '<div class="empty">No hay exámenes en la nube.</div>';
 
   document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editExam(b.dataset.edit));
   document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=async()=>{
     const e = myExams().find(x=>x.id===b.dataset.delete);
-    if(e && confirm(`¿Eliminar examen "${e.title}"?`)){ await db.collection(COL_EXAMS).doc(e.id).delete(); if(editingId===e.id) resetEditor(); }
+    if(e && confirm(`¿Eliminar examen "${e.title}" de la nube?`)){
+      await db.collection(COL_EXAMS).doc(e.id).delete();
+      if(editingId===e.id) resetEditor();
+    }
   });
 }
 
@@ -1017,13 +1118,14 @@ function renderResults(){
 
   const subset = myAttempts().filter(a => selectedExamId === 'all' || a.examId === selectedExamId).sort((a,b)=>b.startedAt-a.startedAt);
   if($('resultsTable')) {
-    $('resultsTable').innerHTML = subset.length ? `<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Evaluación</th><th>Curso</th><th>Nota</th><th>Estado</th><th>Publicado</th><th>Acciones</th></tr></thead><tbody>${subset.map(a=>`<tr><td><b>${esc(a.name)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><span class="hint">${esc(a.examTitle)}</span></td><td>${esc(a.level)} / ${esc(a.parallel)}</td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><span class="tag ${a.status==='infraccion'?'bad':a.status==='pendiente_revision'?'warn':'good'}">${a.status==='infraccion'?'Infracción':a.status==='pendiente_revision'?'Pend. revisión':'Completado'}</span></td><td><span class="tag ${a.published?'good':'warn'}">${a.published?'Sí':'No'}</span></td><td><div class="row"><button class="btn light small" onclick="openReviewModal('${esc(a.id)}')">Revisar</button><button class="btn neutral small" onclick="togglePublishAttempt('${esc(a.id)}')">${a.published?'Ocultar':'Publicar'}</button><button class="btn danger small" onclick="resetAttempt('${esc(a.id)}','${esc(a.name)}')">Reiniciar</button></div></td></tr>`).join('')}</tbody></table>` : '<div class="empty">No hay intentos registrados.</div>';
+    $('resultsTable').innerHTML = subset.length ? `<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Evaluación</th><th>Curso</th><th>Nota</th><th>Estado</th><th>Publicado</th><th>Acciones</th></tr></thead><tbody>${subset.map(a=>`<tr><td><b>${esc(a.name)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><span class="hint">${esc(a.examTitle)}</span></td><td>${esc(a.level)} / ${esc(a.parallel)}</td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><span class="tag ${a.status==='infraccion'?'bad':a.status==='pendiente_revision'?'warn':'good'}">${a.status==='infraccion'?'Infracción':a.status==='pendiente_revision'?'Pend. revisión':'Completado'}</span></td><td><span class="tag ${a.published?'good':'warn'}">${a.published?'Sí':'No'}</span></td><td><div class="row"><button class="btn light small" onclick="openReviewModal('${esc(a.id)}')">Revisar</button><button class="btn neutral small" onclick="togglePublishAttempt('${esc(a.id)}')">${a.published?'Ocultar':'Publicar'}</button><button class="btn danger small" onclick="resetAttempt('${esc(a.id)}','${esc(a.name)}')">Reiniciar</button></div></td></tr>`).join('')}</tbody></table>` : '<div class="empty">No hay intentos registrados en la nube.</div>';
   }
 }
 if($('resultsFilter')) $('resultsFilter').onchange = renderResults;
 
 if($('publishAllBtn')) {
   $('publishAllBtn').onclick = async () => {
+    if(!cloudReady || !db) return;
     const selectedExamId = $('resultsFilter').value;
     if (selectedExamId === 'all') {
       alert('Selecciona un examen específico en el filtro para publicar sus notas.');
@@ -1033,26 +1135,25 @@ if($('publishAllBtn')) {
     if (!exam) return;
 
     const newPubState = !(exam.published === true);
-    const confirmMsg = newPubState ? `¿Publicar las calificaciones de "${exam.title}" para que los estudiantes puedan verlas?` : `¿Ocultar las calificaciones de "${exam.title}"?`;
+    const confirmMsg = newPubState ? `¿Publicar las calificaciones de "${exam.title}" en la nube?` : `¿Ocultar las calificaciones de "${exam.title}"?`;
     if (!confirm(confirmMsg)) return;
 
     try {
       await db.collection(COL_EXAMS).doc(exam.id).update({ published: newPubState });
       const batch = db.batch();
-      const relatedAttempts = attempts.filter(a => a.examId === exam.id);
-      relatedAttempts.forEach(att => {
-        const ref = db.collection(COL_ATTEMPTS).doc(att.id);
-        batch.update(ref, { published: newPubState });
+      attempts.filter(a => a.examId === exam.id).forEach(att => {
+        batch.update(db.collection(COL_ATTEMPTS).doc(att.id), { published: newPubState });
       });
       await batch.commit();
-      alert('Estado de publicación actualizado con éxito.');
+      alert('Estado de publicación actualizado en la nube.');
     } catch (e) {
-      alert('Error al actualizar publicación: ' + e.message);
+      alert('Error: ' + e.message);
     }
   };
 }
 
 window.togglePublishAttempt = async (attemptId) => {
+  if(!cloudReady || !db) return;
   const att = attempts.find(a => a.id === attemptId);
   if (!att) return;
   try {
@@ -1078,7 +1179,7 @@ window.openReviewModal = (attemptId) => {
       else if(qType==='math_combo') detailHtml=`<p style="margin:6px 0"><b>Elegido:</b> <span class="tag ${ans.comboChoice===q.correctCombo?'good':'bad'}">${esc(ans.comboChoice||'—')}</span> · <b>Correcto:</b> <span class="tag good">${esc(q.correctCombo)}</span>${ans.writtenProcedure?`<br><b>Proc:</b> ${esc(ans.writtenProcedure)}`:''}</p>`;
       else { const c=ans.choice; const txt=(c!==null&&c!==undefined&&q.options[c])?`${'ABCD'[c]}. ${q.options[c]}`:'(Sin responder)'; detailHtml=`<p style="margin:6px 0"><b>Respondió:</b> ${esc(txt)}<br><b>Correcta:</b> ${esc('ABCD'[q.correct])}. ${esc(q.options[q.correct])}</p>`; }
 
-      return `<div class="tile" data-rev-q="${idx}"><div class="row between"><b>Pregunta ${idx+1} · ${qType}</b><div class="row"><span class="hint">Puntos (0-1):</span><input type="number" step="0.25" min="0" max="1" value="${earned}" data-rev-pts="${idx}" style="width:75px;padding:6px;border:1px solid #ccc;border-radius:8px;font-weight:800"></div></div><p style="font-weight:600;margin-top:6px">${esc(q.text)}</p>${detailHtml}</div>`;
+      return `<div class="tile" data-rev-q="${idx}"><div class="row between"><b>Pregunta ${idx+1} · ${qType}</b><div class="row"><span class="hint">Puntos (0-1):</span><input type="number" step="0.25" min="0" max="1" value="${earned}" data-rev-pts="${idx}" style="width:75px;padding:6px;border:1px solid #ccc;border-radius:8px;font-weight:800"></div></div><p style="font-weight:600;margin-top:6px">${esc(q.text)}</p>${q.imageUrl?`<img src="${esc(q.imageUrl)}" style="max-width:100%;max-height:160px;border-radius:8px;margin:8px 0;display:block">`:''}${detailHtml}</div>`;
     }).join('');
   }
 
@@ -1089,11 +1190,11 @@ window.openReviewModal = (attemptId) => {
   };
   document.querySelectorAll('[data-rev-pts]').forEach(inp=>inp.oninput=updatePrev); updatePrev();
   if($('reviewModal')) $('reviewModal').classList.remove('hidden');
+  try{ renderMathInElement($('reviewQuestionsBody')); }catch(e){}
 };
 
 if($('closeReviewModal')) $('closeReviewModal').onclick = () => { if($('reviewModal')) $('reviewModal').classList.add('hidden'); reviewingAttemptId = null; };
 
-// GENERAR EXAMEN IMPRESO CON MEMBRETE INSTITUCIONAL
 if($('printExamSheetBtn')) {
   $('printExamSheetBtn').onclick = () => {
     if(!reviewingAttemptId) return;
@@ -1123,6 +1224,7 @@ if($('printExamSheetBtn')) {
       return `
         <div style="margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #eee;font-size:13px">
           <b>Pregunta ${i+1}:</b> ${esc(q.text)} <span style="float:right;font-weight:bold;color:#651b37">Puntaje: ${Number(ans.points??(ans.correct?1:0)).toFixed(2)} / 1.00</span>
+          ${q.imageUrl?`<br><img src="${esc(q.imageUrl)}" style="max-width:180px;max-height:120px;margin-top:6px;display:block">`:''}
           ${studentAnsText}
         </div>
       `;
@@ -1158,6 +1260,7 @@ if($('printExamSheetBtn')) {
     `;
 
     $('printExamModal').classList.remove('hidden');
+    try{ renderMathInElement($('printSheetContainer')); }catch(e){}
   };
 }
 
@@ -1191,7 +1294,7 @@ if($('regradeAllAiBtn')) {
 
 if($('saveManualGradesBtn')) {
   $('saveManualGradesBtn').onclick = async () => {
-    if(!reviewingAttemptId || !cloudReady) return;
+    if(!reviewingAttemptId || !cloudReady || !db) return;
     const attempt = attempts.find(a => a.id === reviewingAttemptId), exam = exams.find(e => e.id === attempt?.examId);
     if(!attempt) return;
     const inputs = [...document.querySelectorAll('[data-rev-pts]')];
@@ -1210,7 +1313,7 @@ if($('saveManualGradesBtn')) {
       await db.collection(COL_ATTEMPTS).doc(attempt.id).update({
         answers: updatedAnswers, score: newScore, correctCount: Math.round(sum*100)/100, status: attempt.status==='infraccion'?'infraccion':'completado', reason: attempt.status==='infraccion'?attempt.reason:'Revisado y calificado por docente'
       });
-      showMessage('reviewModalMsg', 'Calificación guardada con éxito.', 'good');
+      showMessage('reviewModalMsg', 'Calificación guardada en la nube.', 'good');
     } catch(e){ 
       showMessage('reviewModalMsg', 'Error: ' + e.message); 
     } finally { 
@@ -1220,7 +1323,8 @@ if($('saveManualGradesBtn')) {
 }
 
 window.resetAttempt = async (attemptId, name) => {
-  if(confirm(`¿Reiniciar intento de ${name}?`)) await db.collection(COL_ATTEMPTS).doc(attemptId).delete();
+  if(!cloudReady || !db) return;
+  if(confirm(`¿Reiniciar intento de ${name} en la nube?`)) await db.collection(COL_ATTEMPTS).doc(attemptId).delete();
 };
 
 function exportFile(filename,content,mime){
@@ -1244,7 +1348,7 @@ if($('exportBackupBtn')) {
 function studentIdKey(cedula,id){return cedula+'_'+id}
 
 async function beginExam(){
-  if(!cloudReady) return;
+  if(!cloudReady || !db){ showMessage('studentMessage', 'Esperando conexión con la nube...'); return; }
   const name = $('studentName').value.trim().replace(/\s+/g,' '), cedula = $('studentCedula').value.trim();
   const exam = exams.find(e => e.id === $('studentExam').value), registered = students.find(s => s.cedula === cedula);
 
@@ -1305,8 +1409,19 @@ function renderLiveQuestion(){
   else html = `<div id="liveOptions">${q.options.map((opt,i)=>`<label class="answer"><input type="radio" name="answer" value="${i}"><span><b>${'ABCD'[i]}.</b> ${esc(opt)}</span></label>`).join('')}</div>`;
 
   if($('examQuestionArea')) {
-    $('examQuestionArea').innerHTML = `<span class="tag">Pregunta ${index+1} de ${exam.questions.length}</span><h2>${esc(q.text)}</h2>${html}<div class="exam-bottom"><span class="hint">No podrás regresar.</span><button class="btn" id="nextBtn">${index===exam.questions.length-1?'Finalizar examen':'Guardar y continuar →'}</button></div>`;
+    $('examQuestionArea').innerHTML = `
+      <span class="tag">Pregunta ${index+1} de ${exam.questions.length}</span>
+      <h2>${esc(q.text)}</h2>
+      ${q.imageUrl?`<img src="${esc(q.imageUrl)}" style="max-width:100%;max-height:220px;border-radius:12px;margin:12px 0;display:block">`:''}
+      ${html}
+      <div class="exam-bottom">
+        <span class="hint">No podrás regresar.</span>
+        <button class="btn" id="nextBtn">${index===exam.questions.length-1?'Finalizar examen':'Guardar y continuar →'}</button>
+      </div>
+    `;
   }
+
+  try { renderMathInElement($('examQuestionArea')); } catch(e){}
 
   if(qType === 'open') {
     const ot = $('liveOpenText'); if(ot) ot.oninput = e => live.textAnswer = e.target.value;
@@ -1351,7 +1466,7 @@ async function finishExam(state,reason=''){
   const hasManualOpen = !infr && finishedExam.questions.some(q => q.type === 'open' && q.gradingMode === 'manual');
 
   if($('examQuestionArea')) {
-    $('examQuestionArea').innerHTML = `<div style="text-align:center;padding:22px"><div class="tag ${infr?'bad':'good'}">EXAMEN FINALIZADO</div><h2>Sincronizando con la nube...</h2><p class="hint" id="cloudSaveStatus">Guardando respuestas en Firebase...</p></div>`;
+    $('examQuestionArea').innerHTML = `<div style="text-align:center;padding:22px"><div class="tag ${infr?'bad':'good'}">EXAMEN FINALIZADO</div><h2>Sincronizando con la nube...</h2><p class="hint">Guardando respuestas en Firebase Cloud...</p></div>`;
   }
 
   if(!infr){
@@ -1370,13 +1485,15 @@ async function finishExam(state,reason=''){
   a.status = infr ? 'infraccion' : hasManualOpen ? 'pendiente_revision' : (state === 'completado' ? 'completado' : 'vencido');
   a.published = false;
 
+  if(cloudReady && db) {
+    await db.collection(COL_ATTEMPTS).doc(a.id).set(a, {merge:true}).catch(()=>{});
+  }
+
   if($('examQuestionArea')) {
-    $('examQuestionArea').innerHTML = `<div style="text-align:center;padding:22px"><div class="tag good">¡EVALUACIÓN ENVIADA!</div><h2>Examen guardado correctamente</h2><p>Tus respuestas han sido registradas en la plataforma. <b>La calificación se encuentra retenida</b> y podrá ser consultada en la sección "Mis calificaciones" una vez que el docente las publique.</p>${reason?`<div class="notice red">${esc(reason)}</div>`:''}<button id="returnBtn" class="btn topgap">Salir y volver al inicio</button></div>`;
+    $('examQuestionArea').innerHTML = `<div style="text-align:center;padding:22px"><div class="tag good">¡EVALUACIÓN ENVIADA!</div><h2>Examen guardado en la nube correctamente</h2><p>Tus respuestas han sido registradas en Firebase Cloud. <b>La calificación está retenida</b> y podrá ser consultada en "Mis calificaciones" una vez que el docente las publique.</p>${reason?`<div class="notice red">${esc(reason)}</div>`:''}<button id="returnBtn" class="btn topgap">Salir y volver al inicio</button></div>`;
   }
   if($('questionTime')) $('questionTime').textContent = '—'; 
   if($('windowTime')) $('windowTime').textContent = '—';
-
-  if(cloudReady && db) await db.collection(COL_ATTEMPTS).doc(a.id).set(a, {merge:true}).catch(()=>{});
 
   if($('returnBtn')) {
     $('returnBtn').onclick = async () => {
