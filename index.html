@@ -7,7 +7,7 @@
 <style>
 :root{--wine:#651b37;--wine2:#892b4c;--wineSoft:#faedf2;--ink:#232732;--muted:#707786;--line:#e0e3e8;--bg:#f2f3f6;--white:#fff;--good:#166a47;--bad:#bb2946;--gold:#9a6210;--shadow:0 14px 45px rgba(28,24,38,.08)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}a{color:var(--wine)}.hidden{display:none!important}
-header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:10} .brand{display:flex;align-items:center;gap:12px}.brandmark{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--wine);color:#fff;font-weight:900;letter-spacing:-1px;font-size:17px}.brand strong{display:block;font-size:15px;letter-spacing:.1px}.brand small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pill{border:1px solid #ead1dc;background:#fff7fa;border-radius:100px;padding:7px 11px;font-size:12px;color:var(--wine);font-weight:700}.pill.online{border-color:#b8e4cf;background:#f0fbf5;color:var(--good)}.pill.offline{border-color:#f1bbc7;background:#fff4f6;color:var(--bad)}.wrap{max-width:1180px;margin:0 auto;padding:34px 22px 70px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:25px;align-items:center;padding:38px;border-radius:25px;background:linear-gradient(125deg,#56182e,#8d3754);color:white;box-shadow:var(--shadow)}.eyebrow{font-weight:700;letter-spacing:2px;font-size:11px;text-transform:uppercase;opacity:.76}.hero h1{font-size:clamp(29px,4vw,46px);line-height:1.08;margin:14px 0}.hero p{opacity:.87;max-width:540px;line-height:1.7}.hero-art{border:1px solid #ffffff48;border-radius:20px;padding:24px;background:#ffffff12}.hero-art .circle{width:100px;height:100px;border:10px solid #fff5;border-left-color:#fff;border-top-color:#fff;display:grid;place-items:center;border-radius:100%;margin:auto;font-size:28px;font-weight:900}.hero-art p{text-align:center;font-size:13px}.tabs{display:flex;gap:8px;background:#e9eaee;padding:5px;border-radius:13px;width:max-content;max-width:100%;margin:25px 0;flex-wrap:wrap}.tab{padding:11px 18px;border:0;background:transparent;color:#5d6070;border-radius:10px;font-weight:800}.tab.active{background:#fff;color:var(--wine);box-shadow:0 3px 12px #0001}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 3px 12px #11111105}.section-title{margin:0 0 5px;font-size:23px}.hint{color:var(--muted);font-size:13px;line-height:1.6}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field>span{font-size:12px;font-weight:800;color:#555d6b}.field input,.field select,.field textarea{width:100%;border:1px solid #d6d9e1;background:white;border-radius:10px;padding:11px 13px;color:var(--ink);min-width:0;outline:none}.field textarea{resize:vertical;min-height:86px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--wine2);box-shadow:0 0 0 3px #892b4c19}.btn{border:0;background:var(--wine);color:#fff;padding:12px 17px;border-radius:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:.18s}.btn:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}.btn.light{background:#f3e8ee;color:var(--wine)}.btn.neutral{background:#eef0f3;color:#333c4b}.btn.danger{background:#fdebf0;color:#ab2341}.btn.outline{background:white;color:var(--wine);border:1px solid #cfa9ba}.btn.small{padding:8px 12px;font-size:12px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.between{justify-content:space-between}.topgap{margin-top:20px}.stack{display:grid;gap:14px}.tile{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}.tile h3{margin:0 0 6px;font-size:17px}.tag{display:inline-flex;border-radius:99px;background:#f3f4f7;padding:6px 10px;color:#596174;font-size:11px;font-weight:800}.tag.good{color:var(--good);background:#eaf7ee}.tag.bad{color:var(--bad);background:#fff0f2}.tag.warn{color:var(--gold);background:#fff6e5}.tile p{margin:8px 0;color:#636b78;font-size:13px;line-height:1.5}.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.divider{height:1px;background:var(--line);margin:24px 0}.stat{padding:20px;border:1px solid var(--line);border-radius:14px;background:#fff}.stat b{font-size:30px;display:block;margin-top:7px;color:var(--wine)}.stat small{color:var(--muted);font-size:12px}.empty{text-align:center;padding:37px 12px;color:var(--muted);background:#f9f9fb;border:1px dashed #d9dce3;border-radius:14px}.notice{border:1px solid #e9d7af;background:#fffaf0;color:#775918;padding:13px 15px;border-radius:11px;font-size:13px;line-height:1.6}.notice.red{border-color:#f1bbc7;background:#fff4f6;color:#972e48}.notice.good{border-color:#b8e4cf;background:#f0fbf5;color:#176a47}.question-box{border:1px solid #dfd8dd;border-radius:15px;background:#fefcfd;padding:18px;margin-bottom:14px}.question-box h4{margin:0}.options-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.question-editor-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}.select-small{padding:9px;border:1px solid #d7dbe2;border-radius:8px;background:#fff}.tablewrap{overflow-x:auto}.report-table{width:100%;border-collapse:collapse;font-size:13px}.report-table th{text-align:left;background:#f5f5f7;color:#606878;padding:12px;white-space:nowrap}.report-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}.report-table tr:last-child td{border-bottom:0}.report-table .score{font-weight:900;font-size:17px;color:var(--wine)}.footer{font-size:12px;color:#7b8190;text-align:center;padding:18px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:10} .brand{display:flex;align-items:center;gap:12px}.brandmark{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--wine);color:#fff;font-weight:900;letter-spacing:-1px;font-size:17px}.brand strong{display:block;font-size:15px;letter-spacing:.1px}.brand small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pill{border:1px solid #ead1dc;background:#fff7fa;border-radius:100px;padding:7px 11px;font-size:12px;color:var(--wine);font-weight:700}.pill.online{border-color:#b8e4cf;background:#f0fbf5;color:var(--good)}.pill.offline{border-color:#f1bbc7;background:#fff4f6;color:var(--bad)}.wrap{max-width:1180px;margin:0 auto;padding:34px 22px 70px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:25px;align-items:center;padding:38px;border-radius:25px;background:linear-gradient(125deg,#56182e,#8d3754);color:white;box-shadow:var(--shadow)}.eyebrow{font-weight:700;letter-spacing:2px;font-size:11px;text-transform:uppercase;opacity:.76}.hero h1{font-size:clamp(29px,4vw,46px);line-height:1.08;margin:14px 0}.hero p{opacity:.87;max-width:540px;line-height:1.7}.hero-art{border:1px solid #ffffff48;border-radius:20px;padding:24px;background:#ffffff12}.hero-art .circle{width:100px;height:100px;border:10px solid #fff5;border-left-color:#fff;border-top-color:#fff;display:grid;place-items:center;border-radius:100%;margin:auto;font-size:28px;font-weight:900}.hero-art p{text-align:center;font-size:13px}.tabs{display:flex;gap:8px;background:#e9eaee;padding:5px;border-radius:13px;width:max-content;max-width:100%;margin:25px 0;flex-wrap:wrap}.tab{padding:11px 18px;border:0;background:transparent;color:#5d6070;border-radius:10px;font-weight:800}.tab.active{background:#fff;color:var(--wine);box-shadow:0 3px 12px #0001}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 3px 12px #11111105}.section-title{margin:0 0 5px;font-size:23px}.hint{color:var(--muted);font-size:13px;line-height:1.6}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field>span{font-size:12px;font-weight:800;color:#555d6b}.field input,.field select,.field textarea{width:100%;border:1px solid #d6d9e1;background:white;border-radius:10px;padding:11px 13px;color:var(--ink);min-width:0;outline:none}.field textarea{resize:vertical;min-height:86px}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--wine2);box-shadow:0 0 0 3px #892b4c19}.btn{border:0;background:var(--wine);color:#fff;padding:12px 17px;border-radius:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:.18s}.btn:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}.btn.light{background:#f3e8ee;color:var(--wine)}.btn.neutral{background:#eef0f3;color:#333c4b}.btn.danger{background:#fdebf0;color:#ab2341}.btn.outline{background:white;color:var(--wine);border:1px solid #cfa9ba}.btn.small{padding:8px 12px;font-size:12px}.btn.xs{padding:5px 9px;font-size:11px;border-radius:7px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.between{justify-content:space-between}.topgap{margin-top:20px}.stack{display:grid;gap:14px}.tile{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}.tile h3{margin:0 0 6px;font-size:17px}.tag{display:inline-flex;border-radius:99px;background:#f3f4f7;padding:6px 10px;color:#596174;font-size:11px;font-weight:800}.tag.good{color:var(--good);background:#eaf7ee}.tag.bad{color:var(--bad);background:#fff0f2}.tag.warn{color:var(--gold);background:#fff6e5}.tile p{margin:8px 0;color:#636b78;font-size:13px;line-height:1.5}.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.divider{height:1px;background:var(--line);margin:24px 0}.stat{padding:20px;border:1px solid var(--line);border-radius:14px;background:#fff}.stat b{font-size:30px;display:block;margin-top:7px;color:var(--wine)}.stat small{color:var(--muted);font-size:12px}.empty{text-align:center;padding:37px 12px;color:var(--muted);background:#f9f9fb;border:1px dashed #d9dce3;border-radius:14px}.notice{border:1px solid #e9d7af;background:#fffaf0;color:#775918;padding:13px 15px;border-radius:11px;font-size:13px;line-height:1.6}.notice.red{border-color:#f1bbc7;background:#fff4f6;color:#972e48}.notice.good{border-color:#b8e4cf;background:#f0fbf5;color:#176a47}.question-box{border:1px solid #dfd8dd;border-radius:15px;background:#fefcfd;padding:18px;margin-bottom:14px}.question-box h4{margin:0}.options-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.question-editor-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}.select-small{padding:9px;border:1px solid #d7dbe2;border-radius:8px;background:#fff}.tablewrap{overflow-x:auto}.report-table{width:100%;border-collapse:collapse;font-size:13px}.report-table th{text-align:left;background:#f5f5f7;color:#606878;padding:12px;white-space:nowrap}.report-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:middle}.report-table tr:last-child td{border-bottom:0}.report-table .score{font-weight:900;font-size:17px;color:var(--wine)}.footer{font-size:12px;color:#7b8190;text-align:center;padding:18px}
 .math-matrix{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;background:#f8f6f9;padding:12px;border-radius:12px;border:1px solid #e6dfe6}
 .math-col-title{font-size:12px;font-weight:800;color:var(--wine);margin-bottom:6px;display:block}
 .combo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
@@ -15,8 +15,61 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
 .combo-chip:hover{border-color:#cba8b8;background:#fff9fb}
 .combo-chip.selected{background:#f9edf2;border-color:var(--wine);color:var(--wine)}
 .modal-backdrop{position:fixed;inset:0;background:rgba(20,22,30,.55);z-index:200;display:grid;place-items:center;padding:18px;overflow-y:auto}
-.modal-card{background:#fff;border-radius:20px;max-width:780px;width:100%;padding:26px;box-shadow:0 24px 60px rgba(0,0,0,.22);max-height:90vh;overflow-y:auto}
+.modal-card{background:#fff;border-radius:20px;max-width:780px;width:100%;padding:26px;box-shadow:0 24px 60px rgba(0,0,0,.22);max-height:92vh;overflow-y:auto}
 #examScreen{position:fixed;inset:0;z-index:100;background:#f2f3f6;overflow-y:auto;padding:28px 20px 55px}#examScreen:fullscreen{background:#f2f3f6}#examScreen:-webkit-full-screen{background:#f2f3f6}.exam-wrap{max-width:900px;margin:auto}.exam-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.timer-box{background:#fff;border:1px solid var(--line);padding:14px 17px;border-radius:14px;min-width:120px;text-align:center}.timer-box small{display:block;font-size:11px;color:var(--muted);margin-bottom:7px}.timer-box strong{font-size:25px;font-variant-numeric:tabular-nums}.timer-box.urgent{color:var(--bad);border-color:#ffbdc7;background:#fff7f8}.progress{height:8px;background:#dfe2e8;border-radius:100px;overflow:hidden;margin:23px 0}.progress div{height:100%;background:var(--wine);transition:width .2s}.question-main{padding:32px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}.question-main h2{font-size:clamp(20px,3vw,28px);line-height:1.4;margin:15px 0 22px}.answer{display:flex;align-items:center;gap:14px;border:2px solid #e3e5ea;border-radius:13px;padding:16px;margin:10px 0;cursor:pointer;font-size:15px;line-height:1.5}.answer:hover{border-color:#cba8b8;background:#fff9fb}.answer.selected{background:#f9edf2;border-color:var(--wine)}.answer input{accent-color:var(--wine);width:18px;height:18px;flex-shrink:0}.exam-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:25px;flex-wrap:wrap}.big-result{font-weight:900;font-size:60px;color:var(--wine);margin:8px 0}.mono{font-variant-numeric:tabular-nums} .fullspan{grid-column:1/-1}
+
+/* ESTILOS EDITOR GRÁFICO DE ECUACIONES FLOTANTE */
+math-field {
+  width: 100%;
+  font-size: 24px;
+  padding: 14px 16px;
+  border: 2px solid #cfa9ba;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  min-height: 75px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.04);
+}
+math-field:focus-within {
+  border-color: var(--wine);
+  box-shadow: 0 0 0 4px rgba(101, 27, 55, 0.12);
+  outline: none;
+}
+.math-palette-tabs { display: flex; gap: 6px; margin: 12px 0 8px; flex-wrap: wrap; }
+.math-palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; background: #f8f6f9; padding: 10px; border-radius: 12px; border: 1px solid #e6dfe6; }
+.math-key { background: #fff; border: 1px solid #d8d0d6; border-radius: 8px; padding: 8px 4px; font-size: 14px; font-weight: 700; color: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: .12s; }
+.math-key:hover { background: var(--wineSoft); border-color: var(--wine); color: var(--wine); transform: translateY(-1px); }
+.math-key small { font-size: 9px; font-weight: 600; color: var(--muted); }
+.live-math-preview { font-size: 13px; background: #f9f7fa; border: 1px dashed #d8c3ce; border-radius: 8px; padding: 7px 11px; margin-top: 5px; color: var(--ink); min-height: 32px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.pwd-badge { font-family: monospace; background: #f4f5f8; border: 1px solid #d6d9e1; padding: 4px 8px; border-radius: 6px; font-size: 13px; font-weight: 700; color: var(--wine); }
+
+/* =========================================================
+   ESTILOS DIDÁCTICOS PARA NIÑOS: SOPA DE LETRAS Y ETIQUETAS
+   ========================================================= */
+.ws-container { display: flex; flex-direction: column; align-items: center; gap: 16px; background: #fdf9fb; border: 2px solid #ecd6e0; border-radius: 18px; padding: 18px; margin-top: 12px; user-select: none; }
+.ws-grid { display: grid; gap: 4px; background: #fff; padding: 10px; border-radius: 14px; border: 2px solid #d7c0cb; box-shadow: 0 6px 20px rgba(0,0,0,.06); touch-action: none; }
+.ws-cell { width: clamp(28px, 6.2vw, 40px); height: clamp(28px, 6.2vw, 40px); display: grid; place-items: center; font-weight: 900; font-size: clamp(14px, 3vw, 19px); border-radius: 9px; background: #f5f6f9; color: var(--ink); cursor: pointer; transition: transform .1s, background .15s; border: 1px solid #e3e6ed; }
+.ws-cell:hover { background: #faedf2; border-color: var(--wine2); }
+.ws-cell.selecting { background: #ffe082 !important; color: #5c3c00 !important; transform: scale(1.1); border-color: #ffb300; z-index: 2; }
+.ws-cell.found { background: #c8f3dc; color: #0f5c37; border-color: #7ad1a4; }
+.ws-words-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.ws-word-pill { padding: 7px 14px; border-radius: 999px; background: #fff; border: 2px solid #d6d9e1; font-weight: 800; font-size: 14px; letter-spacing: .5px; color: var(--ink); transition: .2s; }
+.ws-word-pill.found { background: #166a47; color: #fff; border-color: #166a47; text-decoration: line-through; transform: scale(.96); }
+
+/* ETIQUETAS EN IMAGEN INTERACTIVA (NOMBRAR PARTES DE UN GRÁFICO) */
+.label-stage-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden; border: 2px solid #d7c0cb; background: #fff; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+.label-stage-wrap img { display: block; max-width: 100%; max-height: 380px; width: auto; height: auto; user-select: none; -webkit-user-drag: none; }
+.label-pin-editor { position: absolute; transform: translate(-50%, -50%); width: 30px; height: 30px; border-radius: 50%; background: var(--wine); color: #fff; border: 3px solid #fff; font-weight: 900; font-size: 13px; display: grid; place-items: center; box-shadow: 0 3px 10px rgba(0,0,0,.35); pointer-events: none; }
+.label-pin-student { position: absolute; transform: translate(-50%, -50%); min-width: 34px; height: 34px; padding: 0 10px; border-radius: 999px; background: #ff6f00; color: #fff; border: 3px solid #fff; font-weight: 900; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 4px 12px rgba(0,0,0,.35); cursor: pointer; transition: .15s; white-space: nowrap; }
+.label-pin-student:hover { transform: translate(-50%, -50%) scale(1.12); }
+.label-pin-student.assigned { background: #166a47; }
+.label-pin-student.target-active { animation: pulsePin 1s infinite; background: var(--wine); }
+@keyframes pulsePin { 0%,100% { box-shadow: 0 0 0 0 rgba(101,27,55,.6); } 50% { box-shadow: 0 0 0 8px rgba(101,27,55,0); } }
+.word-bank-kids { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; background: #fdf9fb; padding: 14px; border-radius: 14px; border: 2px dashed #d7c0cb; margin-top: 12px; }
+.kid-chip { padding: 10px 16px; border-radius: 12px; background: #fff; border: 2px solid #cfa9ba; font-weight: 800; font-size: 14px; color: var(--wine); cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,.05); transition: .15s; }
+.kid-chip:hover { transform: translateY(-2px); background: var(--wineSoft); }
+.kid-chip.selected { background: var(--wine); color: #fff; border-color: var(--wine); transform: scale(1.05); }
+.kid-chip.used { opacity: .45; text-decoration: line-through; }
 
 /* ESTILOS PARA LA IMPRESIÓN DEL EXAMEN INSTITUCIONAL */
 .print-sheet{background:#fff;color:#000;padding:25px;max-width:800px;margin:auto;font-family:Arial,sans-serif}
@@ -53,6 +106,8 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+<!-- MathLive para Editor Gráfico WYSIWYG de Ecuaciones sin códigos -->
+<script defer src="https://unpkg.com/mathlive"></script>
 </head>
 <body>
 <header id="topBar">
@@ -60,7 +115,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
     <div class="brandmark">JBP</div>
     <div>
       <strong>UNIDAD EDUCATIVA JACINTO BURGOS PINARGOTE</strong>
-      <small>Plataforma de evaluaciones en línea · Nube Activa Firebase</small>
+      <small>Plataforma de evaluaciones en línea · Ing. Daniel Avellán</small>
     </div>
   </div>
   <div class="header-right">
@@ -74,11 +129,11 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
     <div>
       <div class="eyebrow">Sistema de evaluaciones • JBP</div>
       <h1>Exámenes sincronizados 100% en la nube en tiempo real.</h1>
-      <p>Administra evaluaciones con soporte para pegar imágenes (Ctrl+V) y barra de símbolos matemáticos y especiales visuales.</p>
+      <p>Administrador y profesor: **Ing. Daniel Avellán**. Plataforma con soporte para pegar imágenes (Ctrl+V), editor gráfico de ecuaciones y actividades didácticas interactivas para escuela.</p>
     </div>
     <div class="hero-art">
       <div class="circle">10/10</div>
-      <p>Nube Global · Imágenes por Portapapeles & Ecuaciones Visuales</p>
+      <p>Nube Global · Ecuaciones Visuales & Juegos Didácticos</p>
     </div>
   </section>
 
@@ -123,28 +178,41 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
         <div class="stack topgap">
           <div class="notice red"><b>Política de infracciones:</b> durante el examen, minimizar la ventana, cambiar de pestaña, perder el foco de la página o salir de pantalla completa provocará la anulación inmediata y una calificación de <b>0/10</b>.</div>
           <div class="tile"><b>⏱ Publicación de calificaciones</b><p>Al terminar la prueba, tu nota se guarda en la nube. Podrás consultarla haciendo clic en <b>"Mis calificaciones"</b> una vez que el docente las haya publicado oficialmente.</p></div>
-          <div class="tile"><b>📐 Gráficos y Ecuaciones</b><p>Los exámenes incluyen renderizado profesional de fórmulas matemáticas y diagramas ilustrativos.</p></div>
+          <div class="tile"><b>🧩 Actividades Interactivas y Ecuaciones</b><p>Los exámenes incluyen sopas de letras interactivas, gráficos para etiquetar partes y renderizado matemático profesional.</p></div>
           <div class="tile"><b>☁️ Sincronización Global</b><p>Cada intento y examen se almacena directamente en la base de datos en la nube de Firebase.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- VISTA DOCENTE -->
+  <!-- VISTA DOCENTE / ADMINISTRADOR -->
   <section id="teacherView" class="hidden">
     <div class="card" id="teacherAuth">
-      <h2 class="section-title" id="authTitle">Acceso de docentes</h2>
+      <h2 class="section-title" id="authTitle">Acceso de docentes y administradores</h2>
       <p class="hint" id="authSubtitle">Cada docente ingresa con su cuenta sincronizada en la nube para administrar exámenes desde cualquier computadora.</p>
       <div class="tabs" style="margin:15px 0">
         <button type="button" class="tab active" id="loginModeBtn">Iniciar sesión</button>
         <button type="button" class="tab" id="registerModeBtn">Crear cuenta docente</button>
+        <button type="button" class="tab" id="changePwdModeBtn">🔑 Cambiar contraseña</button>
       </div>
-      <div class="stack" style="max-width:480px">
-        <label class="field"><span>Nombre completo del docente</span><input id="teacherNameLogin" autocomplete="username" maxlength="100" placeholder="Ej. María López Zambrano"></label>
+      
+      <!-- FORMULARIO LOGIN / REGISTRO -->
+      <div id="standardAuthForm" class="stack" style="max-width:480px">
+        <label class="field"><span>Nombre completo del docente</span><input id="teacherNameLogin" autocomplete="username" maxlength="100" placeholder="Ej. Ing. Daniel Avellán"></label>
         <label class="field"><span>Contraseña personal (mínimo 8 caracteres)</span><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Mi contraseña personal"></label>
         <label class="field hidden" id="confirmPasswordField"><span>Confirmar contraseña</span><input id="confirmTeacherPassword" type="password" autocomplete="new-password" placeholder="Repetir contraseña"></label>
         <button class="btn" id="adminLoginBtn">Iniciar sesión</button>
       </div>
+
+      <!-- FORMULARIO CAMBIAR CONTRASEÑA ANTES DE ENTRAR -->
+      <div id="externalChangePwdForm" class="stack hidden" style="max-width:480px">
+        <label class="field"><span>Nombre completo del docente</span><input id="chgPwdName" maxlength="100" placeholder="Ej. Ing. Daniel Avellán"></label>
+        <label class="field"><span>Contraseña actual</span><input id="chgPwdCurrent" type="password" placeholder="Tu contraseña actual"></label>
+        <label class="field"><span>Nueva contraseña (mínimo 8 caracteres)</span><input id="chgPwdNew" type="password" placeholder="Nueva contraseña"></label>
+        <label class="field"><span>Confirmar nueva contraseña</span><input id="chgPwdConfirm" type="password" placeholder="Repetir nueva contraseña"></label>
+        <button class="btn" id="executeExternalChangePwdBtn">Actualizar contraseña en la nube</button>
+      </div>
+
       <div id="authMessage" class="topgap" aria-live="polite"></div>
       <p class="hint">Tus credenciales y exámenes se almacenan en la nube para que puedas ingresar desde cualquier lugar.</p>
     </div>
@@ -157,8 +225,9 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
           <p class="hint">Sincronización en tiempo real con Firebase Cloud.</p>
         </div>
         <div class="row">
-          <button class="btn light small" id="aiSettingsBtn">⚙️ Configurar API IA</button>
-          <button class="btn outline small" id="exportBackupBtn">Exportar respaldo JSON</button>
+          <button class="btn light small" id="openChangeMyPwdModalBtn">🔑 Mi contraseña</button>
+          <button class="btn light small" id="aiSettingsBtn">⚙️ API IA</button>
+          <button class="btn outline small" id="exportBackupBtn">Respaldo JSON</button>
           <button class="btn neutral small" id="logoutBtn">Cerrar sesión</button>
         </div>
       </div>
@@ -169,6 +238,7 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
         <button class="tab active" id="manageTab">Exámenes</button>
         <button class="tab" id="resultsTab">Resultados y Calificación</button>
         <button class="tab" id="rosterTab">Estudiantes</button>
+        <button class="tab" id="teachersAdminTab">🛡️ Docentes y Contraseñas</button>
       </div>
 
       <!-- PESTAÑA GESTIÓN DE EXÁMENES -->
@@ -184,20 +254,20 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
               <div class="form-grid">
                 <label class="field fullspan"><span>Título del examen</span><input id="examTitle" placeholder="Ej. Evaluación del segundo trimestre" required maxlength="120"></label>
                 <label class="field"><span>Nombre del profesor</span><input id="examTeacher" placeholder="Nombre del docente" required maxlength="100" readonly></label>
-                <label class="field"><span>Materia</span><input id="examSubject" placeholder="Ej. Matemáticas / Lengua" required maxlength="100"></label>
+                <label class="field"><span>Materia</span><input id="examSubject" placeholder="Ej. Matemáticas / Ciencias Naturales" required maxlength="100"></label>
                 <label class="field"><span>Nivel / Curso al que pertenece el examen</span><select id="examLevel" required></select></label>
                 <label class="field"><span>Paralelo</span><select id="examParallel" required></select></label>
                 <label class="field"><span>Fecha de inicio</span><input id="examDate" type="date" required></label>
                 <label class="field"><span>Hora de inicio</span><input id="examTime" type="time" required></label>
                 <label class="field"><span>Horas habilitado</span><input id="examHours" type="number" min="0.25" max="720" step="0.25" value="2" required></label>
-                <label class="field"><span>Segundos por pregunta</span><input id="examSeconds" type="number" min="5" max="3600" step="1" value="30" required></label>
+                <label class="field"><span>Segundos por pregunta</span><input id="examSeconds" type="number" min="5" max="3600" step="1" value="60" required></label>
               </div>
               <div class="divider" style="margin:5px 0"></div>
               <div class="row between">
                 <h3 style="margin:0">Banco de preguntas</h3>
                 <button class="btn light small" id="addQuestionBtn" type="button">+ Añadir pregunta</button>
               </div>
-              <p class="hint" style="margin:0">Puedes pegar imágenes (Ctrl+V) y utilizar los botones de ecuaciones y símbolos especiales.</p>
+              <p class="hint" style="margin:0">Elige entre preguntas tradicionales, <b>Sopa de letras</b> o <b>Nombrar partes de un gráfico</b> para niños de escuela.</p>
               <div id="questionEditor"></div>
               <button type="submit" class="btn" id="saveExamBtn">Guardar examen en la nube</button>
               <div id="editorMessage" aria-live="polite"></div>
@@ -261,11 +331,120 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
           <div id="rosterMessage" class="topgap"></div>
         </div>
       </section>
+
+      <!-- PESTAÑA ADMINISTRADOR: DOCENTES Y CONTRASEÑAS -->
+      <section id="teachersAdminView" class="hidden">
+        <div class="card">
+          <div class="row between">
+            <div>
+              <h3 style="margin:0">Administración de Docentes y Contraseñas</h3>
+              <p class="hint">Visualiza las contraseñas registradas, asígnales una clave nueva si un docente la olvidó o elimina cuentas.</p>
+            </div>
+            <button class="btn light small" id="refreshTeachersBtn">🔄 Actualizar lista</button>
+          </div>
+
+          <div id="adminVerifyBox" class="notice topgap">
+            <b>Acceso de Administrador (Ing. Daniel Avellán):</b> Ingresa la clave maestra de administración para desbloquear y ver las contraseñas de todos los docentes.
+            <div class="row topgap">
+              <input type="password" id="masterAdminKeyInput" placeholder="Clave maestra de administrador" style="padding:9px 12px;border:1px solid #d6d9e1;border-radius:9px;max-width:260px">
+              <button type="button" class="btn small" id="unlockAdminBtn">Desbloquear contraseñas</button>
+            </div>
+          </div>
+
+          <div id="teachersAdminContent" class="hidden topgap">
+            <div class="row between" style="margin-bottom:12px">
+              <span class="tag good">🔓 Modo Administrador Desbloqueado</span>
+              <button type="button" class="btn neutral xs" id="lockAdminBtn">🔒 Bloquear vista</button>
+            </div>
+            <div class="tablewrap" id="teachersAdminTable"></div>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
 
-  <div class="footer">Unidad Educativa Particular “Jacinto Burgos Pinargote” · Nube Activa Firebase Cloud</div>
+  <div class="footer">Unidad Educativa Particular “Jacinto Burgos Pinargote” · Administrador: Ing. Daniel Avellán</div>
 </main>
+
+<!-- MODAL FLOTANTE: EDITOR GRÁFICO DE ECUACIONES (ESTILO WORD / WYSIWYG) -->
+<div id="visualMathModal" class="modal-backdrop hidden" style="z-index:350">
+  <div class="modal-card" style="max-width:680px">
+    <div class="row between">
+      <div>
+        <span class="tag good">Editor Gráfico Visual</span>
+        <h3 style="margin:6px 0 2px">Constructor Visual de Ecuaciones</h3>
+        <p class="hint" style="margin:0">Haz clic en los botones gráficos para armar tu ecuación sin escribir códigos.</p>
+      </div>
+      <button type="button" class="btn neutral small" id="closeVisualMathModal">Cerrar ✕</button>
+    </div>
+
+    <div class="topgap">
+      <math-field id="visualMathField" virtual-keyboard-mode="manual"></math-field>
+    </div>
+
+    <div class="math-palette-tabs">
+      <span style="font-size:12px;font-weight:800;color:var(--wine)">Estructuras y símbolos rápidos:</span>
+    </div>
+    <div class="math-palette-grid">
+      <button type="button" class="math-key" data-latex="\frac{#0}{#?}"><span>𝑎 / 𝑏</span><small>Fracción</small></button>
+      <button type="button" class="math-key" data-latex="\sqrt{#0}"><span>√𝑥</span><small>Raíz cuad.</small></button>
+      <button type="button" class="math-key" data-latex="\sqrt[#?]{#0}"><span>ⁿ√𝑥</span><small>Raíz n</small></button>
+      <button type="button" class="math-key" data-latex="#0^{#?}"><span>𝑥ⁿ</span><small>Exponente</small></button>
+      <button type="button" class="math-key" data-latex="#0_{#?}"><span>𝑥ₙ</span><small>Subíndice</small></button>
+      <button type="button" class="math-key" data-latex="\left(#0\right)"><span>( 𝑥 )</span><small>Paréntesis</small></button>
+      <button type="button" class="math-key" data-latex="\left|#0\right|"><span>| 𝑥 |</span><small>Val. Abs.</small></button>
+      <button type="button" class="math-key" data-latex="\pm"><span>±</span><small>Más/Menos</small></button>
+      <button type="button" class="math-key" data-latex="\times"><span>×</span><small>Por</small></button>
+      <button type="button" class="math-key" data-latex="\div"><span>÷</span><small>Dividir</small></button>
+      <button type="button" class="math-key" data-latex="\neq"><span>≠</span><small>Distinto</small></button>
+      <button type="button" class="math-key" data-latex="\leq"><span>≤</span><small>Menor ig.</small></button>
+      <button type="button" class="math-key" data-latex="\geq"><span>≥</span><small>Mayor ig.</small></button>
+      <button type="button" class="math-key" data-latex="\approx"><span>≈</span><small>Aprox.</small></button>
+      <button type="button" class="math-key" data-latex="\pi"><span>π</span><small>Pi</small></button>
+      <button type="button" class="math-key" data-latex="\theta"><span>θ</span><small>Theta</small></button>
+      <button type="button" class="math-key" data-latex="\alpha"><span>α</span><small>Alfa</small></button>
+      <button type="button" class="math-key" data-latex="\beta"><span>β</span><small>Beta</small></button>
+      <button type="button" class="math-key" data-latex="\Delta"><span>Δ</span><small>Delta</small></button>
+      <button type="button" class="math-key" data-latex="\infty"><span>∞</span><small>Infinito</small></button>
+      <button type="button" class="math-key" data-latex="\sum_{i=1}^{n}"><span>∑</span><small>Sumatoria</small></button>
+      <button type="button" class="math-key" data-latex="\int_{a}^{b}"><span>∫</span><small>Integral</small></button>
+      <button type="button" class="math-key" data-latex="\lim_{x\to \infty}"><span>lim</span><small>Límite</small></button>
+      <button type="button" class="math-key" data-latex="\vec{#0}"><span>𝑣⃗</span><small>Vector</small></button>
+      <button type="button" class="math-key" data-latex="\sin\left(#0\right)"><span>sin</span><small>Seno</small></button>
+      <button type="button" class="math-key" data-latex="\cos\left(#0\right)"><span>cos</span><small>Coseno</small></button>
+      <button type="button" class="math-key" data-latex="\tan\left(#0\right)"><span>tan</span><small>Tangente</small></button>
+      <button type="button" class="math-key" data-latex="\log_{#?}\left(#0\right)"><span>log</span><small>Logaritmo</small></button>
+      <button type="button" class="math-key" data-latex="\begin{pmatrix}#0 & #? \\ #? & #?\end{pmatrix}"><span>[ ⋮ ]</span><small>Matriz 2x2</small></button>
+      <button type="button" class="math-key" data-latex="^\circ"><span>°</span><small>Grados</small></button>
+    </div>
+
+    <div class="row between topgap">
+      <div class="row">
+        <button type="button" class="btn neutral small" id="clearVisualMathBtn">Limpiar lienzo</button>
+        <button type="button" class="btn light small" id="toggleMathKeyboardBtn">⌨️ Teclado completo</button>
+      </div>
+      <button type="button" class="btn" id="insertVisualMathBtn">✓ Insertar ecuación en el campo</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CAMBIAR MI CONTRASEÑA (DENTRO DEL PANEL) -->
+<div id="changeMyPwdModal" class="modal-backdrop hidden">
+  <div class="modal-card" style="max-width:460px">
+    <div class="row between">
+      <h3 style="margin:0">🔑 Cambiar mi contraseña</h3>
+      <button type="button" class="btn neutral small" id="closeChangeMyPwdModal">✕</button>
+    </div>
+    <p class="hint topgap">Actualiza tu clave personal de acceso docente en la nube.</p>
+    <div class="stack topgap">
+      <label class="field"><span>Contraseña actual</span><input id="modalCurrentPwd" type="password" placeholder="Contraseña actual"></label>
+      <label class="field"><span>Nueva contraseña (mínimo 8 caracteres)</span><input id="modalNewPwd" type="password" placeholder="Nueva contraseña"></label>
+      <label class="field"><span>Confirmar nueva contraseña</span><input id="modalConfirmNewPwd" type="password" placeholder="Repetir nueva contraseña"></label>
+      <button type="button" class="btn" id="saveModalNewPwdBtn">Guardar nueva contraseña</button>
+      <div id="modalChangePwdMsg"></div>
+    </div>
+  </div>
+</div>
 
 <!-- MODAL "MIS CALIFICACIONES" PARA ESTUDIANTES -->
 <div id="myGradesModal" class="modal-backdrop hidden">
@@ -402,6 +581,8 @@ const LEVELS=["Primero de Básica","Segundo de Básica","Tercero de Básica","Cu
 const parallelOptions=['GENERAL','A','B','C','D','E','F'];
 const MATH_COMBOS = ['A1','A2','A3','A4','B1','B2','B3','B4','C1','C2','C3','C4','D1','D2','D3','D4'];
 
+const MASTER_ADMIN_KEY = 'admin2026';
+
 const COL_EXAMS = 'jbp_exams';
 const COL_ATTEMPTS = 'jbp_attempts';
 const COL_TEACHERS = 'jbp_teachers';
@@ -417,6 +598,7 @@ let customStudents = [];
 let students = INITIAL_ROSTER.slice();
 
 let currentTeacher = null;
+let adminUnlocked = false;
 let authMode = 'login';
 let editingId = null;
 let editingQuestions = [];
@@ -424,6 +606,11 @@ let live = null;
 let interval = null;
 let finalizing = false;
 let reviewingAttemptId = null;
+
+// Variables para el Editor Gráfico Flotante de Ecuaciones
+let activeMathTargetInput = null;
+let activeMathCursorStart = 0;
+let activeMathCursorEnd = 0;
 
 function setCloudStatus(ok, msg) {
   const pill = $('cloudStatusPill');
@@ -476,6 +663,9 @@ async function initCloud() {
 
     db.collection(COL_TEACHERS).onSnapshot(snap => {
       teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      if (currentTeacher && adminUnlocked) {
+        renderTeachersAdminTable();
+      }
     });
 
     db.collection(COL_STUDENTS).onSnapshot(snap => {
@@ -519,6 +709,21 @@ const formatDate=ms=>new Date(ms).toLocaleString('es-EC',{dateStyle:'medium',tim
 const status=e=>Date.now()<startAt(e)?'Próximamente':Date.now()>=endAt(e)?'Finalizado':'Disponible';
 const formatClock=s=>{s=Math.max(0,Math.ceil(s));const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;return h>0?`${h}:${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`};
 const showMessage=(id,msg,type='red')=>{const el=$(id); if(el) el.innerHTML=`<div class="notice ${type}">${esc(msg)}</div>`;};
+
+function renderMathSafe(el) {
+  if (!el) return;
+  try {
+    if (typeof renderMathInElement === 'function') {
+      renderMathInElement(el, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+      });
+    }
+  } catch (e) {}
+}
 
 function getGeminiApiKey() { return localStorage.getItem('jbp_gemini_api_key') || ''; }
 
@@ -759,29 +964,44 @@ function renderStudentGrades(cedula) {
   container.innerHTML = html;
 }
 
+// ==========================================
+// 3. AUTENTICACIÓN, CAMBIO DE CONTRASEÑA Y ADMIN
+// ==========================================
 function authReady(){
   if($('loginModeBtn')) $('loginModeBtn').classList.toggle('active', authMode === 'login');
   if($('registerModeBtn')) $('registerModeBtn').classList.toggle('active', authMode === 'register');
+  if($('changePwdModeBtn')) $('changePwdModeBtn').classList.toggle('active', authMode === 'changePwd');
+
+  const isChangeMode = (authMode === 'changePwd');
+  if($('standardAuthForm')) $('standardAuthForm').classList.toggle('hidden', isChangeMode);
+  if($('externalChangePwdForm')) $('externalChangePwdForm').classList.toggle('hidden', !isChangeMode);
+
   if($('confirmPasswordField')) $('confirmPasswordField').classList.toggle('hidden', authMode !== 'register');
-  if($('authTitle')) $('authTitle').textContent = authMode === 'register' ? 'Crear cuenta docente en la nube' : 'Acceso de docentes';
-  if($('authSubtitle')) $('authSubtitle').textContent = authMode === 'register' ? 'Registra tu nombre y contraseña en la nube.' : 'Ingresa con tu cuenta registrada.';
+  if($('authTitle')) {
+    $('authTitle').textContent = authMode === 'register' ? 'Crear cuenta docente en la nube' : isChangeMode ? 'Cambiar contraseña de docente' : 'Acceso de docentes y administradores';
+  }
+  if($('authSubtitle')) {
+    $('authSubtitle').textContent = authMode === 'register' ? 'Registra tu nombre y contraseña en la nube.' : isChangeMode ? 'Ingresa tu nombre, contraseña actual y tu nueva contraseña.' : 'Ingresa con tu cuenta registrada.';
+  }
   if($('adminLoginBtn')) $('adminLoginBtn').textContent = authMode === 'register' ? 'Crear mi cuenta en la nube' : 'Iniciar sesión';
 }
 
 function setAuthMode(mode){ authMode = mode; if($('authMessage')) $('authMessage').innerHTML = ''; authReady(); }
 if($('loginModeBtn')) $('loginModeBtn').onclick = () => setAuthMode('login');
 if($('registerModeBtn')) $('registerModeBtn').onclick = () => setAuthMode('register');
+if($('changePwdModeBtn')) $('changePwdModeBtn').onclick = () => setAuthMode('changePwd');
 
 function renderTeacher(){
   authReady();
   if($('teacherAuth')) $('teacherAuth').classList.toggle('hidden', !!currentTeacher);
   if($('teacherPanel')) $('teacherPanel').classList.toggle('hidden', !currentTeacher);
   if(currentTeacher){
-    if($('loggedTeacherLabel')) $('loggedTeacherLabel').textContent = 'Docente: ' + currentTeacher.name;
+    if($('loggedTeacherLabel')) $('loggedTeacherLabel').textContent = 'Docente / Admin: ' + currentTeacher.name;
     if($('examTeacher')) $('examTeacher').value = currentTeacher.name;
     renderStats();
     renderExamList();
     renderResults();
+    if(adminUnlocked) renderTeachersAdminTable();
   }
 }
 
@@ -792,11 +1012,11 @@ if($('adminLoginBtn')) {
     if(name.split(' ').length < 2){ showMessage('authMessage', 'Escribe tus nombres y apellidos completos.'); return; }
     try {
       if(authMode === 'register'){
-        if(password.length < 8){ showMessage('authMessage', 'Mínimo 8 caracteres.'); return; }
+        if(password.length < 8){ showMessage('authMessage', 'La contraseña debe tener mínimo 8 caracteres.'); return; }
         if(password !== $('confirmTeacherPassword').value){ showMessage('authMessage', 'Las contraseñas no coinciden.'); return; }
         if(teachers.some(t => normName(t.name) === normName(name))){ showMessage('authMessage', 'El docente ya existe.'); return; }
         const id = uid(), salt = uid(), passwordHash = await hashText(salt + '|' + password);
-        const teacher = { id, name, salt, passwordHash, createdAt: Date.now() };
+        const teacher = { id, name, salt, passwordHash, plainPassword: password, createdAt: Date.now() };
         await db.collection(COL_TEACHERS).doc(id).set(teacher);
         currentTeacher = teacher;
       } else {
@@ -807,8 +1027,12 @@ if($('adminLoginBtn')) {
           teacher = teachers.find(t => normName(t.name) === normName(name));
         }
         if(!teacher || await hashText(teacher.salt + '|' + password) !== teacher.passwordHash){
-          showMessage('authMessage', 'Datos incorrectos.');
+          showMessage('authMessage', 'Nombre o contraseña incorrectos.');
           return;
+        }
+        if(!teacher.plainPassword) {
+          await db.collection(COL_TEACHERS).doc(teacher.id).update({ plainPassword: password }).catch(()=>{});
+          teacher.plainPassword = password;
         }
         currentTeacher = teacher;
       }
@@ -823,19 +1047,224 @@ if($('adminLoginBtn')) {
   };
 }
 
-if($('logoutBtn')) $('logoutBtn').onclick = () => { currentTeacher = null; resetEditor(); renderTeacher(); };
+if($('executeExternalChangePwdBtn')) {
+  $('executeExternalChangePwdBtn').onclick = async () => {
+    if(!cloudReady || !db) { showMessage('authMessage', 'Esperando conexión con la nube...'); return; }
+    const name = $('chgPwdName').value.trim().replace(/\s+/g,' ');
+    const currentPwd = $('chgPwdCurrent').value;
+    const newPwd = $('chgPwdNew').value;
+    const confirmPwd = $('chgPwdConfirm').value;
+
+    if(name.split(' ').length < 2) { showMessage('authMessage', 'Escribe tus nombres y apellidos completos.'); return; }
+    if(newPwd.length < 8) { showMessage('authMessage', 'La nueva contraseña debe tener mínimo 8 caracteres.'); return; }
+    if(newPwd !== confirmPwd) { showMessage('authMessage', 'Las contraseñas nuevas no coinciden.'); return; }
+
+    try {
+      let teacher = teachers.find(t => normName(t.name) === normName(name));
+      if(!teacher) {
+        const snap = await db.collection(COL_TEACHERS).get();
+        teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        teacher = teachers.find(t => normName(t.name) === normName(name));
+      }
+      if(!teacher || await hashText(teacher.salt + '|' + currentPwd) !== teacher.passwordHash) {
+        showMessage('authMessage', 'El nombre del docente o la contraseña actual son incorrectos.');
+        return;
+      }
+      const newSalt = uid();
+      const newHash = await hashText(newSalt + '|' + newPwd);
+      await db.collection(COL_TEACHERS).doc(teacher.id).update({
+        salt: newSalt,
+        passwordHash: newHash,
+        plainPassword: newPwd,
+        updatedAt: Date.now()
+      });
+      $('chgPwdCurrent').value = ''; $('chgPwdNew').value = ''; $('chgPwdConfirm').value = '';
+      showMessage('authMessage', '¡Contraseña actualizada correctamente! Ya puedes iniciar sesión con tu nueva clave.', 'good');
+    } catch (e) {
+      showMessage('authMessage', 'Error al actualizar: ' + e.message);
+    }
+  };
+}
+
+if($('openChangeMyPwdModalBtn')) {
+  $('openChangeMyPwdModalBtn').onclick = () => {
+    $('modalCurrentPwd').value = '';
+    $('modalNewPwd').value = '';
+    $('modalConfirmNewPwd').value = '';
+    $('modalChangePwdMsg').innerHTML = '';
+    $('changeMyPwdModal').classList.remove('hidden');
+  };
+}
+if($('closeChangeMyPwdModal')) {
+  $('closeChangeMyPwdModal').onclick = () => $('changeMyPwdModal').classList.add('hidden');
+}
+if($('saveModalNewPwdBtn')) {
+  $('saveModalNewPwdBtn').onclick = async () => {
+    if(!currentTeacher || !cloudReady || !db) return;
+    const cur = $('modalCurrentPwd').value;
+    const nw = $('modalNewPwd').value;
+    const cnf = $('modalConfirmNewPwd').value;
+
+    if(nw.length < 8) { showMessage('modalChangePwdMsg', 'Mínimo 8 caracteres.'); return; }
+    if(nw !== cnf) { showMessage('modalChangePwdMsg', 'Las nuevas contraseñas no coinciden.'); return; }
+
+    try {
+      const checkHash = await hashText(currentTeacher.salt + '|' + cur);
+      if(checkHash !== currentTeacher.passwordHash) {
+        showMessage('modalChangePwdMsg', 'La contraseña actual es incorrecta.');
+        return;
+      }
+      const newSalt = uid();
+      const newHash = await hashText(newSalt + '|' + nw);
+      await db.collection(COL_TEACHERS).doc(currentTeacher.id).update({
+        salt: newSalt,
+        passwordHash: newHash,
+        plainPassword: nw,
+        updatedAt: Date.now()
+      });
+      currentTeacher.salt = newSalt;
+      currentTeacher.passwordHash = newHash;
+      currentTeacher.plainPassword = nw;
+      showMessage('modalChangePwdMsg', '✓ Tu contraseña ha sido actualizada en la nube.', 'good');
+      $('modalCurrentPwd').value = ''; $('modalNewPwd').value = ''; $('modalConfirmNewPwd').value = '';
+    } catch (e) {
+      showMessage('modalChangePwdMsg', 'Error: ' + e.message);
+    }
+  };
+}
+
+if($('unlockAdminBtn')) {
+  $('unlockAdminBtn').onclick = () => {
+    const val = $('masterAdminKeyInput').value.trim();
+    if(val === MASTER_ADMIN_KEY || (currentTeacher && val === currentTeacher.plainPassword)) {
+      adminUnlocked = true;
+      $('masterAdminKeyInput').value = '';
+      $('adminVerifyBox').classList.add('hidden');
+      $('teachersAdminContent').classList.remove('hidden');
+      renderTeachersAdminTable();
+    } else {
+      alert('Clave maestra de administrador incorrecta.');
+    }
+  };
+}
+if($('lockAdminBtn')) {
+  $('lockAdminBtn').onclick = () => {
+    adminUnlocked = false;
+    $('adminVerifyBox').classList.remove('hidden');
+    $('teachersAdminContent').classList.add('hidden');
+  };
+}
+if($('refreshTeachersBtn')) {
+  $('refreshTeachersBtn').onclick = async () => {
+    if(!cloudReady || !db) return;
+    const snap = await db.collection(COL_TEACHERS).get();
+    teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    if(adminUnlocked) renderTeachersAdminTable();
+  };
+}
+
+function renderTeachersAdminTable() {
+  const container = $('teachersAdminTable');
+  if(!container) return;
+  if(!teachers.length) {
+    container.innerHTML = '<div class="empty">No hay docentes registrados en la nube.</div>';
+    return;
+  }
+  const sorted = [...teachers].sort((a,b) => a.name.localeCompare(b.name));
+  container.innerHTML = `
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Docente</th>
+          <th>Contraseña Registrada</th>
+          <th>Exámenes Creados</th>
+          <th>Acciones de Soporte</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${sorted.map(t => {
+          const countExams = exams.filter(e => e.ownerId === t.id).length;
+          const pwdDisplay = t.plainPassword
+            ? `<span class="pwd-badge">${esc(t.plainPassword)}</span>`
+            : `<span class="tag warn">Cifrada (Asigna nueva clave si la olvidó)</span>`;
+          return `
+            <tr>
+              <td><b>${esc(t.name)}</b></td>
+              <td>${pwdDisplay}</td>
+              <td>${countExams} examen(es)</td>
+              <td>
+                <div class="row">
+                  <button type="button" class="btn light xs" onclick="adminResetTeacherPwd('${esc(t.id)}', '${esc(t.name)}')">✏️ Asignar nueva clave</button>
+                  <button type="button" class="btn danger xs" onclick="adminDeleteTeacher('${esc(t.id)}', '${esc(t.name)}')">🗑️ Borrar cuenta / clave</button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+window.adminResetTeacherPwd = async (teacherId, teacherName) => {
+  if(!cloudReady || !db) return;
+  const newPwd = prompt(`Escribe la nueva contraseña para ${teacherName} (mínimo 8 caracteres):`);
+  if(newPwd === null) return;
+  if(newPwd.trim().length < 8) {
+    alert('La contraseña debe tener al menos 8 caracteres.');
+    return;
+  }
+  try {
+    const cleanPwd = newPwd.trim();
+    const newSalt = uid();
+    const newHash = await hashText(newSalt + '|' + cleanPwd);
+    await db.collection(COL_TEACHERS).doc(teacherId).update({
+      salt: newSalt,
+      passwordHash: newHash,
+      plainPassword: cleanPwd,
+      updatedAt: Date.now()
+    });
+    if(currentTeacher && currentTeacher.id === teacherId) {
+      currentTeacher.salt = newSalt;
+      currentTeacher.passwordHash = newHash;
+      currentTeacher.plainPassword = cleanPwd;
+    }
+    alert(`✓ Contraseña actualizada para ${teacherName}.\nNueva clave: ${cleanPwd}`);
+  } catch (e) {
+    alert('Error al actualizar contraseña: ' + e.message);
+  }
+};
+
+window.adminDeleteTeacher = async (teacherId, teacherName) => {
+  if(!cloudReady || !db) return;
+  if(!confirm(`¿Estás seguro de borrar la cuenta y contraseña de "${teacherName}"?\n\nSi el docente olvidó su clave y la borras, podrá volver a registrarse desde "Crear cuenta docente" con su mismo nombre.`)) return;
+  try {
+    await db.collection(COL_TEACHERS).doc(teacherId).delete();
+    alert(`✓ Cuenta de ${teacherName} eliminada.`);
+  } catch (e) {
+    alert('Error al eliminar: ' + e.message);
+  }
+};
+
+if($('logoutBtn')) $('logoutBtn').onclick = () => { currentTeacher = null; adminUnlocked = false; resetEditor(); renderTeacher(); };
 if($('manageTab')) $('manageTab').onclick = () => setTeacherTab('manage');
 if($('resultsTab')) $('resultsTab').onclick = () => setTeacherTab('results');
 if($('rosterTab')) $('rosterTab').onclick = () => setTeacherTab('roster');
+if($('teachersAdminTab')) $('teachersAdminTab').onclick = () => setTeacherTab('teachersAdmin');
 
 function setTeacherTab(type){
   if($('manageView')) $('manageView').classList.toggle('hidden', type !== 'manage');
   if($('resultsView')) $('resultsView').classList.toggle('hidden', type !== 'results');
   if($('rosterView')) $('rosterView').classList.toggle('hidden', type !== 'roster');
+  if($('teachersAdminView')) $('teachersAdminView').classList.toggle('hidden', type !== 'teachersAdmin');
+
   if($('manageTab')) $('manageTab').classList.toggle('active', type === 'manage');
   if($('resultsTab')) $('resultsTab').classList.toggle('active', type === 'results');
   if($('rosterTab')) $('rosterTab').classList.toggle('active', type === 'roster');
+  if($('teachersAdminTab')) $('teachersAdminTab').classList.toggle('active', type === 'teachersAdmin');
+
   if(type === 'roster') renderRoster();
+  if(type === 'teachersAdmin' && adminUnlocked) renderTeachersAdminTable();
 }
 
 function renderStats(){
@@ -865,8 +1294,189 @@ if($('clearAiKeyBtn')) {
   $('clearAiKeyBtn').onclick = () => { localStorage.removeItem('jbp_gemini_api_key'); if($('geminiApiKeyInput')) $('geminiApiKeyInput').value=''; showMessage('aiKeyMsg','Restablecido.','good'); };
 }
 
+// ==========================================
+// 4. EDITOR GRÁFICO FLOTANTE DE ECUACIONES
+// ==========================================
+window.openVisualMathEditor = (targetEl) => {
+  if (!targetEl) return;
+  activeMathTargetInput = targetEl;
+  activeMathCursorStart = targetEl.selectionStart || targetEl.value.length;
+  activeMathCursorEnd = targetEl.selectionEnd || targetEl.value.length;
+
+  const mf = $('visualMathField');
+  if (mf) {
+    mf.value = '';
+    setTimeout(() => {
+      mf.focus();
+      try { mf.executeCommand('showVirtualKeyboard'); } catch (e) {}
+    }, 80);
+  }
+  $('visualMathModal').classList.remove('hidden');
+};
+
+if($('closeVisualMathModal')) {
+  $('closeVisualMathModal').onclick = () => {
+    try { $('visualMathField')?.executeCommand('hideVirtualKeyboard'); } catch (e) {}
+    $('visualMathModal').classList.add('hidden');
+    activeMathTargetInput = null;
+  };
+}
+
+if($('clearVisualMathBtn')) {
+  $('clearVisualMathBtn').onclick = () => {
+    const mf = $('visualMathField');
+    if (mf) { mf.value = ''; mf.focus(); }
+  };
+}
+
+if($('toggleMathKeyboardBtn')) {
+  $('toggleMathKeyboardBtn').onclick = () => {
+    const mf = $('visualMathField');
+    if (mf) {
+      mf.focus();
+      try { mf.executeCommand('toggleVirtualKeyboard'); } catch (e) {}
+    }
+  };
+}
+
+document.querySelectorAll('.math-key').forEach(btn => {
+  btn.onclick = () => {
+    const mf = $('visualMathField');
+    if (!mf) return;
+    const latex = btn.getAttribute('data-latex');
+    mf.focus();
+    try {
+      mf.insert(latex, { selectionMode: 'placeholder' });
+    } catch (e) {
+      mf.value += latex;
+    }
+  };
+});
+
+if($('insertVisualMathBtn')) {
+  $('insertVisualMathBtn').onclick = () => {
+    const mf = $('visualMathField');
+    if (!mf || !activeMathTargetInput) return;
+    const latexVal = mf.value.trim();
+    if (!latexVal) {
+      $('visualMathModal').classList.add('hidden');
+      return;
+    }
+    const wrapped = `$${latexVal}$`;
+    const val = activeMathTargetInput.value;
+    activeMathTargetInput.value = val.substring(0, activeMathCursorStart) + wrapped + val.substring(activeMathCursorEnd);
+    activeMathTargetInput.dispatchEvent(new Event('input', { bubbles: true }));
+    activeMathTargetInput.focus();
+    const newPos = activeMathCursorStart + wrapped.length;
+    activeMathTargetInput.selectionStart = activeMathTargetInput.selectionEnd = newPos;
+
+    try { mf.executeCommand('hideVirtualKeyboard'); } catch (e) {}
+    $('visualMathModal').classList.add('hidden');
+    activeMathTargetInput = null;
+  };
+}
+
+function updateLiveMathPreview(inputEl) {
+  if (!inputEl) return;
+  const wrapper = inputEl.closest('.math-field-wrapper');
+  if (!wrapper) return;
+  const prev = wrapper.querySelector('.live-math-preview');
+  if (!prev) return;
+  const txt = inputEl.value.trim();
+  if (!txt || !txt.includes('$')) {
+    prev.classList.add('hidden');
+    return;
+  }
+  prev.classList.remove('hidden');
+  prev.innerHTML = `<span style="font-size:10px;font-weight:800;color:var(--wine);margin-right:4px">Vista previa:</span> <span>${esc(txt)}</span>`;
+  renderMathSafe(prev);
+}
+
+// ==========================================
+// 5. MOTOR DE SOPA DE LETRAS INTERACTIVA
+// ==========================================
+function parseWordsList(raw) {
+  return String(raw || '')
+    .split(/[\n,;]+/)
+    .map(w => w.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-ZÑ]/g, ''))
+    .filter(w => w.length >= 2 && w.length <= 14);
+}
+
+function buildWordSearchGrid(wordsInput, size = 10) {
+  const words = [...new Set(parseWordsList(wordsInput))];
+  const gridSize = Math.max(8, Math.min(14, Number(size) || 10));
+  const grid = Array.from({ length: gridSize }, () => Array(gridSize).fill(''));
+  const placed = [];
+
+  // Direcciones amigables para niños de escuela (horizontal, vertical y diagonal hacia abajo)
+  const dirs = [
+    [0, 1],   // derecha
+    [1, 0],   // abajo
+    [1, 1],   // diagonal abajo-derecha
+    [0, -1],  // izquierda
+    [-1, 0]   // arriba
+  ];
+
+  const sortedWords = [...words].sort((a, b) => b.length - a.length);
+  for (const w of sortedWords) {
+    if (w.length > gridSize) continue;
+    let ok = false;
+    for (let attempt = 0; attempt < 150 && !ok; attempt++) {
+      const [dr, dc] = dirs[Math.floor(Math.random() * dirs.length)];
+      const r0 = Math.floor(Math.random() * gridSize);
+      const c0 = Math.floor(Math.random() * gridSize);
+      const rEnd = r0 + dr * (w.length - 1);
+      const cEnd = c0 + dc * (w.length - 1);
+      if (rEnd < 0 || rEnd >= gridSize || cEnd < 0 || cEnd >= gridSize) continue;
+
+      let fits = true;
+      for (let k = 0; k < w.length; k++) {
+        const cell = grid[r0 + dr * k][c0 + dc * k];
+        if (cell !== '' && cell !== w[k]) { fits = false; break; }
+      }
+      if (fits) {
+        const coords = [];
+        for (let k = 0; k < w.length; k++) {
+          const rr = r0 + dr * k, cc = c0 + dc * k;
+          grid[rr][cc] = w[k];
+          coords.push(`${rr},${cc}`);
+        }
+        placed.push({ word: w, coords });
+        ok = true;
+      }
+    }
+  }
+
+  const alphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+  for (let r = 0; r < gridSize; r++) {
+    for (let c = 0; c < gridSize; c++) {
+      if (grid[r][c] === '') {
+        grid[r][c] = alphabet[Math.floor(Math.random() * alphabet.length)];
+      }
+    }
+  }
+  return { gridSize, grid, placed };
+}
+
+// ==========================================
+// 6. BANCO DE PREGUNTAS (INCLUYE SOPA DE LETRAS Y PARTES DE GRÁFICO)
+// ==========================================
 function defaultQuestionObj(type='multiple'){
-  return {type, text:'', imageUrl:'', options:['','','',''], correct:0, rubric:'', gradingMode:'ai', procedures:['','','',''], correctCombo:'A1', requireWrittenProc:false};
+  return {
+    type,
+    text: '',
+    imageUrl: '',
+    options: ['','','',''],
+    correct: 0,
+    rubric: '',
+    gradingMode: 'ai',
+    procedures: ['','','',''],
+    correctCombo: 'A1',
+    requireWrittenProc: false,
+    wordsRaw: '',
+    gridSize: 10,
+    imageLabels: []
+  };
 }
 
 function resetEditor(){
@@ -877,7 +1487,7 @@ function resetEditor(){
   if($('examLevel')) $('examLevel').value = ''; 
   if($('examParallel')) $('examParallel').value = 'GENERAL'; 
   if($('examHours')) $('examHours').value = 2; 
-  if($('examSeconds')) $('examSeconds').value = 30;
+  if($('examSeconds')) $('examSeconds').value = 60;
   if($('editorTitle')) $('editorTitle').textContent = 'Crear examen'; 
   if($('saveExamBtn')) $('saveExamBtn').textContent = 'Guardar examen en la nube';
   if($('newExamBtn')) $('newExamBtn').classList.add('hidden'); 
@@ -887,39 +1497,173 @@ function resetEditor(){
 
 function addQuestion(q=defaultQuestionObj('multiple')){
   editingQuestions.push({
-    type:q.type||'multiple', text:q.text||'', imageUrl:q.imageUrl||'', options:Array.isArray(q.options)?[...q.options]:['','','',''],
-    correct:Number(q.correct??0), rubric:q.rubric||'', gradingMode:q.gradingMode||'ai',
-    procedures:Array.isArray(q.procedures)?[...q.procedures]:['','','',''], correctCombo:q.correctCombo||'A1', requireWrittenProc:Boolean(q.requireWrittenProc)
+    type: q.type||'multiple',
+    text: q.text||'',
+    imageUrl: q.imageUrl||'',
+    options: Array.isArray(q.options)?[...q.options]:['','','',''],
+    correct: Number(q.correct??0),
+    rubric: q.rubric||'',
+    gradingMode: q.gradingMode||'ai',
+    procedures: Array.isArray(q.procedures)?[...q.procedures]:['','','',''],
+    correctCombo: q.correctCombo||'A1',
+    requireWrittenProc: Boolean(q.requireWrittenProc),
+    wordsRaw: q.wordsRaw || (Array.isArray(q.words) ? q.words.join(', ') : ''),
+    gridSize: Number(q.gridSize || 10),
+    imageLabels: Array.isArray(q.imageLabels) ? JSON.parse(JSON.stringify(q.imageLabels)) : []
   });
   renderQuestionEditor();
 }
 
 function syncQuestions(){
   const boxes=[...document.querySelectorAll('#questionEditor [data-q]')];
-  editingQuestions=boxes.map(box=>{
-    const type=box.querySelector('[data-type]').value, text=box.querySelector('[data-text]').value, imageUrl=box.querySelector('[data-image-preview]').src || box.querySelector('[data-image-input]').value.trim();
+  editingQuestions=boxes.map((box, idx)=>{
+    const prev = editingQuestions[idx] || defaultQuestionObj('multiple');
+    const type=box.querySelector('[data-type]').value;
+    const text=box.querySelector('[data-text]').value;
+    const imgPrev = box.querySelector('[data-image-preview]');
+    const imgInp = box.querySelector('[data-image-input]');
+    const imageUrl = (imgPrev && imgPrev.getAttribute('src')) || (imgInp ? imgInp.value.trim() : '');
+
     if(type==='open'){
       return {type:'open', text, imageUrl, rubric:box.querySelector('[data-rubric]').value, gradingMode:box.querySelector('[data-grading-mode]').value};
     } else if(type==='math_combo'){
       return {type:'math_combo', text, imageUrl, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), procedures:[...box.querySelectorAll('[data-proc]')].map(x=>x.value), correctCombo:box.querySelector('[data-combo]').value, requireWrittenProc:box.querySelector('[data-req-proc]').checked};
+    } else if(type==='wordsearch'){
+      const wordsRaw = box.querySelector('[data-ws-words]')?.value || '';
+      const gridSize = Number(box.querySelector('[data-ws-size]')?.value || 10);
+      return {type:'wordsearch', text, imageUrl, wordsRaw, gridSize};
+    } else if(type==='image_labels'){
+      const labelInputs = [...box.querySelectorAll('[data-pin-label]')];
+      const updatedLabels = (prev.imageLabels || []).map((pin, pIdx) => ({
+        x: pin.x,
+        y: pin.y,
+        label: labelInputs[pIdx] ? labelInputs[pIdx].value : pin.label
+      }));
+      return {type:'image_labels', text, imageUrl, imageLabels: updatedLabels};
     } else {
       return {type:'multiple', text, imageUrl, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), correct:Number(box.querySelector('[data-correct]').value)};
     }
   });
 }
 
+function renderOptionWithMathBtn(label, attrName, idx, val) {
+  return `
+    <div class="field math-field-wrapper">
+      <div class="row between">
+        <span style="font-size:12px;font-weight:800;color:#555d6b">${label}</span>
+        <button type="button" class="btn light xs" onclick="openVisualMathEditor(this.closest('.math-field-wrapper').querySelector('input'))">∑ Ecuación</button>
+      </div>
+      <input ${attrName}="${idx}" value="${esc(val)}" required oninput="updateLiveMathPreview(this)">
+      <div class="live-math-preview ${val && val.includes('$') ? '' : 'hidden'}"></div>
+    </div>
+  `;
+}
+
+window.removeEditorPin = (qIdx, pinIdx) => {
+  syncQuestions();
+  if (editingQuestions[qIdx] && Array.isArray(editingQuestions[qIdx].imageLabels)) {
+    editingQuestions[qIdx].imageLabels.splice(pinIdx, 1);
+    renderQuestionEditor();
+  }
+};
+
+window.handleEditorImagePinClick = (event, qIdx) => {
+  const imgEl = event.currentTarget;
+  const rect = imgEl.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+  const x = Math.round(((event.clientX - rect.left) / rect.width) * 1000) / 10;
+  const y = Math.round(((event.clientY - rect.top) / rect.height) * 1000) / 10;
+
+  syncQuestions();
+  const q = editingQuestions[qIdx];
+  if (!q) return;
+  if (!Array.isArray(q.imageLabels)) q.imageLabels = [];
+  if (q.imageLabels.length >= 12) {
+    alert('Máximo 12 etiquetas por gráfico.');
+    return;
+  }
+  q.imageLabels.push({ x, y, label: '' });
+  renderQuestionEditor();
+};
+
 function renderQuestionEditor(){
   const editorEl = $('questionEditor');
   if(!editorEl) return;
   editorEl.innerHTML=editingQuestions.map((q,i)=>{
-    const qType=q.type||'multiple'; let bodyHtml='';
+    const qType=q.type||'multiple';
+    let bodyHtml='';
+    let showDefaultImageBox = true;
+
     if(qType==='open'){
       bodyHtml=`<div class="stack topgap"><label class="field"><span>Rúbrica / Palabras clave</span><textarea data-rubric placeholder="Conceptos esperados...">${esc(q.rubric||'')}</textarea></label><div class="question-editor-actions"><span class="hint">Calificación:</span><select class="select-small" data-grading-mode><option value="ai" ${q.gradingMode!=='manual'?'selected':''}>Automática con IA</option><option value="manual" ${q.gradingMode==='manual'?'selected':''}>Revisión manual docente</option></select></div></div>`;
     } else if(qType==='math_combo'){
-      bodyHtml=`<div class="math-matrix"><div><span class="math-col-title">Opciones (A-D)</span><div class="stack" style="gap:8px">${(q.options||['','','','']).map((o,j)=>`<label class="field"><span>Opción ${'ABCD'[j]}</span><input data-opt="${j}" value="${esc(o)}" required></label>`).join('')}</div></div><div><span class="math-col-title">Procedimientos (1-4)</span><div class="stack" style="gap:8px">${(q.procedures||['','','','']).map((p,j)=>`<label class="field"><span>Procedimiento ${j+1}</span><input data-proc="${j}" value="${esc(p)}" required></label>`).join('')}</div></div></div><div class="question-editor-actions"><label class="row" style="font-size:12px;cursor:pointer"><input type="checkbox" data-req-proc ${q.requireWrittenProc?'checked':''}><span>Pedir texto de procedimiento</span></label><div class="row"><span class="hint">Combinación correcta:</span><select class="select-small" data-combo>${MATH_COMBOS.map(c=>`<option value="${c}" ${q.correctCombo===c?'selected':''}>${c}</option>`).join('')}</select></div></div>`;
+      bodyHtml=`<div class="math-matrix"><div><span class="math-col-title">Opciones (A-D)</span><div class="stack" style="gap:8px">${(q.options||['','','','']).map((o,j)=>renderOptionWithMathBtn(`Opción ${'ABCD'[j]}`, 'data-opt', j, o)).join('')}</div></div><div><span class="math-col-title">Procedimientos (1-4)</span><div class="stack" style="gap:8px">${(q.procedures||['','','','']).map((p,j)=>renderOptionWithMathBtn(`Procedimiento ${j+1}`, 'data-proc', j, p)).join('')}</div></div></div><div class="question-editor-actions"><label class="row" style="font-size:12px;cursor:pointer"><input type="checkbox" data-req-proc ${q.requireWrittenProc?'checked':''}><span>Pedir texto de procedimiento</span></label><div class="row"><span class="hint">Combinación correcta:</span><select class="select-small" data-combo>${MATH_COMBOS.map(c=>`<option value="${c}" ${q.correctCombo===c?'selected':''}>${c}</option>`).join('')}</select></div></div>`;
+    } else if(qType==='wordsearch'){
+      showDefaultImageBox = false;
+      const parsedCount = parseWordsList(q.wordsRaw || '').length;
+      bodyHtml = `
+        <div class="topgap" style="background:#f4fbf7;border:1px solid #bce3ce;padding:14px;border-radius:12px">
+          <div class="row between" style="margin-bottom:8px">
+            <span style="font-size:13px;font-weight:800;color:var(--good)">🔤 Configuración de Sopa de Letras Didáctica</span>
+            <span class="tag good">${parsedCount} palabra(s) lista(s)</span>
+          </div>
+          <label class="field">
+            <span>Palabras escondidas (separadas por comas o enter, sin tildes ni espacios)</span>
+            <textarea data-ws-words rows="2" placeholder="Ej. SOL, LUNA, TIERRA, ESTRELLA, PLANETA" required>${esc(q.wordsRaw || '')}</textarea>
+          </label>
+          <div class="row between topgap">
+            <label class="field" style="max-width:240px">
+              <span>Tamaño de cuadrícula</span>
+              <select data-ws-size>
+                <option value="8" ${Number(q.gridSize)===8?'selected':''}>8 × 8 (Fácil · 1° a 3° Básica)</option>
+                <option value="10" ${Number(q.gridSize||10)===10?'selected':''}>10 × 10 (Normal · 4° a 7° Básica)</option>
+                <option value="12" ${Number(q.gridSize)===12?'selected':''}>12 × 12 (Desafío · Superior)</option>
+              </select>
+            </label>
+            <p class="hint" style="margin:0;max-width:340px">El sistema generará automáticamente la sopa de letras mezclada para cada niño y calificará cada palabra encontrada.</p>
+          </div>
+        </div>
+      `;
+    } else if(qType==='image_labels'){
+      showDefaultImageBox = false;
+      const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
+      bodyHtml = `
+        <div class="topgap" style="background:#fff9f2;border:1px solid #f0d7b4;padding:14px;border-radius:12px">
+          <span style="font-size:13px;font-weight:800;color:var(--gold);display:block;margin-bottom:6px">🏷️ Etiquetar Partes de un Gráfico (Didáctico para Escuela)</span>
+          <p class="hint" style="margin:0 0 10px">1. Pega una imagen con <b>Ctrl + V</b> o ingresa su enlace.<br>2. <b>Haz clic sobre las partes de la imagen</b> donde quieres colocar los números (1, 2, 3...) y escribe abajo el nombre de cada parte.</p>
+          <div class="row">
+            <input type="text" data-image-input placeholder="Pega URL de la imagen o presiona Ctrl+V aquí..." value="${esc(q.imageUrl||'')}" style="flex:1">
+          </div>
+          <div class="topgap" style="text-align:center">
+            ${q.imageUrl ? `
+              <div class="label-stage-wrap">
+                <img data-image-preview src="${esc(q.imageUrl)}" onclick="handleEditorImagePinClick(event, ${i})" style="cursor:crosshair" title="Haz clic para agregar un punto numerado">
+                ${pins.map((p, pIdx) => `<div class="label-pin-editor" style="left:${p.x}%;top:${p.y}%">${pIdx+1}</div>`).join('')}
+              </div>
+              <div class="hint" style="margin-top:4px">👆 Haz clic sobre cualquier parte del dibujo para añadir otro marcador numerado.</div>
+            ` : `
+              <img data-image-preview src="" style="display:none">
+              <div class="empty" style="padding:20px">Pega o carga una imagen arriba para marcar sus partes.</div>
+            `}
+          </div>
+          ${pins.length ? `
+            <div class="stack topgap" style="gap:8px">
+              <span style="font-size:12px;font-weight:800;color:var(--wine)">Nombres correctos de cada punto marcado:</span>
+              ${pins.map((p, pIdx) => `
+                <div class="row">
+                  <span class="tag" style="background:var(--wine);color:#fff;min-width:28px;justify-content:center">${pIdx+1}</span>
+                  <input type="text" data-pin-label="${pIdx}" value="${esc(p.label||'')}" placeholder="Nombre de la parte #${pIdx+1} (ej. Raíz, Tallo, Hoja...)" required style="flex:1;padding:8px 11px;border:1px solid #d6d9e1;border-radius:8px">
+                  <button type="button" class="btn danger xs" onclick="removeEditorPin(${i}, ${pIdx})">✕</button>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
     } else {
-      bodyHtml=`<div class="options-editor topgap">${(q.options||['','','','']).map((o,j)=>`<label class="field"><span>Opción ${'ABCD'[j]}</span><input data-opt="${j}" value="${esc(o)}" required></label>`).join('')}</div><div class="question-editor-actions"><span class="hint">Opción correcta</span><select class="select-small" data-correct>${[0,1,2,3].map(j=>`<option value="${j}" ${q.correct===j?'selected':''}>Correcta: ${'ABCD'[j]}</option>`).join('')}</select></div>`;
+      bodyHtml=`<div class="options-editor topgap">${(q.options||['','','','']).map((o,j)=>renderOptionWithMathBtn(`Opción ${'ABCD'[j]}`, 'data-opt', j, o)).join('')}</div><div class="question-editor-actions"><span class="hint">Opción correcta</span><select class="select-small" data-correct>${[0,1,2,3].map(j=>`<option value="${j}" ${q.correct===j?'selected':''}>Correcta: ${'ABCD'[j]}</option>`).join('')}</select></div>`;
     }
+
     return `
       <article class="question-box" data-q="${i}">
         <div class="row between" style="margin-bottom:12px">
@@ -927,6 +1671,8 @@ function renderQuestionEditor(){
             <h4>Pregunta ${i+1}</h4>
             <select class="select-small" data-type>
               <option value="multiple" ${qType==='multiple'?'selected':''}>Opción Múltiple</option>
+              <option value="wordsearch" ${qType==='wordsearch'?'selected':''}>🔤 Sopa de Letras (Didáctica)</option>
+              <option value="image_labels" ${qType==='image_labels'?'selected':''}>🏷️ Partes de un Gráfico (Didáctica)</option>
               <option value="open" ${qType==='open'?'selected':''}>Abierta</option>
               <option value="math_combo" ${qType==='math_combo'?'selected':''}>Matemática (ej. A2)</option>
             </select>
@@ -934,51 +1680,49 @@ function renderQuestionEditor(){
           <button type="button" class="btn danger small" data-remove="${i}" ${editingQuestions.length===1?'disabled':''}>Eliminar</button>
         </div>
 
-        <label class="field"><span>Enunciado de la pregunta</span><textarea data-text required placeholder="Escribe tu enunciado aquí...">${esc(q.text)}</textarea></label>
-        
-        <!-- BARRA VISUAL DE ECUACIONES Y SÍMBOLOS -->
-        <div style="background:#f4f5f8;padding:8px;border-radius:10px;border:1px solid #e2e5ec;margin-top:8px">
-          <span style="font-size:11px;font-weight:800;color:var(--wine);display:block;margin-bottom:4px">📐 Editor visual de símbolos y ecuaciones (clic para insertar):</span>
-          <div class="row" style="gap:5px;flex-wrap:wrap">
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\frac{a}{b}')">➗ Fracción</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\sqrt{x}')">√ Raíz</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, 'x^{2}')">x² Potencia</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\infty')">∞</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\theta')">θ</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\pi')">π</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\sum')">∑</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\leq')">≤</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\geq')">≥</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\neq')">≠</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\alpha')">α</button>
-            <button type="button" class="btn neutral small" onclick="insertSymbol(this, '\\beta')">β</button>
+        <div class="field math-field-wrapper">
+          <div class="row between">
+            <span style="font-size:12px;font-weight:800;color:#555d6b">Enunciado / Consigna para el estudiante</span>
+            <button type="button" class="btn light small" onclick="openVisualMathEditor(this.closest('.math-field-wrapper').querySelector('textarea'))">∑ Insertar Ecuación (Editor Gráfico)</button>
           </div>
+          <textarea data-text required placeholder="${qType==='wordsearch'?'Ej. Encuentra en la sopa de letras los siguientes planetas del Sistema Solar:':qType==='image_labels'?'Ej. Selecciona el nombre correcto para cada parte de la planta señalada en el dibujo:':'Escribe tu enunciado aquí o inserta una ecuación visual...'}" oninput="updateLiveMathPreview(this)">${esc(q.text)}</textarea>
+          <div class="live-math-preview ${q.text && q.text.includes('$') ? '' : 'hidden'}"></div>
         </div>
 
-        <!-- SECCIÓN DE IMAGEN (URL O PEGAR CON CTRL+V) -->
-        <div class="topgap" style="background:#fffcfd;border:1px dashed #d9c2cb;padding:12px;border-radius:10px">
-          <span style="font-size:12px;font-weight:800;color:var(--wine);display:block;margin-bottom:6px">🖼️ Imagen adjunta (Haz clic y presiona <b>Ctrl + V</b> para pegar una imagen del portapapeles)</span>
-          <div class="row">
-            <input type="text" data-image-input placeholder="Pega aquí la URL o presiona Ctrl+V en el cuadro de abajo..." value="${esc(q.imageUrl||'')}" style="flex:1">
+        ${showDefaultImageBox ? `
+          <div class="topgap" style="background:#fffcfd;border:1px dashed #d9c2cb;padding:12px;border-radius:10px">
+            <span style="font-size:12px;font-weight:800;color:var(--wine);display:block;margin-bottom:6px">🖼️ Imagen adjunta (Haz clic y presiona <b>Ctrl + V</b> para pegar una imagen del portapapeles)</span>
+            <div class="row">
+              <input type="text" data-image-input placeholder="Pega aquí la URL o presiona Ctrl+V en el enunciado/cuadro..." value="${esc(q.imageUrl||'')}" style="flex:1">
+            </div>
+            <div class="topgap" style="text-align:center">
+              <img data-image-preview src="${esc(q.imageUrl||'')}" style="max-height:140px;max-width:100%;border-radius:8px;${q.imageUrl?'':'display:none'}">
+            </div>
           </div>
-          <div class="topgap" style="text-align:center">
-            <img data-image-preview src="${esc(q.imageUrl||'')}" style="max-height:140px;max-width:100%;border-radius:8px;${q.imageUrl?'':'display:none'}">
-          </div>
-        </div>
+        ` : ''}
 
         ${bodyHtml}
       </article>
     `;
   }).join('');
 
+  document.querySelectorAll('#questionEditor textarea[data-text], #questionEditor input[data-opt], #questionEditor input[data-proc]').forEach(el => updateLiveMathPreview(el));
+
   document.querySelectorAll('[data-type]').forEach(sel=>{
     sel.onchange=()=>{
-      const box=sel.closest('[data-q]'), idx=Number(box.dataset.q), currentText=box.querySelector('[data-text]').value, currentImg=box.querySelector('[data-image-preview]').src;
-      const fresh=defaultQuestionObj(sel.value); fresh.text=currentText; fresh.imageUrl=currentImg.startsWith('data:')||currentImg.startsWith('http')?currentImg:''; editingQuestions[idx]=fresh; renderQuestionEditor();
+      const box=sel.closest('[data-q]'), idx=Number(box.dataset.q), currentText=box.querySelector('[data-text]').value;
+      const imgEl = box.querySelector('[data-image-preview]');
+      const currentImg = imgEl ? imgEl.getAttribute('src') : '';
+      const fresh=defaultQuestionObj(sel.value);
+      fresh.text=currentText;
+      fresh.imageUrl=(currentImg && (currentImg.startsWith('data:')||currentImg.startsWith('http')))?currentImg:'';
+      editingQuestions[idx]=fresh;
+      renderQuestionEditor();
     };
   });
 
   document.querySelectorAll('[data-q]').forEach(box=>{
+    const idx = Number(box.dataset.q);
     const txtArea = box.querySelector('[data-text]');
     const imgInput = box.querySelector('[data-image-input]');
     const imgPrev = box.querySelector('[data-image-preview]');
@@ -992,9 +1736,15 @@ function renderQuestionEditor(){
           const blob = item.getAsFile();
           const reader = new FileReader();
           reader.onload = event => {
-            imgPrev.src = event.target.result;
-            imgPrev.style.display = 'block';
-            imgInput.value = event.target.result;
+            if (editingQuestions[idx].type === 'image_labels') {
+              syncQuestions();
+              editingQuestions[idx].imageUrl = event.target.result;
+              renderQuestionEditor();
+            } else if (imgPrev && imgInput) {
+              imgPrev.src = event.target.result;
+              imgPrev.style.display = 'block';
+              imgInput.value = event.target.result;
+            }
           };
           reader.readAsDataURL(blob);
           break;
@@ -1004,26 +1754,22 @@ function renderQuestionEditor(){
 
     if(txtArea) txtArea.addEventListener('paste', handlePaste);
     if(imgInput) {
+      imgInput.addEventListener('paste', handlePaste);
       imgInput.oninput = () => {
-        imgPrev.src = imgInput.value;
-        imgPrev.style.display = imgInput.value ? 'block' : 'none';
+        if (editingQuestions[idx].type === 'image_labels') {
+          syncQuestions();
+          editingQuestions[idx].imageUrl = imgInput.value.trim();
+          renderQuestionEditor();
+        } else if (imgPrev) {
+          imgPrev.src = imgInput.value;
+          imgPrev.style.display = imgInput.value ? 'block' : 'none';
+        }
       };
     }
   });
 
   document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{ syncQuestions(); editingQuestions.splice(Number(b.dataset.remove),1); renderQuestionEditor(); });
 }
-
-window.insertSymbol = (btn, symbol) => {
-  const box = btn.closest('[data-q]');
-  const textarea = box.querySelector('[data-text]');
-  const wrapped = `$${symbol}$`;
-  const start = textarea.selectionStart;
-  const end = textarea.selectionEnd;
-  textarea.value = textarea.value.substring(0, start) + wrapped + textarea.value.substring(end);
-  textarea.focus();
-  textarea.selectionStart = textarea.selectionEnd = start + wrapped.length;
-};
 
 if($('addQuestionBtn')) $('addQuestionBtn').onclick = () => { syncQuestions(); addQuestion(); };
 if($('newExamBtn')) $('newExamBtn').onclick = resetEditor;
@@ -1036,13 +1782,24 @@ if($('examForm')) {
     const date = $('examDate').value, time = $('examTime').value, hours = Number($('examHours').value), seconds = Number($('examSeconds').value);
 
     let validQuestions = editingQuestions.length > 0;
-    for(const q of editingQuestions){
-      if(!q.text.trim()) validQuestions = false;
-      if(q.type === 'multiple' && q.options.some(o => !o.trim())) validQuestions = false;
-      if(q.type === 'math_combo' && (q.options.some(o => !o.trim()) || q.procedures.some(p => !p.trim()))) validQuestions = false;
+    let specificErr = 'Completa todos los campos obligatorios.';
+    for(let k=0; k<editingQuestions.length; k++){
+      const q = editingQuestions[k];
+      if(!q.text.trim()) { validQuestions = false; break; }
+      if(q.type === 'multiple' && q.options.some(o => !o.trim())) { validQuestions = false; break; }
+      if(q.type === 'math_combo' && (q.options.some(o => !o.trim()) || q.procedures.some(p => !p.trim()))) { validQuestions = false; break; }
+      if(q.type === 'wordsearch') {
+        const wList = parseWordsList(q.wordsRaw);
+        if(wList.length < 2) { validQuestions = false; specificErr = `Pregunta ${k+1} (Sopa de letras): escribe al menos 2 palabras válidas.`; break; }
+      }
+      if(q.type === 'image_labels') {
+        if(!q.imageUrl.trim()) { validQuestions = false; specificErr = `Pregunta ${k+1} (Partes de un gráfico): debes pegar o enlazar una imagen.`; break; }
+        if(!q.imageLabels || q.imageLabels.length < 2) { validQuestions = false; specificErr = `Pregunta ${k+1} (Partes de un gráfico): haz clic sobre la imagen para marcar al menos 2 partes.`; break; }
+        if(q.imageLabels.some(p => !p.label.trim())) { validQuestions = false; specificErr = `Pregunta ${k+1}: escribe el nombre de todas las partes numeradas.`; break; }
+      }
     }
     if(!title || !subject || !level || !parallel || !date || !time || !validQuestions){
-      showMessage('editorMessage', 'Completa todos los campos obligatorios.'); return;
+      showMessage('editorMessage', specificErr); return;
     }
 
     const examId = editingId || uid();
@@ -1050,6 +1807,8 @@ if($('examForm')) {
       const baseQ = { text: q.text.trim(), imageUrl: (q.imageUrl||'').trim() };
       if(q.type === 'open') return {type:'open', ...baseQ, rubric:q.rubric.trim(), gradingMode:q.gradingMode};
       if(q.type === 'math_combo') return {type:'math_combo', ...baseQ, options:q.options.map(o=>o.trim()), procedures:q.procedures.map(p=>p.trim()), correctCombo:q.correctCombo, requireWrittenProc:q.requireWrittenProc};
+      if(q.type === 'wordsearch') return {type:'wordsearch', ...baseQ, words:parseWordsList(q.wordsRaw), wordsRaw:q.wordsRaw.trim(), gridSize:Number(q.gridSize||10)};
+      if(q.type === 'image_labels') return {type:'image_labels', ...baseQ, imageLabels:q.imageLabels.map(p=>({x:p.x, y:p.y, label:p.label.trim()}))};
       return {type:'multiple', ...baseQ, options:q.options.map(o=>o.trim()), correct:q.correct};
     });
 
@@ -1086,7 +1845,11 @@ function renderExamList(){
 function editExam(id){
   const e = myExams().find(x=>x.id===id); if(!e) return;
   editingId = id; $('examTitle').value = e.title; $('examSubject').value = e.subject; $('examLevel').value = e.level||''; $('examParallel').value = e.parallel||'GENERAL'; $('examDate').value = e.date; $('examTime').value = e.time; $('examHours').value = e.hours; $('examSeconds').value = e.seconds;
-  editingQuestions = JSON.parse(JSON.stringify(e.questions)); renderQuestionEditor();
+  editingQuestions = JSON.parse(JSON.stringify(e.questions)).map(q => ({
+    ...q,
+    wordsRaw: q.wordsRaw || (Array.isArray(q.words) ? q.words.join(', ') : '')
+  }));
+  renderQuestionEditor();
   if($('editorTitle')) $('editorTitle').textContent = 'Editar examen'; 
   if($('saveExamBtn')) $('saveExamBtn').textContent = 'Actualizar examen en la nube'; 
   if($('newExamBtn')) $('newExamBtn').classList.remove('hidden');
@@ -1103,139 +1866,184 @@ function renderResults(){
 
   const selectedExamId = sel.value;
   const targetExam = mineExams.find(e => e.id === selectedExamId);
-
   const badge = $('examPublicationBadge');
-  if (badge && targetExam) {
-    const isPub = targetExam.published === true;
-    badge.textContent = `Estado: ${isPub ? '📢 Publicado para estudiantes' : '🔒 No publicado (Oculto)'}`;
-    badge.className = 'tag ' + (isPub ? 'good' : 'warn');
-    if($('publishAllBtn')) $('publishAllBtn').textContent = isPub ? '🔒 Ocultar calificaciones' : '📢 Publicar notas de este examen';
-  } else if (badge) {
-    badge.textContent = 'Selecciona un examen específico para publicar';
-    badge.className = 'tag';
-    if($('publishAllBtn')) $('publishAllBtn').textContent = '📢 Publicar notas';
+  if(badge) {
+    if (!targetExam) {
+      badge.textContent = 'Estado: Selecciona un examen para publicar notas masivamente';
+      badge.className = 'tag';
+    } else {
+      const pubCount = myAttempts().filter(a => a.examId === targetExam.id && a.published === true).length;
+      const totCount = myAttempts().filter(a => a.examId === targetExam.id).length;
+      badge.textContent = totCount ? `${pubCount} de ${totCount} notas publicadas` : 'Sin intentos registrados';
+      badge.className = 'tag ' + (pubCount === totCount && totCount > 0 ? 'good' : 'warn');
+    }
   }
 
-  const subset = myAttempts().filter(a => selectedExamId === 'all' || a.examId === selectedExamId).sort((a,b)=>b.startedAt-a.startedAt);
-  if($('resultsTable')) {
-    $('resultsTable').innerHTML = subset.length ? `<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Evaluación</th><th>Curso</th><th>Nota</th><th>Estado</th><th>Publicado</th><th>Acciones</th></tr></thead><tbody>${subset.map(a=>`<tr><td><b>${esc(a.name)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><span class="hint">${esc(a.examTitle)}</span></td><td>${esc(a.level)} / ${esc(a.parallel)}</td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><span class="tag ${a.status==='infraccion'?'bad':a.status==='pendiente_revision'?'warn':'good'}">${a.status==='infraccion'?'Infracción':a.status==='pendiente_revision'?'Pend. revisión':'Completado'}</span></td><td><span class="tag ${a.published?'good':'warn'}">${a.published?'Sí':'No'}</span></td><td><div class="row"><button class="btn light small" onclick="openReviewModal('${esc(a.id)}')">Revisar</button><button class="btn neutral small" onclick="togglePublishAttempt('${esc(a.id)}')">${a.published?'Ocultar':'Publicar'}</button><button class="btn danger small" onclick="resetAttempt('${esc(a.id)}','${esc(a.name)}')">Reiniciar</button></div></td></tr>`).join('')}</tbody></table>` : '<div class="empty">No hay intentos registrados en la nube.</div>';
-  }
+  const rows = myAttempts().filter(a => selectedExamId === 'all' || a.examId === selectedExamId);
+  const tableEl = $('resultsTable');
+  if(!tableEl) return;
+  tableEl.innerHTML = rows.length ? `<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Materia / Examen</th><th>Publicación</th><th>Nota</th><th>Acciones</th></tr></thead><tbody>${rows.map(a=>`<tr><td><b>${esc(a.studentName)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><small class="hint">${esc(a.examTitle)}</small></td><td><button type="button" class="btn ${a.published?'light':'neutral'} xs" onclick="togglePublishAttempt('${esc(a.id)}', ${!a.published})">${a.published?'📢 Publicada':'🔒 Oculta (Publicar)'}</button></td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><div class="row"><button type="button" class="btn light xs" onclick="openReviewModal('${esc(a.id)}')">Revisar / Imprimir</button><button type="button" class="btn danger xs" onclick="deleteAttempt('${esc(a.id)}')">Borrar</button></div></td></tr>`).join('')}</tbody></table>` : '<div class="empty">No hay resultados en la nube aún.</div>';
 }
 if($('resultsFilter')) $('resultsFilter').onchange = renderResults;
 
-if($('publishAllBtn')) {
-  $('publishAllBtn').onclick = async () => {
-    if(!cloudReady || !db) return;
-    const selectedExamId = $('resultsFilter').value;
-    if (selectedExamId === 'all') {
-      alert('Selecciona un examen específico en el filtro para publicar sus notas.');
-      return;
-    }
-    const exam = myExams().find(e => e.id === selectedExamId);
-    if (!exam) return;
-
-    const newPubState = !(exam.published === true);
-    const confirmMsg = newPubState ? `¿Publicar las calificaciones de "${exam.title}" en la nube?` : `¿Ocultar las calificaciones de "${exam.title}"?`;
-    if (!confirm(confirmMsg)) return;
-
-    try {
-      await db.collection(COL_EXAMS).doc(exam.id).update({ published: newPubState });
-      const batch = db.batch();
-      attempts.filter(a => a.examId === exam.id).forEach(att => {
-        batch.update(db.collection(COL_ATTEMPTS).doc(att.id), { published: newPubState });
-      });
-      await batch.commit();
-      alert('Estado de publicación actualizado en la nube.');
-    } catch (e) {
-      alert('Error: ' + e.message);
-    }
-  };
-}
-
-window.togglePublishAttempt = async (attemptId) => {
-  if(!cloudReady || !db) return;
-  const att = attempts.find(a => a.id === attemptId);
-  if (!att) return;
+window.togglePublishAttempt = async (attemptId, publishState) => {
+  if (!cloudReady || !db) return;
   try {
-    await db.collection(COL_ATTEMPTS).doc(attemptId).update({ published: !att.published });
+    await db.collection(COL_ATTEMPTS).doc(attemptId).update({ published: publishState });
   } catch (e) {
     alert('Error: ' + e.message);
   }
 };
 
-window.openReviewModal = (attemptId) => {
-  const attempt = attempts.find(a => a.id === attemptId); if(!attempt) return;
-  const exam = exams.find(e => e.id === attempt.examId); reviewingAttemptId = attemptId;
-  if($('reviewStudentTitle')) $('reviewStudentTitle').textContent = `${attempt.name} (${attempt.cedula})`;
-  if($('reviewExamSubtitle')) $('reviewExamSubtitle').textContent = `${attempt.subject} — ${attempt.examTitle}`;
-  if($('reviewModalMsg')) $('reviewModalMsg').innerHTML = '';
-
-  const questions = exam ? exam.questions : []; const ansList = attempt.answers || [];
-  if($('reviewQuestionsBody')) {
-    $('reviewQuestionsBody').innerHTML = questions.map((q,idx)=>{
-      const ans = ansList.find(x=>x.question===idx) || {}; const qType = q.type || 'multiple'; const earned = Number(ans.points??(ans.correct?1:0));
-      let detailHtml='';
-      if(qType==='open') detailHtml=`<p style="margin:6px 0"><b>Respuesta:</b><br><span style="display:block;background:#f5f6f9;padding:10px;border-radius:8px;margin-top:4px">${esc(ans.textAnswer||'(Sin respuesta)')}</span></p>${ans.aiFeedback?`<p class="hint" style="color:var(--wine)">${esc(ans.aiFeedback)}</p>`:''}`;
-      else if(qType==='math_combo') detailHtml=`<p style="margin:6px 0"><b>Elegido:</b> <span class="tag ${ans.comboChoice===q.correctCombo?'good':'bad'}">${esc(ans.comboChoice||'—')}</span> · <b>Correcto:</b> <span class="tag good">${esc(q.correctCombo)}</span>${ans.writtenProcedure?`<br><b>Proc:</b> ${esc(ans.writtenProcedure)}`:''}</p>`;
-      else { const c=ans.choice; const txt=(c!==null&&c!==undefined&&q.options[c])?`${'ABCD'[c]}. ${q.options[c]}`:'(Sin responder)'; detailHtml=`<p style="margin:6px 0"><b>Respondió:</b> ${esc(txt)}<br><b>Correcta:</b> ${esc('ABCD'[q.correct])}. ${esc(q.options[q.correct])}</p>`; }
-
-      return `<div class="tile" data-rev-q="${idx}"><div class="row between"><b>Pregunta ${idx+1} · ${qType}</b><div class="row"><span class="hint">Puntos (0-1):</span><input type="number" step="0.25" min="0" max="1" value="${earned}" data-rev-pts="${idx}" style="width:75px;padding:6px;border:1px solid #ccc;border-radius:8px;font-weight:800"></div></div><p style="font-weight:600;margin-top:6px">${esc(q.text)}</p>${q.imageUrl?`<img src="${esc(q.imageUrl)}" style="max-width:100%;max-height:160px;border-radius:8px;margin:8px 0;display:block">`:''}${detailHtml}</div>`;
-    }).join('');
-  }
-
-  const updatePrev = () => {
-    const sum = [...document.querySelectorAll('[data-rev-pts]')].reduce((a,el)=>a+Math.max(0,Math.min(1,Number(el.value)||0)),0);
-    const final10 = attempt.status === 'infraccion' ? 0 : Math.round((sum/(questions.length||1))*1000)/100;
-    if($('reviewFinalScore')) $('reviewFinalScore').textContent = `${final10.toFixed(2)} / 10`;
+if($('publishAllBtn')) {
+  $('publishAllBtn').onclick = async () => {
+    if (!cloudReady || !db) return;
+    const selectedExamId = $('resultsFilter').value;
+    if (selectedExamId === 'all') {
+      alert('Por favor, selecciona un examen específico en el filtro "Filtrar por examen" antes de publicar todas sus notas.');
+      return;
+    }
+    const targetAttempts = myAttempts().filter(a => a.examId === selectedExamId);
+    if (!targetAttempts.length) {
+      alert('Este examen aún no tiene intentos para publicar.');
+      return;
+    }
+    if (!confirm(`¿Deseas PUBLICAR las calificaciones de los ${targetAttempts.length} estudiante(s) de este examen para que puedan consultarlas?`)) return;
+    try {
+      const batch = db.batch();
+      targetAttempts.forEach(att => {
+        batch.update(db.collection(COL_ATTEMPTS).doc(att.id), { published: true });
+      });
+      await batch.commit();
+      alert('✓ Calificaciones publicadas exitosamente en la nube.');
+    } catch (e) {
+      alert('Error al publicar: ' + e.message);
+    }
   };
-  document.querySelectorAll('[data-rev-pts]').forEach(inp=>inp.oninput=updatePrev); updatePrev();
-  if($('reviewModal')) $('reviewModal').classList.remove('hidden');
-  try{ renderMathInElement($('reviewQuestionsBody')); }catch(e){}
+}
+
+window.deleteAttempt = async (attemptId) => {
+  if(!cloudReady || !db) return;
+  if(confirm('¿Eliminar este intento de la nube para habilitar al estudiante nuevamente?')){
+    await db.collection(COL_ATTEMPTS).doc(attemptId).delete();
+  }
 };
 
-if($('closeReviewModal')) $('closeReviewModal').onclick = () => { if($('reviewModal')) $('reviewModal').classList.add('hidden'); reviewingAttemptId = null; };
+window.openReviewModal = (attemptId) => {
+  reviewingAttemptId = attemptId;
+  const att = attempts.find(a => a.id === attemptId); if(!att) return;
+  const exam = exams.find(e => e.id === att.examId) || { questions: [] };
+  $('reviewStudentTitle').textContent = `${att.studentName} (${att.cedula})`;
+  $('reviewExamSubtitle').textContent = `${att.subject} · ${att.examTitle}`;
+  $('reviewFinalScore').textContent = `${Number(att.score||0).toFixed(2)} / 10`;
+
+  $('reviewQuestionsBody').innerHTML = (exam.questions||[]).map((q, idx)=>{
+    const detail = (att.details||[])[idx] || {};
+    const qType = q.type||'multiple';
+    const earned = Number(detail.pointsEarned ?? 0);
+    let ansHtml = '';
+    if(qType === 'open'){
+      ansHtml = `<div style="background:#f8f9fb;padding:10px;border-radius:8px;margin-top:6px"><small class="hint">Respuesta:</small><div style="white-space:pre-wrap;margin-top:4px">${esc(detail.studentAnswerText||'Sin respuesta')}</div></div>${detail.aiFeedback?`<div class="notice good" style="margin-top:8px;padding:8px 12px">${esc(detail.aiFeedback)}</div>`:''}`;
+    } else if(qType === 'math_combo'){
+      ansHtml = `<div style="margin-top:6px"><span class="tag ${earned===1?'good':'bad'}">Marcó: ${esc(detail.selectedCombo||'Ninguna')} (Correcta: ${esc(q.correctCombo)})</span>${detail.writtenProcedure?`<div style="background:#f8f9fb;padding:8px;border-radius:8px;margin-top:6px;font-size:13px"><b>Procedimiento:</b> ${esc(detail.writtenProcedure)}</div>`:''}</div>`;
+    } else if(qType === 'wordsearch'){
+      const found = Array.isArray(detail.foundWords) ? detail.foundWords : [];
+      const totalW = Array.isArray(q.words) ? q.words : [];
+      ansHtml = `<div style="margin-top:6px"><span class="tag ${earned===1?'good':earned>0?'warn':'bad'}">Encontró ${found.length} de ${totalW.length} palabras</span><div class="hint" style="margin-top:4px"><b>Encontradas:</b> ${esc(found.join(', ') || 'Ninguna')}</div></div>`;
+    } else if(qType === 'image_labels'){
+      const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
+      const stuMap = detail.studentLabels || {};
+      ansHtml = `<div style="margin-top:6px;font-size:13px">${pins.map((p, pIdx) => {
+        const stuVal = stuMap[pIdx] || 'Sin marcar';
+        const ok = stuVal === p.label;
+        return `<div><b>#${pIdx+1}:</b> Marcó <i>${esc(stuVal)}</i> ${ok ? '✅' : `❌ (Correcto: ${esc(p.label)})`}</div>`;
+      }).join('')}</div>`;
+    } else {
+      ansHtml = `<div style="margin-top:6px"><span class="tag ${earned===1?'good':'bad'}">Seleccionó: ${detail.selectedOption!=null?'ABCD'[detail.selectedOption]:'Ninguna'} (Correcta: ${'ABCD'[q.correct]})</span></div>`;
+    }
+    return `<div class="tile" data-rev-idx="${idx}"><div class="row between"><b>Pregunta ${idx+1}</b><div class="row"><span class="hint">Puntaje:</span><input type="number" step="0.25" min="0" max="1" value="${earned}" data-rev-pts style="width:75px;padding:6px;border:1px solid #ccc;border-radius:6px"></div></div><p style="margin:6px 0;color:var(--ink)">${esc(q.text)}</p>${ansHtml}</div>`;
+  }).join('');
+
+  renderMathSafe($('reviewQuestionsBody'));
+
+  document.querySelectorAll('[data-rev-pts]').forEach(inp => inp.oninput = () => {
+    const inputs = [...document.querySelectorAll('[data-rev-pts]')];
+    const total = inputs.reduce((s, el)=>s+Math.max(0,Math.min(1,Number(el.value)||0)),0);
+    const finalScore = inputs.length ? (total/inputs.length)*10 : 0;
+    $('reviewFinalScore').textContent = `${finalScore.toFixed(2)} / 10`;
+  });
+  $('reviewModal').classList.remove('hidden');
+};
+if($('closeReviewModal')) $('closeReviewModal').onclick = () => $('reviewModal').classList.add('hidden');
 
 if($('printExamSheetBtn')) {
   $('printExamSheetBtn').onclick = () => {
-    if(!reviewingAttemptId) return;
-    const attempt = attempts.find(a => a.id === reviewingAttemptId);
-    const exam = exams.find(e => e.id === attempt?.examId);
-    if(!attempt || !exam) return;
+    const att = attempts.find(a => a.id === reviewingAttemptId); if(!att) return;
+    const exam = exams.find(e => e.id === att.examId) || { questions: [], subject: att.subject, title: att.examTitle, level: att.level, parallel: att.parallel, teacher: att.teacher };
+    const dateStr = new Date(att.startedAt || Date.now()).toLocaleDateString('es-EC');
 
-    const container = $('printSheetContainer');
-    const questions = exam.questions || [];
-    const answers = attempt.answers || [];
-
-    const logoSvg = `<svg width="45" height="45" viewBox="0 0 100 100" fill="none"><polygon points="50,10 90,90 10,90" stroke="#651b37" stroke-width="8" fill="#fdf8fa"/><text x="50" y="70" font-size="38" font-weight="900" fill="#651b37" text-anchor="middle">JB</text></svg>`;
-
-    let qHtml = questions.map((q, i) => {
-      const ans = answers.find(x => x.question === i) || {};
+    const questionsHtml = (exam.questions||[]).map((q, idx)=>{
+      const detail = (att.details||[])[idx] || {};
       const qType = q.type || 'multiple';
-      let studentAnsText = '';
+      const pts = Number(detail.pointsEarned ?? 0).toFixed(2);
+      const imgHtml = q.imageUrl ? `<div style="margin:8px 0"><img src="${esc(q.imageUrl)}" style="max-height:140px;max-width:100%;border:1px solid #ccc;border-radius:6px"></div>` : '';
 
-      if(qType === 'open') {
-        studentAnsText = `<div style="margin-top:6px;padding:8px;background:#f9f9fb;border:1px solid #ddd;border-radius:6px"><b>Respuesta del alumno:</b> ${esc(ans.textAnswer || '(En blanco)')}</div>`;
-      } else if(qType === 'math_combo') {
-        studentAnsText = `<div style="margin-top:6px;font-size:12px"><b>Opción elegida:</b> ${esc(ans.comboChoice || 'Ninguna')} ${ans.comboChoice===q.correctCombo?'<span style="color:green;font-weight:bold">✓ Correcto</span>':'<span style="color:red;font-weight:bold">✗ Incorrecto</span>'}${ans.writtenProcedure?`<br><b>Procedimiento:</b> ${esc(ans.writtenProcedure)}`:''}</div>`;
+      let bodyPrint = '';
+      if (qType === 'open') {
+        bodyPrint = `
+          <div style="border:1px solid #bbb;border-radius:6px;padding:8px;background:#f9f9f9;margin-top:6px;font-size:12px">
+            <b>Respuesta del estudiante:</b><br>
+            <span style="white-space:pre-wrap">${esc(detail.studentAnswerText || 'Sin respuesta')}</span>
+          </div>
+          ${detail.aiFeedback ? `<div style="font-size:11px;color:#166a47;margin-top:4px"><i>Observación: ${esc(detail.aiFeedback)}</i></div>` : ''}
+        `;
+      } else if (qType === 'math_combo') {
+        bodyPrint = `
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;margin-top:6px">
+            <div><b>Opciones:</b><br>${(q.options||[]).map((o,j)=>`${'ABCD'[j]}) ${esc(o)}`).join('<br>')}</div>
+            <div><b>Procedimientos:</b><br>${(q.procedures||[]).map((p,j)=>`${j+1}) ${esc(p)}`).join('<br>')}</div>
+          </div>
+          <div style="font-size:12px;margin-top:6px"><b>Combinación marcada:</b> ${esc(detail.selectedCombo || 'Ninguna')} (Correcta: ${esc(q.correctCombo)})</div>
+        `;
+      } else if (qType === 'wordsearch') {
+        const found = Array.isArray(detail.foundWords) ? detail.foundWords : [];
+        bodyPrint = `<div style="font-size:12px;margin-top:6px"><b>Sopa de letras:</b> Encontró ${found.length} de ${(q.words||[]).length} palabras (${esc(found.join(', ') || 'Ninguna')}).</div>`;
+      } else if (qType === 'image_labels') {
+        const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
+        const stuMap = detail.studentLabels || {};
+        bodyPrint = `<div style="font-size:12px;margin-top:6px">${pins.map((p, pIdx)=>`#${pIdx+1}: Marcó <b>${esc(stuMap[pIdx]||'—')}</b> (Correcto: ${esc(p.label)})`).join(' | ')}</div>`;
       } else {
-        studentAnsText = `<div style="margin-top:6px;font-size:12px"><b>Opciones:</b><ul style="margin:4px 0 0 15px;padding:0">${q.options.map((opt, j) => `<li style="${j===ans.choice?'font-weight:bold;color:#651b37;':''}${j===q.correct?'text-decoration:underline;':''}">${'ABCD'[j]}. ${esc(opt)} ${j===ans.choice?'(Marcada por alumno)':''} ${j===q.correct?'(Respuesta correcta)':''}</li>`).join('')}</ul></div>`;
+        bodyPrint = `
+          <div style="font-size:12px;margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:4px">
+            ${(q.options||[]).map((o,j)=>{
+              const isSelected = detail.selectedOption === j;
+              const isCorrect = q.correct === j;
+              return `<div style="padding:3px 6px;border-radius:4px;${isSelected?'background:#faedf2;border:1px solid #651b37;font-weight:bold':''}">${'ABCD'[j]}) ${esc(o)} ${isSelected?'(Marcada)':''} ${isCorrect?'✓':''}</div>`;
+            }).join('')}
+          </div>
+        `;
       }
 
       return `
-        <div style="margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #eee;font-size:13px">
-          <b>Pregunta ${i+1}:</b> ${esc(q.text)} <span style="float:right;font-weight:bold;color:#651b37">Puntaje: ${Number(ans.points??(ans.correct?1:0)).toFixed(2)} / 1.00</span>
-          ${q.imageUrl?`<br><img src="${esc(q.imageUrl)}" style="max-width:180px;max-height:120px;margin-top:6px;display:block">`:''}
-          ${studentAnsText}
+        <div style="border-bottom:1px solid #e0e0e0;padding-bottom:12px;margin-bottom:12px;page-break-inside:avoid">
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:#651b37">
+            <span>${idx+1}. ${esc(q.text)}</span>
+            <span>[${pts} / 1.00 pt]</span>
+          </div>
+          ${imgHtml}
+          ${bodyPrint}
         </div>
       `;
     }).join('');
 
-    container.innerHTML = `
+    $('printSheetContainer').innerHTML = `
       <div class="print-sheet">
         <div class="exam-banner">
           <div class="exam-banner-top"></div>
           <div class="exam-banner-body">
-            <div class="exam-logo-cell">${logoSvg}</div>
+            <div class="exam-logo-cell">
+              <div style="width:65px;height:65px;border-radius:16px;background:#651b37;color:#fff;display:grid;place-items:center;font-weight:900;font-size:22px;letter-spacing:-1px">JBP</div>
+            </div>
             <div class="exam-titles-cell">
               <h3>UNIDAD EDUCATIVA PARTICULAR</h3>
               <h2>“JACINTO BURGOS PINARGOTE”</h2>
@@ -1244,276 +2052,455 @@ if($('printExamSheetBtn')) {
             </div>
             <div class="exam-grade-cell">
               <span>CALIFICACIÓN</span>
-              <div class="exam-grade-box">${Number(attempt.score||0).toFixed(2)} / 10</div>
+              <div class="exam-grade-box">${Number(att.score||0).toFixed(2)}</div>
             </div>
           </div>
           <div class="exam-banner-bottom">
-            <div><b>Estudiante:</b> ${esc(attempt.name)}<br><b>Cédula:</b> ${esc(attempt.cedula)}</div>
-            <div><b>Fecha:</b> ${esc(formatDate(attempt.startedAt))}<br><b>Curso:</b> ${esc(attempt.level)} · Paralelo ${esc(attempt.parallel)}</div>
+            <div>
+              <b>ESTUDIANTE:</b> ${esc(att.studentName)}<br>
+              <b>CÉDULA:</b> ${esc(att.cedula)}<br>
+              <b>CURSO:</b> ${esc(att.level || exam.level || '')} · <b>PARALELO:</b> ${esc(att.parallel || exam.parallel || '')}
+            </div>
+            <div>
+              <b>DOCENTE:</b> ${esc(exam.teacher || att.teacher || '')}<br>
+              <b>FECHA:</b> ${esc(dateStr)}<br>
+              <b>ESTADO:</b> ${att.status==='infraccion'?'ANULADO POR INFRACCIÓN':'EVALUADO EN LÍNEA'}
+            </div>
           </div>
         </div>
-        <div style="margin-top:15px">
-          <h4 style="border-bottom:2px solid #651b37;padding-bottom:5px;color:#651b37;margin-bottom:12px">Detalle de respuestas y evaluación</h4>
-          ${qHtml}
+        <div>
+          ${questionsHtml}
+        </div>
+        <div style="margin-top:35px;display:grid;grid-template-columns:1fr 1fr;gap:40px;text-align:center;font-size:12px">
+          <div style="border-top:1px solid #333;padding-top:6px"><b>${esc(exam.teacher || att.teacher || 'DOCENTE')}</b><br>FIRMA DEL DOCENTE</div>
+          <div style="border-top:1px solid #333;padding-top:6px"><b>${esc(att.studentName)}</b><br>FIRMA DEL ESTUDIANTE</div>
         </div>
       </div>
     `;
-
+    renderMathSafe($('printSheetContainer'));
     $('printExamModal').classList.remove('hidden');
-    try{ renderMathInElement($('printSheetContainer')); }catch(e){}
   };
 }
-
 if($('closePrintModal')) $('closePrintModal').onclick = () => $('printExamModal').classList.add('hidden');
 
 if($('regradeAllAiBtn')) {
   $('regradeAllAiBtn').onclick = async () => {
-    if(!reviewingAttemptId) return;
-    const attempt = attempts.find(a => a.id === reviewingAttemptId), exam = exams.find(e => e.id === attempt?.examId);
-    if(!attempt || !exam) return;
-    const btn = $('regradeAllAiBtn'); btn.disabled = true; btn.textContent = 'Evaluando...';
-    try {
-      for(let i=0; i<exam.questions.length; i++){
-        const q = exam.questions[i];
-        if(q.type === 'open'){
-          const ans = (attempt.answers || []).find(x => x.question === i) || {question:i, textAnswer:''};
-          const res = await evaluateOpenAnswerWithAI(q.text, q.rubric, ans.textAnswer);
-          ans.points = res.score; ans.correct = res.score>=0.7; ans.aiFeedback = res.feedback;
-          const inp = document.querySelector(`[data-rev-pts="${i}"]`);
-          if(inp){ inp.value = res.score; inp.dispatchEvent(new Event('input')); }
-        }
+    const att = attempts.find(a => a.id === reviewingAttemptId); if(!att) return;
+    const exam = exams.find(e => e.id === att.examId) || { questions: [] };
+    const btn = $('regradeAllAiBtn'); btn.disabled = true; btn.textContent = 'Analizando...';
+    for(let i=0; i<exam.questions.length; i++){
+      const q = exam.questions[i];
+      if((q.type||'multiple')==='open'){
+        const detail = (att.details||[])[i] || {};
+        const res = await evaluateOpenAnswerWithAI(q.text, q.rubric, detail.studentAnswerText||'');
+        att.details[i] = { ...detail, pointsEarned: res.score, aiFeedback: res.feedback };
       }
-      showMessage('reviewModalMsg', 'IA aplicada. Guarda los cambios.', 'good');
-    } catch(e){ 
-      showMessage('reviewModalMsg', 'Error: ' + e.message); 
-    } finally { 
-      btn.disabled = false; btn.textContent = '✨ Calificar abiertas con IA'; 
     }
+    const total = att.details.reduce((s, d)=>s+Number(d.pointsEarned||0),0);
+    att.score = exam.questions.length ? Number(((total/exam.questions.length)*10).toFixed(2)) : 0;
+    btn.disabled = false; btn.textContent = '✨ Calificar abiertas con IA';
+    openReviewModal(att.id);
+    showMessage('reviewModalMsg', 'Evaluación con IA completada.', 'good');
   };
 }
 
 if($('saveManualGradesBtn')) {
   $('saveManualGradesBtn').onclick = async () => {
-    if(!reviewingAttemptId || !cloudReady || !db) return;
-    const attempt = attempts.find(a => a.id === reviewingAttemptId), exam = exams.find(e => e.id === attempt?.examId);
-    if(!attempt) return;
+    const att = attempts.find(a => a.id === reviewingAttemptId); if(!att || !cloudReady || !db) return;
     const inputs = [...document.querySelectorAll('[data-rev-pts]')];
-    const updatedAnswers = JSON.parse(JSON.stringify(attempt.answers || []));
-    let sum = 0;
-    inputs.forEach(inp=>{
-      const idx = Number(inp.dataset.revPts), pts = Math.max(0,Math.min(1,Number(inp.value)||0));
-      sum += pts; let entry = updatedAnswers.find(x => x.question === idx);
-      if(!entry){ entry = {question:idx}; updatedAnswers.push(entry); }
-      entry.points = pts; entry.correct = pts>=0.7;
+    inputs.forEach((inp, idx) => {
+      if(!att.details[idx]) att.details[idx] = {};
+      att.details[idx].pointsEarned = Math.max(0, Math.min(1, Number(inp.value)||0));
     });
-    const totalQ = (exam ? exam.questions.length : attempt.total) || 1;
-    const newScore = attempt.status === 'infraccion' ? 0 : Math.round((sum/totalQ)*1000)/100;
-    const btn = $('saveManualGradesBtn'); btn.disabled = true; btn.textContent = 'Guardando...';
+    const total = att.details.reduce((s, d)=>s+Number(d.pointsEarned||0),0);
+    const newScore = inputs.length ? Number(((total/inputs.length)*10).toFixed(2)) : 0;
     try {
-      await db.collection(COL_ATTEMPTS).doc(attempt.id).update({
-        answers: updatedAnswers, score: newScore, correctCount: Math.round(sum*100)/100, status: attempt.status==='infraccion'?'infraccion':'completado', reason: attempt.status==='infraccion'?attempt.reason:'Revisado y calificado por docente'
-      });
+      await db.collection(COL_ATTEMPTS).doc(att.id).update({ score: newScore, details: att.details, status: 'finalizado' });
       showMessage('reviewModalMsg', 'Calificación guardada en la nube.', 'good');
-    } catch(e){ 
-      showMessage('reviewModalMsg', 'Error: ' + e.message); 
-    } finally { 
-      btn.disabled = false; btn.textContent = 'Guardar calificación en la nube'; 
-    }
+    } catch(e){ showMessage('reviewModalMsg', 'Error: ' + e.message); }
   };
 }
 
-window.resetAttempt = async (attemptId, name) => {
-  if(!cloudReady || !db) return;
-  if(confirm(`¿Reiniciar intento de ${name} en la nube?`)) await db.collection(COL_ATTEMPTS).doc(attemptId).delete();
-};
-
-function exportFile(filename,content,mime){
-  const blob=new Blob([content],{type:mime}); const a=document.createElement('a'), url=URL.createObjectURL(blob);
-  a.href=url; a.download=filename; document.body.append(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+function exportFile(name, data, type){
+  const blob=new Blob([data],{type}), a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=name; a.click(); URL.revokeObjectURL(a.href);
 }
-
 if($('exportCsvBtn')) {
   $('exportCsvBtn').onclick = () => {
-    const id = $('resultsFilter').value, subset = myAttempts().filter(a => id==='all' || a.examId===id);
-    const rows = [['Nombre','Cédula','Materia','Examen','Curso','Nota','Estado','Publicado'], ...subset.map(a=>[a.name,a.cedula,a.subject,a.examTitle,a.level,Number(a.score||0).toFixed(2),a.status,a.published?'Sí':'No'])];
-    exportFile('reporte_calificaciones.csv', '\uFEFF' + rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'), 'text/csv;charset=utf-8');
+    if(!currentTeacher) return;
+    const rows=[['Estudiante','Cédula','Curso','Paralelo','Materia','Examen','Publicada','Nota','Estado'], ...myAttempts().map(a=>[a.studentName, a.cedula, a.level||'', a.parallel||'', a.subject, a.examTitle, a.published?'Sí':'No', String(a.score).replace('.',','), a.status])];
+    exportFile('reporte_JBP.csv', '\uFEFF'+rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\n'), 'text/csv;charset=utf-8');
+  };
+}
+if($('exportBackupBtn')) {
+  $('exportBackupBtn').onclick = () => {
+    if(!currentTeacher) return;
+    exportFile('respaldo_nube_JBP.json', JSON.stringify({exportedAt:new Date().toISOString(), teacher:currentTeacher.name, exams:myExams(), attempts:myAttempts()}, null, 2), 'application/json');
   };
 }
 
-if($('exportBackupBtn')) {
-  $('exportBackupBtn').onclick = () => exportFile('respaldo_JBP.json', JSON.stringify({exams:myExams(), attempts:myAttempts(), students}, null, 2), 'application/json');
-}
+// ==========================================
+// 7. FLUJO DE EXAMEN DEL ESTUDIANTE + DIDÁCTICA
+// ==========================================
+if($('startExamBtn')) {
+  $('startExamBtn').onclick = async () => {
+    if(!cloudReady || !db) { showMessage('studentMessage', 'Esperando conexión con la nube...'); return; }
+    const name = $('studentName').value.trim().replace(/\s+/g,' '), cedula = $('studentCedula').value.trim(), exam = exams.find(e => e.id === $('studentExam').value);
+    const pupil = students.find(s => s.cedula === cedula);
+    if(!pupil){ showMessage('studentMessage', 'Ingresa una cédula válida o regístrate en la nube.'); return; }
+    if(!exam){ showMessage('studentMessage', 'Selecciona un examen.'); return; }
+    if(status(exam) !== 'Disponible'){ showMessage('studentMessage', 'El examen no está disponible en este horario.'); return; }
 
-// Ejecución Examen
-function studentIdKey(cedula,id){return cedula+'_'+id}
+    try {
+      const existingSnap = await db.collection(COL_ATTEMPTS).where('examId', '==', exam.id).where('cedula', '==', cedula).get();
+      if(!existingSnap.empty){
+        showMessage('studentMessage', 'Ya registras un intento en la nube para esta evaluación.');
+        return;
+      }
+    } catch(e){}
 
-async function beginExam(){
-  if(!cloudReady || !db){ showMessage('studentMessage', 'Esperando conexión con la nube...'); return; }
-  const name = $('studentName').value.trim().replace(/\s+/g,' '), cedula = $('studentCedula').value.trim();
-  const exam = exams.find(e => e.id === $('studentExam').value), registered = students.find(s => s.cedula === cedula);
+    // Pre-construir estructuras interactivas para cada pregunta del estudiante
+    const preparedQuestions = exam.questions.map(q => {
+      if (q.type === 'wordsearch') {
+        const wsData = buildWordSearchGrid(q.wordsRaw || (q.words||[]).join(','), q.gridSize || 10);
+        return { ...q, _ws: wsData };
+      }
+      if (q.type === 'image_labels') {
+        const labelsList = (q.imageLabels || []).map(p => p.label);
+        const shuffled = [...labelsList].sort(() => Math.random() - 0.5);
+        return { ...q, _shuffledLabels: shuffled };
+      }
+      return q;
+    });
 
-  if(!registered){ showMessage('studentMessage','Tu cédula no figura en la nómina.'); return; }
-  if(registered.name !== name){ showMessage('studentMessage','Los nombres no coinciden.'); return; }
-  if(!exam || exam.level !== registered.level || exam.parallel !== registered.parallel){ showMessage('studentMessage','El examen no corresponde a tu curso.'); return; }
-  if(!/^\d{10}$/.test(cedula)){ showMessage('studentMessage','Cédula inválida (10 dígitos).'); return; }
-  if(!exam || status(exam) !== 'Disponible'){ showMessage('studentMessage','Examen no disponible.'); return; }
-
-  const attemptId = studentIdKey(cedula, exam.id);
-  const btn = $('startExamBtn'); btn.disabled = true; btn.textContent = 'Verificando...';
-  try {
-    const docRef = db.collection(COL_ATTEMPTS).doc(attemptId);
-    if((await docRef.get()).exists){
-      showMessage('studentMessage','Ya registraste un intento para este examen.');
-      btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →'; return;
-    }
-    if(!confirm('Al iniciar se registra tu único intento. Minimizar o cambiar de pestaña anulará el examen (0/10). ¿Comenzar?')) {
-      btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →'; return;
-    }
-
-    if($('examScreen')) $('examScreen').classList.remove('hidden');
-    await $('examScreen').requestFullscreen({navigationUI:'hide'});
-
-    const record = {
-      id: attemptId, examId: exam.id, examTitle: exam.title, teacher: exam.teacher, subject: exam.subject,
-      level: exam.level, parallel: exam.parallel, name, cedula, startedAt: Date.now(), finishedAt: null,
-      status: 'en_curso', score: 0, correctCount: 0, total: exam.questions.length, answers: [], reason: '', published: false
+    const attemptId = uid();
+    live = {
+      attemptId, exam: { ...exam, questions: preparedQuestions }, studentName: pupil.name, cedula, level: pupil.level, parallel: pupil.parallel,
+      index: 0, answers: preparedQuestions.map(q=>{
+        if(q.type==='open') return {text:''};
+        if(q.type==='math_combo') return {combo:null, writtenProcedure:''};
+        if(q.type==='wordsearch') return {foundWords:[], foundCoords:[]};
+        if(q.type==='image_labels') return {labelsMap:{}, selectedChip:null};
+        return {option:null};
+      }),
+      questionDeadline: Date.now() + exam.seconds * 1000, startedAt: Date.now(), strict: false, status: 'en_progreso'
     };
-    await docRef.set(record);
 
-    live = { exam: JSON.parse(JSON.stringify(exam)), record, index: 0, questionDeadline: Math.min(Date.now()+exam.seconds*1000,endAt(exam)), endDeadline: endAt(exam), selected: null, textAnswer: '', comboChoice: null, writtenProcedure: '' };
-    if($('topBar')) $('topBar').classList.add('hidden'); 
-    if($('mainApp')) $('mainApp').classList.add('hidden');
-    if($('liveTitle')) $('liveTitle').textContent = exam.subject + ' · ' + exam.title; 
-    if($('liveStudent')) $('liveStudent').textContent = name + ' · Cédula ' + cedula;
-    renderLiveQuestion(); interval = setInterval(tick, 200); tick();
-  } catch(e){
-    if($('examScreen')) $('examScreen').classList.add('hidden'); 
-    showMessage('studentMessage', 'Error: ' + e.message);
-  } finally { 
-    btn.disabled = false; btn.textContent = 'Comenzar examen en pantalla completa →'; 
-  }
+    try {
+      await db.collection(COL_ATTEMPTS).doc(attemptId).set({
+        id: attemptId, examId: exam.id, examTitle: exam.title, subject: exam.subject, teacher: exam.teacher,
+        studentName: pupil.name, cedula, level: pupil.level, parallel: pupil.parallel, score: 0, published: false, status: 'en_progreso', startedAt: live.startedAt, details: []
+      });
+    } catch(e) {
+      showMessage('studentMessage', 'Error al registrar inicio en la nube: ' + e.message);
+      return;
+    }
+
+    $('examScreen').classList.remove('hidden'); $('topBar').classList.add('hidden'); $('mainApp').classList.add('hidden');
+    $('liveTitle').textContent = `${exam.subject} — ${exam.title}`; $('liveStudent').textContent = `${pupil.name} · C.I. ${cedula}`;
+    finalizing = false;
+    try { await $('examScreen').requestFullscreen(); } catch(_){}
+    setTimeout(()=>{ if(live) live.strict = true; }, 750);
+    renderLiveQuestion(); startTimer();
+  };
 }
-if($('startExamBtn')) $('startExamBtn').onclick = beginExam;
+
+// Lógica de interacción Sopa de Letras
+let wsDragStart = null;
+let wsDragCurrent = [];
+
+function getLineCells(r0, c0, r1, c1) {
+  const dr = r1 - r0, dc = c1 - c0;
+  if (dr === 0 && dc === 0) return [[r0, c0]];
+  if (dr === 0 || dc === 0 || Math.abs(dr) === Math.abs(dc)) {
+    const steps = Math.max(Math.abs(dr), Math.abs(dc));
+    const stepR = dr === 0 ? 0 : dr / steps;
+    const stepC = dc === 0 ? 0 : dc / steps;
+    const res = [];
+    for (let k = 0; k <= steps; k++) {
+      res.push([r0 + stepR * k, c0 + stepC * k]);
+    }
+    return res;
+  }
+  return [[r0, c0]];
+}
+
+function updateWsHighlight() {
+  document.querySelectorAll('.ws-cell').forEach(c => c.classList.remove('selecting'));
+  wsDragCurrent.forEach(([r, c]) => {
+    const el = document.querySelector(`.ws-cell[data-r="${r}"][data-c="${c}"]`);
+    if (el) el.classList.add('selecting');
+  });
+}
+
+function commitWsSelection() {
+  if (!live || !wsDragCurrent.length) {
+    wsDragStart = null; wsDragCurrent = []; updateWsHighlight(); return;
+  }
+  const q = live.exam.questions[live.index];
+  const ans = live.answers[live.index];
+  if (q && q.type === 'wordsearch' && q._ws) {
+    const wordStr = wsDragCurrent.map(([r, c]) => q._ws.grid[r][c]).join('');
+    const revStr = wordStr.split('').reverse().join('');
+    const targetWords = q._ws.placed.map(p => p.word);
+
+    let matched = null;
+    if (targetWords.includes(wordStr) && !ans.foundWords.includes(wordStr)) matched = wordStr;
+    else if (targetWords.includes(revStr) && !ans.foundWords.includes(revStr)) matched = revStr;
+
+    if (matched) {
+      ans.foundWords.push(matched);
+      wsDragCurrent.forEach(([r, c]) => {
+        const key = `${r},${c}`;
+        if (!ans.foundCoords.includes(key)) ans.foundCoords.push(key);
+      });
+      wsDragStart = null; wsDragCurrent = [];
+      renderLiveQuestion();
+      return;
+    }
+  }
+  wsDragStart = null; wsDragCurrent = [];
+  updateWsHighlight();
+}
 
 function renderLiveQuestion(){
   if(!live) return;
-  const {exam, index} = live, q = exam.questions[index];
-  if(!q){ finishExam('completado'); return; }
-  live.selected = null; live.textAnswer = ''; live.comboChoice = null; live.writtenProcedure = '';
-  const qType = q.type || 'multiple';
-  if($('examProgress')) $('examProgress').style.width = ((index+1)/exam.questions.length*100)+'%';
+  const q = live.exam.questions[live.index], qType = q.type||'multiple', ans = live.answers[live.index];
+  $('examProgress').style.width = ((live.index + 1)/live.exam.questions.length*100) + '%';
 
-  let html = '';
-  if(qType === 'open') html = `<div class="stack"><label class="field"><span>Respuesta desarrollada:</span><textarea id="liveOpenText" rows="5" placeholder="Escribe tu respuesta aquí..."></textarea></label></div>`;
-  else if(qType === 'math_combo') html = `<div class="math-matrix"><div><span class="math-col-title">Opciones</span><div class="stack" style="gap:6px">${(q.options||[]).map((o,i)=>`<div class="tile" style="padding:10px"><b>${'ABCD'[i]}.</b> ${esc(o)}</div>`).join('')}</div></div><div><span class="math-col-title">Procedimientos</span><div class="stack" style="gap:6px">${(q.procedures||[]).map((p,i)=>`<div class="tile" style="padding:10px"><b>${i+1}.</b> ${esc(p)}</div>`).join('')}</div></div></div><div class="topgap"><span style="font-size:13px;font-weight:800;color:var(--wine)">Selecciona la combinación (ej. A2):</span><div class="combo-grid">${MATH_COMBOS.map(c=>`<button type="button" class="combo-chip" data-combo-val="${c}">${c}</button>`).join('')}</div></div>${q.requireWrittenProc?`<label class="field topgap"><span>Justifica tu cálculo:</span><textarea id="liveMathProcText" rows="3"></textarea></label>`:''}`;
-  else html = `<div id="liveOptions">${q.options.map((opt,i)=>`<label class="answer"><input type="radio" name="answer" value="${i}"><span><b>${'ABCD'[i]}.</b> ${esc(opt)}</span></label>`).join('')}</div>`;
+  const imgHtml = (q.imageUrl && qType !== 'image_labels') ? `<div style="text-align:center;margin:14px 0"><img src="${esc(q.imageUrl)}" style="max-height:240px;max-width:100%;border-radius:12px;border:1px solid var(--line)"></div>` : '';
 
-  if($('examQuestionArea')) {
-    $('examQuestionArea').innerHTML = `
-      <span class="tag">Pregunta ${index+1} de ${exam.questions.length}</span>
-      <h2>${esc(q.text)}</h2>
-      ${q.imageUrl?`<img src="${esc(q.imageUrl)}" style="max-width:100%;max-height:220px;border-radius:12px;margin:12px 0;display:block">`:''}
-      ${html}
-      <div class="exam-bottom">
-        <span class="hint">No podrás regresar.</span>
-        <button class="btn" id="nextBtn">${index===exam.questions.length-1?'Finalizar examen':'Guardar y continuar →'}</button>
+  let bodyHtml = '';
+  if(qType === 'open'){
+    bodyHtml = `<textarea id="liveOpenInput" rows="5" style="width:100%;border:2px solid #e3e5ea;border-radius:13px;padding:15px" placeholder="Escribe tu respuesta aquí...">${esc(ans.text||'')}</textarea>`;
+  } else if(qType === 'math_combo'){
+    bodyHtml = `
+      <div class="math-matrix">
+        <div><span class="math-col-title">Opciones</span>${(q.options||[]).map((o,j)=>`<div style="font-size:14px;margin-bottom:4px"><b>${'ABCD'[j]}.</b> ${esc(o)}</div>`).join('')}</div>
+        <div><span class="math-col-title">Procedimientos</span>${(q.procedures||[]).map((p,j)=>`<div style="font-size:14px;margin-bottom:4px"><b>${j+1}.</b> ${esc(p)}</div>`).join('')}</div>
+      </div>
+      <div class="combo-grid topgap">${MATH_COMBOS.map(c=>`<div class="combo-chip ${ans.combo===c?'selected':''}" data-pick-combo="${c}">${c}</div>`).join('')}</div>
+      ${q.requireWrittenProc?`<textarea id="liveProcInput" rows="3" class="topgap" style="width:100%;border:1px solid #d6d9e1;border-radius:10px;padding:10px" placeholder="Justifica tu procedimiento...">${esc(ans.writtenProcedure||'')}</textarea>`:''}
+    `;
+  } else if(qType === 'wordsearch'){
+    const ws = q._ws || { gridSize: 10, grid: [], placed: [] };
+    const targetWords = ws.placed.map(p => p.word);
+    bodyHtml = `
+      <div class="ws-container">
+        <div style="font-size:13px;font-weight:700;color:var(--wine)">👆 Arrastra el ratón o tu dedo sobre las letras para encerrar cada palabra (${ans.foundWords.length}/${targetWords.length} encontradas)</div>
+        <div class="ws-grid" id="liveWsGrid" style="grid-template-columns:repeat(${ws.gridSize}, 1fr)">
+          ${ws.grid.map((row, r) => row.map((ch, c) => {
+            const isFound = ans.foundCoords.includes(`${r},${c}`);
+            return `<div class="ws-cell ${isFound?'found':''}" data-r="${r}" data-c="${c}">${esc(ch)}</div>`;
+          }).join('')).join('')}
+        </div>
+        <div class="ws-words-list">
+          ${targetWords.map(w => `<span class="ws-word-pill ${ans.foundWords.includes(w)?'found':''}">${esc(w)}</span>`).join('')}
+        </div>
       </div>
     `;
-  }
-
-  try { renderMathInElement($('examQuestionArea')); } catch(e){}
-
-  if(qType === 'open') {
-    const ot = $('liveOpenText'); if(ot) ot.oninput = e => live.textAnswer = e.target.value;
-  } else if(qType === 'math_combo'){
-    document.querySelectorAll('[data-combo-val]').forEach(b=>b.onclick=()=>{live.comboChoice=b.dataset.comboVal; document.querySelectorAll('[data-combo-val]').forEach(x=>x.classList.toggle('selected',x===b));});
-    const mp = $('liveMathProcText'); if(mp) mp.oninput = e => live.writtenProcedure = e.target.value;
+  } else if(qType === 'image_labels'){
+    const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
+    const chips = Array.isArray(q._shuffledLabels) ? q._shuffledLabels : pins.map(p=>p.label);
+    const usedValues = Object.values(ans.labelsMap || {});
+    bodyHtml = `
+      <div style="text-align:center;margin-top:10px">
+        <div class="notice good" style="margin-bottom:12px;text-align:left">
+          <b>¿Cómo resolver?</b> 1️⃣ Toca una etiqueta de palabra abajo para seleccionarla y 2️⃣ toca el círculo numerado correspondiente sobre el dibujo. (También puedes tocar un número ya marcado para quitar su etiqueta).
+        </div>
+        <div class="label-stage-wrap">
+          <img src="${esc(q.imageUrl)}" alt="Gráfico a etiquetar">
+          ${pins.map((p, pIdx) => {
+            const placedWord = ans.labelsMap[pIdx];
+            const isTarget = ans.selectedChip !== null && !placedWord;
+            return `<button type="button" class="label-pin-student ${placedWord?'assigned':''} ${isTarget?'target-active':''}" data-pin-idx="${pIdx}" style="left:${p.x}%;top:${p.y}%">${placedWord ? `${pIdx+1}: ${esc(placedWord)}` : pIdx+1}</button>`;
+          }).join('')}
+        </div>
+        <div class="word-bank-kids">
+          ${chips.map(word => {
+            const isSelected = ans.selectedChip === word;
+            const isUsed = usedValues.includes(word);
+            return `<button type="button" class="kid-chip ${isSelected?'selected':''} ${isUsed?'used':''}" data-kid-word="${esc(word)}">${esc(word)}</button>`;
+          }).join('')}
+        </div>
+      </div>
+    `;
   } else {
-    const lo = $('liveOptions');
-    if(lo) lo.querySelectorAll('input').forEach(inp=>inp.onchange=()=>{live.selected=Number(inp.value); document.querySelectorAll('.answer').forEach(el=>el.classList.toggle('selected',el.querySelector('input').checked));});
+    bodyHtml = (q.options||[]).map((o,j)=>`<label class="answer ${ans.option===j?'selected':''}"><input type="radio" name="opt" value="${j}" ${ans.option===j?'checked':''}><span><b>${'ABCD'[j]}.</b> ${esc(o)}</span></label>`).join('');
   }
-  if($('nextBtn')) $('nextBtn').onclick = advanceQuestion;
+
+  $('examQuestionArea').innerHTML = `
+    <span class="tag">Pregunta ${live.index+1} de ${live.exam.questions.length}</span>
+    <h2>${esc(q.text)}</h2>
+    ${imgHtml}
+    ${bodyHtml}
+    <div class="exam-bottom">
+      <button type="button" class="btn neutral" id="skipBtn">Pasar</button>
+      <button type="button" class="btn" id="nextBtn">${live.index===live.exam.questions.length-1?'Finalizar y enviar →':'Siguiente →'}</button>
+    </div>
+  `;
+
+  renderMathSafe($('examQuestionArea'));
+
+  // Eventos según tipo de pregunta
+  if(qType==='open') {
+    $('liveOpenInput').oninput = e => live.answers[live.index].text = e.target.value;
+  } else if(qType==='math_combo'){
+    document.querySelectorAll('[data-pick-combo]').forEach(el => el.onclick = () => { live.answers[live.index].combo = el.dataset.pickCombo; renderLiveQuestion(); });
+    if($('liveProcInput')) $('liveProcInput').oninput = e => live.answers[live.index].writtenProcedure = e.target.value;
+  } else if(qType==='wordsearch'){
+    const gridEl = $('liveWsGrid');
+    if (gridEl) {
+      gridEl.onpointerdown = e => {
+        const cell = e.target.closest('.ws-cell');
+        if (!cell) return;
+        e.preventDefault();
+        wsDragStart = [Number(cell.dataset.r), Number(cell.dataset.c)];
+        wsDragCurrent = [wsDragStart];
+        updateWsHighlight();
+      };
+      gridEl.onpointermove = e => {
+        if (!wsDragStart) return;
+        const elUnder = document.elementFromPoint(e.clientX, e.clientY);
+        const cell = elUnder?.closest('.ws-cell');
+        if (!cell) return;
+        wsDragCurrent = getLineCells(wsDragStart[0], wsDragStart[1], Number(cell.dataset.r), Number(cell.dataset.c));
+        updateWsHighlight();
+      };
+      window.onpointerup = () => {
+        if (wsDragStart) commitWsSelection();
+      };
+    }
+  } else if(qType==='image_labels'){
+    document.querySelectorAll('[data-kid-word]').forEach(chip => {
+      chip.onclick = () => {
+        const w = chip.dataset.kidWord;
+        ans.selectedChip = (ans.selectedChip === w) ? null : w;
+        renderLiveQuestion();
+      };
+    });
+    document.querySelectorAll('[data-pin-idx]').forEach(pinBtn => {
+      pinBtn.onclick = () => {
+        const pIdx = Number(pinBtn.dataset.pinIdx);
+        if (ans.selectedChip) {
+          // Quitar si esa palabra ya estaba en otro pin
+          for (const k of Object.keys(ans.labelsMap)) {
+            if (ans.labelsMap[k] === ans.selectedChip) delete ans.labelsMap[k];
+          }
+          ans.labelsMap[pIdx] = ans.selectedChip;
+          ans.selectedChip = null;
+          renderLiveQuestion();
+        } else if (ans.labelsMap[pIdx]) {
+          delete ans.labelsMap[pIdx];
+          renderLiveQuestion();
+        }
+      };
+    });
+  } else {
+    document.querySelectorAll('input[name="opt"]').forEach(r => r.onchange = () => { live.answers[live.index].option = Number(r.value); renderLiveQuestion(); });
+  }
+
+  $('skipBtn').onclick = () => advanceQuestion();
+  $('nextBtn').onclick = () => advanceQuestion();
 }
 
 function advanceQuestion(){
-  if(!live || finalizing) return;
-  const a = live.record, q = live.exam.questions[live.index], qType = q.type || 'multiple';
-  if(qType === 'open') a.answers.push({question:live.index, type:'open', textAnswer:(live.textAnswer||'').trim(), points:0, correct:false});
-  else if(qType === 'math_combo'){ const ok = live.comboChoice === q.correctCombo; a.answers.push({question:live.index, type:'math_combo', comboChoice:live.comboChoice, writtenProcedure:(live.writtenProcedure||'').trim(), points:ok?1:0, correct:ok}); }
-  else { const ok = live.selected === q.correct; a.answers.push({question:live.index, type:'multiple', choice:live.selected, points:ok?1:0, correct:ok}); }
-
-  live.index++;
-  if(live.index >= live.exam.questions.length){ finishExam('completado'); return; }
-  live.questionDeadline = Math.min(Date.now()+live.exam.seconds*1000, live.endDeadline);
-  renderLiveQuestion(); tick();
-}
-
-function tick(){
-  if(!live || finalizing) return;
-  const now = Date.now(), rw = (live.endDeadline-now)/1000, rq = (live.questionDeadline-now)/1000;
-  if($('questionTime')) $('questionTime').textContent = formatClock(rq); 
-  if($('windowTime')) $('windowTime').textContent = formatClock(rw);
-  if(rw <= 0){ finishExam('vencido','Horario finalizado.'); return; }
-  if(rq <= 0) advanceQuestion();
-}
-
-function violation(reason){ if(live && !finalizing) finishExam('infraccion',reason); }
-
-async function finishExam(state,reason=''){
-  if(!live || finalizing) return; finalizing = true; clearInterval(interval); interval = null;
-  const finishedExam = live.exam, a = live.record; a.finishedAt = Date.now(); a.reason = reason; live = null;
-  const infr = state === 'infraccion';
-  const hasManualOpen = !infr && finishedExam.questions.some(q => q.type === 'open' && q.gradingMode === 'manual');
-
-  if($('examQuestionArea')) {
-    $('examQuestionArea').innerHTML = `<div style="text-align:center;padding:22px"><div class="tag ${infr?'bad':'good'}">EXAMEN FINALIZADO</div><h2>Sincronizando con la nube...</h2><p class="hint">Guardando respuestas en Firebase Cloud...</p></div>`;
+  if(!live) return;
+  if(live.index < live.exam.questions.length - 1){
+    live.index++; live.questionDeadline = Date.now() + live.exam.seconds * 1000; renderLiveQuestion();
+  } else {
+    finishExam('finalizado', '');
   }
+}
 
-  if(!infr){
-    for(let i=0; i<finishedExam.questions.length; i++){
-      const q = finishedExam.questions[i];
-      if(q.type === 'open' && q.gradingMode !== 'manual'){
-        let entry = a.answers.find(x => x.question === i);
-        if(entry){ const res = await evaluateOpenAnswerWithAI(q.text, q.rubric, entry.textAnswer); entry.points = res.score; entry.correct = res.score>=0.7; entry.aiFeedback = res.feedback; }
+function startTimer(){
+  clearInterval(interval);
+  interval = setInterval(()=>{
+    if(!live) return;
+    const now = Date.now(), qRem = (live.questionDeadline - now)/1000, wRem = (endAt(live.exam) - now)/1000;
+    $('questionTime').textContent = formatClock(qRem); $('windowTime').textContent = formatClock(wRem);
+    if(wRem <= 0){ finishExam('tiempo_agotado', 'Se agotó la ventana de disponibilidad.'); return; }
+    if(qRem <= 0) advanceQuestion();
+  }, 250);
+}
+
+async function finishExam(statusText, reason){
+  if(!live || finalizing) return;
+  finalizing = true; clearInterval(interval);
+  const current = live; live = null; current.strict = false;
+  $('examQuestionArea').innerHTML = '<div style="text-align:center;padding:40px"><h3>Sincronizando respuestas con la nube...</h3><p class="hint">Por favor espera un momento.</p></div>';
+
+  const totalQ = current.exam.questions.length;
+  const details = [];
+  let earnedTotal = 0;
+
+  if(statusText !== 'infraccion'){
+    for(let i=0; i<totalQ; i++){
+      const q = current.exam.questions[i], ans = current.answers[i] || {}, qType = q.type||'multiple';
+      if(qType === 'open'){
+        const res = q.gradingMode==='ai' ? await evaluateOpenAnswerWithAI(q.text, q.rubric, ans.text) : {score:0, feedback:'Pendiente de revisión docente'};
+        details.push({type:'open', studentAnswerText:ans.text||'', pointsEarned:res.score, aiFeedback:res.feedback});
+        earnedTotal += res.score;
+      } else if(qType === 'math_combo'){
+        const ok = ans.combo === q.correctCombo ? 1 : 0;
+        details.push({type:'math_combo', selectedCombo:ans.combo, writtenProcedure:ans.writtenProcedure||'', pointsEarned:ok});
+        earnedTotal += ok;
+      } else if(qType === 'wordsearch'){
+        const totalWords = (q._ws?.placed?.length || q.words?.length || 1);
+        const foundCount = (ans.foundWords || []).length;
+        const pts = Math.min(1, Math.round((foundCount / totalWords) * 100) / 100);
+        details.push({type:'wordsearch', foundWords:ans.foundWords||[], pointsEarned:pts});
+        earnedTotal += pts;
+      } else if(qType === 'image_labels'){
+        const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
+        let correctPins = 0;
+        pins.forEach((p, pIdx) => {
+          if ((ans.labelsMap || {})[pIdx] === p.label) correctPins++;
+        });
+        const pts = pins.length ? Math.round((correctPins / pins.length) * 100) / 100 : 0;
+        details.push({type:'image_labels', studentLabels:ans.labelsMap||{}, pointsEarned:pts});
+        earnedTotal += pts;
+      } else {
+        const ok = ans.option === q.correct ? 1 : 0;
+        details.push({type:'multiple', selectedOption:ans.option, pointsEarned:ok});
+        earnedTotal += ok;
       }
     }
   }
 
-  const totalPts = infr ? 0 : a.answers.reduce((acc,x)=>acc+Number(x.points??(x.correct?1:0)),0);
-  a.correctCount = Math.round(totalPts*100)/100;
-  a.score = infr ? 0 : Math.round((totalPts/a.total)*1000)/100;
-  a.status = infr ? 'infraccion' : hasManualOpen ? 'pendiente_revision' : (state === 'completado' ? 'completado' : 'vencido');
-  a.published = false;
+  const finalScore = statusText === 'infraccion' ? 0 : (totalQ ? Number(((earnedTotal/totalQ)*10).toFixed(2)) : 0);
 
-  if(cloudReady && db) {
-    await db.collection(COL_ATTEMPTS).doc(a.id).set(a, {merge:true}).catch(()=>{});
+  if(cloudReady && db){
+    try {
+      await db.collection(COL_ATTEMPTS).doc(current.attemptId).update({
+        score: finalScore, status: statusText, reason, finishedAt: Date.now(), details
+      });
+    } catch(e){}
   }
 
-  if($('examQuestionArea')) {
-    $('examQuestionArea').innerHTML = `<div style="text-align:center;padding:22px"><div class="tag good">¡EVALUACIÓN ENVIADA!</div><h2>Examen guardado en la nube correctamente</h2><p>Tus respuestas han sido registradas en Firebase Cloud. <b>La calificación está retenida</b> y podrá ser consultada en "Mis calificaciones" una vez que el docente las publique.</p>${reason?`<div class="notice red">${esc(reason)}</div>`:''}<button id="returnBtn" class="btn topgap">Salir y volver al inicio</button></div>`;
-  }
-  if($('questionTime')) $('questionTime').textContent = '—'; 
-  if($('windowTime')) $('windowTime').textContent = '—';
-
-  if($('returnBtn')) {
-    $('returnBtn').onclick = async () => {
-      try{ if(document.fullscreenElement) await document.exitFullscreen() }catch{}
-      if($('examScreen')) $('examScreen').classList.add('hidden'); 
-      if($('topBar')) $('topBar').classList.remove('hidden'); 
-      if($('mainApp')) $('mainApp').classList.remove('hidden');
-      if($('studentMessage')) $('studentMessage').innerHTML = ''; 
-      renderStudent(); renderTeacher(); finalizing = false;
-    };
-  }
+  $('examQuestionArea').innerHTML = `
+    <div style="text-align:center;padding:20px 0">
+      <div class="eyebrow" style="color:var(--wine)">Evaluación finalizada</div>
+      <div class="big-result">✓ Recibido</div>
+      <p style="font-size:15px;font-weight:700;color:var(--ink)">Tu evaluación ha sido enviada y sincronizada en la nube.</p>
+      <p class="hint" style="max-width:480px;margin:10px auto">Por disposición institucional, tu calificación estará visible en el botón <b>"Mis calificaciones"</b> una vez que el docente las publique oficialmente.</p>
+      ${reason?`<p class="notice red" style="max-width:480px;margin:12px auto">${esc(reason)}</p>`:''}
+      <button class="btn topgap" id="backHomeBtn">Volver al inicio</button>
+    </div>
+  `;
+  $('backHomeBtn').onclick = async () => {
+    try{ if(document.fullscreenElement) await document.exitFullscreen(); }catch(_){}
+    $('examScreen').classList.add('hidden'); $('topBar').classList.remove('hidden'); $('mainApp').classList.remove('hidden'); renderStudent();
+  };
 }
 
-document.addEventListener('visibilitychange', () => { if(document.hidden) violation('Cambió de pestaña o minimizó.'); });
-document.addEventListener('fullscreenchange', () => { if(live && !document.fullscreenElement) violation('Salió de pantalla completa.'); });
-window.addEventListener('blur', () => { if(live) setTimeout(()=>{ if(live && !document.hasFocus()) violation('Perdió el foco de la ventana.'); },200); });
+document.addEventListener('visibilitychange', () => { if(live?.strict && document.hidden) finishExam('infraccion', 'Anulado por cambiar de pestaña.'); });
+window.addEventListener('blur', () => { if(live?.strict) finishExam('infraccion', 'Anulado por salir de la ventana.'); });
+document.addEventListener('fullscreenchange', () => { if(live?.strict && !document.fullscreenElement) finishExam('infraccion', 'Anulado por salir de pantalla completa.'); });
 
-if($('examDate')) $('examDate').value = localDateValue(); 
-if($('examTime')) $('examTime').value = localTimeValue();
-resetEditor(); renderStudent(); authReady(); initCloud();
+// Inicializar aplicación
+resetEditor();
+initCloud();
 </script>
 </body>
 </html>
