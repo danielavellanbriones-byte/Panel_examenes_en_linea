@@ -44,7 +44,7 @@ math-field:focus-within {
 .pwd-badge { font-family: monospace; background: #f4f5f8; border: 1px solid #d6d9e1; padding: 4px 8px; border-radius: 6px; font-size: 13px; font-weight: 700; color: var(--wine); }
 
 /* =========================================================
-   ESTILOS DIDÁCTICOS PARA NIÑOS: SOPA DE LETRAS Y ETIQUETAS
+   ESTILOS DIDÁCTICOS: SOPA DE LETRAS Y ETIQUETAS EN GRÁFICO
    ========================================================= */
 .ws-container { display: flex; flex-direction: column; align-items: center; gap: 16px; background: #fdf9fb; border: 2px solid #ecd6e0; border-radius: 18px; padding: 18px; margin-top: 12px; user-select: none; }
 .ws-grid { display: grid; gap: 4px; background: #fff; padding: 10px; border-radius: 14px; border: 2px solid #d7c0cb; box-shadow: 0 6px 20px rgba(0,0,0,.06); touch-action: none; }
@@ -56,7 +56,6 @@ math-field:focus-within {
 .ws-word-pill { padding: 7px 14px; border-radius: 999px; background: #fff; border: 2px solid #d6d9e1; font-weight: 800; font-size: 14px; letter-spacing: .5px; color: var(--ink); transition: .2s; }
 .ws-word-pill.found { background: #166a47; color: #fff; border-color: #166a47; text-decoration: line-through; transform: scale(.96); }
 
-/* ETIQUETAS EN IMAGEN INTERACTIVA (NOMBRAR PARTES DE UN GRÁFICO) */
 .label-stage-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden; border: 2px solid #d7c0cb; background: #fff; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
 .label-stage-wrap img { display: block; max-width: 100%; max-height: 380px; width: auto; height: auto; user-select: none; -webkit-user-drag: none; }
 .label-pin-editor { position: absolute; transform: translate(-50%, -50%); width: 30px; height: 30px; border-radius: 50%; background: var(--wine); color: #fff; border: 3px solid #fff; font-weight: 900; font-size: 13px; display: grid; place-items: center; box-shadow: 0 3px 10px rgba(0,0,0,.35); pointer-events: none; }
@@ -70,6 +69,41 @@ math-field:focus-within {
 .kid-chip:hover { transform: translateY(-2px); background: var(--wineSoft); }
 .kid-chip.selected { background: var(--wine); color: #fff; border-color: var(--wine); transform: scale(1.05); }
 .kid-chip.used { opacity: .45; text-decoration: line-through; }
+
+/* =========================================================
+   NUEVOS ESTILOS: VERDADERO/FALSO, COMPLETE, UNIR CON LÍNEA Y CRUCIGRAMA
+   ========================================================= */
+.tf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+.tf-card { border: 2px solid #e3e5ea; border-radius: 16px; padding: 22px; text-align: center; font-size: 18px; font-weight: 900; cursor: pointer; background: #fff; transition: .18s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.tf-card:hover { transform: translateY(-2px); border-color: #cfa9ba; background: #fff9fb; }
+.tf-card.selected-true { background: #eaf7ee; border-color: var(--good); color: var(--good); box-shadow: 0 6px 18px rgba(22,106,71,.14); }
+.tf-card.selected-false { background: #fff0f2; border-color: var(--bad); color: var(--bad); box-shadow: 0 6px 18px rgba(187,41,70,.14); }
+
+/* COMPLETE (ESPACIOS EN BLANCO) */
+.fill-blank-sentence { font-size: 19px; line-height: 2.2; background: #fdf9fb; border: 2px solid #ecd6e0; border-radius: 16px; padding: 22px; margin-top: 12px; }
+.fill-blank-input { border: 0; border-bottom: 3px solid var(--wine); background: #fff; border-radius: 8px 8px 0 0; padding: 4px 12px; font-weight: 800; color: var(--wine); font-size: 17px; min-width: 130px; max-width: 240px; text-align: center; margin: 0 6px; outline: none; box-shadow: 0 2px 6px rgba(0,0,0,.04); }
+.fill-blank-input:focus { background: #fff7fa; border-bottom-color: var(--good); }
+
+/* UNIR CON LÍNEA */
+.match-stage { position: relative; display: grid; grid-template-columns: 1fr 90px 1fr; align-items: stretch; gap: 0; margin-top: 14px; background: #fdf9fb; border: 2px solid #ecd6e0; border-radius: 18px; padding: 18px; }
+.match-col { display: flex; flex-direction: column; justify-content: space-around; gap: 12px; z-index: 2; }
+.match-node { background: #fff; border: 2px solid #d6d9e1; border-radius: 12px; padding: 12px 14px; font-weight: 700; font-size: 14px; cursor: pointer; transition: .15s; display: flex; align-items: center; justify-content: space-between; gap: 8px; box-shadow: 0 3px 10px rgba(0,0,0,.04); text-align: left; }
+.match-node:hover { border-color: var(--wine2); transform: scale(1.01); }
+.match-node.active-left { border-color: var(--wine); background: var(--wineSoft); box-shadow: 0 0 0 3px rgba(101,27,55,.15); }
+.match-dot { width: 14px; height: 14px; border-radius: 50%; background: #cfd5e0; flex-shrink: 0; border: 2px solid #fff; box-shadow: 0 0 0 1px #b8c0ce; }
+.match-svg-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+
+/* CRUCIGRAMA DIDÁCTICO */
+.cw-layout { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; background: #fdf9fb; border: 2px solid #ecd6e0; border-radius: 18px; padding: 18px; margin-top: 12px; }
+.cw-board { display: inline-grid; gap: 2px; background: #2c2530; padding: 6px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,.1); }
+.cw-cell { width: clamp(30px, 5vw, 38px); height: clamp(30px, 5vw, 38px); position: relative; background: #fff; border-radius: 4px; }
+.cw-cell.blocked { background: transparent; }
+.cw-cell-num { position: absolute; top: 1px; left: 3px; font-size: 9px; font-weight: 900; color: var(--wine); pointer-events: none; line-height: 1; }
+.cw-cell input { width: 100%; height: 100%; border: 0; background: transparent; text-align: center; font-weight: 900; font-size: 16px; text-transform: uppercase; color: var(--ink); padding-top: 6px; outline: none; border-radius: 4px; }
+.cw-cell input:focus { background: #ffe082; color: #4a3000; }
+.cw-clues { display: grid; gap: 12px; font-size: 13px; }
+.cw-clue-box { background: #fff; border: 1px solid #e0d6dc; border-radius: 12px; padding: 12px; }
+.cw-clue-box h4 { margin: 0 0 6px; color: var(--wine); font-size: 13px; }
 
 /* ESTILOS PARA LA IMPRESIÓN DEL EXAMEN INSTITUCIONAL */
 .print-sheet{background:#fff;color:#000;padding:25px;max-width:800px;margin:auto;font-family:Arial,sans-serif}
@@ -96,7 +130,7 @@ math-field:focus-within {
   .modal-backdrop{background:transparent !important;padding:0 !important}
 }
 
-@media(max-width:760px){.hero{grid-template-columns:1fr;padding:24px}.hero-art{display:none}.grid2,.grid3,.tiles,.form-grid,.options-editor,.math-matrix{grid-template-columns:1fr}.combo-grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:20px 12px 50px}.card{padding:18px}.question-main{padding:20px}.brand strong{font-size:12px}.pill.hide-sm{display:none}.tabs{width:100%}.tab{flex:1;font-size:12px;padding:11px 8px}.exam-header{align-items:stretch}.timer-box{flex:1}.report-table{min-width:650px}}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:24px}.hero-art{display:none}.grid2,.grid3,.tiles,.form-grid,.options-editor,.math-matrix,.tf-grid,.cw-layout{grid-template-columns:1fr}.match-stage{grid-template-columns:1fr 45px 1fr}.combo-grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:20px 12px 50px}.card{padding:18px}.question-main{padding:20px}.brand strong{font-size:12px}.pill.hide-sm{display:none}.tabs{width:100%}.tab{flex:1;font-size:12px;padding:11px 8px}.exam-header{align-items:stretch}.timer-box{flex:1}.report-table{min-width:650px}}
 </style>
 <!-- Firebase SDKs Compat -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
@@ -129,7 +163,7 @@ math-field:focus-within {
     <div>
       <div class="eyebrow">Sistema de evaluaciones • JBP</div>
       <h1>Exámenes sincronizados 100% en la nube en tiempo real.</h1>
-      <p>Administrador y profesor: **Ing. Daniel Avellán**. Plataforma con soporte para pegar imágenes (Ctrl+V), editor gráfico de ecuaciones y actividades didácticas interactivas para escuela.</p>
+      <p>Administrador y profesor: <b>Ing. Daniel Avellán</b>. Plataforma con soporte para pegar imágenes (Ctrl+V), editor gráfico de ecuaciones y actividades didácticas interactivas para escuela.</p>
     </div>
     <div class="hero-art">
       <div class="circle">10/10</div>
@@ -178,7 +212,7 @@ math-field:focus-within {
         <div class="stack topgap">
           <div class="notice red"><b>Política de infracciones:</b> durante el examen, minimizar la ventana, cambiar de pestaña, perder el foco de la página o salir de pantalla completa provocará la anulación inmediata y una calificación de <b>0/10</b>.</div>
           <div class="tile"><b>⏱ Publicación de calificaciones</b><p>Al terminar la prueba, tu nota se guarda en la nube. Podrás consultarla haciendo clic en <b>"Mis calificaciones"</b> una vez que el docente las haya publicado oficialmente.</p></div>
-          <div class="tile"><b>🧩 Actividades Interactivas y Ecuaciones</b><p>Los exámenes incluyen sopas de letras interactivas, gráficos para etiquetar partes y renderizado matemático profesional.</p></div>
+          <div class="tile"><b>🧩 Actividades Interactivas y Ecuaciones</b><p>Los exámenes incluyen crucigramas, sopas de letras, unir con líneas, completar frases, verdadero/falso, gráficos para etiquetar partes y renderizado matemático.</p></div>
           <div class="tile"><b>☁️ Sincronización Global</b><p>Cada intento y examen se almacena directamente en la base de datos en la nube de Firebase.</p></div>
         </div>
       </div>
@@ -267,7 +301,7 @@ math-field:focus-within {
                 <h3 style="margin:0">Banco de preguntas</h3>
                 <button class="btn light small" id="addQuestionBtn" type="button">+ Añadir pregunta</button>
               </div>
-              <p class="hint" style="margin:0">Elige entre preguntas tradicionales, <b>Sopa de letras</b> o <b>Nombrar partes de un gráfico</b> para niños de escuela.</p>
+              <p class="hint" style="margin:0">Elige entre preguntas tradicionales, <b>Verdadero o Falso</b>, <b>Complete</b>, <b>Unir con línea</b>, <b>Crucigrama</b>, <b>Sopa de letras</b> o <b>Partes de un gráfico</b>.</p>
               <div id="questionEditor"></div>
               <button type="submit" class="btn" id="saveExamBtn">Guardar examen en la nube</button>
               <div id="editorMessage" aria-live="polite"></div>
@@ -575,11 +609,12 @@ let cloudReady = false;
 // ==========================================
 // 2. DATOS INSTITUCIONALES PRECARGADOS
 // ==========================================
-const INITIAL_ROSTER=[{"cedula":"1353005109","name":"CHINGA PARRAGA DEYFRE ALFRED","level":"Tercero de Básica","parallel":"GENERAL"},{"cedula":"1353136086","name":"PALACIOS ALMEIDA ALENA MICHELLE","level":"Tercero de Básica","parallel":"GENERAL"},{"cedula":"1352968208","name":"RIVADENEIRA CALDERON KYLIAN ABRAHAM","level":"Tercero de Básica","parallel":"GENERAL"},{"cedula":"1353200460","name":"TIGUA SANTILLAN ERWIN GORGY","level":"Tercero de Básica","parallel":"GENERAL"},{"cedula":"1851361194","name":"CRUZ ROMERO MIA FERNANDA","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352632341","name":"ENRIQUEZ BAQUE ELIS MICHELLE","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352655599","name":"GUTIERREZ SAAVEDRA SOPHIA VICTORIA","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352656258","name":"MEZA RAMIREZ ANGIE GISSEL","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352537938","name":"QUIROZ SANCHEZ STEPHANY ARLETTE","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352650517","name":"SOLORZANO CEVALLOS ABBY ZHAMIRA","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352470460","name":"YEPEZ COBEÑA ALICE SHANEEK","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352447732","name":"ZAMBRANO SANCHEZ REINNER DASHIELL","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352505752","name":"ZAMBRANO VELEZ MARIANGEL IVANOVA","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352193807","name":"ANCHUNDIA MARCILLO MATHIAS ADRIAN","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352365686","name":"ARTEAGA MENENDEZ PATRICK ELIAN","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352396525","name":"BRIONES COBEÑA ISIS ANALIA","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352280380","name":"CEDEÑO BAREN MARIA ASUNCION","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352224362","name":"CEDEÑO SOLORZANO AINHOA LUCIANA","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352064164","name":"DELGADO CHILAN ANGELINA GUADALUPE","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352355331","name":"MACIAS CEVALLOS AKEMY OHANA","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352000606","name":"MUÑOZ MENDOZA MATHIAS JULIAN","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352331993","name":"PALMA PIN RAUL JAVIER","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352392391","name":"TOALA BAREN NOHELIA MONSERRATE","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352422990","name":"ZAMBRANO MENDOZA JUAN ANDRES","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1351962129","name":"CEDEÑO CHINGA JANETH MAGDALENA","level":"Séptimo de Básica","parallel":"GENERAL"},{"cedula":"1851122174","name":"CRUZ ROMERO MARTINA RAFAELA","level":"Séptimo de Básica","parallel":"GENERAL"},{"cedula":"0037655242","name":"VERGARA DAVILA SEBASTHIAN ALEJANRO","level":"Séptimo de Básica","parallel":"GENERAL"},{"cedula":"1351840630","name":"BRAVO ORDOÑEZ MIA ANGELINA","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351462229","name":"CARRILLO RIVADENEIRA SANDRA IVONNE","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1317333738","name":"CEDEÑO PERALTA KENLY FERNEY","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351082928","name":"CEVALLOS LAZ MATEO GABRIEL","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351255672","name":"CHAVEZ PICO SARA GUADALUPE","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351129158","name":"GARCIA ALVARADO DINARA AYLEEN","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1350666259","name":"LAZ VERA NARCISA CAMILA","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1317363255","name":"MACIAS VINUEZA MARIA CELESTE","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351799992","name":"MEJIA MACIAS SAID ORLANDO","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351768518","name":"PINARGOTE SORNOZA BRIANNA SARAHY","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351545213","name":"ROMERO PALMA JEREMY ANDREI","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351044654","name":"ROSADO PICO JEREMY MATHEUS","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351462161","name":"RUIZ VELEZ GREGORIO GERALD","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"0085176334","name":"TABATA CAMPOS SAMIRA ANDREINA","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351785660","name":"VERGARA PINCAY LINDA AYELEN","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351050958","name":"ZAMBRANO RODRIGUEZ GREGSON GABRIEL","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1350511257","name":"ALAVA VERA VIELKA VALESKA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317286548","name":"BALLESTEROS VELEZ JOSSELYN NICOLLE","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317384418","name":"CEDEÑO BAREN ISAAC ALEJANDRO","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350325609","name":"DELGADO CHILAN GUSTAVO LEANDRO","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317142790","name":"GARCIA QUIROZ ANGIE MISHELLE","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317153805","name":"INTRIAGO MENDOZA FRANKLIN MATHIAS","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1753315348","name":"MENA MOREIRA DOMENICA CATTLEYA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1351880198","name":"MERO CORNEJO NIKEYSHA DALILA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317388864","name":"RAMIREZ RODRIGUEZ SAMANTHA ISABEL","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317307450","name":"RIVAS MUÑOZ ANGEL SNEYDER","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350913479","name":"RODRIGUEZ SANTOS DANNA MARINA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350906192","name":"RUIZ LOOR ALLISON PATRICIA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350840300","name":"SALTOS DELGADO ISAIAS URIEL","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1351009699","name":"TUAREZ PALMA DERECK ALEXANDER","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350463525","name":"TUBAY DOMINGUEZ JESUS MARCELO","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317311304","name":"VINCES SANCHEZ IAN JAHIR","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"0450130554","name":"YAZAN VELASQUEZ ANDREE SEBASTIAN","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350293419","name":"BRAVO SAAVEDRA MATEWS ZAID","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1128906844","name":"CARDONA OCAMPO CRISTOPHER","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317790168","name":"CARRILLO RIVADENEIRA JESUS ALEXANDER","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317141123","name":"CEDEÑO MANTUANO JOSE JAVIER","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350256499","name":"CEDEÑO SANCHEZ GEMA SHARICK","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1316654829","name":"CERON INTRIAGO MICHAEL ANDRES","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1752800761","name":"CHACAN TAMAYO DANIEL ALEJANDRO","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1351610090","name":"CRESPO PROAÑO GORKY EMANUEL","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1316988789","name":"ENRIQUEZ BAQUE JOSEPH ANTHONY","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350110332","name":"GARCIA CEDEÑO DEIBY ANDRES","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"2101229892","name":"GUAMAN NAVARRETE JEAN CARLOS","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350251805","name":"JUNCO PIN STEFANIE ALEJANDRA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350277628","name":"LOOR SANCHEZ JURGEN RAFAEL","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1351750995","name":"LOPEZ PALMA STALIN JAVIER","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317760435","name":"MACIAS PALACIOS PIERINA MILENA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1351175383","name":"PALMA PERALTA DOMENICA SAILY","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317363867","name":"PARRAGA BAREN SOFIA STEFANIA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350659171","name":"PAZMIÑO LOOR VICTOR JOAO","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1316949377","name":"PERALTA DELGADO DAYLIN EDUARDA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317102117","name":"RIVADENEIRA CALDERON AARON EDUARDO","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350305833","name":"RODRIGUEZ MARCILLO ALEJANDRO ISRAEL","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350269211","name":"RUIZ LOOR ASHLEY GUADALUPE","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317255972","name":"SCHNABEL ROLDAN NICKOLAS ALFRED","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350678916","name":"VALDIVIEZO CEDEÑO SARA DANIELA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317829362","name":"VELASQUEZ PALMA MATHEO SIMON","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317761938","name":"ZAMBRANO SANCHEZ DASHA MAYLIN","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317895801","name":"ALCIVAR CAMPOVERDE SANTIAGO SEBASTIAN","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351332489","name":"BRAVO ORDOÑEZ VINICIO LUCIANO","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351332513","name":"BRAVO ORDOÑEZ VINICIO VALENTINO","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1316356995","name":"CEVALLOS MACIAS JESUS DANIEL","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1317549556","name":"COBEÑA MARCILLO EMILY GUADALUPE","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351821820","name":"DURAN MACIAS SONIA GEOVANNA","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1317826947","name":"GINES BARCIA GUADALUPE AHILY","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1316585007","name":"GONZALEZ QUIJIJE YURAMY SHAYLEE","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351438104","name":"GUILLEN MUÑOZ AMY YARITZA","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1350040661","name":"LOOR ZAMORA ALEJANDRO NICOLAS","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1316351962","name":"MERA MERA YARID DANIEL","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1350020747","name":"MOLINEROS NAVIA ADRIANA ANAHI","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1350064257","name":"NAVARRETE VELEZ CRISTHEL VALENTINA","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1316630829","name":"PARRALES RAMIREZ DREIK ANTHONY","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351221757","name":"PERALTA SOLORZANO SHEYLA ANDREA","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"0085646546","name":"TABATA CAMPOS ZIHARA SUSEJ","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1350108369","name":"CHAVEZ PICO GABRIEL MOISES","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316962511","name":"CUADROS PALMA LUNA ALEXA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316656501","name":"DELGADO CHAVEZ ISABELA KRISTEL","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1350063606","name":"DUEÑAS VILLAPRADO RONALD NEYMAR","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1317862421","name":"GARCIA REZABALA MIA FIORELLA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1350298186","name":"INTRIAGO MACIAS AMY SAMARA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1350802706","name":"MACIAS PALACIOS JORGE PATRICIO","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316931094","name":"MARCILLO VILLAPRADO SEBASTIAN ALEJANDRO","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316979390","name":"PALACIOS MOREIRA BRANIA ANGELIQUE","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1351568439","name":"PARRAGA ALCIVAR DANNA VALENTINA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316576337","name":"RAMIREZ RODRIGUEZ SOFIA FERNANDA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1317864088","name":"VERA ZAMBRANO ERIK JOSUE","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1315888949","name":"ARRUNATEGUI SORNOZA MATHEO LEONEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350377519","name":"BARRENO CEDEÑO ADRIANA VALENTINA","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350299275","name":"BONILLA BRIONES ALESSANDRO LIONEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350592646","name":"BRIONES QUIROZ JASBLEIDY ARIANA","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1315958247","name":"CEDEÑO SANCHEZ MARCUS ANDREIK","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1351353733","name":"FRANCO RAMIREZ JARED MOISES","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1315889079","name":"LOOR SORNOZA LENIN JOSUE","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1351307739","name":"MACIAS TUAREZ ANGEL DANIEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350195283","name":"MENDOZA MOREIRA LILIANA ELIZABETH","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350650659","name":"MOREIRA POSLIGUA MEILY KRISBEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1317802583","name":"PALACIOS MOREIRA BRIANA CAROLINA","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1351183965","name":"PICO CHAVEZ JAMEL JONAS","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350455877","name":"QUIROZ MIRANDA WALTER ARIEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1315823995","name":"ZAMBRANO FERNANDEZ JIMMY JOSUE","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350118004","name":"ALCIVAR ZAMBRANO ORIANA MARIA","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350258727","name":"ARTEAGA ALMEIDA CAROLAYN DAYANARA","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1316055480","name":"CEDEÑO CHINGA IRENE MAGDALENA","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350222327","name":"CEDEÑO SAAVEDRA DREYERS XAVIER","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1351269046","name":"CRUZATTE CEVALLOS ANTONIO JOHAN","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"0042459666","name":"DE LIMA HERRERA JOHNIEL ALEJANDRO","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350120885","name":"FIGUEROA CARRILLO MYCKEL MIGUEL","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1317807954","name":"MENDOZA SUAREZ GABRIEL ELIAS","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1351133572","name":"REYES RESABALA ANGEL HUMBERTO","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1316177284","name":"SANTOS VERA JORGE ISRAEL","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350249635","name":"SOLORZANO SOLORZANO BRIANA ISABELLE","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350304216","name":"VELEZ CASANOVA ROMINA ZARAHI","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"2250212830","name":"VERDEZOTO GUERRERO MIGUEL ANGEL","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1351005291","name":"ZEA RODRIGUEZ DEIBY MATTHEW","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1315916443","name":"ALCIVAR FALCONI JINMINY AMIR","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1317609335","name":"ARTEAGA SOLEDISPA JACQUELINE ESTHER","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351301237","name":"BERMUDEZ CEDEÑO MILEY AILEN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316177458","name":"BRAVO PINCAY KENDRY ALEXANDER","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1315508166","name":"CEDEÑO CASANOVA EDISON SEBASTIAN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1250887617","name":"CHOEZ ALCIVAR MAYKEL JOHAN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316501020","name":"DIAZ BENAVIDES CARLOS SNAIDER","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316541349","name":"GUAMAN CHICA ISSIS DAYANARA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350355556","name":"GUERRERO BURGOS DANIELA ALEJANDRA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1315888832","name":"IBAÑEZ PINARGOTE NOHELIA PAULETTE","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350077705","name":"MEDRANDA CEVALLOS HENRY ANTONIO","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351097850","name":"MENDOZA PINCAY MICKEL STIG","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350848907","name":"MERA MARCILLO ANDREA STEFANY","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350517445","name":"MOREIRA PALMA FABRICIO ALEJANDRO","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1317766333","name":"MOREIRA SOLORZANO DILAN GABRIEL","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316225851","name":"NAVARRETE MACIAS NOHELIA VALENTINA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351621675","name":"PARRAGA BAREN JESUS ALEXANDER","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1315888154","name":"PINARGOTE DEMERA BORIS IVAN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350669014","name":"RIVAS MUÑOZ MARIANGEL","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351239171","name":"RIVAS PIN JOSTYN FABIAN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316117124","name":"RODRIGUEZ RODRIGUEZ CAMILA ANDREINA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351374085","name":"SANCHEZ MENDOZA MARIA DOMENICA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316003514","name":"TUBAY DOMINGUEZ JULEXY ELIANA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1314932706","name":"VELEZ CASANOVA EMILY ZAHIR","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351715824","name":"VERA DELGADO FABIANA JAZMIN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351649767","name":"VERA VIVAR ANGEL JOSUE","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351084080","name":"VERA ZAMBRANO ANGEL FILIBERTO","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316177441","name":"ZAMBRANO BRAVO EDDY NOE","level":"Tercero de Bachillerato","parallel":"GENERAL"}];
+const INITIAL_ROSTER=[{"cedula":"1353005109","name":"CHINGA PARRAGA DEYFRE ALFRED","level":"Tercero de Básica","parallel":"GENERAL"},{"cedula":"1353136086","name":"PALACIOS ALMEIDA ALENA MICHELLE","level":"Tercero de Básica","parallel":"GENERAL"},{"cedula":"1352968208","name":"RIVADENEIRA CALDERON KYLIAN ABRAHAM","level":"Tercero de Básica","parallel":"GENERAL"},{"cedula":"1353200460","name":"TIGUA SANTILLAN ERWIN GORGY","level":"Tercero de Básica","parallel":"GENERAL"},{"cedula":"1851361194","name":"CRUZ ROMERO MIA FERNANDA","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352632341","name":"ENRIQUEZ BAQUE ELIS MICHELLE","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352655599","name":"GUTIERREZ SAAVEDRA SOPHIA VICTORIA","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352656258","name":"MEZA RAMIREZ ANGIE GISSEL","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352537938","name":"QUIROZ SANCHEZ STEPHANY ARLETTE","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352650517","name":"SOLORZANO CEVALLOS ABBY ZHAMIRA","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352470460","name":"YEPEZ COBEÑA ALICE SHANEEK","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352447732","name":"ZAMBRANO SANCHEZ REINNER DASHIELL","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352505752","name":"ZAMBRANO VELEZ MARIANGEL IVANOVA","level":"Quinto de Básica","parallel":"GENERAL"},{"cedula":"1352193807","name":"ANCHUNDIA MARCILLO MATHIAS ADRIAN","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352365686","name":"ARTEAGA MENENDEZ PATRICK ELIAN","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352396525","name":"BRIONES COBEÑA ISIS ANALIA","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352280380","name":"CEDEÑO BAREN MARIA ASUNCION","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352224362","name":"CEDEÑO SOLORORZANO AINHOA LUCIANA","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352064164","name":"DELGADO CHILAN ANGELINA GUADALUPE","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352355331","name":"MACIAS CEVALLOS AKEMY OHANA","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352000606","name":"MUÑOZ MENDOZA MATHIAS JULIAN","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352331993","name":"PALMA PIN RAUL JAVIER","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352392391","name":"TOALA BAREN NOHELIA MONSERRATE","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1352422990","name":"ZAMBRANO MENDOZA JUAN ANDRES","level":"Sexto de Básica","parallel":"GENERAL"},{"cedula":"1351962129","name":"CEDEÑO CHINGA JANETH MAGDALENA","level":"Séptimo de Básica","parallel":"GENERAL"},{"cedula":"1851122174","name":"CRUZ ROMERO MARTINA RAFAELA","level":"Séptimo de Básica","parallel":"GENERAL"},{"cedula":"0037655242","name":"VERGARA DAVILA SEBASTHIAN ALEJANRO","level":"Séptimo de Básica","parallel":"GENERAL"},{"cedula":"1351840630","name":"BRAVO ORDOÑEZ MIA ANGELINA","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351462229","name":"CARRILLO RIVADENEIRA SANDRA IVONNE","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1317333738","name":"CEDEÑO PERALTA KENLY FERNEY","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351082928","name":"CEVALLOS LAZ MATEO GABRIEL","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351255672","name":"CHAVEZ PICO SARA GUADALUPE","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351129158","name":"GARCIA ALVARADO DINARA AYLEEN","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1350666259","name":"LAZ VERA NARCISA CAMILA","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1317363255","name":"MACIAS VINUEZA MARIA CELESTE","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351799992","name":"MEJIA MACIAS SAID ORLANDO","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351768518","name":"PINARGOTE SORNOZA BRIANNA SARAHY","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351545213","name":"ROMERO PALMA JEREMY ANDREI","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351044654","name":"ROSADO PICO JEREMY MATHEUS","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351462161","name":"RUIZ VELEZ GREGORIO GERALD","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"0085176334","name":"TABATA CAMPOS SAMIRA ANDREINA","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351785660","name":"VERGARA PINCAY LINDA AYELEN","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1351050958","name":"ZAMBRANO RODRIGUEZ GREGSON GABRIEL","level":"Octavo de Básica","parallel":"GENERAL"},{"cedula":"1350511257","name":"ALAVA VERA VIELKA VALESKA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317286548","name":"BALLESTEROS VELEZ JOSSELYN NICOLLE","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317384418","name":"CEDEÑO BAREN ISAAC ALEJANDRO","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350325609","name":"DELGADO CHILAN GUSTAVO LEANDRO","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317142790","name":"GARCIA QUIROZ ANGIE MISHELLE","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317153805","name":"INTRIAGO MENDOZA FRANKLIN MATHIAS","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1753315348","name":"MENA MOREIRA DOMENICA CATTLEYA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1351880198","name":"MERO CORNEJO NIKEYSHA DALILA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317388864","name":"RAMIREZ RODRIGUEZ SAMANTHA ISABEL","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317307450","name":"RIVAS MUÑOZ ANGEL SNEYDER","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350913479","name":"RODRIGUEZ SANTOS DANNA MARINA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350906192","name":"RUIZ LOOR ALLISON PATRICIA","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350840300","name":"SALTOS DELGADO ISAIAS URIEL","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1351009699","name":"TUAREZ PALMA DERECK ALEXANDER","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350463525","name":"TUBAY DOMINGUEZ JESUS MARCELO","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1317311304","name":"VINCES SANCHEZ IAN JAHIR","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"0450130554","name":"YAZAN VELASQUEZ ANDREE SEBASTIAN","level":"Noveno de Básica","parallel":"GENERAL"},{"cedula":"1350293419","name":"BRAVO SAAVEDRA MATEWS ZAID","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1128906844","name":"CARDONA OCAMPO CRISTOPHER","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317790168","name":"CARRILLO RIVADENEIRA JESUS ALEXANDER","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317141123","name":"CEDEÑO MANTUANO JOSE JAVIER","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350256499","name":"CEDEÑO SANCHEZ GEMA SHARICK","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1316654829","name":"CERON INTRIAGO MICHAEL ANDRES","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1752800761","name":"CHACAN TAMAYO DANIEL ALEJANDRO","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1351610090","name":"CRESPO PROAÑO GORKY EMANUEL","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1316988789","name":"ENRIQUEZ BAQUE JOSEPH ANTHONY","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350110332","name":"GARCIA CEDEÑO DEIBY ANDRES","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"2101229892","name":"GUAMAN NAVARRETE JEAN CARLOS","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350251805","name":"JUNCO PIN STEFANIE ALEJANDRA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350277628","name":"LOOR SANCHEZ JURGEN RAFAEL","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1351750995","name":"LOPEZ PALMA STALIN JAVIER","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317760435","name":"MACIAS PALACIOS PIERINA MILENA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1351175383","name":"PALMA PERALTA DOMENICA SAILY","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317363867","name":"PARRAGA BAREN SOFIA STEFANIA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350659171","name":"PAZMIÑO LOOR VICTOR JOAO","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1316949377","name":"PERALTA DELGADO DAYLIN EDUARDA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317102117","name":"RIVADENEIRA CALDERON AARON EDUARDO","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350305833","name":"RODRIGUEZ MARCILLO ALEJANDRO ISRAEL","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350269211","name":"RUIZ LOOR ASHLEY GUADALUPE","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317255972","name":"SCHNABEL ROLDAN NICKOLAS ALFRED","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1350678916","name":"VALDIVIEZO CEDEÑO SARA DANIELA","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317829362","name":"VELASQUEZ PALMA MATHEO SIMON","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317761938","name":"ZAMBRANO SANCHEZ DASHA MAYLIN","level":"Décimo de Básica","parallel":"GENERAL"},{"cedula":"1317895801","name":"ALCIVAR CAMPOVERDE SANTIAGO SEBASTIAN","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351332489","name":"BRAVO ORDOÑEZ VINICIO LUCIANO","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351332513","name":"BRAVO ORDOÑEZ VINICIO VALENTINO","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1316356995","name":"CEVALLOS MACIAS JESUS DANIEL","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1317549556","name":"COBEÑA MARCILLO EMILY GUADALUPE","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351821820","name":"DURAN MACIAS SONIA GEOVANNA","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1317826947","name":"GINES BARCIA GUADALUPE AHILY","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1316585007","name":"GONZALEZ QUIJIJE YURAMY SHAYLEE","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351438104","name":"GUILLEN MUÑOZ AMY YARITZA","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1350040661","name":"LOOR ZAMORA ALEJANDRO NICOLAS","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1316351962","name":"MERA MERA YARID DANIEL","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1350020747","name":"MOLINEROS NAVIA ADRIANA ANAHI","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1350064257","name":"NAVARRETE VELEZ CRISTHEL VALENTINA","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1316630829","name":"PARRALES RAMIREZ DREIK ANTHONY","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1351221757","name":"PERALTA SOLORZANO SHEYLA ANDREA","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"0085646546","name":"TABATA CAMPOS ZIHARA SUSEJ","level":"Primero de Bachillerato","parallel":"A"},{"cedula":"1350108369","name":"CHAVEZ PICO GABRIEL MOISES","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316962511","name":"CUADROS PALMA LUNA ALEXA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316656501","name":"DELGADO CHAVEZ ISABELA KRISTEL","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1350063606","name":"DUEÑAS VILLAPRADO RONALD NEYMAR","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1317862421","name":"GARCIA REZABALA MIA FIORELLA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1350298186","name":"INTRIAGO MACIAS AMY SAMARA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1350802706","name":"MACIAS PALACIOS JORGE PATRICIO","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316931094","name":"MARCILLO VILLAPRADO SEBASTIAN ALEJANDRO","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316979390","name":"PALACIOS MOREIRA BRANIA ANGELIQUE","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1351568439","name":"PARRAGA ALCIVAR DANNA VALENTINA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1316576337","name":"RAMIREZ RODRIGUEZ SOFIA FERNANDA","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1317864088","name":"VERA ZAMBRANO ERIK JOSUE","level":"Primero de Bachillerato","parallel":"B"},{"cedula":"1315888949","name":"ARRUNATEGUI SORNOZA MATHEO LEONEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350377519","name":"BARRENO CEDEÑO ADRIANA VALENTINA","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350299275","name":"BONILLA BRIONES ALESSANDRO LIONEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350592646","name":"BRIONES QUIROZ JASBLEIDY ARIANA","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1315958247","name":"CEDEÑO SANCHEZ MARCUS ANDREIK","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1351353733","name":"FRANCO RAMIREZ JARED MOISES","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1315889079","name":"LOOR SORNOZA LENIN JOSUE","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1351307739","name":"MACIAS TUAREZ ANGEL DANIEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350195283","name":"MENDOZA MOREIRA LILIANA ELIZABETH","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350650659","name":"MOREIRA POSLIGUA MEILY KRISBEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1317802583","name":"PALACIOS MOREIRA BRIANA CAROLINA","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1351183965","name":"PICO CHAVEZ JAMEL JONAS","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350455877","name":"QUIROZ MIRANDA WALTER ARIEL","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1315823995","name":"ZAMBRANO FERNANDEZ JIMMY JOSUE","level":"Segundo de Bachillerato","parallel":"A"},{"cedula":"1350118004","name":"ALCIVAR ZAMBRANO ORIANA MARIA","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350258727","name":"ARTEAGA ALMEIDA CAROLAYN DAYANARA","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1316055480","name":"CEDEÑO CHINGA IRENE MAGDALENA","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350222327","name":"CEDEÑO SAAVEDRA DREYERS XAVIER","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1351269046","name":"CRUZATTE CEVALLOS ANTONIO JOHAN","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"0042459666","name":"DE LIMA HERRERA JOHNIEL ALEJANDRO","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350120885","name":"FIGUEROA CARRILLO MYCKEL MIGUEL","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1317807954","name":"MENDOZA SUAREZ GABRIEL ELIAS","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1351133572","name":"REYES RESABALA ANGEL HUMBERTO","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1316177284","name":"SANTOS VERA JORGE ISRAEL","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350249635","name":"SOLORZANO SOLORZANO BRIANA ISABELLE","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1350304216","name":"VELEZ CASANOVA ROMINA ZARAHI","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"2250212830","name":"VERDEZOTO GUERRERO MIGUEL ANGEL","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1351005291","name":"ZEA RODRIGUEZ DEIBY MATTHEW","level":"Segundo de Bachillerato","parallel":"B"},{"cedula":"1315916443","name":"ALCIVAR FALCONI JINMINY AMIR","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1317609335","name":"ARTEAGA SOLEDISPA JACQUELINE ESTHER","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351301237","name":"BERMUDEZ CEDEÑO MILEY AILEN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316177458","name":"BRAVO PINCAY KENDRY ALEXANDER","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1315508166","name":"CEDEÑO CASANOVA EDISON SEBASTIAN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1250887617","name":"CHOEZ ALCIVAR MAYKEL JOHAN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316501020","name":"DIAZ BENAVIDES CARLOS SNAIDER","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316541349","name":"GUAMAN CHICA ISSIS DAYANARA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350355556","name":"GUERRERO BURGOS DANIELA ALEJANDRA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1315888832","name":"IBAÑEZ PINARGOTE NOHELIA PAULETTE","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350077705","name":"MEDRANDA CEVALLOS HENRY ANTONIO","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351097850","name":"MENDOZA PINCAY MICKEL STIG","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350848907","name":"MERA MARCILLO ANDREA STEFANY","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350517445","name":"MOREIRA PALMA FABRICIO ALEJANDRO","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1317766333","name":"MOREIRA SOLORZANO DILAN GABRIEL","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316225851","name":"NAVARRETE MACIAS NOHELIA VALENTINA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351621675","name":"PARRAGA BAREN JESUS ALEXANDER","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1315888154","name":"PINARGOTE DEMERA BORIS IVAN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1350669014","name":"RIVAS MUÑOZ MARIANGEL","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351239171","name":"RIVAS PIN JOSTYN FABIAN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316117124","name":"RODRIGUEZ RODRIGUEZ CAMILA ANDREINA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351374085","name":"SANCHEZ MENDOZA MARIA DOMENICA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316003514","name":"TUBAY DOMINGUEZ JULEXY ELIANA","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1314932706","name":"VELEZ CASANOVA EMILY ZAHIR","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351715824","name":"VERA DELGADO FABIANA JAZMIN","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351649767","name":"VERA VIVAR ANGEL JOSUE","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1351084080","name":"VERA ZAMBRANO ANGEL FILIBERTO","level":"Tercero de Bachillerato","parallel":"GENERAL"},{"cedula":"1316177441","name":"ZAMBRANO BRAVO EDDY NOE","level":"Tercero de Bachillerato","parallel":"GENERAL"}];
 
 const LEVELS=["Primero de Básica","Segundo de Básica","Tercero de Básica","Cuarto de Básica","Quinto de Básica","Sexto de Básica","Séptimo de Básica","Octavo de Básica","Noveno de Básica","Décimo de Básica","Primero de Bachillerato","Segundo de Bachillerato","Tercero de Bachillerato"];
 const parallelOptions=['GENERAL','A','B','C','D','E','F'];
 const MATH_COMBOS = ['A1','A2','A3','A4','B1','B2','B3','B4','C1','C2','C3','C4','D1','D2','D3','D4'];
+const MATCH_COLORS = ['#651b37','#166a47','#1d5bb8','#b85d00','#7c2ae8','#007c91','#b01e4a','#3f6212'];
 
 const MASTER_ADMIN_KEY = 'admin2026';
 
@@ -590,6 +625,7 @@ const COL_STUDENTS = 'jbp_custom_students';
 
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const normCompare=s=>String(s??'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ');
 
 let exams = [];
 let attempts = [];
@@ -1393,7 +1429,7 @@ function updateLiveMathPreview(inputEl) {
 }
 
 // ==========================================
-// 5. MOTOR DE SOPA DE LETRAS INTERACTIVA
+// 5. MOTORES DIDÁCTICOS: SOPA DE LETRAS Y CRUCIGRAMA
 // ==========================================
 function parseWordsList(raw) {
   return String(raw || '')
@@ -1408,13 +1444,12 @@ function buildWordSearchGrid(wordsInput, size = 10) {
   const grid = Array.from({ length: gridSize }, () => Array(gridSize).fill(''));
   const placed = [];
 
-  // Direcciones amigables para niños de escuela (horizontal, vertical y diagonal hacia abajo)
   const dirs = [
-    [0, 1],   // derecha
-    [1, 0],   // abajo
-    [1, 1],   // diagonal abajo-derecha
-    [0, -1],  // izquierda
-    [-1, 0]   // arriba
+    [0, 1],
+    [1, 0],
+    [1, 1],
+    [0, -1],
+    [-1, 0]
   ];
 
   const sortedWords = [...words].sort((a, b) => b.length - a.length);
@@ -1458,8 +1493,141 @@ function buildWordSearchGrid(wordsInput, size = 10) {
   return { gridSize, grid, placed };
 }
 
+// Generador de Crucigrama Interactivo con cruce inteligente
+function cleanCrosswordWord(w) {
+  return String(w || '').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-ZÑ]/g, '');
+}
+
+function buildCrosswordLayout(entries) {
+  const valid = (entries || [])
+    .map(e => ({ word: cleanCrosswordWord(e.word), clue: String(e.clue || '').trim() }))
+    .filter(e => e.word.length >= 2 && e.clue.length > 0);
+
+  if (!valid.length) return { rows: 1, cols: 1, grid: [['']], words: [] };
+
+  const sorted = [...valid].sort((a, b) => b.word.length - a.word.length);
+  const size = 24;
+  const board = Array.from({ length: size }, () => Array(size).fill(''));
+  const placed = [];
+
+  function canPlace(word, r, c, dir) {
+    const dr = dir === 'V' ? 1 : 0;
+    const dc = dir === 'H' ? 1 : 0;
+    if (r < 1 || c < 1 || r + dr * word.length >= size - 1 || c + dc * word.length >= size - 1) return -1;
+    if (board[r - dr][c - dc] !== '' || board[r + dr * word.length][c + dc * word.length] !== '') return -1;
+
+    let intersections = 0;
+    for (let k = 0; k < word.length; k++) {
+      const rr = r + dr * k;
+      const cc = c + dc * k;
+      const cur = board[rr][cc];
+      if (cur !== '') {
+        if (cur !== word[k]) return -1;
+        intersections++;
+      } else {
+        if (dir === 'H') {
+          if (board[rr - 1][cc] !== '' || board[rr + 1][cc] !== '') return -1;
+        } else {
+          if (board[rr][cc - 1] !== '' || board[rr][cc + 1] !== '') return -1;
+        }
+      }
+    }
+    return intersections;
+  }
+
+  function placeWord(item, r, c, dir) {
+    const dr = dir === 'V' ? 1 : 0;
+    const dc = dir === 'H' ? 1 : 0;
+    const cells = [];
+    for (let k = 0; k < item.word.length; k++) {
+      const rr = r + dr * k;
+      const cc = c + dc * k;
+      board[rr][cc] = item.word[k];
+      cells.push({ r: rr, c: cc, letter: item.word[k] });
+    }
+    placed.push({ word: item.word, clue: item.clue, r, c, dir, cells });
+  }
+
+  const first = sorted[0];
+  const startR = Math.floor(size / 2);
+  const startC = Math.max(2, Math.floor((size - first.word.length) / 2));
+  placeWord(first, startR, startC, 'H');
+
+  for (let i = 1; i < sorted.length; i++) {
+    const item = sorted[i];
+    let bestPos = null;
+
+    for (const p of placed) {
+      const targetDir = p.dir === 'H' ? 'V' : 'H';
+      for (let pi = 0; pi < p.word.length; pi++) {
+        for (let wi = 0; wi < item.word.length; wi++) {
+          if (p.word[pi] === item.word[wi]) {
+            const interR = p.r + (p.dir === 'V' ? pi : 0);
+            const interC = p.c + (p.dir === 'H' ? pi : 0);
+            const candR = interR - (targetDir === 'V' ? wi : 0);
+            const candC = interC - (targetDir === 'H' ? wi : 0);
+            const score = canPlace(item.word, candR, candC, targetDir);
+            if (score > 0 && (!bestPos || score > bestPos.score)) {
+              bestPos = { r: candR, c: candC, dir: targetDir, score };
+            }
+          }
+        }
+      }
+    }
+
+    if (bestPos) {
+      placeWord(item, bestPos.r, bestPos.c, bestPos.dir);
+    } else {
+      let fallbackPlaced = false;
+      for (let r = 2; r < size - 2 && !fallbackPlaced; r += 2) {
+        for (let c = 2; c < size - item.word.length - 1 && !fallbackPlaced; c++) {
+          if (canPlace(item.word, r, c, 'H') >= 0) {
+            placeWord(item, r, c, 'H');
+            fallbackPlaced = true;
+          }
+        }
+      }
+    }
+  }
+
+  let minR = size, maxR = 0, minC = size, maxC = 0;
+  placed.forEach(p => {
+    p.cells.forEach(cell => {
+      if (cell.r < minR) minR = cell.r;
+      if (cell.r > maxR) maxR = cell.r;
+      if (cell.c < minC) minC = cell.c;
+      if (cell.c > maxC) maxC = cell.c;
+    });
+  });
+
+  const rows = maxR - minR + 1;
+  const cols = maxC - minC + 1;
+  const grid = Array.from({ length: rows }, () => Array(cols).fill(null));
+
+  placed.forEach(p => {
+    p.r -= minR;
+    p.c -= minC;
+    p.cells.forEach(cell => {
+      cell.r -= minR;
+      cell.c -= minC;
+      grid[cell.r][cell.c] = { letter: cell.letter, num: null };
+    });
+  });
+
+  const sortedByStart = [...placed].sort((a, b) => (a.r - b.r) || (a.c - b.c));
+  let counter = 1;
+  sortedByStart.forEach(p => {
+    if (grid[p.r][p.c].num === null) {
+      grid[p.r][p.c].num = counter++;
+    }
+    p.num = grid[p.r][p.c].num;
+  });
+
+  return { rows, cols, grid, words: sortedByStart };
+}
+
 // ==========================================
-// 6. BANCO DE PREGUNTAS (INCLUYE SOPA DE LETRAS Y PARTES DE GRÁFICO)
+// 6. BANCO DE PREGUNTAS (TODAS LAS ACTIVIDADES)
 // ==========================================
 function defaultQuestionObj(type='multiple'){
   return {
@@ -1468,6 +1636,7 @@ function defaultQuestionObj(type='multiple'){
     imageUrl: '',
     options: ['','','',''],
     correct: 0,
+    correctBool: true,
     rubric: '',
     gradingMode: 'ai',
     procedures: ['','','',''],
@@ -1475,7 +1644,17 @@ function defaultQuestionObj(type='multiple'){
     requireWrittenProc: false,
     wordsRaw: '',
     gridSize: 10,
-    imageLabels: []
+    imageLabels: [],
+    matchPairs: [
+      { left: '', right: '' },
+      { left: '', right: '' },
+      { left: '', right: '' }
+    ],
+    crosswordEntries: [
+      { word: '', clue: '' },
+      { word: '', clue: '' },
+      { word: '', clue: '' }
+    ]
   };
 }
 
@@ -1502,6 +1681,7 @@ function addQuestion(q=defaultQuestionObj('multiple')){
     imageUrl: q.imageUrl||'',
     options: Array.isArray(q.options)?[...q.options]:['','','',''],
     correct: Number(q.correct??0),
+    correctBool: q.correctBool !== false,
     rubric: q.rubric||'',
     gradingMode: q.gradingMode||'ai',
     procedures: Array.isArray(q.procedures)?[...q.procedures]:['','','',''],
@@ -1509,7 +1689,9 @@ function addQuestion(q=defaultQuestionObj('multiple')){
     requireWrittenProc: Boolean(q.requireWrittenProc),
     wordsRaw: q.wordsRaw || (Array.isArray(q.words) ? q.words.join(', ') : ''),
     gridSize: Number(q.gridSize || 10),
-    imageLabels: Array.isArray(q.imageLabels) ? JSON.parse(JSON.stringify(q.imageLabels)) : []
+    imageLabels: Array.isArray(q.imageLabels) ? JSON.parse(JSON.stringify(q.imageLabels)) : [],
+    matchPairs: Array.isArray(q.matchPairs) && q.matchPairs.length ? JSON.parse(JSON.stringify(q.matchPairs)) : [{left:'',right:''},{left:'',right:''},{left:'',right:''}],
+    crosswordEntries: Array.isArray(q.crosswordEntries) && q.crosswordEntries.length ? JSON.parse(JSON.stringify(q.crosswordEntries)) : [{word:'',clue:''},{word:'',clue:''},{word:'',clue:''}]
   });
   renderQuestionEditor();
 }
@@ -1526,6 +1708,27 @@ function syncQuestions(){
 
     if(type==='open'){
       return {type:'open', text, imageUrl, rubric:box.querySelector('[data-rubric]').value, gradingMode:box.querySelector('[data-grading-mode]').value};
+    } else if(type==='true_false'){
+      const tfSel = box.querySelector('[data-tf-correct]');
+      return {type:'true_false', text, imageUrl, correctBool: tfSel ? tfSel.value === 'true' : true};
+    } else if(type==='fill_blank'){
+      return {type:'fill_blank', text, imageUrl};
+    } else if(type==='matching'){
+      const lefts = [...box.querySelectorAll('[data-match-left]')];
+      const rights = [...box.querySelectorAll('[data-match-right]')];
+      const matchPairs = lefts.map((lEl, pIdx) => ({
+        left: lEl.value,
+        right: rights[pIdx] ? rights[pIdx].value : ''
+      }));
+      return {type:'matching', text, imageUrl, matchPairs};
+    } else if(type==='crossword'){
+      const words = [...box.querySelectorAll('[data-cw-word]')];
+      const clues = [...box.querySelectorAll('[data-cw-clue]')];
+      const crosswordEntries = words.map((wEl, cIdx) => ({
+        word: wEl.value,
+        clue: clues[cIdx] ? clues[cIdx].value : ''
+      }));
+      return {type:'crossword', text, imageUrl, crosswordEntries};
     } else if(type==='math_combo'){
       return {type:'math_combo', text, imageUrl, options:[...box.querySelectorAll('[data-opt]')].map(x=>x.value), procedures:[...box.querySelectorAll('[data-proc]')].map(x=>x.value), correctCombo:box.querySelector('[data-combo]').value, requireWrittenProc:box.querySelector('[data-req-proc]').checked};
     } else if(type==='wordsearch'){
@@ -1559,6 +1762,37 @@ function renderOptionWithMathBtn(label, attrName, idx, val) {
   `;
 }
 
+// Helpers dinámicos para pares de Unir con línea y Crucigrama
+window.addMatchPairRow = (qIdx) => {
+  syncQuestions();
+  if (editingQuestions[qIdx]) {
+    editingQuestions[qIdx].matchPairs.push({ left: '', right: '' });
+    renderQuestionEditor();
+  }
+};
+window.removeMatchPairRow = (qIdx, pIdx) => {
+  syncQuestions();
+  if (editingQuestions[qIdx] && editingQuestions[qIdx].matchPairs.length > 2) {
+    editingQuestions[qIdx].matchPairs.splice(pIdx, 1);
+    renderQuestionEditor();
+  }
+};
+
+window.addCrosswordRow = (qIdx) => {
+  syncQuestions();
+  if (editingQuestions[qIdx]) {
+    editingQuestions[qIdx].crosswordEntries.push({ word: '', clue: '' });
+    renderQuestionEditor();
+  }
+};
+window.removeCrosswordRow = (qIdx, cIdx) => {
+  syncQuestions();
+  if (editingQuestions[qIdx] && editingQuestions[qIdx].crosswordEntries.length > 2) {
+    editingQuestions[qIdx].crosswordEntries.splice(cIdx, 1);
+    renderQuestionEditor();
+  }
+};
+
 window.removeEditorPin = (qIdx, pinIdx) => {
   syncQuestions();
   if (editingQuestions[qIdx] && Array.isArray(editingQuestions[qIdx].imageLabels)) {
@@ -1586,6 +1820,13 @@ window.handleEditorImagePinClick = (event, qIdx) => {
   renderQuestionEditor();
 };
 
+function parseFillBlankTemplate(text) {
+  // Soporta sintaxis con corchetes [respuesta] o guiones bajos ___
+  const bracketRegex = /\[([^\]]+)\]/g;
+  const matches = [...String(text || '').matchAll(bracketRegex)];
+  return matches.map(m => m[1].trim());
+}
+
 function renderQuestionEditor(){
   const editorEl = $('questionEditor');
   if(!editorEl) return;
@@ -1596,6 +1837,75 @@ function renderQuestionEditor(){
 
     if(qType==='open'){
       bodyHtml=`<div class="stack topgap"><label class="field"><span>Rúbrica / Palabras clave</span><textarea data-rubric placeholder="Conceptos esperados...">${esc(q.rubric||'')}</textarea></label><div class="question-editor-actions"><span class="hint">Calificación:</span><select class="select-small" data-grading-mode><option value="ai" ${q.gradingMode!=='manual'?'selected':''}>Automática con IA</option><option value="manual" ${q.gradingMode==='manual'?'selected':''}>Revisión manual docente</option></select></div></div>`;
+    } else if(qType==='true_false'){
+      bodyHtml=`
+        <div class="topgap" style="background:#f5f9ff;border:1px solid #c7dcf7;padding:14px;border-radius:12px">
+          <div class="row between">
+            <span style="font-size:13px;font-weight:800;color:#1d5bb8">✔️ Respuesta correcta (Verdadero o Falso):</span>
+            <select class="select-small" data-tf-correct style="font-weight:800">
+              <option value="true" ${q.correctBool!==false?'selected':''}>✅ VERDADERO</option>
+              <option value="false" ${q.correctBool===false?'selected':''}>❌ FALSO</option>
+            </select>
+          </div>
+        </div>
+      `;
+    } else if(qType==='fill_blank'){
+      const detectedBlanks = parseFillBlankTemplate(q.text);
+      bodyHtml=`
+        <div class="topgap" style="background:#fdf6fb;border:1px solid #e6c6dc;padding:14px;border-radius:12px">
+          <span style="font-size:13px;font-weight:800;color:var(--wine);display:block;margin-bottom:4px">✍️ Instrucciones para Actividad "Complete":</span>
+          <p class="hint" style="margin:0 0 8px">Escribe la oración arriba y encierra entre <b>[corchetes]</b> las palabras que el estudiante debe completar.<br>Ejemplo: <i>El planeta más cercano al Sol es <b>[Mercurio]</b> y el planeta rojo es <b>[Marte]</b>.</i></p>
+          <div class="row">
+            <span class="tag ${detectedBlanks.length?'good':'warn'}">${detectedBlanks.length} espacio(s) detectado(s)</span>
+            ${detectedBlanks.length ? `<span class="hint">Respuestas: <b>${detectedBlanks.map(b=>esc(b)).join(' · ')}</b></span>` : ''}
+          </div>
+        </div>
+      `;
+    } else if(qType==='matching'){
+      showDefaultImageBox = false;
+      const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
+      bodyHtml=`
+        <div class="topgap" style="background:#f4fbf7;border:1px solid #bce3ce;padding:14px;border-radius:12px">
+          <div class="row between" style="margin-bottom:8px">
+            <span style="font-size:13px;font-weight:800;color:var(--good)">🔗 Pares para Unir con Línea</span>
+            <button type="button" class="btn light xs" onclick="addMatchPairRow(${i})">+ Añadir pareja</button>
+          </div>
+          <p class="hint" style="margin:0 0 10px">Escribe cada elemento de la izquierda frente a su pareja correcta de la derecha. El sistema los mezclará automáticamente al estudiante.</p>
+          <div class="stack" style="gap:8px">
+            ${pairs.map((pair, pIdx) => `
+              <div class="row" style="align-items:center">
+                <span class="tag" style="min-width:26px;justify-content:center">${pIdx+1}</span>
+                <input type="text" data-match-left="${pIdx}" value="${esc(pair.left||'')}" placeholder="Columna Izquierda (ej. Mamífero)" required style="flex:1;padding:8px 10px;border:1px solid #d6d9e1;border-radius:8px">
+                <span style="font-weight:900;color:var(--wine)">↔</span>
+                <input type="text" data-match-right="${pIdx}" value="${esc(pair.right||'')}" placeholder="Pareja Derecha (ej. Delfín)" required style="flex:1;padding:8px 10px;border:1px solid #d6d9e1;border-radius:8px">
+                <button type="button" class="btn danger xs" onclick="removeMatchPairRow(${i}, ${pIdx})" ${pairs.length<=2?'disabled':''}>✕</button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    } else if(qType==='crossword'){
+      showDefaultImageBox = false;
+      const entries = Array.isArray(q.crosswordEntries) ? q.crosswordEntries : [];
+      bodyHtml=`
+        <div class="topgap" style="background:#fff9f2;border:1px solid #f0d7b4;padding:14px;border-radius:12px">
+          <div class="row between" style="margin-bottom:8px">
+            <span style="font-size:13px;font-weight:800;color:var(--gold)">🧩 Palabras y Pistas del Crucigrama</span>
+            <button type="button" class="btn light xs" onclick="addCrosswordRow(${i})">+ Añadir palabra</button>
+          </div>
+          <p class="hint" style="margin:0 0 10px">Ingresa cada palabra (una sola palabra sin espacios) y su pista o definición. El sistema cruzará automáticamente las letras en el tablero.</p>
+          <div class="stack" style="gap:8px">
+            ${entries.map((item, cIdx) => `
+              <div class="row" style="align-items:center">
+                <span class="tag" style="min-width:26px;justify-content:center">${cIdx+1}</span>
+                <input type="text" data-cw-word="${cIdx}" value="${esc(item.word||'')}" placeholder="Palabra (ej. FOTOSINTESIS)" required style="width:170px;padding:8px 10px;border:1px solid #d6d9e1;border-radius:8px;text-transform:uppercase">
+                <input type="text" data-cw-clue="${cIdx}" value="${esc(item.clue||'')}" placeholder="Pista o definición para el estudiante..." required style="flex:1;padding:8px 10px;border:1px solid #d6d9e1;border-radius:8px">
+                <button type="button" class="btn danger xs" onclick="removeCrosswordRow(${i}, ${cIdx})" ${entries.length<=2?'disabled':''}>✕</button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
     } else if(qType==='math_combo'){
       bodyHtml=`<div class="math-matrix"><div><span class="math-col-title">Opciones (A-D)</span><div class="stack" style="gap:8px">${(q.options||['','','','']).map((o,j)=>renderOptionWithMathBtn(`Opción ${'ABCD'[j]}`, 'data-opt', j, o)).join('')}</div></div><div><span class="math-col-title">Procedimientos (1-4)</span><div class="stack" style="gap:8px">${(q.procedures||['','','','']).map((p,j)=>renderOptionWithMathBtn(`Procedimiento ${j+1}`, 'data-proc', j, p)).join('')}</div></div></div><div class="question-editor-actions"><label class="row" style="font-size:12px;cursor:pointer"><input type="checkbox" data-req-proc ${q.requireWrittenProc?'checked':''}><span>Pedir texto de procedimiento</span></label><div class="row"><span class="hint">Combinación correcta:</span><select class="select-small" data-combo>${MATH_COMBOS.map(c=>`<option value="${c}" ${q.correctCombo===c?'selected':''}>${c}</option>`).join('')}</select></div></div>`;
     } else if(qType==='wordsearch'){
@@ -1664,6 +1974,15 @@ function renderQuestionEditor(){
       bodyHtml=`<div class="options-editor topgap">${(q.options||['','','','']).map((o,j)=>renderOptionWithMathBtn(`Opción ${'ABCD'[j]}`, 'data-opt', j, o)).join('')}</div><div class="question-editor-actions"><span class="hint">Opción correcta</span><select class="select-small" data-correct>${[0,1,2,3].map(j=>`<option value="${j}" ${q.correct===j?'selected':''}>Correcta: ${'ABCD'[j]}</option>`).join('')}</select></div>`;
     }
 
+    const placeholdersByType = {
+      wordsearch: 'Ej. Encuentra en la sopa de letras los siguientes planetas del Sistema Solar:',
+      image_labels: 'Ej. Selecciona el nombre correcto para cada parte de la planta señalada en el dibujo:',
+      true_false: 'Ej. La Tierra gira alrededor del Sol en aproximadamente 365 días.',
+      fill_blank: 'Ej. La capital del Ecuador es [Quito] y su puerto principal es [Guayaquil].',
+      matching: 'Ej. Une con una línea cada animal con su clasificación correspondiente:',
+      crossword: 'Ej. Completa el siguiente crucigrama leyendo las pistas horizontales y verticales:'
+    };
+
     return `
       <article class="question-box" data-q="${i}">
         <div class="row between" style="margin-bottom:12px">
@@ -1671,6 +1990,10 @@ function renderQuestionEditor(){
             <h4>Pregunta ${i+1}</h4>
             <select class="select-small" data-type>
               <option value="multiple" ${qType==='multiple'?'selected':''}>Opción Múltiple</option>
+              <option value="true_false" ${qType==='true_false'?'selected':''}>✔️ Verdadero o Falso</option>
+              <option value="fill_blank" ${qType==='fill_blank'?'selected':''}>✍️ Complete (Espacios en blanco)</option>
+              <option value="matching" ${qType==='matching'?'selected':''}>🔗 Unir con Línea</option>
+              <option value="crossword" ${qType==='crossword'?'selected':''}>🧩 Crucigrama (Didáctica)</option>
               <option value="wordsearch" ${qType==='wordsearch'?'selected':''}>🔤 Sopa de Letras (Didáctica)</option>
               <option value="image_labels" ${qType==='image_labels'?'selected':''}>🏷️ Partes de un Gráfico (Didáctica)</option>
               <option value="open" ${qType==='open'?'selected':''}>Abierta</option>
@@ -1685,7 +2008,7 @@ function renderQuestionEditor(){
             <span style="font-size:12px;font-weight:800;color:#555d6b">Enunciado / Consigna para el estudiante</span>
             <button type="button" class="btn light small" onclick="openVisualMathEditor(this.closest('.math-field-wrapper').querySelector('textarea'))">∑ Insertar Ecuación (Editor Gráfico)</button>
           </div>
-          <textarea data-text required placeholder="${qType==='wordsearch'?'Ej. Encuentra en la sopa de letras los siguientes planetas del Sistema Solar:':qType==='image_labels'?'Ej. Selecciona el nombre correcto para cada parte de la planta señalada en el dibujo:':'Escribe tu enunciado aquí o inserta una ecuación visual...'}" oninput="updateLiveMathPreview(this)">${esc(q.text)}</textarea>
+          <textarea data-text required placeholder="${placeholdersByType[qType] || 'Escribe tu enunciado aquí o inserta una ecuación visual...'}" oninput="updateLiveMathPreview(this); ${qType==='fill_blank'?'syncQuestions();renderQuestionEditor();':''}">${esc(q.text)}</textarea>
           <div class="live-math-preview ${q.text && q.text.includes('$') ? '' : 'hidden'}"></div>
         </div>
 
@@ -1788,6 +2111,21 @@ if($('examForm')) {
       if(!q.text.trim()) { validQuestions = false; break; }
       if(q.type === 'multiple' && q.options.some(o => !o.trim())) { validQuestions = false; break; }
       if(q.type === 'math_combo' && (q.options.some(o => !o.trim()) || q.procedures.some(p => !p.trim()))) { validQuestions = false; break; }
+      if(q.type === 'fill_blank') {
+        const blanks = parseFillBlankTemplate(q.text);
+        if(blanks.length < 1) { validQuestions = false; specificErr = `Pregunta ${k+1} (Complete): encierra al menos una respuesta entre [corchetes].`; break; }
+      }
+      if(q.type === 'matching') {
+        if(!q.matchPairs || q.matchPairs.length < 2 || q.matchPairs.some(p => !p.left.trim() || !p.right.trim())) {
+          validQuestions = false; specificErr = `Pregunta ${k+1} (Unir con línea): completa al menos 2 parejas de conceptos.`; break;
+        }
+      }
+      if(q.type === 'crossword') {
+        const validCw = (q.crosswordEntries || []).filter(e => cleanCrosswordWord(e.word).length >= 2 && e.clue.trim());
+        if(validCw.length < 2) {
+          validQuestions = false; specificErr = `Pregunta ${k+1} (Crucigrama): ingresa al menos 2 palabras válidas con sus pistas.`; break;
+        }
+      }
       if(q.type === 'wordsearch') {
         const wList = parseWordsList(q.wordsRaw);
         if(wList.length < 2) { validQuestions = false; specificErr = `Pregunta ${k+1} (Sopa de letras): escribe al menos 2 palabras válidas.`; break; }
@@ -1806,6 +2144,10 @@ if($('examForm')) {
     const cleanQuestions = editingQuestions.map(q => {
       const baseQ = { text: q.text.trim(), imageUrl: (q.imageUrl||'').trim() };
       if(q.type === 'open') return {type:'open', ...baseQ, rubric:q.rubric.trim(), gradingMode:q.gradingMode};
+      if(q.type === 'true_false') return {type:'true_false', ...baseQ, correctBool: Boolean(q.correctBool)};
+      if(q.type === 'fill_blank') return {type:'fill_blank', ...baseQ, blanks: parseFillBlankTemplate(q.text)};
+      if(q.type === 'matching') return {type:'matching', ...baseQ, matchPairs: q.matchPairs.map(p => ({ left: p.left.trim(), right: p.right.trim() }))};
+      if(q.type === 'crossword') return {type:'crossword', ...baseQ, crosswordEntries: q.crosswordEntries.filter(e => cleanCrosswordWord(e.word).length >= 2 && e.clue.trim()).map(e => ({ word: cleanCrosswordWord(e.word), clue: e.clue.trim() }))};
       if(q.type === 'math_combo') return {type:'math_combo', ...baseQ, options:q.options.map(o=>o.trim()), procedures:q.procedures.map(p=>p.trim()), correctCombo:q.correctCombo, requireWrittenProc:q.requireWrittenProc};
       if(q.type === 'wordsearch') return {type:'wordsearch', ...baseQ, words:parseWordsList(q.wordsRaw), wordsRaw:q.wordsRaw.trim(), gridSize:Number(q.gridSize||10)};
       if(q.type === 'image_labels') return {type:'image_labels', ...baseQ, imageLabels:q.imageLabels.map(p=>({x:p.x, y:p.y, label:p.label.trim()}))};
@@ -1944,6 +2286,29 @@ window.openReviewModal = (attemptId) => {
     let ansHtml = '';
     if(qType === 'open'){
       ansHtml = `<div style="background:#f8f9fb;padding:10px;border-radius:8px;margin-top:6px"><small class="hint">Respuesta:</small><div style="white-space:pre-wrap;margin-top:4px">${esc(detail.studentAnswerText||'Sin respuesta')}</div></div>${detail.aiFeedback?`<div class="notice good" style="margin-top:8px;padding:8px 12px">${esc(detail.aiFeedback)}</div>`:''}`;
+    } else if(qType === 'true_false'){
+      const stuVal = detail.selectedBool === true ? 'VERDADERO' : detail.selectedBool === false ? 'FALSO' : 'Sin responder';
+      const corVal = q.correctBool !== false ? 'VERDADERO' : 'FALSO';
+      ansHtml = `<div style="margin-top:6px"><span class="tag ${earned===1?'good':'bad'}">Marcó: ${stuVal} (Correcta: ${corVal})</span></div>`;
+    } else if(qType === 'fill_blank'){
+      const stuArr = Array.isArray(detail.filledBlanks) ? detail.filledBlanks : [];
+      const corArr = Array.isArray(q.blanks) ? q.blanks : parseFillBlankTemplate(q.text);
+      ansHtml = `<div style="margin-top:6px;font-size:13px">${corArr.map((cWord, bIdx) => {
+        const sWord = stuArr[bIdx] || '—';
+        const ok = normCompare(sWord) === normCompare(cWord);
+        return `<div>Espacio #${bIdx+1}: Escribió <b>${esc(sWord)}</b> ${ok ? '✅' : `❌ (Correcto: ${esc(cWord)})`}</div>`;
+      }).join('')}</div>`;
+    } else if(qType === 'matching'){
+      const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
+      const stuPairs = detail.matchedPairs || {};
+      ansHtml = `<div style="margin-top:6px;font-size:13px">${pairs.map((p, pIdx) => {
+        const sRight = stuPairs[pIdx] || 'Sin unir';
+        const ok = sRight === p.right;
+        return `<div><b>${esc(p.left)}</b> → Unió con <i>${esc(sRight)}</i> ${ok ? '✅' : `❌ (Correcto: ${esc(p.right)})`}</div>`;
+      }).join('')}</div>`;
+    } else if(qType === 'crossword'){
+      const cwRes = Array.isArray(detail.crosswordResults) ? detail.crosswordResults : [];
+      ansHtml = `<div style="margin-top:6px;font-size:13px">${cwRes.map(r => `<div><b>${esc(r.word)}:</b> Escribió <i>${esc(r.typed || '—')}</i> ${r.correct ? '✅' : '❌'}</div>`).join('') || '<span class="hint">Crucigrama evaluado.</span>'}</div>`;
     } else if(qType === 'math_combo'){
       ansHtml = `<div style="margin-top:6px"><span class="tag ${earned===1?'good':'bad'}">Marcó: ${esc(detail.selectedCombo||'Ninguna')} (Correcta: ${esc(q.correctCombo)})</span>${detail.writtenProcedure?`<div style="background:#f8f9fb;padding:8px;border-radius:8px;margin-top:6px;font-size:13px"><b>Procedimiento:</b> ${esc(detail.writtenProcedure)}</div>`:''}</div>`;
     } else if(qType === 'wordsearch'){
@@ -1997,6 +2362,20 @@ if($('printExamSheetBtn')) {
           </div>
           ${detail.aiFeedback ? `<div style="font-size:11px;color:#166a47;margin-top:4px"><i>Observación: ${esc(detail.aiFeedback)}</i></div>` : ''}
         `;
+      } else if (qType === 'true_false') {
+        const stuVal = detail.selectedBool === true ? 'VERDADERO' : detail.selectedBool === false ? 'FALSO' : 'Sin responder';
+        const corVal = q.correctBool !== false ? 'VERDADERO' : 'FALSO';
+        bodyPrint = `<div style="font-size:12px;margin-top:6px"><b>Marcó:</b> ${stuVal} (Correcta: ${corVal})</div>`;
+      } else if (qType === 'fill_blank') {
+        const stuArr = Array.isArray(detail.filledBlanks) ? detail.filledBlanks : [];
+        bodyPrint = `<div style="font-size:12px;margin-top:6px"><b>Palabras completadas:</b> ${esc(stuArr.join(', ') || 'Sin completar')}</div>`;
+      } else if (qType === 'matching') {
+        const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
+        const stuPairs = detail.matchedPairs || {};
+        bodyPrint = `<div style="font-size:12px;margin-top:6px">${pairs.map((p, pIdx)=>`${esc(p.left)} → <b>${esc(stuPairs[pIdx]||'—')}</b>`).join(' | ')}</div>`;
+      } else if (qType === 'crossword') {
+        const cwRes = Array.isArray(detail.crosswordResults) ? detail.crosswordResults : [];
+        bodyPrint = `<div style="font-size:12px;margin-top:6px"><b>Crucigrama:</b> ${cwRes.map(r=>`${esc(r.word)} (${r.correct?'✓':'✗'})`).join(', ')}</div>`;
       } else if (qType === 'math_combo') {
         bodyPrint = `
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;margin-top:6px">
@@ -2170,6 +2549,15 @@ if($('startExamBtn')) {
         const shuffled = [...labelsList].sort(() => Math.random() - 0.5);
         return { ...q, _shuffledLabels: shuffled };
       }
+      if (q.type === 'matching') {
+        const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
+        const rightItems = pairs.map((p, idx) => ({ idx, text: p.right })).sort(() => Math.random() - 0.5);
+        return { ...q, _shuffledRight: rightItems };
+      }
+      if (q.type === 'crossword') {
+        const cwData = buildCrosswordLayout(q.crosswordEntries || []);
+        return { ...q, _cw: cwData };
+      }
       return q;
     });
 
@@ -2178,6 +2566,10 @@ if($('startExamBtn')) {
       attemptId, exam: { ...exam, questions: preparedQuestions }, studentName: pupil.name, cedula, level: pupil.level, parallel: pupil.parallel,
       index: 0, answers: preparedQuestions.map(q=>{
         if(q.type==='open') return {text:''};
+        if(q.type==='true_false') return {boolVal:null};
+        if(q.type==='fill_blank') return {blanks: []};
+        if(q.type==='matching') return {connections: {}, selectedLeft: null};
+        if(q.type==='crossword') return {cells: {}};
         if(q.type==='math_combo') return {combo:null, writtenProcedure:''};
         if(q.type==='wordsearch') return {foundWords:[], foundCoords:[]};
         if(q.type==='image_labels') return {labelsMap:{}, selectedChip:null};
@@ -2263,6 +2655,32 @@ function commitWsSelection() {
   updateWsHighlight();
 }
 
+function drawMatchingLines() {
+  const stage = $('liveMatchStage');
+  const svg = $('liveMatchSvg');
+  if (!stage || !svg || !live) return;
+  const ans = live.answers[live.index];
+  const conns = ans?.connections || {};
+  const stageRect = stage.getBoundingClientRect();
+  let pathsHtml = '';
+
+  Object.entries(conns).forEach(([lIdx, rIdx]) => {
+    const leftEl = stage.querySelector(`[data-match-l="${lIdx}"] .match-dot`);
+    const rightEl = stage.querySelector(`[data-match-r="${rIdx}"] .match-dot`);
+    if (leftEl && rightEl) {
+      const lRect = leftEl.getBoundingClientRect();
+      const rRect = rightEl.getBoundingClientRect();
+      const x1 = lRect.left + lRect.width / 2 - stageRect.left;
+      const y1 = lRect.top + lRect.height / 2 - stageRect.top;
+      const x2 = rRect.left + rRect.width / 2 - stageRect.left;
+      const y2 = rRect.top + rRect.height / 2 - stageRect.top;
+      const color = MATCH_COLORS[Number(lIdx) % MATCH_COLORS.length];
+      pathsHtml += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="4" stroke-linecap="round" />`;
+    }
+  });
+  svg.innerHTML = pathsHtml;
+}
+
 function renderLiveQuestion(){
   if(!live) return;
   const q = live.exam.questions[live.index], qType = q.type||'multiple', ans = live.answers[live.index];
@@ -2270,9 +2688,98 @@ function renderLiveQuestion(){
 
   const imgHtml = (q.imageUrl && qType !== 'image_labels') ? `<div style="text-align:center;margin:14px 0"><img src="${esc(q.imageUrl)}" style="max-height:240px;max-width:100%;border-radius:12px;border:1px solid var(--line)"></div>` : '';
 
+  let questionHeadingHtml = `<h2>${esc(q.text)}</h2>`;
   let bodyHtml = '';
+
   if(qType === 'open'){
     bodyHtml = `<textarea id="liveOpenInput" rows="5" style="width:100%;border:2px solid #e3e5ea;border-radius:13px;padding:15px" placeholder="Escribe tu respuesta aquí...">${esc(ans.text||'')}</textarea>`;
+  } else if(qType === 'true_false'){
+    bodyHtml = `
+      <div class="tf-grid">
+        <button type="button" class="tf-card ${ans.boolVal===true?'selected-true':''}" data-tf-pick="true">
+          <span style="font-size:34px">✅</span>
+          <span>VERDADERO</span>
+        </button>
+        <button type="button" class="tf-card ${ans.boolVal===false?'selected-false':''}" data-tf-pick="false">
+          <span style="font-size:34px">❌</span>
+          <span>FALSO</span>
+        </button>
+      </div>
+    `;
+  } else if(qType === 'fill_blank'){
+    questionHeadingHtml = `<h2>Completa los espacios en blanco:</h2>`;
+    let blankIdx = 0;
+    const renderedSentence = esc(q.text).replace(/\[([^\]]+)\]/g, () => {
+      const idx = blankIdx++;
+      const curVal = ans.blanks[idx] || '';
+      return `<input type="text" class="fill-blank-input" data-blank-idx="${idx}" value="${esc(curVal)}" placeholder="Escribe aquí..." autocomplete="off">`;
+    });
+    bodyHtml = `<div class="fill-blank-sentence">${renderedSentence}</div>`;
+  } else if(qType === 'matching'){
+    const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
+    const rightItems = Array.isArray(q._shuffledRight) ? q._shuffledRight : pairs.map((p, idx) => ({ idx, text: p.right }));
+    const conns = ans.connections || {};
+    bodyHtml = `
+      <div class="notice good" style="margin-bottom:10px">
+        <b>¿Cómo unir?</b> 1️⃣ Haz clic en un recuadro de la izquierda y 2️⃣ haz clic en su pareja correspondiente de la derecha para trazar la línea.
+      </div>
+      <div class="match-stage" id="liveMatchStage">
+        <svg class="match-svg-layer" id="liveMatchSvg"></svg>
+        <div class="match-col">
+          ${pairs.map((p, lIdx) => {
+            const isSelected = ans.selectedLeft === lIdx;
+            const isConnected = conns[lIdx] !== undefined;
+            const color = MATCH_COLORS[lIdx % MATCH_COLORS.length];
+            return `
+              <button type="button" class="match-node ${isSelected?'active-left':''}" data-match-l="${lIdx}" style="${isConnected?`border-color:${color};background:#fff`:''}">
+                <span>${esc(p.left)}</span>
+                <span class="match-dot" style="${isConnected?`background:${color}`:''}"></span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+        <div></div>
+        <div class="match-col">
+          ${rightItems.map((rObj) => {
+            const connectedLeft = Object.keys(conns).find(k => conns[k] === rObj.idx);
+            const color = connectedLeft !== undefined ? MATCH_COLORS[Number(connectedLeft) % MATCH_COLORS.length] : '';
+            return `
+              <button type="button" class="match-node" data-match-r="${rObj.idx}" style="${connectedLeft!==undefined?`border-color:${color};background:#fff`:''}">
+                <span class="match-dot" style="${connectedLeft!==undefined?`background:${color}`:''}"></span>
+                <span style="flex:1;text-align:right">${esc(rObj.text)}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  } else if(qType === 'crossword'){
+    const cw = q._cw || { rows: 1, cols: 1, grid: [['']], words: [] };
+    const horiz = cw.words.filter(w => w.dir === 'H');
+    const vert = cw.words.filter(w => w.dir === 'V');
+    bodyHtml = `
+      <div class="cw-layout">
+        <div style="overflow-x:auto;text-align:center">
+          <div class="cw-board" style="grid-template-columns:repeat(${cw.cols}, 1fr)">
+            ${cw.grid.map((row, r) => row.map((cell, c) => {
+              if (!cell) return `<div class="cw-cell blocked"></div>`;
+              const key = `${r},${c}`;
+              const val = ans.cells[key] || '';
+              return `
+                <div class="cw-cell">
+                  ${cell.num ? `<span class="cw-cell-num">${cell.num}</span>` : ''}
+                  <input type="text" maxlength="1" data-cw-r="${r}" data-cw-c="${c}" value="${esc(val)}" autocomplete="off">
+                </div>
+              `;
+            }).join('')).join('')}
+          </div>
+        </div>
+        <div class="cw-clues">
+          ${horiz.length ? `<div class="cw-clue-box"><h4>➡️ Horizontales</h4>${horiz.map(w => `<div style="margin-bottom:4px"><b>${w.num}.</b> ${esc(w.clue)}</div>`).join('')}</div>` : ''}
+          ${vert.length ? `<div class="cw-clue-box"><h4>⬇️ Verticales</h4>${vert.map(w => `<div style="margin-bottom:4px"><b>${w.num}.</b> ${esc(w.clue)}</div>`).join('')}</div>` : ''}
+        </div>
+      </div>
+    `;
   } else if(qType === 'math_combo'){
     bodyHtml = `
       <div class="math-matrix">
@@ -2331,7 +2838,7 @@ function renderLiveQuestion(){
 
   $('examQuestionArea').innerHTML = `
     <span class="tag">Pregunta ${live.index+1} de ${live.exam.questions.length}</span>
-    <h2>${esc(q.text)}</h2>
+    ${questionHeadingHtml}
     ${imgHtml}
     ${bodyHtml}
     <div class="exam-bottom">
@@ -2345,6 +2852,66 @@ function renderLiveQuestion(){
   // Eventos según tipo de pregunta
   if(qType==='open') {
     $('liveOpenInput').oninput = e => live.answers[live.index].text = e.target.value;
+  } else if(qType==='true_false'){
+    document.querySelectorAll('[data-tf-pick]').forEach(btn => {
+      btn.onclick = () => {
+        live.answers[live.index].boolVal = (btn.dataset.tfPick === 'true');
+        renderLiveQuestion();
+      };
+    });
+  } else if(qType==='fill_blank'){
+    document.querySelectorAll('[data-blank-idx]').forEach(inp => {
+      inp.oninput = () => {
+        live.answers[live.index].blanks[Number(inp.dataset.blankIdx)] = inp.value;
+      };
+    });
+  } else if(qType==='matching'){
+    setTimeout(drawMatchingLines, 30);
+    document.querySelectorAll('[data-match-l]').forEach(btn => {
+      btn.onclick = () => {
+        const lIdx = Number(btn.dataset.matchL);
+        if (ans.selectedLeft === lIdx) {
+          ans.selectedLeft = null;
+        } else {
+          ans.selectedLeft = lIdx;
+        }
+        renderLiveQuestion();
+      };
+    });
+    document.querySelectorAll('[data-match-r]').forEach(btn => {
+      btn.onclick = () => {
+        const rIdx = Number(btn.dataset.matchR);
+        if (ans.selectedLeft !== null) {
+          for (const k of Object.keys(ans.connections)) {
+            if (ans.connections[k] === rIdx) delete ans.connections[k];
+          }
+          ans.connections[ans.selectedLeft] = rIdx;
+          ans.selectedLeft = null;
+          renderLiveQuestion();
+        } else {
+          for (const k of Object.keys(ans.connections)) {
+            if (ans.connections[k] === rIdx) delete ans.connections[k];
+          }
+          renderLiveQuestion();
+        }
+      };
+    });
+  } else if(qType==='crossword'){
+    document.querySelectorAll('[data-cw-r]').forEach(inp => {
+      inp.oninput = () => {
+        const r = Number(inp.dataset.cwR);
+        const c = Number(inp.dataset.cwC);
+        const letter = inp.value.toUpperCase().replace(/[^A-ZÑ]/g, '').slice(0, 1);
+        inp.value = letter;
+        ans.cells[`${r},${c}`] = letter;
+        if (letter) {
+          const rightCell = document.querySelector(`[data-cw-r="${r}"][data-cw-c="${c + 1}"]`);
+          const downCell = document.querySelector(`[data-cw-r="${r + 1}"][data-cw-c="${c}"]`);
+          if (rightCell) rightCell.focus();
+          else if (downCell) downCell.focus();
+        }
+      };
+    });
   } else if(qType==='math_combo'){
     document.querySelectorAll('[data-pick-combo]').forEach(el => el.onclick = () => { live.answers[live.index].combo = el.dataset.pickCombo; renderLiveQuestion(); });
     if($('liveProcInput')) $('liveProcInput').oninput = e => live.answers[live.index].writtenProcedure = e.target.value;
@@ -2383,7 +2950,6 @@ function renderLiveQuestion(){
       pinBtn.onclick = () => {
         const pIdx = Number(pinBtn.dataset.pinIdx);
         if (ans.selectedChip) {
-          // Quitar si esa palabra ya estaba en otro pin
           for (const k of Object.keys(ans.labelsMap)) {
             if (ans.labelsMap[k] === ans.selectedChip) delete ans.labelsMap[k];
           }
@@ -2441,6 +3007,49 @@ async function finishExam(statusText, reason){
         const res = q.gradingMode==='ai' ? await evaluateOpenAnswerWithAI(q.text, q.rubric, ans.text) : {score:0, feedback:'Pendiente de revisión docente'};
         details.push({type:'open', studentAnswerText:ans.text||'', pointsEarned:res.score, aiFeedback:res.feedback});
         earnedTotal += res.score;
+      } else if(qType === 'true_false'){
+        const expected = q.correctBool !== false;
+        const ok = ans.boolVal === expected ? 1 : 0;
+        details.push({type:'true_false', selectedBool: ans.boolVal, pointsEarned: ok});
+        earnedTotal += ok;
+      } else if(qType === 'fill_blank'){
+        const expectedBlanks = Array.isArray(q.blanks) ? q.blanks : parseFillBlankTemplate(q.text);
+        const stuBlanks = Array.isArray(ans.blanks) ? ans.blanks : [];
+        let correctBlanks = 0;
+        expectedBlanks.forEach((expW, bIdx) => {
+          if (normCompare(stuBlanks[bIdx]) === normCompare(expW)) correctBlanks++;
+        });
+        const pts = expectedBlanks.length ? Math.round((correctBlanks / expectedBlanks.length) * 100) / 100 : 0;
+        details.push({type:'fill_blank', filledBlanks: stuBlanks, pointsEarned: pts});
+        earnedTotal += pts;
+      } else if(qType === 'matching'){
+        const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
+        const conns = ans.connections || {};
+        const matchedPairs = {};
+        let correctPairs = 0;
+        pairs.forEach((p, lIdx) => {
+          const rIdx = conns[lIdx];
+          if (rIdx !== undefined && pairs[rIdx]) {
+            matchedPairs[lIdx] = pairs[rIdx].right;
+            if (rIdx === lIdx) correctPairs++;
+          }
+        });
+        const pts = pairs.length ? Math.round((correctPairs / pairs.length) * 100) / 100 : 0;
+        details.push({type:'matching', matchedPairs, pointsEarned: pts});
+        earnedTotal += pts;
+      } else if(qType === 'crossword'){
+        const cwWords = q._cw?.words || [];
+        const cells = ans.cells || {};
+        let correctWords = 0;
+        const crosswordResults = cwWords.map(wObj => {
+          const typed = wObj.cells.map(c => cells[`${c.r},${c.c}`] || '').join('');
+          const isOk = typed === wObj.word;
+          if (isOk) correctWords++;
+          return { word: wObj.word, typed, correct: isOk };
+        });
+        const pts = cwWords.length ? Math.round((correctWords / cwWords.length) * 100) / 100 : 0;
+        details.push({type:'crossword', crosswordResults, pointsEarned: pts});
+        earnedTotal += pts;
       } else if(qType === 'math_combo'){
         const ok = ans.combo === q.correctCombo ? 1 : 0;
         details.push({type:'math_combo', selectedCombo:ans.combo, writtenProcedure:ans.writtenProcedure||'', pointsEarned:ok});
