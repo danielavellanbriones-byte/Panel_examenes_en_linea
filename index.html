@@ -18,6 +18,23 @@ header{background:#fff;border-bottom:1px solid var(--line);padding:14px 4.5%;dis
 .modal-card{background:#fff;border-radius:20px;max-width:780px;width:100%;padding:26px;box-shadow:0 24px 60px rgba(0,0,0,.22);max-height:92vh;overflow-y:auto}
 #examScreen{position:fixed;inset:0;z-index:100;background:#f2f3f6;overflow-y:auto;padding:28px 20px 55px}#examScreen:fullscreen{background:#f2f3f6}#examScreen:-webkit-full-screen{background:#f2f3f6}.exam-wrap{max-width:900px;margin:auto}.exam-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.timer-box{background:#fff;border:1px solid var(--line);padding:14px 17px;border-radius:14px;min-width:120px;text-align:center}.timer-box small{display:block;font-size:11px;color:var(--muted);margin-bottom:7px}.timer-box strong{font-size:25px;font-variant-numeric:tabular-nums}.timer-box.urgent{color:var(--bad);border-color:#ffbdc7;background:#fff7f8}.progress{height:8px;background:#dfe2e8;border-radius:100px;overflow:hidden;margin:23px 0}.progress div{height:100%;background:var(--wine);transition:width .2s}.question-main{padding:32px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}.question-main h2{font-size:clamp(20px,3vw,28px);line-height:1.4;margin:15px 0 22px}.answer{display:flex;align-items:center;gap:14px;border:2px solid #e3e5ea;border-radius:13px;padding:16px;margin:10px 0;cursor:pointer;font-size:15px;line-height:1.5}.answer:hover{border-color:#cba8b8;background:#fff9fb}.answer.selected{background:#f9edf2;border-color:var(--wine)}.answer input{accent-color:var(--wine);width:18px;height:18px;flex-shrink:0}.exam-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:25px;flex-wrap:wrap}.big-result{font-weight:900;font-size:60px;color:var(--wine);margin:8px 0}.mono{font-variant-numeric:tabular-nums} .fullspan{grid-column:1/-1}
 
+/* ESTILOS WIDGET PROCTOR / CÁMARA VIGILANCIA FLOTANTE */
+.proctor-cam-widget { position: fixed; bottom: 24px; right: 24px; width: 170px; background: #1e293b; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 35px rgba(0,0,0,0.4); z-index: 99999; border: 2px solid #ef4444; }
+.proctor-header { background: #0f172a; color: white; padding: 6px 10px; font-size: 11px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+.proctor-rec { display: flex; align-items: center; gap: 5px; color: #ef4444; }
+.proctor-dot { width: 8px; height: 8px; background: #ef4444; border-radius: 50%; display: inline-block; animation: pulseRed 1.2s infinite; }
+@keyframes pulseRed { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } }
+.proctor-view { position: relative; width: 100%; height: 115px; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.proctor-view video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+.proctor-overlay-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(15,23,42,0.75); color: #fff; text-align: center; padding: 8px; font-size: 11px; }
+
+/* GALERÍA DE CAPTURAS DE EVIDENCIA (PROCTOR) */
+.proctor-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 10px; }
+.proctor-snap-card { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fcfcfd; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.proctor-snap-card.infraction { border: 2px solid var(--bad); background: #fff4f6; }
+.proctor-snap-card img { width: 100%; height: 115px; object-fit: cover; display: block; transform: scaleX(-1); }
+.proctor-snap-info { padding: 8px; font-size: 11px; line-height: 1.4; }
+
 /* ESTILOS EDITOR GRÁFICO DE ECUACIONES FLOTANTE */
 math-field {
   width: 100%;
@@ -163,11 +180,11 @@ math-field:focus-within {
     <div>
       <div class="eyebrow">Sistema de evaluaciones • JBP</div>
       <h1>Exámenes sincronizados 100% en la nube en tiempo real.</h1>
-      <p>Administrador y profesor: <b>Ing. Daniel Avellán</b>. Plataforma con soporte para pegar imágenes (Ctrl+V), editor gráfico de ecuaciones y actividades didácticas interactivas para escuela.</p>
+      <p>Administrador y profesor: <b>Ing. Daniel Avellán</b>. Plataforma con soporte para pegar imágenes (Ctrl+V), editor gráfico de ecuaciones, supervisión por cámara y actividades didácticas interactivas.</p>
     </div>
     <div class="hero-art">
       <div class="circle">10/10</div>
-      <p>Nube Global · Ecuaciones Visuales & Juegos Didácticos</p>
+      <p>Nube Global · Ecuaciones Visuales & Supervisión Proctor</p>
     </div>
   </section>
 
@@ -210,10 +227,10 @@ math-field:focus-within {
       <div class="card">
         <h2 class="section-title">Reglas de evaluación</h2>
         <div class="stack topgap">
-          <div class="notice red"><b>Política de infracciones:</b> durante el examen, minimizar la ventana, cambiar de pestaña, perder el foco de la página o salir de pantalla completa provocará la anulación inmediata y una calificación de <b>0/10</b>.</div>
+          <div class="notice red"><b>Política de infracciones y cámara:</b> durante el examen, minimizar la ventana, cambiar de pestaña, perder el foco o salir de pantalla completa tomará una <b>captura fotográfica de evidencia</b> y provocará la anulación inmediata con calificación de <b>0/10</b>.</div>
+          <div class="tile"><b>📸 Supervisión por cámara web</b><p>El sistema realiza capturas periódicas de seguridad y registra evidencia fotográfica en la nube para verificación del docente.</p></div>
           <div class="tile"><b>⏱ Publicación de calificaciones</b><p>Al terminar la prueba, tu nota se guarda en la nube. Podrás consultarla haciendo clic en <b>"Mis calificaciones"</b> una vez que el docente las haya publicado oficialmente.</p></div>
           <div class="tile"><b>🧩 Actividades Interactivas y Ecuaciones</b><p>Los exámenes incluyen crucigramas, sopas de letras, unir con líneas, completar frases, verdadero/falso, gráficos para etiquetar partes y renderizado matemático.</p></div>
-          <div class="tile"><b>☁️ Sincronización Global</b><p>Cada intento y examen se almacena directamente en la base de datos en la nube de Firebase.</p></div>
         </div>
       </div>
     </div>
@@ -321,8 +338,8 @@ math-field:focus-within {
         <div class="card">
           <div class="row between">
             <div>
-              <h3 style="margin:0">Reporte de calificaciones, revisión y publicación</h3>
-              <p class="hint">Califica preguntas abiertas, publica las notas y gestiona intentos en la nube.</p>
+              <h3 style="margin:0">Reporte de calificaciones, revisión y evidencia fotográfica</h3>
+              <p class="hint">Revisa las capturas de cámara web del estudiante, califica preguntas abiertas y publica notas.</p>
             </div>
             <div class="row">
               <button class="btn light small" id="publishAllBtn">📢 Publicar notas de este examen</button>
@@ -503,18 +520,28 @@ math-field:focus-within {
   </div>
 </div>
 
-<!-- MODAL DE REVISIÓN Y CALIFICACIÓN (IA / MANUAL) -->
+<!-- MODAL DE REVISIÓN, EVIDENCIA PROCTOR Y CALIFICACIÓN (IA / MANUAL) -->
 <div id="reviewModal" class="modal-backdrop hidden">
   <div class="modal-card">
     <div class="row between">
       <div>
-        <span class="tag">Detalle de Evaluación</span>
+        <span class="tag">Detalle de Evaluación y Supervisión</span>
         <h3 id="reviewStudentTitle" style="margin:6px 0 2px"></h3>
         <p id="reviewExamSubtitle" class="hint" style="margin:0"></p>
       </div>
       <button type="button" class="btn neutral small" id="closeReviewModal">Cerrar ✕</button>
     </div>
     <div class="divider"></div>
+    
+    <!-- SECCIÓN EVIDENCIA FOTOGRÁFICA PROCTOR -->
+    <div id="reviewProctorSection" class="tile" style="background:#fffcfd;border-color:#e5ced8;margin-bottom:16px">
+      <div class="row between">
+        <b style="color:var(--wine);font-size:14px">📸 Evidencia de Cámara Web (Supervisión Proctor)</b>
+        <span class="tag" id="reviewProctorCount">0 capturas</span>
+      </div>
+      <div id="reviewProctorGallery" class="proctor-gallery"></div>
+    </div>
+
     <div id="reviewQuestionsBody" class="stack"></div>
     <div class="divider"></div>
     <div class="row between">
@@ -568,6 +595,25 @@ math-field:focus-within {
 
 <!-- PANTALLA EXAMEN EN CURSO -->
 <section id="examScreen" class="hidden" aria-label="Examen en curso">
+  <!-- WIDGET FLOTANTE DE SUPERVISIÓN / CÁMARA DEL PROFESOR -->
+  <div class="proctor-cam-widget" id="proctorWidget">
+    <div class="proctor-header">
+      <span class="proctor-rec">
+        <span class="proctor-dot"></span>
+        REC / VIVO
+      </span>
+      <span>Prof. Avellán</span>
+    </div>
+    <div class="proctor-view">
+      <video id="proctorWebcamFeed" autoplay playsinline muted></video>
+      <div class="proctor-overlay-text" id="proctorFallbackText">
+        <span style="font-size:18px">🛡️</span>
+        <span style="font-weight:bold;margin-top:2px">Monitoreando</span>
+        <small style="opacity:0.8">Sesión vigilada en la nube</small>
+      </div>
+    </div>
+  </div>
+
   <div class="exam-wrap">
     <div class="exam-header">
       <div>
@@ -640,6 +686,7 @@ let editingId = null;
 let editingQuestions = [];
 let live = null;
 let interval = null;
+let snapshotInterval = null;
 let finalizing = false;
 let reviewingAttemptId = null;
 
@@ -1493,7 +1540,6 @@ function buildWordSearchGrid(wordsInput, size = 10) {
   return { gridSize, grid, placed };
 }
 
-// Generador de Crucigrama Interactivo con cruce inteligente
 function cleanCrosswordWord(w) {
   return String(w || '').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-ZÑ]/g, '');
 }
@@ -1762,7 +1808,6 @@ function renderOptionWithMathBtn(label, attrName, idx, val) {
   `;
 }
 
-// Helpers dinámicos para pares de Unir con línea y Crucigrama
 window.addMatchPairRow = (qIdx) => {
   syncQuestions();
   if (editingQuestions[qIdx]) {
@@ -1821,7 +1866,6 @@ window.handleEditorImagePinClick = (event, qIdx) => {
 };
 
 function parseFillBlankTemplate(text) {
-  // Soporta sintaxis con corchetes [respuesta] o guiones bajos ___
   const bracketRegex = /\[([^\]]+)\]/g;
   const matches = [...String(text || '').matchAll(bracketRegex)];
   return matches.map(m => m[1].trim());
@@ -2224,7 +2268,19 @@ function renderResults(){
   const rows = myAttempts().filter(a => selectedExamId === 'all' || a.examId === selectedExamId);
   const tableEl = $('resultsTable');
   if(!tableEl) return;
-  tableEl.innerHTML = rows.length ? `<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Materia / Examen</th><th>Publicación</th><th>Nota</th><th>Acciones</th></tr></thead><tbody>${rows.map(a=>`<tr><td><b>${esc(a.studentName)}</b></td><td>${esc(a.cedula)}</td><td>${esc(a.subject)}<br><small class="hint">${esc(a.examTitle)}</small></td><td><button type="button" class="btn ${a.published?'light':'neutral'} xs" onclick="togglePublishAttempt('${esc(a.id)}', ${!a.published})">${a.published?'📢 Publicada':'🔒 Oculta (Publicar)'}</button></td><td class="score">${Number(a.score||0).toFixed(2)}/10</td><td><div class="row"><button type="button" class="btn light xs" onclick="openReviewModal('${esc(a.id)}')">Revisar / Imprimir</button><button type="button" class="btn danger xs" onclick="deleteAttempt('${esc(a.id)}')">Borrar</button></div></td></tr>`).join('')}</tbody></table>` : '<div class="empty">No hay resultados en la nube aún.</div>';
+  tableEl.innerHTML = rows.length ? `<table class="report-table"><thead><tr><th>Estudiante</th><th>Cédula</th><th>Materia / Examen</th><th>Evidencia</th><th>Publicación</th><th>Nota</th><th>Acciones</th></tr></thead><tbody>${rows.map(a=>{
+    const snapsCount = Array.isArray(a.proctorSnapshots) ? a.proctorSnapshots.length : 0;
+    const hasInf = a.status === 'infraccion';
+    return `<tr>
+      <td><b>${esc(a.studentName)}</b></td>
+      <td>${esc(a.cedula)}</td>
+      <td>${esc(a.subject)}<br><small class="hint">${esc(a.examTitle)}</small></td>
+      <td><span class="tag ${hasInf?'bad':snapsCount>0?'good':''}">📸 ${snapsCount} foto(s)</span></td>
+      <td><button type="button" class="btn ${a.published?'light':'neutral'} xs" onclick="togglePublishAttempt('${esc(a.id)}', ${!a.published})">${a.published?'📢 Publicada':'🔒 Oculta (Publicar)'}</button></td>
+      <td class="score">${Number(a.score||0).toFixed(2)}/10</td>
+      <td><div class="row"><button type="button" class="btn light xs" onclick="openReviewModal('${esc(a.id)}')">Revisar / Fotos</button><button type="button" class="btn danger xs" onclick="deleteAttempt('${esc(a.id)}')">Borrar</button></div></td>
+    </tr>`;
+  }).join('')}</tbody></table>` : '<div class="empty">No hay resultados en la nube aún.</div>';
 }
 if($('resultsFilter')) $('resultsFilter').onchange = renderResults;
 
@@ -2278,6 +2334,28 @@ window.openReviewModal = (attemptId) => {
   $('reviewStudentTitle').textContent = `${att.studentName} (${att.cedula})`;
   $('reviewExamSubtitle').textContent = `${att.subject} · ${att.examTitle}`;
   $('reviewFinalScore').textContent = `${Number(att.score||0).toFixed(2)} / 10`;
+
+  // Renderizar galería de capturas fotográficas Proctor
+  const snaps = Array.isArray(att.proctorSnapshots) ? att.proctorSnapshots : [];
+  $('reviewProctorCount').textContent = `${snaps.length} captura(s) registrada(s)`;
+  const galEl = $('reviewProctorGallery');
+  if (!snaps.length) {
+    galEl.innerHTML = '<div class="hint" style="grid-column:1/-1;padding:8px 0">No se registraron capturas de cámara web en este intento (el dispositivo no tenía cámara o no dio permiso).</div>';
+  } else {
+    galEl.innerHTML = snaps.map(s => {
+      const timeStr = new Date(s.timestamp || Date.now()).toLocaleTimeString('es-EC', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const isInf = s.isInfraction === true;
+      return `
+        <div class="proctor-snap-card ${isInf?'infraction':''}">
+          <img src="${esc(s.image)}" alt="Captura estudiante">
+          <div class="proctor-snap-info">
+            <b style="color:${isInf?'var(--bad)':'var(--wine)'}">${esc(s.label || 'Control periódico')}</b><br>
+            <span class="hint">🕒 ${esc(timeStr)}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
 
   $('reviewQuestionsBody').innerHTML = (exam.questions||[]).map((q, idx)=>{
     const detail = (att.details||[])[idx] || {};
@@ -2519,8 +2597,71 @@ if($('exportBackupBtn')) {
 }
 
 // ==========================================
-// 7. FLUJO DE EXAMEN DEL ESTUDIANTE + DIDÁCTICA
+// 7. FLUJO DE EXAMEN + CAPTURAS DE EVIDENCIA PROCTOR (OPCIÓN A)
 // ==========================================
+function captureProctorSnapshot(label, isInfraction = false) {
+  if (!live) return;
+  const videoEl = $('proctorWebcamFeed');
+  if (!videoEl || !videoEl.srcObject || videoEl.readyState < 2) return;
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = 240;
+    canvas.height = 180;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.55); // Comprimido ~15-22KB
+
+    if (!Array.isArray(live.snapshots)) live.snapshots = [];
+    // Máximo 12 fotos por intento para mantener ligera la base de datos
+    if (live.snapshots.length >= 12 && !isInfraction) return;
+
+    live.snapshots.push({
+      image: dataUrl,
+      label: label,
+      isInfraction: Boolean(isInfraction),
+      timestamp: Date.now()
+    });
+  } catch (err) {
+    console.warn('Error al capturar foto de supervisión:', err);
+  }
+}
+
+async function initProctorCamera() {
+  const videoEl = $('proctorWebcamFeed');
+  const fallbackEl = $('proctorFallbackText');
+  if (!videoEl) return;
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 240 }, audio: false });
+    videoEl.srcObject = stream;
+    if (fallbackEl) fallbackEl.style.display = 'none';
+
+    // Foto inicial de verificación de identidad tras estabilizar la cámara
+    setTimeout(() => {
+      if (live) captureProctorSnapshot('Inicio de evaluación', false);
+    }, 1800);
+
+    // Capturas periódicas silenciosas cada 90 segundos
+    clearInterval(snapshotInterval);
+    snapshotInterval = setInterval(() => {
+      if (live) captureProctorSnapshot('Control periódico', false);
+    }, 90000);
+
+  } catch (err) {
+    console.warn('Cámara no disponible o permiso denegado:', err);
+    if (fallbackEl) fallbackEl.style.display = 'flex';
+  }
+}
+
+function stopProctorCamera() {
+  clearInterval(snapshotInterval);
+  const videoEl = $('proctorWebcamFeed');
+  if (videoEl && videoEl.srcObject) {
+    const tracks = videoEl.srcObject.getTracks();
+    tracks.forEach(track => track.stop());
+    videoEl.srcObject = null;
+  }
+}
+
 if($('startExamBtn')) {
   $('startExamBtn').onclick = async () => {
     if(!cloudReady || !db) { showMessage('studentMessage', 'Esperando conexión con la nube...'); return; }
@@ -2538,7 +2679,6 @@ if($('startExamBtn')) {
       }
     } catch(e){}
 
-    // Pre-construir estructuras interactivas para cada pregunta del estudiante
     const preparedQuestions = exam.questions.map(q => {
       if (q.type === 'wordsearch') {
         const wsData = buildWordSearchGrid(q.wordsRaw || (q.words||[]).join(','), q.gridSize || 10);
@@ -2575,13 +2715,14 @@ if($('startExamBtn')) {
         if(q.type==='image_labels') return {labelsMap:{}, selectedChip:null};
         return {option:null};
       }),
+      snapshots: [],
       questionDeadline: Date.now() + exam.seconds * 1000, startedAt: Date.now(), strict: false, status: 'en_progreso'
     };
 
     try {
       await db.collection(COL_ATTEMPTS).doc(attemptId).set({
         id: attemptId, examId: exam.id, examTitle: exam.title, subject: exam.subject, teacher: exam.teacher,
-        studentName: pupil.name, cedula, level: pupil.level, parallel: pupil.parallel, score: 0, published: false, status: 'en_progreso', startedAt: live.startedAt, details: []
+        studentName: pupil.name, cedula, level: pupil.level, parallel: pupil.parallel, score: 0, published: false, status: 'en_progreso', startedAt: live.startedAt, details: [], proctorSnapshots: []
       });
     } catch(e) {
       showMessage('studentMessage', 'Error al registrar inicio en la nube: ' + e.message);
@@ -2591,6 +2732,10 @@ if($('startExamBtn')) {
     $('examScreen').classList.remove('hidden'); $('topBar').classList.add('hidden'); $('mainApp').classList.add('hidden');
     $('liveTitle').textContent = `${exam.subject} — ${exam.title}`; $('liveStudent').textContent = `${pupil.name} · C.I. ${cedula}`;
     finalizing = false;
+    
+    // Iniciar cámara de supervisión y capturas automáticas
+    await initProctorCamera();
+
     try { await $('examScreen').requestFullscreen(); } catch(_){}
     setTimeout(()=>{ if(live) live.strict = true; }, 750);
     renderLiveQuestion(); startTimer();
@@ -2849,7 +2994,6 @@ function renderLiveQuestion(){
 
   renderMathSafe($('examQuestionArea'));
 
-  // Eventos según tipo de pregunta
   if(qType==='open') {
     $('liveOpenInput').oninput = e => live.answers[live.index].text = e.target.value;
   } else if(qType==='true_false'){
@@ -2993,8 +3137,17 @@ function startTimer(){
 async function finishExam(statusText, reason){
   if(!live || finalizing) return;
   finalizing = true; clearInterval(interval);
+
+  // Tomar foto final o de infracción ANTES de apagar la cámara
+  if (statusText === 'infraccion') {
+    captureProctorSnapshot('⚠️ ' + (reason || 'Infracción detectada'), true);
+  } else {
+    captureProctorSnapshot('Fin de evaluación', false);
+  }
+  stopProctorCamera();
+
   const current = live; live = null; current.strict = false;
-  $('examQuestionArea').innerHTML = '<div style="text-align:center;padding:40px"><h3>Sincronizando respuestas con la nube...</h3><p class="hint">Por favor espera un momento.</p></div>';
+  $('examQuestionArea').innerHTML = '<div style="text-align:center;padding:40px"><h3>Sincronizando respuestas y evidencia con la nube...</h3><p class="hint">Por favor espera un momento.</p></div>';
 
   const totalQ = current.exam.questions.length;
   const details = [];
@@ -3082,7 +3235,7 @@ async function finishExam(statusText, reason){
   if(cloudReady && db){
     try {
       await db.collection(COL_ATTEMPTS).doc(current.attemptId).update({
-        score: finalScore, status: statusText, reason, finishedAt: Date.now(), details
+        score: finalScore, status: statusText, reason, finishedAt: Date.now(), details, proctorSnapshots: current.snapshots || []
       });
     } catch(e){}
   }
@@ -3091,7 +3244,7 @@ async function finishExam(statusText, reason){
     <div style="text-align:center;padding:20px 0">
       <div class="eyebrow" style="color:var(--wine)">Evaluación finalizada</div>
       <div class="big-result">✓ Recibido</div>
-      <p style="font-size:15px;font-weight:700;color:var(--ink)">Tu evaluación ha sido enviada y sincronizada en la nube.</p>
+      <p style="font-size:15px;font-weight:700;color:var(--ink)">Tu evaluación y evidencia han sido sincronizadas en la nube.</p>
       <p class="hint" style="max-width:480px;margin:10px auto">Por disposición institucional, tu calificación estará visible en el botón <b>"Mis calificaciones"</b> una vez que el docente las publique oficialmente.</p>
       ${reason?`<p class="notice red" style="max-width:480px;margin:12px auto">${esc(reason)}</p>`:''}
       <button class="btn topgap" id="backHomeBtn">Volver al inicio</button>
