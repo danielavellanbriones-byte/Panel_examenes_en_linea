@@ -2,12 +2,21 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<meta name="theme-color" content="#651b37" />
 <title>Evaluaciones en línea | UE Jacinto Burgos Pinargote</title>
+
+<!-- Preconexión rápida a servidores críticos -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=CimaSbAFiQFQrpRqWszl2wtrJ9KgttXNr4ZYXrS3lsxnaMbl_f1Rt0WK1MGiA6ECgWpjIgje8WZKSZbVCrXqyDawYJebotklz0LBifJuvbmj6LyyPFfCOnT0zeGecsJ5SkVFWKCeu_EpwPm5paAW0en3-rIoZ3z31nLtbn9NJHTcmNcCYqmDpKIkA1m5riVvFlrOXnoozMujxfIhaVNfOtUTdFf-3amtyvtRelqzNIhvjRWZvWRBrs1HG4lBlQ4TBt6iq-udt93Y81qoXgiFxSowCPHEy7IwCxy5eEmCAWz99kZ2OWmVqM8aWiZfz2SX4Vj2zh20G51mQ0M33rVsOssAhetU2sHDEO6yIY7G954" charset="UTF-8"></script><style>
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
+
+<!-- Carga asíncrona de fuentes y KaTeX para no bloquear el primer pintado (FCP) -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" media="print" onload="this.media='all'">
+
+<style>
 :root{
   --wine:#651b37;
   --wine2:#8c284e;
@@ -26,7 +35,7 @@
   --shadow-lg:0 24px 60px rgba(24,18,28,.16);
 }
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:'Plus Jakarta Sans',Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+html,body{margin:0;min-height:100%;font-family:'Plus Jakarta Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 button:disabled{cursor:not-allowed;opacity:.55}
@@ -34,9 +43,9 @@ a{color:var(--wine)}
 .hidden{display:none!important}
 
 /* HEADER GLASSMORPHISM */
-header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 4.5%;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:20;box-shadow:var(--shadow-sm)}
+header{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:14px 4.5%;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:20;box-shadow:var(--shadow-sm)}
 .brand{display:flex;align-items:center;gap:14px}
-.brandmark{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;font-weight:800;letter-spacing:-1px;font-size:18px;box-shadow:0 6px 16px rgba(101,27,55,.28)}
+.brandmark{width:48px;height:48px;flex-shrink:0;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;font-weight:800;letter-spacing:-1px;font-size:18px;box-shadow:0 6px 16px rgba(101,27,55,.28)}
 .brand strong{display:block;font-size:15px;font-weight:800;letter-spacing:-.2px;color:var(--ink)}
 .brand small{display:block;color:var(--muted);font-size:12px;margin-top:2px;font-weight:500}
 .header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -47,19 +56,19 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom
 
 .wrap{max-width:1200px;margin:0 auto;padding:32px 22px 72px}
 
-/* HERO BANNER REDISEÑADO */
+/* HERO BANNER */
 .hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center;padding:42px;border-radius:26px;background:linear-gradient(135deg,var(--wineDark) 0%,var(--wine) 52%,var(--wine2) 100%);color:white;box-shadow:var(--shadow)}
 .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14) 0%,transparent 70%);pointer-events:none}
 .eyebrow{font-weight:800;letter-spacing:1.8px;font-size:11px;text-transform:uppercase;opacity:.85;display:inline-block;background:rgba(255,255,255,.14);padding:5px 11px;border-radius:999px}
-.hero h1{font-size:clamp(28px,3.8vw,44px);font-weight:800;line-height:1.1;margin:14px 0;letter-spacing:-.8px}
+.hero h1{font-size:clamp(26px,3.8vw,44px);font-weight:800;line-height:1.1;margin:14px 0;letter-spacing:-.8px}
 .hero p{opacity:.9;max-width:560px;line-height:1.65;font-size:15px}
-.hero-art{border:1px solid rgba(255,255,255,.25);border-radius:22px;padding:26px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);text-align:center}
+.hero-art{border:1px solid rgba(255,255,255,.25);border-radius:22px;padding:26px;background:rgba(255,255,255,.1);text-align:center}
 .hero-art .circle{width:104px;height:104px;border:8px solid rgba(255,255,255,.28);border-left-color:#fff;border-top-color:#fff;display:grid;place-items:center;border-radius:100%;margin:0 auto 12px;font-size:27px;font-weight:800}
 .hero-art p{text-align:center;font-size:13px;margin:0;opacity:.92}
 
 /* TABS & CARDS */
 .tabs{display:flex;gap:6px;background:#e6e9f0;padding:5px;border-radius:14px;width:max-content;max-width:100%;margin:26px 0;flex-wrap:wrap}
-.tab{padding:11px 20px;border:0;background:transparent;color:#525a6b;border-radius:10px;font-weight:700;font-size:13.5px;transition:all .18s ease}
+.tab{padding:11px 20px;border:0;background:transparent;color:#525a6b;border-radius:10px;font-weight:700;font-size:13.5px;transition:background .15s,color .15s}
 .tab:hover{color:var(--wine)}
 .tab.active{background:#fff;color:var(--wine);box-shadow:0 4px 14px rgba(0,0,0,.07)}
 
@@ -72,13 +81,13 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom
 
 .field{display:flex;flex-direction:column;gap:7px}
 .field>span{font-size:12px;font-weight:700;color:#464e5e}
-.field input,.field select,.field textarea{width:100%;border:1.5px solid #d5dae3;background:#fcfdfe;border-radius:11px;padding:11px 14px;color:var(--ink);min-width:0;outline:none;transition:.16s}
+.field input,.field select,.field textarea{width:100%;border:1.5px solid #d5dae3;background:#fcfdfe;border-radius:11px;padding:11px 14px;color:var(--ink);min-width:0;outline:none;transition:border-color .15s}
 .field textarea{resize:vertical;min-height:88px}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--wine2);background:#fff;box-shadow:0 0 0 4px rgba(137,43,76,.12)}
 
 /* BOTONES */
-.btn{border:0;background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:12px 18px;border-radius:11px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all .18s ease;box-shadow:0 4px 12px rgba(101,27,55,.18)}
-.btn:hover:not(:disabled){filter:brightness(1.07);transform:translateY(-1px);box-shadow:0 6px 18px rgba(101,27,55,.25)}
+.btn{border:0;background:linear-gradient(135deg,var(--wine),var(--wine2));color:#fff;padding:12px 18px;border-radius:11px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,filter .15s;box-shadow:0 4px 12px rgba(101,27,55,.18)}
+.btn:hover:not(:disabled){filter:brightness(1.07);transform:translateY(-1px)}
 .btn.light{background:var(--wineSoft);color:var(--wine);box-shadow:none;border:1px solid #efd5df}
 .btn.neutral{background:#eef1f6;color:#2f3746;box-shadow:none}
 .btn.danger{background:#fdecef;color:#b21f3d;box-shadow:none}
@@ -90,7 +99,7 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom
 .between{justify-content:space-between}
 .topgap{margin-top:20px}
 .stack{display:grid;gap:14px}
-.tile{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff;transition:.18s}
+.tile{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
 .tile:hover{border-color:#d3c3cb}
 .tile h3{margin:0 0 6px;font-size:17px;font-weight:800}
 .tag{display:inline-flex;align-items:center;border-radius:999px;background:#f1f3f7;padding:5px 11px;color:#4f5769;font-size:11.5px;font-weight:700}
@@ -112,7 +121,7 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom
 .options-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .question-editor-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}
 .select-small{padding:9px 11px;border:1.5px solid #d5dae3;border-radius:9px;background:#fff;font-weight:600}
-.tablewrap{overflow-x:auto}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .report-table{width:100%;border-collapse:collapse;font-size:13px}
 .report-table th{text-align:left;background:#f4f6fa;color:#525b6d;padding:13px 12px;white-space:nowrap;font-weight:700;border-bottom:1.5px solid var(--line)}
 .report-table td{padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
@@ -123,7 +132,7 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom
 .math-matrix{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;background:#f8f6f9;padding:14px;border-radius:12px;border:1px solid #e6dfe6}
 .math-col-title{font-size:12px;font-weight:800;color:var(--wine);margin-bottom:6px;display:block}
 .combo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-.combo-chip{border:2px solid #e3e5ea;border-radius:11px;padding:11px;text-align:center;font-weight:800;cursor:pointer;background:#fff;transition:.15s}
+.combo-chip{border:2px solid #e3e5ea;border-radius:11px;padding:11px;text-align:center;font-weight:800;cursor:pointer;background:#fff}
 .combo-chip:hover{border-color:#cba8b8;background:#fff9fb}
 .combo-chip.selected{background:#f9edf2;border-color:var(--wine);color:var(--wine)}
 .modal-backdrop{position:fixed;inset:0;background:rgba(18,21,30,.6);backdrop-filter:blur(4px);z-index:200;display:grid;place-items:center;padding:18px;overflow-y:auto}
@@ -140,7 +149,7 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom
 .progress div{height:100%;background:linear-gradient(90deg,var(--wine),var(--wine2));transition:width .25s ease}
 .question-main{padding:34px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
 .question-main h2{font-size:clamp(20px,3vw,27px);font-weight:800;line-height:1.4;margin:15px 0 22px;letter-spacing:-.3px}
-.answer{display:flex;align-items:center;gap:14px;border:2px solid #e3e6ee;border-radius:14px;padding:16px;margin:10px 0;cursor:pointer;font-size:15px;line-height:1.5;transition:.15s}
+.answer{display:flex;align-items:center;gap:14px;border:2px solid #e3e6ee;border-radius:14px;padding:16px;margin:10px 0;cursor:pointer;font-size:15px;line-height:1.5}
 .answer:hover{border-color:#cba8b8;background:#fff9fb}
 .answer.selected{background:#f9edf2;border-color:var(--wine)}
 .answer input{accent-color:var(--wine);width:18px;height:18px;flex-shrink:0}
@@ -150,12 +159,12 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom
 .fullspan{grid-column:1/-1}
 
 /* PROCTOR WIDGET & GALLERY */
-.proctor-cam-widget{position:fixed;bottom:24px;right:24px;width:174px;background:#1e293b;border-radius:15px;overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.42);z-index:99999;border:2px solid #ef4444}
+.proctor-cam-widget{position:fixed;bottom:24px;right:24px;width:164px;background:#1e293b;border-radius:15px;overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.42);z-index:99999;border:2px solid #ef4444}
 .proctor-header{background:#0f172a;color:#fff;padding:6px 10px;font-size:11px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
 .proctor-rec{display:flex;align-items:center;gap:5px;color:#ef4444}
 .proctor-dot{width:8px;height:8px;background:#ef4444;border-radius:50%;display:inline-block;animation:pulseRed 1.2s infinite}
-@keyframes pulseRed{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.2)}}
-.proctor-view{position:relative;width:100%;height:115px;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}
+@keyframes pulseRed{0%,100%{opacity:1}50%{opacity:.35}}
+.proctor-view{position:relative;width:100%;height:105px;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .proctor-view video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
 .proctor-overlay-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,23,42,.75);color:#fff;text-align:center;padding:8px;font-size:11px}
 .proctor-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:10px}
@@ -165,55 +174,51 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom
 .proctor-snap-info{padding:8px;font-size:11px;line-height:1.4}
 
 /* MATHLIVE */
-math-field{width:100%;font-size:24px;padding:14px 16px;border:2px solid #cfa9ba;border-radius:12px;background:#fff;color:var(--ink);min-height:75px;box-shadow:inset 0 2px 6px rgba(0,0,0,.04)}
+math-field{width:100%;font-size:24px;padding:14px 16px;border:2px solid #cfa9ba;border-radius:12px;background:#fff;color:var(--ink);min-height:75px;box-shadow:inset 0 2px 6px rgba(0,0,0,.04);display:block}
 math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,27,55,.12);outline:none}
 .math-palette-tabs{display:flex;gap:6px;margin:12px 0 8px;flex-wrap:wrap}
 .math-palette-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px;background:#f8f6f9;padding:10px;border-radius:12px;border:1px solid #e6dfe6}
-.math-key{background:#fff;border:1px solid #d8d0d6;border-radius:8px;padding:8px 4px;font-size:14px;font-weight:700;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:.12s}
-.math-key:hover{background:var(--wineSoft);border-color:var(--wine);color:var(--wine);transform:translateY(-1px)}
+.math-key{background:#fff;border:1px solid #d8d0d6;border-radius:8px;padding:8px 4px;font-size:14px;font-weight:700;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.math-key:hover{background:var(--wineSoft);border-color:var(--wine);color:var(--wine)}
 .math-key small{font-size:9px;font-weight:600;color:var(--muted)}
 .live-math-preview{font-size:13px;background:#f9f7fa;border:1px dashed #d8c3ce;border-radius:8px;padding:7px 11px;margin-top:5px;color:var(--ink);min-height:32px;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
 .pwd-badge{font-family:monospace;background:#f4f5f8;border:1px solid #d6d9e1;padding:4px 8px;border-radius:6px;font-size:13px;font-weight:700;color:var(--wine)}
 
 /* ACTIVIDADES DIDÁCTICAS */
-.ws-container{display:flex;flex-direction:column;align-items:center;gap:16px;background:#fdf9fb;border:2px solid #ecd6e0;border-radius:18px;padding:18px;margin-top:12px;user-select:none}
+.ws-container{display:flex;flex-direction:column;align-items:center;gap:16px;background:#fdf9fb;border:2px solid #ecd6e0;border-radius:18px;padding:18px;margin-top:12px;user-select:none;-webkit-user-select:none}
 .ws-grid{display:grid;gap:4px;background:#fff;padding:10px;border-radius:14px;border:2px solid #d7c0cb;box-shadow:0 6px 20px rgba(0,0,0,.06);touch-action:none}
-.ws-cell{width:clamp(28px,6.2vw,40px);height:clamp(28px,6.2vw,40px);display:grid;place-items:center;font-weight:800;font-size:clamp(14px,3vw,19px);border-radius:9px;background:#f5f6f9;color:var(--ink);cursor:pointer;transition:transform .1s,background .15s;border:1px solid #e3e6ed}
-.ws-cell:hover{background:#faedf2;border-color:var(--wine2)}
-.ws-cell.selecting{background:#ffe082!important;color:#5c3c00!important;transform:scale(1.1);border-color:#ffb300;z-index:2}
+.ws-cell{width:clamp(28px,6.2vw,40px);height:clamp(28px,6.2vw,40px);display:grid;place-items:center;font-weight:800;font-size:clamp(14px,3vw,19px);border-radius:9px;background:#f5f6f9;color:var(--ink);cursor:pointer;border:1px solid #e3e6ed}
+.ws-cell.selecting{background:#ffe082!important;color:#5c3c00!important;transform:scale(1.08);border-color:#ffb300;z-index:2}
 .ws-cell.found{background:#c8f3dc;color:#0f5c37;border-color:#7ad1a4}
 .ws-words-list{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-.ws-word-pill{padding:7px 14px;border-radius:999px;background:#fff;border:2px solid #d6d9e1;font-weight:800;font-size:14px;letter-spacing:.5px;color:var(--ink);transition:.2s}
-.ws-word-pill.found{background:#166a47;color:#fff;border-color:#166a47;text-decoration:line-through;transform:scale(.96)}
+.ws-word-pill{padding:7px 14px;border-radius:999px;background:#fff;border:2px solid #d6d9e1;font-weight:800;font-size:14px;letter-spacing:.5px;color:var(--ink)}
+.ws-word-pill.found{background:#166a47;color:#fff;border-color:#166a47;text-decoration:line-through}
 
 .label-stage-wrap{position:relative;display:inline-block;max-width:100%;border-radius:14px;overflow:hidden;border:2px solid #d7c0cb;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.06)}
 .label-stage-wrap img{display:block;max-width:100%;max-height:380px;width:auto;height:auto;user-select:none;-webkit-user-drag:none}
 .label-pin-editor{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:var(--wine);color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.35);pointer-events:none}
-.label-pin-student{position:absolute;transform:translate(-50%,-50%);min-width:34px;height:34px;padding:0 10px;border-radius:999px;background:#ff6f00;color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;gap:4px;box-shadow:0 4px 12px rgba(0,0,0,.35);cursor:pointer;transition:.15s;white-space:nowrap}
-.label-pin-student:hover{transform:translate(-50%,-50%) scale(1.12)}
+.label-pin-student{position:absolute;transform:translate(-50%,-50%);min-width:34px;height:34px;padding:0 10px;border-radius:999px;background:#ff6f00;color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;gap:4px;box-shadow:0 4px 12px rgba(0,0,0,.35);cursor:pointer;white-space:nowrap}
 .label-pin-student.assigned{background:#166a47}
 .label-pin-student.target-active{animation:pulsePin 1s infinite;background:var(--wine)}
 @keyframes pulsePin{0%,100%{box-shadow:0 0 0 0 rgba(101,27,55,.6)}50%{box-shadow:0 0 0 8px rgba(101,27,55,0)}}
 .word-bank-kids{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;background:#fdf9fb;padding:14px;border-radius:14px;border:2px dashed #d7c0cb;margin-top:12px}
-.kid-chip{padding:10px 16px;border-radius:12px;background:#fff;border:2px solid #cfa9ba;font-weight:800;font-size:14px;color:var(--wine);cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.05);transition:.15s}
-.kid-chip:hover{transform:translateY(-2px);background:var(--wineSoft)}
+.kid-chip{padding:10px 16px;border-radius:12px;background:#fff;border:2px solid #cfa9ba;font-weight:800;font-size:14px;color:var(--wine);cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.05)}
 .kid-chip.selected{background:var(--wine);color:#fff;border-color:var(--wine);transform:scale(1.05)}
 .kid-chip.used{opacity:.45;text-decoration:line-through}
 
 .tf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
-.tf-card{border:2px solid #e3e5ea;border-radius:16px;padding:22px;text-align:center;font-size:18px;font-weight:800;cursor:pointer;background:#fff;transition:.18s;display:flex;flex-direction:column;align-items:center;gap:8px}
-.tf-card:hover{transform:translateY(-2px);border-color:#cfa9ba;background:#fff9fb}
-.tf-card.selected-true{background:#eaf7ee;border-color:var(--good);color:var(--good);box-shadow:0 6px 18px rgba(22,106,71,.14)}
-.tf-card.selected-false{background:#fff0f2;border-color:var(--bad);color:var(--bad);box-shadow:0 6px 18px rgba(187,41,70,.14)}
+.tf-card{border:2px solid #e3e5ea;border-radius:16px;padding:22px;text-align:center;font-size:18px;font-weight:800;cursor:pointer;background:#fff;display:flex;flex-direction:column;align-items:center;gap:8px}
+.tf-card:hover{border-color:#cfa9ba;background:#fff9fb}
+.tf-card.selected-true{background:#eaf7ee;border-color:var(--good);color:var(--good)}
+.tf-card.selected-false{background:#fff0f2;border-color:var(--bad);color:var(--bad)}
 
 .fill-blank-sentence{font-size:19px;line-height:2.2;background:#fdf9fb;border:2px solid #ecd6e0;border-radius:16px;padding:22px;margin-top:12px}
-.fill-blank-input{border:0;border-bottom:3px solid var(--wine);background:#fff;border-radius:8px 8px 0 0;padding:4px 12px;font-weight:800;color:var(--wine);font-size:17px;min-width:130px;max-width:240px;text-align:center;margin:0 6px;outline:none;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.fill-blank-input{border:0;border-bottom:3px solid var(--wine);background:#fff;border-radius:8px 8px 0 0;padding:4px 12px;font-weight:800;color:var(--wine);font-size:17px;min-width:130px;max-width:240px;text-align:center;margin:0 6px;outline:none}
 .fill-blank-input:focus{background:#fff7fa;border-bottom-color:var(--good)}
 
 .match-stage{position:relative;display:grid;grid-template-columns:1fr 90px 1fr;align-items:stretch;gap:0;margin-top:14px;background:#fdf9fb;border:2px solid #ecd6e0;border-radius:18px;padding:18px}
 .match-col{display:flex;flex-direction:column;justify-content:space-around;gap:12px;z-index:2}
-.match-node{background:#fff;border:2px solid #d6d9e1;border-radius:12px;padding:12px 14px;font-weight:700;font-size:14px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:space-between;gap:8px;box-shadow:0 3px 10px rgba(0,0,0,.04);text-align:left}
-.match-node:hover{border-color:var(--wine2);transform:scale(1.01)}
+.match-node{background:#fff;border:2px solid #d6d9e1;border-radius:12px;padding:12px 14px;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;box-shadow:0 3px 10px rgba(0,0,0,.04);text-align:left}
 .match-node.active-left{border-color:var(--wine);background:var(--wineSoft);box-shadow:0 0 0 3px rgba(101,27,55,.15)}
 .match-dot{width:14px;height:14px;border-radius:50%;background:#cfd5e0;flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px #b8c0ce}
 .match-svg-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
@@ -254,24 +259,25 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
 }
 
 @media(max-width:760px){
-  .hero{grid-template-columns:1fr;padding:26px}.hero-art{display:none}
+  .hero{grid-template-columns:1fr;padding:24px}.hero-art{display:none}
   .grid2,.grid3,.tiles,.form-grid,.options-editor,.math-matrix,.tf-grid,.cw-layout{grid-template-columns:1fr}
   .match-stage{grid-template-columns:1fr 45px 1fr}.combo-grid{grid-template-columns:repeat(2,1fr)}
-  .wrap{padding:20px 12px 50px}.card{padding:18px}.question-main{padding:20px}
+  .wrap{padding:18px 12px 50px}.card{padding:18px}.question-main{padding:20px}
   .brand strong{font-size:12px}.pill.hide-sm{display:none}.tabs{width:100%}.tab{flex:1;font-size:12px;padding:11px 8px}
   .exam-header{align-items:stretch}.timer-box{flex:1}.report-table{min-width:650px}
+  .proctor-cam-widget{width:120px;bottom:12px;right:12px}
+  .proctor-view{height:80px}
 }
 </style>
-<!-- Firebase SDKs Compat -->
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<!-- KaTeX para renderizar fórmulas matemáticas elegantes -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+<!-- Firebase SDKs Compat cargados con defer para no bloquear el renderizado -->
+<script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+<!-- KaTeX diferido -->
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-<!-- MathLive para Editor Gráfico WYSIWYG de Ecuaciones sin códigos -->
-<script defer src="https://unpkg.com/mathlive"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <header id="topBar">
@@ -293,7 +299,7 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
     <div>
       <div class="eyebrow">Sistema de evaluaciones • JBP</div>
       <h1>Exámenes sincronizados 100% en la nube en tiempo real.</h1>
-      <p>Administrador y profesor: <b>Ing. Daniel Avellán</b>. Plataforma con soporte para pegar imágenes (Ctrl+V), editor gráfico de ecuaciones, supervisión por cámara y actividades didácticas interactivas.</p>
+      <p>Administrador y profesor: <b>Ing. Daniel Avellán</b>. Plataforma ultrarrápida con soporte para pegar imágenes (Ctrl+V), editor gráfico de ecuaciones, supervisión por cámara y actividades didácticas interactivas.</p>
     </div>
     <div class="hero-art">
       <div class="circle">10/10</div>
@@ -530,14 +536,14 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
   <div class="footer">Unidad Educativa Particular “Jacinto Burgos Pinargote” · Administrador: Ing. Daniel Avellán</div>
 </main>
 
-<!-- MODAL FLOTANTE: EDITOR GRÁFICO DE ECUACIONES (ESTILO WORD / WYSIWYG) -->
+<!-- MODAL FLOTANTE: EDITOR GRÁFICO DE ECUACIONES -->
 <div id="visualMathModal" class="modal-backdrop hidden" style="z-index:350">
   <div class="modal-card" style="max-width:680px">
     <div class="row between">
       <div>
         <span class="tag good">Editor Gráfico Visual</span>
         <h3 style="margin:6px 0 2px">Constructor Visual de Ecuaciones</h3>
-        <p class="hint" style="margin:0">Haz clic en los botones gráficos para armar tu ecuación sin escribir códigos.</p>
+        <p class="hint" style="margin:0" id="mathLoaderStatus">Haz clic en los botones gráficos para armar tu ecuación sin escribir códigos.</p>
       </div>
       <button type="button" class="btn neutral small" id="closeVisualMathModal">Cerrar ✕</button>
     </div>
@@ -633,7 +639,7 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
   </div>
 </div>
 
-<!-- MODAL DE REVISIÓN, EVIDENCIA PROCTOR Y CALIFICACIÓN (IA / MANUAL) -->
+<!-- MODAL DE REVISIÓN, EVIDENCIA PROCTOR Y CALIFICACIÓN -->
 <div id="reviewModal" class="modal-backdrop hidden">
   <div class="modal-card">
     <div class="row between">
@@ -708,7 +714,6 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
 
 <!-- PANTALLA EXAMEN EN CURSO -->
 <section id="examScreen" class="hidden" aria-label="Examen en curso">
-  <!-- WIDGET FLOTANTE DE SUPERVISIÓN / CÁMARA DEL PROFESOR -->
   <div class="proctor-cam-widget" id="proctorWidget">
     <div class="proctor-header">
       <span class="proctor-rec">
@@ -764,6 +769,7 @@ const firebaseConfig = {
 let db = null;
 let auth = null;
 let cloudReady = false;
+let teacherListenersStarted = false;
 
 // ==========================================
 // 2. DATOS INSTITUCIONALES PRECARGADOS
@@ -807,6 +813,59 @@ let reviewingAttemptId = null;
 let activeMathTargetInput = null;
 let activeMathCursorStart = 0;
 let activeMathCursorEnd = 0;
+let mathLiveLoaded = false;
+
+// Carga bajo demanda de MathLive (~800KB) solo cuando el docente abre el editor de ecuaciones
+function ensureMathLiveLoaded() {
+  if (mathLiveLoaded || window.MathfieldElement) {
+    mathLiveLoaded = true;
+    return Promise.resolve();
+  }
+  const statusEl = $('mathLoaderStatus');
+  if (statusEl) statusEl.textContent = 'Cargando teclado matemático visual...';
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/mathlive';
+    script.async = true;
+    script.onload = () => {
+      mathLiveLoaded = true;
+      if (statusEl) statusEl.textContent = 'Haz clic en los botones gráficos para armar tu ecuación sin escribir códigos.';
+      resolve();
+    };
+    script.onerror = () => {
+      if (statusEl) statusEl.textContent = 'Escribe la fórmula en formato LaTeX.';
+      resolve();
+    };
+    document.head.appendChild(script);
+  });
+}
+
+// Optimización automática de imágenes pegadas (Ctrl+V) para no saturar Firestore ni móviles
+function compressPastedImage(file, maxWidth = 850, quality = 0.75) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.width;
+        let h = img.height;
+        if (w > maxWidth) {
+          h = Math.round((h * maxWidth) / w);
+          w = maxWidth;
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = () => resolve(e.target.result);
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 function setCloudStatus(ok, msg) {
   const pill = $('cloudStatusPill');
@@ -823,23 +882,48 @@ function mergeRoster() {
   students = Array.from(map.values());
 }
 
+// Sincroniza colecciones pesadas únicamente cuando inicia sesión un docente
+function startTeacherCloudListeners() {
+  if (teacherListenersStarted || !cloudReady || !db) return;
+  teacherListenersStarted = true;
+
+  db.collection(COL_ATTEMPTS).onSnapshot(snap => {
+    attempts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    if (currentTeacher) {
+      renderStats();
+      renderResults();
+    }
+  });
+
+  db.collection(COL_TEACHERS).onSnapshot(snap => {
+    teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    if (currentTeacher && adminUnlocked) {
+      renderTeachersAdminTable();
+    }
+  });
+}
+
 async function initCloud() {
+  if (typeof firebase === 'undefined') {
+    setTimeout(initCloud, 100);
+    return;
+  }
   try {
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     auth = firebase.auth();
     db = firebase.firestore();
     
     try {
       await auth.signInAnonymously();
-    } catch (authErr) {
-      console.warn('Auth anónimo:', authErr);
-    }
+    } catch (authErr) {}
 
-    await db.collection(COL_EXAMS).limit(1).get();
     cloudReady = true;
     setCloudStatus(true, '✓ Nube Conectada');
-    await loadCloudAiKey();
+    loadCloudAiKey();
 
+    // Para estudiantes: solo escuchamos exámenes y estudiantes personalizados (ligero y rápido)
     db.collection(COL_EXAMS).onSnapshot(snap => {
       exams = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       renderStudent();
@@ -847,21 +931,6 @@ async function initCloud() {
         renderStats();
         renderExamList();
         renderResults();
-      }
-    });
-
-    db.collection(COL_ATTEMPTS).onSnapshot(snap => {
-      attempts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (currentTeacher) {
-        renderStats();
-        renderResults();
-      }
-    });
-
-    db.collection(COL_TEACHERS).onSnapshot(snap => {
-      teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      if (currentTeacher && adminUnlocked) {
-        renderTeachersAdminTable();
       }
     });
 
@@ -996,12 +1065,12 @@ function localSemanticScore(studentAnswer, expectedRubric, questionText = '', su
   if (!rubric) {
     const uniqueGenuine = new Set(stuGenuineTokens);
     if (uniqueGenuine.size >= 5 && ans.split(/\s+/).length >= 8) {
-      return { score: 0.75, feedback: `IA Evaluadora (${subject || 'General'}): Argumentación coherente (sin rúbrica clave definida por el docente).` };
+      return { score: 0.75, feedback: `IA Evaluadora (${subject || 'General'}): Argumentación coherente.` };
     }
     if (uniqueGenuine.size >= 2) {
       return { score: 0.5, feedback: `IA Evaluadora (${subject || 'General'}): Respuesta parcialmente desarrollada.` };
     }
-    return { score: 0, feedback: `IA Evaluadora (${subject || 'General'}): No aporta conceptos relevantes a la pregunta.` };
+    return { score: 0, feedback: `IA Evaluadora (${subject || 'General'}): No aporta conceptos relevantes.` };
   }
 
   const refTokens = [...new Set(normalizeTokens(rubric).filter(t => !qTokens.has(t)))];
@@ -1017,9 +1086,9 @@ function localSemanticScore(studentAnswer, expectedRubric, questionText = '', su
 
   if (ratio >= 0.75) return { score: 1, feedback: `${label}: Domina los conceptos clave esperados (${Math.round(ratio * 100)}%).` };
   if (ratio >= 0.50) return { score: 0.75, feedback: `${label}: Respuesta buena, cubre la mayoría de criterios (${Math.round(ratio * 100)}%).` };
-  if (ratio >= 0.30) return { score: 0.5, feedback: `${label}: Respuesta incompleta; faltan conceptos fundamentales (${Math.round(ratio * 100)}%).` };
-  if (ratio >= 0.15) return { score: 0.25, feedback: `${label}: Mención muy superficial del tema (${Math.round(ratio * 100)}%).` };
-  return { score: 0, feedback: `${label}: Respuesta incorrecta o fuera del tema solicitado.` };
+  if (ratio >= 0.30) return { score: 0.5, feedback: `${label}: Respuesta incompleta (${Math.round(ratio * 100)}%).` };
+  if (ratio >= 0.15) return { score: 0.25, feedback: `${label}: Mención superficial del tema (${Math.round(ratio * 100)}%).` };
+  return { score: 0, feedback: `${label}: Respuesta incorrecta o fuera del tema.` };
 }
 
 async function evaluateOpenAnswerWithAI(questionText, rubric, studentAnswer, context = {}) {
@@ -1040,24 +1109,13 @@ async function evaluateOpenAnswerWithAI(questionText, rubric, studentAnswer, con
   }
 
   try {
-    const prompt = `Actúa como un docente catedrático experto en la asignatura de "${subject}" para el nivel educativo "${level}".
-Evalúa con rigor académico y criterio pedagógico la respuesta abierta de un estudiante.
-
-DATOS DE LA EVALUACIÓN:
-- Asignatura: ${subject}
-- Nivel educativo: ${level}
-- Pregunta planteada: "${questionText}"
-- Rúbrica / Respuesta esperada del docente: "${rubric || 'No se especificó rúbrica; evalúa según la exactitud científica, técnica o conceptual de la asignatura.'}"
-- Respuesta del estudiante: "${ans}"
-
-REGLAS ESTRICTAS DE CALIFICACIÓN (Escala exacta: 0, 0.25, 0.5, 0.75 o 1):
-1. Asigna 0 si la respuesta es incorrecta, inventada, fuera de tema, ambigua sin fundamento, evasiva ("no sé") o simplemente parafrasea la pregunta sin responderla.
-2. Asigna 0.25 o 0.5 si contiene alguna noción vaga o parcialmente correcta pero omite los conceptos esenciales de ${subject}.
-3. Asigna 0.75 si es conceptualmente correcta pero le falta precisión técnica o profundización.
-4. Asigna 1 únicamente si demuestra comprensión clara, precisión conceptual en ${subject} y cumple con la rúbrica.
-
-Responde ÚNICAMENTE con un objeto JSON válido sin bloques markdown:
-{"score": numero, "feedback": "retroalimentación pedagógica breve y precisa dirigida al docente/estudiante"}`;
+    const prompt = `Actúa como un docente catedrático experto en "${subject}" para "${level}".
+Evalúa la respuesta abierta del estudiante:
+- Pregunta: "${questionText}"
+- Rúbrica: "${rubric || 'Evalúa exactitud conceptual.'}"
+- Respuesta: "${ans}"
+Escala exacta: 0, 0.25, 0.5, 0.75 o 1.
+Responde ÚNICAMENTE JSON válido: {"score": numero, "feedback": "retroalimentación breve"}`;
 
     const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`, {
       method: 'POST',
@@ -1076,7 +1134,7 @@ Responde ÚNICAMENTE con un objeto JSON válido sin bloques markdown:
     const snappedScore = allowedScores.reduce((prev, curr) => Math.abs(curr - rawScore) < Math.abs(prev - rawScore) ? curr : prev);
     return {
       score: snappedScore,
-      feedback: `IA Experta (${subject}): ${parsed.feedback || 'Evaluado con rigor académico.'}`
+      feedback: `IA Experta (${subject}): ${parsed.feedback || 'Evaluado.'}`
     };
   } catch (err) {
     return localSemanticScore(ans, rubric, questionText, subject);
@@ -1133,9 +1191,7 @@ function renderRoster(){
   const matched = students.filter(s => !q || s.cedula.includes(q) || s.name.toLocaleLowerCase('es').includes(q));
   $('rosterTable').innerHTML = `<p class="hint">${matched.length} de ${students.length} estudiantes</p><table class="report-table"><thead><tr><th>Cédula</th><th>Estudiante</th><th>Curso</th><th>Paralelo</th><th>Origen</th></tr></thead><tbody>${matched.slice(0,250).map(s=>`<tr><td>${esc(s.cedula)}</td><td>${esc(s.name)}</td><td>${esc(s.level)}</td><td>${esc(s.parallel)}</td><td>${s.manual?'Nube':'Institucional'}</td></tr>`).join('')}</tbody></table>`;
 }
-if($('rosterSearch')) {
-  $('rosterSearch').oninput = renderRoster;
-}
+if($('rosterSearch')) $('rosterSearch').oninput = renderRoster;
 
 if($('rosterSaveBtn')) {
   $('rosterSaveBtn').onclick = async () => {
@@ -1178,12 +1234,8 @@ function switchRole(role){
   }
 }
 
-if($('studentTab')) {
-  $('studentTab').addEventListener('click', (e) => { e.preventDefault(); switchRole('student'); });
-}
-if($('teacherTab')) {
-  $('teacherTab').addEventListener('click', (e) => { e.preventDefault(); switchRole('teacher'); });
-}
+if($('studentTab')) $('studentTab').addEventListener('click', (e) => { e.preventDefault(); switchRole('student'); });
+if($('teacherTab')) $('teacherTab').addEventListener('click', (e) => { e.preventDefault(); switchRole('teacher'); });
 
 function renderStudent(){
   const select = $('studentExam');
@@ -1202,10 +1254,9 @@ function renderSelection(){
   const e = exams.find(ex => ex.id === select.value);
   info.innerHTML = e ? `<div class="tile"><b>${esc(e.subject)} · ${esc(e.teacher)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>Inicio: ${esc(formatDate(startAt(e)))}<br>Fin: ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg · <b>${status(e)}</b></p></div>` : '';
 }
-if($('studentExam')) {
-  $('studentExam').onchange = renderSelection;
-}
+if($('studentExam')) $('studentExam').onchange = renderSelection;
 
+// Consulta bajo demanda de calificaciones del estudiante (ahorra datos y acelera carga)
 if($('openMyGradesModalBtn')) {
   $('openMyGradesModalBtn').onclick = () => {
     const cedula = $('studentCedula').value.trim();
@@ -1214,68 +1265,77 @@ if($('openMyGradesModalBtn')) {
     if($('myGradesModal')) $('myGradesModal').classList.remove('hidden');
   };
 }
-if($('closeMyGradesModal')) {
-  $('closeMyGradesModal').onclick = () => $('myGradesModal').classList.add('hidden');
-}
-if($('myGradesCedulaInput')) {
-  $('myGradesCedulaInput').oninput = e => renderStudentGrades(e.target.value.trim());
-}
+if($('closeMyGradesModal')) $('closeMyGradesModal').onclick = () => $('myGradesModal').classList.add('hidden');
+if($('myGradesCedulaInput')) $('myGradesCedulaInput').oninput = e => renderStudentGrades(e.target.value.trim());
 
-function renderStudentGrades(cedula) {
+async function renderStudentGrades(cedula) {
   const container = $('myGradesContentArea');
   if(!container) return;
   if (!/^\d{10}$/.test(cedula)) {
     container.innerHTML = '<div class="hint">Introduce un número de cédula válido de 10 dígitos para consultar tus notas.</div>';
     return;
   }
-  const pupilAttempts = attempts.filter(a => a.cedula === cedula);
-  if (!pupilAttempts.length) {
-    container.innerHTML = '<div class="empty">No se registran evaluaciones rendidas con esta cédula.</div>';
+  if (!cloudReady || !db) {
+    container.innerHTML = '<div class="hint">Conectando con la nube...</div>';
     return;
   }
 
-  const bySubject = {};
-  pupilAttempts.forEach(att => {
-    const exam = exams.find(e => e.id === att.examId);
-    const subject = att.subject || (exam ? exam.subject : 'Sin materia');
-    if (!bySubject[subject]) bySubject[subject] = [];
-    bySubject[subject].push({ ...att, exam });
-  });
+  container.innerHTML = '<div class="hint">Consultando calificaciones en la nube...</div>';
 
-  let html = '';
-  for (const [subject, list] of Object.entries(bySubject)) {
-    html += `
-      <div class="tile">
-        <h3 style="color:var(--wine);margin-bottom:8px">📚 ${esc(subject)}</h3>
-        <div class="stack" style="gap:10px">
-          ${list.map(att => {
-            const isPublished = att.published === true;
-            const examTitle = att.examTitle || (att.exam ? att.exam.title : 'Evaluación');
-            const teacherName = att.teacher || (att.exam ? att.exam.teacher : 'Docente');
-            return `
-              <div style="border:1px solid var(--line);border-radius:10px;padding:12px;background:#fcfcfd">
-                <div class="row between">
-                  <b>${esc(examTitle)}</b>
-                  <span class="tag ${isPublished?'good':'warn'}">${isPublished?'Calificación Publicada':'Pendiente de publicación'}</span>
-                </div>
-                <p class="hint" style="margin:4px 0">Docente: ${esc(teacherName)} · Rendido: ${esc(formatDate(att.startedAt))}</p>
-                ${isPublished ? `
-                  <div class="row between topgap" style="align-items:center">
-                    <span style="font-size:18px;font-weight:900;color:var(--wine)">Nota: ${Number(att.score||0).toFixed(2)} / 10</span>
-                    <span class="tag ${att.status==='infraccion'?'bad':'good'}">${att.status==='infraccion'?'Anulado (Infracción)':att.status==='pendiente_revision'?'Revisado parcialmente':'Finalizado'}</span>
+  try {
+    const snap = await db.collection(COL_ATTEMPTS).where('cedula', '==', cedula).get();
+    const pupilAttempts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+    if (!pupilAttempts.length) {
+      container.innerHTML = '<div class="empty">No se registran evaluaciones rendidas con esta cédula.</div>';
+      return;
+    }
+
+    const bySubject = {};
+    pupilAttempts.forEach(att => {
+      const exam = exams.find(e => e.id === att.examId);
+      const subject = att.subject || (exam ? exam.subject : 'Sin materia');
+      if (!bySubject[subject]) bySubject[subject] = [];
+      bySubject[subject].push({ ...att, exam });
+    });
+
+    let html = '';
+    for (const [subject, list] of Object.entries(bySubject)) {
+      html += `
+        <div class="tile">
+          <h3 style="color:var(--wine);margin-bottom:8px">📚 ${esc(subject)}</h3>
+          <div class="stack" style="gap:10px">
+            ${list.map(att => {
+              const isPublished = att.published === true;
+              const examTitle = att.examTitle || (att.exam ? att.exam.title : 'Evaluación');
+              const teacherName = att.teacher || (att.exam ? att.exam.teacher : 'Docente');
+              return `
+                <div style="border:1px solid var(--line);border-radius:10px;padding:12px;background:#fcfcfd">
+                  <div class="row between">
+                    <b>${esc(examTitle)}</b>
+                    <span class="tag ${isPublished?'good':'warn'}">${isPublished?'Calificación Publicada':'Pendiente de publicación'}</span>
                   </div>
-                  ${att.reason?`<p class="hint" style="margin-top:6px"><b>Observación:</b> ${esc(att.reason)}</p>`:''}
-                ` : `
-                  <p class="hint" style="color:var(--gold);margin-top:4px">🔒 Tu examen ha sido recibido, pero el docente aún no publica las calificaciones oficiales.</p>
-                `}
-              </div>
-            `;
-          }).join('')}
+                  <p class="hint" style="margin:4px 0">Docente: ${esc(teacherName)} · Rendido: ${esc(formatDate(att.startedAt))}</p>
+                  ${isPublished ? `
+                    <div class="row between topgap" style="align-items:center">
+                      <span style="font-size:18px;font-weight:900;color:var(--wine)">Nota: ${Number(att.score||0).toFixed(2)} / 10</span>
+                      <span class="tag ${att.status==='infraccion'?'bad':'good'}">${att.status==='infraccion'?'Anulado (Infracción)':att.status==='pendiente_revision'?'Revisado parcialmente':'Finalizado'}</span>
+                    </div>
+                    ${att.reason?`<p class="hint" style="margin-top:6px"><b>Observación:</b> ${esc(att.reason)}</p>`:''}
+                  ` : `
+                    <p class="hint" style="color:var(--gold);margin-top:4px">🔒 Tu examen ha sido recibido, pero el docente aún no publica las calificaciones oficiales.</p>
+                  `}
+                </div>
+              `;
+            }).join('')}
+          </div>
         </div>
-      </div>
-    `;
+      `;
+    }
+    container.innerHTML = html;
+  } catch (e) {
+    container.innerHTML = `<div class="notice red">Error al consultar: ${esc(e.message)}</div>`;
   }
-  container.innerHTML = html;
 }
 
 // ==========================================
@@ -1310,6 +1370,7 @@ function renderTeacher(){
   if($('teacherAuth')) $('teacherAuth').classList.toggle('hidden', !!currentTeacher);
   if($('teacherPanel')) $('teacherPanel').classList.toggle('hidden', !currentTeacher);
   if(currentTeacher){
+    startTeacherCloudListeners();
     if($('loggedTeacherLabel')) $('loggedTeacherLabel').textContent = 'Docente / Admin: ' + currentTeacher.name;
     if($('examTeacher')) $('examTeacher').value = currentTeacher.name;
     renderStats();
@@ -1324,7 +1385,12 @@ if($('adminLoginBtn')) {
     if(!cloudReady || !db) { showMessage('authMessage', 'Esperando conexión con la nube...'); return; }
     const name = $('teacherNameLogin').value.trim().replace(/\s+/g,' '), password = $('adminPassword').value;
     if(name.split(' ').length < 2){ showMessage('authMessage', 'Escribe tus nombres y apellidos completos.'); return; }
+    const btn = $('adminLoginBtn');
+    btn.disabled = true;
     try {
+      const snap = await db.collection(COL_TEACHERS).get();
+      teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
       if(authMode === 'register'){
         if(password.length < 8){ showMessage('authMessage', 'La contraseña debe tener mínimo 8 caracteres.'); return; }
         if(password !== $('confirmTeacherPassword').value){ showMessage('authMessage', 'Las contraseñas no coinciden.'); return; }
@@ -1334,12 +1400,7 @@ if($('adminLoginBtn')) {
         await db.collection(COL_TEACHERS).doc(id).set(teacher);
         currentTeacher = teacher;
       } else {
-        let teacher = teachers.find(t => normName(t.name) === normName(name));
-        if(!teacher){
-          const snap = await db.collection(COL_TEACHERS).get();
-          teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-          teacher = teachers.find(t => normName(t.name) === normName(name));
-        }
+        const teacher = teachers.find(t => normName(t.name) === normName(name));
         if(!teacher || await hashText(teacher.salt + '|' + password) !== teacher.passwordHash){
           showMessage('authMessage', 'Nombre o contraseña incorrectos.');
           return;
@@ -1357,6 +1418,8 @@ if($('adminLoginBtn')) {
       renderTeacher();
     } catch(e){ 
       showMessage('authMessage', 'Error: ' + e.message); 
+    } finally {
+      btn.disabled = false;
     }
   };
 }
@@ -1374,12 +1437,9 @@ if($('executeExternalChangePwdBtn')) {
     if(newPwd !== confirmPwd) { showMessage('authMessage', 'Las contraseñas nuevas no coinciden.'); return; }
 
     try {
-      let teacher = teachers.find(t => normName(t.name) === normName(name));
-      if(!teacher) {
-        const snap = await db.collection(COL_TEACHERS).get();
-        teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        teacher = teachers.find(t => normName(t.name) === normName(name));
-      }
+      const snap = await db.collection(COL_TEACHERS).get();
+      teachers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      const teacher = teachers.find(t => normName(t.name) === normName(name));
       if(!teacher || await hashText(teacher.salt + '|' + currentPwd) !== teacher.passwordHash) {
         showMessage('authMessage', 'El nombre del docente o la contraseña actual son incorrectos.');
         return;
@@ -1409,9 +1469,7 @@ if($('openChangeMyPwdModalBtn')) {
     $('changeMyPwdModal').classList.remove('hidden');
   };
 }
-if($('closeChangeMyPwdModal')) {
-  $('closeChangeMyPwdModal').onclick = () => $('changeMyPwdModal').classList.add('hidden');
-}
+if($('closeChangeMyPwdModal')) $('closeChangeMyPwdModal').onclick = () => $('changeMyPwdModal').classList.add('hidden');
 if($('saveModalNewPwdBtn')) {
   $('saveModalNewPwdBtn').onclick = async () => {
     if(!currentTeacher || !cloudReady || !db) return;
@@ -1551,7 +1609,7 @@ window.adminResetTeacherPwd = async (teacherId, teacherName) => {
 
 window.adminDeleteTeacher = async (teacherId, teacherName) => {
   if(!cloudReady || !db) return;
-  if(!confirm(`¿Estás seguro de borrar la cuenta y contraseña de "${teacherName}"?\n\nSi el docente olvidó su clave y la borras, podrá volver a registrarse desde "Crear cuenta docente" con su mismo nombre.`)) return;
+  if(!confirm(`¿Estás seguro de borrar la cuenta y contraseña de "${teacherName}"?`)) return;
   try {
     await db.collection(COL_TEACHERS).doc(teacherId).delete();
     alert(`✓ Cuenta de ${teacherName} eliminada.`);
@@ -1606,7 +1664,7 @@ if($('saveAiKeyBtn')) {
       if(cloudReady && db) {
         await db.collection('jbp_config').doc('ai_settings').set({ geminiKey: val, updatedAt: Date.now() }).catch(()=>{});
       }
-      showMessage('aiKeyMsg','API Key guardada y sincronizada en la nube para evaluaciones de estudiantes.','good');
+      showMessage('aiKeyMsg','API Key guardada y sincronizada en la nube.','good');
     } else {
       localStorage.removeItem('jbp_gemini_api_key');
       cloudGeminiKey = '';
@@ -1632,11 +1690,14 @@ if($('clearAiKeyBtn')) {
 // ==========================================
 // 4. EDITOR GRÁFICO FLOTANTE DE ECUACIONES
 // ==========================================
-window.openVisualMathEditor = (targetEl) => {
+window.openVisualMathEditor = async (targetEl) => {
   if (!targetEl) return;
   activeMathTargetInput = targetEl;
   activeMathCursorStart = targetEl.selectionStart || targetEl.value.length;
   activeMathCursorEnd = targetEl.selectionEnd || targetEl.value.length;
+
+  $('visualMathModal').classList.remove('hidden');
+  await ensureMathLiveLoaded();
 
   const mf = $('visualMathField');
   if (mf) {
@@ -1646,7 +1707,6 @@ window.openVisualMathEditor = (targetEl) => {
       try { mf.executeCommand('showVirtualKeyboard'); } catch (e) {}
     }, 80);
   }
-  $('visualMathModal').classList.remove('hidden');
 };
 
 if($('closeVisualMathModal')) {
@@ -1743,15 +1803,9 @@ function buildWordSearchGrid(wordsInput, size = 10) {
   const grid = Array.from({ length: gridSize }, () => Array(gridSize).fill(''));
   const placed = [];
 
-  const dirs = [
-    [0, 1],
-    [1, 0],
-    [1, 1],
-    [0, -1],
-    [-1, 0]
-  ];
-
+  const dirs = [[0, 1], [1, 0], [1, 1], [0, -1], [-1, 0]];
   const sortedWords = [...words].sort((a, b) => b.length - a.length);
+
   for (const w of sortedWords) {
     if (w.length > gridSize) continue;
     let ok = false;
@@ -2310,7 +2364,7 @@ function renderQuestionEditor(){
 
         ${showDefaultImageBox ? `
           <div class="topgap" style="background:#fffcfd;border:1px dashed #d9c2cb;padding:12px;border-radius:10px">
-            <span style="font-size:12px;font-weight:800;color:var(--wine);display:block;margin-bottom:6px">🖼️ Imagen adjunta (Haz clic y presiona <b>Ctrl + V</b> para pegar una imagen del portapapeles)</span>
+            <span style="font-size:12px;font-weight:800;color:var(--wine);display:block;margin-bottom:6px">🖼️ Imagen adjunta (Haz clic y presiona <b>Ctrl + V</b> para pegar y optimizar automáticamente)</span>
             <div class="row">
               <input type="text" data-image-input placeholder="Pega aquí la URL o presiona Ctrl+V en el enunciado/cuadro..." value="${esc(q.imageUrl||'')}" style="flex:1">
             </div>
@@ -2346,26 +2400,23 @@ function renderQuestionEditor(){
     const imgInput = box.querySelector('[data-image-input]');
     const imgPrev = box.querySelector('[data-image-preview]');
 
-    const handlePaste = e => {
+    const handlePaste = async e => {
       const items = e.clipboardData?.items;
       if (!items) return;
       for (const item of items) {
         if (item.type.indexOf('image') === 0) {
           e.preventDefault();
           const blob = item.getAsFile();
-          const reader = new FileReader();
-          reader.onload = event => {
-            if (editingQuestions[idx].type === 'image_labels') {
-              syncQuestions();
-              editingQuestions[idx].imageUrl = event.target.result;
-              renderQuestionEditor();
-            } else if (imgPrev && imgInput) {
-              imgPrev.src = event.target.result;
-              imgPrev.style.display = 'block';
-              imgInput.value = event.target.result;
-            }
-          };
-          reader.readAsDataURL(blob);
+          const optimizedDataUrl = await compressPastedImage(blob, 850, 0.75);
+          if (editingQuestions[idx].type === 'image_labels') {
+            syncQuestions();
+            editingQuestions[idx].imageUrl = optimizedDataUrl;
+            renderQuestionEditor();
+          } else if (imgPrev && imgInput) {
+            imgPrev.src = optimizedDataUrl;
+            imgPrev.style.display = 'block';
+            imgInput.value = optimizedDataUrl;
+          }
           break;
         }
       }
@@ -2587,19 +2638,18 @@ window.openReviewModal = (attemptId) => {
   $('reviewExamSubtitle').textContent = `${att.subject} · ${att.examTitle}`;
   $('reviewFinalScore').textContent = `${Number(att.score||0).toFixed(2)} / 10`;
 
-  // Renderizar galería de capturas fotográficas Proctor
   const snaps = Array.isArray(att.proctorSnapshots) ? att.proctorSnapshots : [];
   $('reviewProctorCount').textContent = `${snaps.length} captura(s) registrada(s)`;
   const galEl = $('reviewProctorGallery');
   if (!snaps.length) {
-    galEl.innerHTML = '<div class="hint" style="grid-column:1/-1;padding:8px 0">No se registraron capturas de cámara web en este intento (el dispositivo no tenía cámara o no dio permiso).</div>';
+    galEl.innerHTML = '<div class="hint" style="grid-column:1/-1;padding:8px 0">No se registraron capturas de cámara web en este intento.</div>';
   } else {
     galEl.innerHTML = snaps.map(s => {
       const timeStr = new Date(s.timestamp || Date.now()).toLocaleTimeString('es-EC', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
       const isInf = s.isInfraction === true;
       return `
         <div class="proctor-snap-card ${isInf?'infraction':''}">
-          <img src="${esc(s.image)}" alt="Captura estudiante">
+          <img src="${esc(s.image)}" alt="Captura estudiante" loading="lazy">
           <div class="proctor-snap-info">
             <b style="color:${isInf?'var(--bad)':'var(--wine)'}">${esc(s.label || 'Control periódico')}</b><br>
             <span class="hint">🕒 ${esc(timeStr)}</span>
@@ -2777,9 +2827,7 @@ if($('printExamSheetBtn')) {
             </div>
           </div>
         </div>
-        <div>
-          ${questionsHtml}
-        </div>
+        <div>${questionsHtml}</div>
         <div style="margin-top:35px;display:grid;grid-template-columns:1fr 1fr;gap:40px;text-align:center;font-size:12px">
           <div style="border-top:1px solid #333;padding-top:6px"><b>${esc(exam.teacher || att.teacher || 'DOCENTE')}</b><br>FIRMA DEL DOCENTE</div>
           <div style="border-top:1px solid #333;padding-top:6px"><b>${esc(att.studentName)}</b><br>FIRMA DEL ESTUDIANTE</div>
@@ -2849,7 +2897,7 @@ if($('exportBackupBtn')) {
 }
 
 // ==========================================
-// 7. FLUJO DE EXAMEN + CAPTURAS DE EVIDENCIA PROCTOR (OPCIÓN A)
+// 7. FLUJO DE EXAMEN + CAPTURAS DE EVIDENCIA PROCTOR
 // ==========================================
 function captureProctorSnapshot(label, isInfraction = false) {
   if (!live) return;
@@ -2857,14 +2905,13 @@ function captureProctorSnapshot(label, isInfraction = false) {
   if (!videoEl || !videoEl.srcObject || videoEl.readyState < 2) return;
   try {
     const canvas = document.createElement('canvas');
-    canvas.width = 240;
-    canvas.height = 180;
+    canvas.width = 220;
+    canvas.height = 165;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
-    const dataUrl = canvas.toDataURL('image/jpeg', 0.55); // Comprimido ~15-22KB
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.5);
 
     if (!Array.isArray(live.snapshots)) live.snapshots = [];
-    // Máximo 12 fotos por intento para mantener ligera la base de datos
     if (live.snapshots.length >= 12 && !isInfraction) return;
 
     live.snapshots.push({
@@ -2873,33 +2920,28 @@ function captureProctorSnapshot(label, isInfraction = false) {
       isInfraction: Boolean(isInfraction),
       timestamp: Date.now()
     });
-  } catch (err) {
-    console.warn('Error al capturar foto de supervisión:', err);
-  }
+  } catch (err) {}
 }
 
 async function initProctorCamera() {
   const videoEl = $('proctorWebcamFeed');
   const fallbackEl = $('proctorFallbackText');
-  if (!videoEl) return;
+  if (!videoEl || !navigator.mediaDevices?.getUserMedia) return;
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 240 }, audio: false });
+    const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 280, height: 210, facingMode: 'user' }, audio: false });
     videoEl.srcObject = stream;
     if (fallbackEl) fallbackEl.style.display = 'none';
 
-    // Foto inicial de verificación de identidad tras estabilizar la cámara
     setTimeout(() => {
       if (live) captureProctorSnapshot('Inicio de evaluación', false);
     }, 1800);
 
-    // Capturas periódicas silenciosas cada 90 segundos
     clearInterval(snapshotInterval);
     snapshotInterval = setInterval(() => {
       if (live) captureProctorSnapshot('Control periódico', false);
     }, 90000);
 
   } catch (err) {
-    console.warn('Cámara no disponible o permiso denegado:', err);
     if (fallbackEl) fallbackEl.style.display = 'flex';
   }
 }
@@ -2908,8 +2950,7 @@ function stopProctorCamera() {
   clearInterval(snapshotInterval);
   const videoEl = $('proctorWebcamFeed');
   if (videoEl && videoEl.srcObject) {
-    const tracks = videoEl.srcObject.getTracks();
-    tracks.forEach(track => track.stop());
+    videoEl.srcObject.getTracks().forEach(track => track.stop());
     videoEl.srcObject = null;
   }
 }
@@ -2917,16 +2958,22 @@ function stopProctorCamera() {
 if($('startExamBtn')) {
   $('startExamBtn').onclick = async () => {
     if(!cloudReady || !db) { showMessage('studentMessage', 'Esperando conexión con la nube...'); return; }
-    const name = $('studentName').value.trim().replace(/\s+/g,' '), cedula = $('studentCedula').value.trim(), exam = exams.find(e => e.id === $('studentExam').value);
+    const cedula = $('studentCedula').value.trim(), exam = exams.find(e => e.id === $('studentExam').value);
     const pupil = students.find(s => s.cedula === cedula);
     if(!pupil){ showMessage('studentMessage', 'Ingresa una cédula válida o regístrate en la nube.'); return; }
     if(!exam){ showMessage('studentMessage', 'Selecciona un examen.'); return; }
     if(status(exam) !== 'Disponible'){ showMessage('studentMessage', 'El examen no está disponible en este horario.'); return; }
 
+    const startBtn = $('startExamBtn');
+    startBtn.disabled = true;
+    startBtn.textContent = 'Verificando ingreso...';
+
     try {
       const existingSnap = await db.collection(COL_ATTEMPTS).where('examId', '==', exam.id).where('cedula', '==', cedula).get();
       if(!existingSnap.empty){
         showMessage('studentMessage', 'Ya registras un intento en la nube para esta evaluación.');
+        startBtn.disabled = false;
+        startBtn.textContent = 'Comenzar examen en pantalla completa →';
         return;
       }
     } catch(e){}
@@ -2978,15 +3025,19 @@ if($('startExamBtn')) {
       });
     } catch(e) {
       showMessage('studentMessage', 'Error al registrar inicio en la nube: ' + e.message);
+      startBtn.disabled = false;
+      startBtn.textContent = 'Comenzar examen en pantalla completa →';
       return;
     }
+
+    startBtn.disabled = false;
+    startBtn.textContent = 'Comenzar examen en pantalla completa →';
 
     $('examScreen').classList.remove('hidden'); $('topBar').classList.add('hidden'); $('mainApp').classList.add('hidden');
     $('liveTitle').textContent = `${exam.subject} — ${exam.title}`; $('liveStudent').textContent = `${pupil.name} · C.I. ${cedula}`;
     finalizing = false;
     
-    // Iniciar cámara de supervisión y capturas automáticas
-    await initProctorCamera();
+    initProctorCamera();
 
     try { await $('examScreen').requestFullscreen(); } catch(_){}
     setTimeout(()=>{ if(live) live.strict = true; }, 750);
@@ -2994,7 +3045,6 @@ if($('startExamBtn')) {
   };
 }
 
-// Lógica de interacción Sopa de Letras
 let wsDragStart = null;
 let wsDragCurrent = [];
 
@@ -3210,7 +3260,7 @@ function renderLiveQuestion(){
     bodyHtml = `
       <div style="text-align:center;margin-top:10px">
         <div class="notice good" style="margin-bottom:12px;text-align:left">
-          <b>¿Cómo resolver?</b> 1️⃣ Toca una etiqueta de palabra abajo para seleccionarla y 2️⃣ toca el círculo numerado correspondiente sobre el dibujo. (También puedes tocar un número ya marcado para quitar su etiqueta).
+          <b>¿Cómo resolver?</b> 1️⃣ Toca una etiqueta de palabra abajo para seleccionarla y 2️⃣ toca el círculo numerado correspondiente sobre el dibujo.
         </div>
         <div class="label-stage-wrap">
           <img src="${esc(q.imageUrl)}" alt="Gráfico a etiquetar">
@@ -3266,11 +3316,7 @@ function renderLiveQuestion(){
     document.querySelectorAll('[data-match-l]').forEach(btn => {
       btn.onclick = () => {
         const lIdx = Number(btn.dataset.matchL);
-        if (ans.selectedLeft === lIdx) {
-          ans.selectedLeft = null;
-        } else {
-          ans.selectedLeft = lIdx;
-        }
+        ans.selectedLeft = (ans.selectedLeft === lIdx) ? null : lIdx;
         renderLiveQuestion();
       };
     });
@@ -3390,7 +3436,6 @@ async function finishExam(statusText, reason){
   if(!live || finalizing) return;
   finalizing = true; clearInterval(interval);
 
-  // Tomar foto final o de infracción ANTES de apagar la cámara
   if (statusText === 'infraccion') {
     captureProctorSnapshot('⚠️ ' + (reason || 'Infracción detectada'), true);
   } else {
@@ -3467,12 +3512,13 @@ async function finishExam(statusText, reason){
         earnedTotal += pts;
       } else if(qType === 'image_labels'){
         const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
+        const stuMap = ans.labelsMap || {};
         let correctPins = 0;
-        pins.forEach((p, pIdx) => {
-          if ((ans.labelsMap || {})[pIdx] === p.label) correctPins++;
+        pins.forEach((p, idx) => {
+          if (stuMap[idx] === p.label) correctPins++;
         });
         const pts = pins.length ? Math.round((correctPins / pins.length) * 100) / 100 : 0;
-        details.push({type:'image_labels', studentLabels:ans.labelsMap||{}, pointsEarned:pts});
+        details.push({type:'image_labels', studentLabels:stuMap, pointsEarned:pts});
         earnedTotal += pts;
       } else {
         const ok = ans.option === q.correct ? 1 : 0;
@@ -3482,39 +3528,46 @@ async function finishExam(statusText, reason){
     }
   }
 
-  const finalScore = statusText === 'infraccion' ? 0 : (totalQ ? Number(((earnedTotal/totalQ)*10).toFixed(2)) : 0);
+  const score = (statusText === 'infraccion' || !totalQ) ? 0 : Number(((earnedTotal/totalQ)*10).toFixed(2));
+  const hasManual = current.exam.questions.some(q=>q.type==='open' && q.gradingMode==='manual');
+  const finalStatus = statusText === 'infraccion' ? 'infraccion' : hasManual ? 'pendiente_revision' : 'finalizado';
 
-  if(cloudReady && db){
-    try {
-      await db.collection(COL_ATTEMPTS).doc(current.attemptId).update({
-        score: finalScore, status: statusText, reason, finishedAt: Date.now(), details, proctorSnapshots: current.snapshots || []
-      });
-    } catch(e){}
-  }
+  try {
+    await db.collection(COL_ATTEMPTS).doc(current.attemptId).update({
+      score, status: finalStatus, reason, finishedAt: Date.now(), details, published: false,
+      proctorSnapshots: current.snapshots || []
+    });
+  } catch(e) { console.error(e); }
+
+  if(document.fullscreenElement) try{ await document.exitFullscreen(); }catch(_){}
 
   $('examQuestionArea').innerHTML = `
-    <div style="text-align:center;padding:20px 0">
-      <div class="eyebrow" style="color:var(--wine)">Evaluación finalizada</div>
-      <div class="big-result">✓ Recibido</div>
-      <p style="font-size:15px;font-weight:700;color:var(--ink)">Tu evaluación y evidencia han sido sincronizadas en la nube.</p>
-      <p class="hint" style="max-width:480px;margin:10px auto">Por disposición institucional, tu calificación estará visible en el botón <b>"Mis calificaciones"</b> una vez que el docente las publique oficialmente.</p>
-      ${reason?`<p class="notice red" style="max-width:480px;margin:12px auto">${esc(reason)}</p>`:''}
-      <button class="btn topgap" id="backHomeBtn">Volver al inicio</button>
+    <div style="text-align:center;padding:10px 0">
+      <div class="eyebrow" style="color:var(--wine)">Evaluación enviada correctamente</div>
+      <h2 style="margin-top:14px">${esc(current.studentName)}</h2>
+      <p class="hint">${esc(current.exam.subject)} · ${esc(current.exam.title)}</p>
+      <div class="notice good" style="max-width:480px;margin:20px auto;text-align:left">
+        <b>✓ Respuestas y supervisión registradas en la nube:</b><br>
+        Tu evaluación ha sido enviada al docente (${esc(current.exam.teacher)}). Podrás consultar tu calificación oficial haciendo clic en <b>"Mis calificaciones"</b> una vez que el profesor las haya publicado.
+      </div>
+      ${statusText==='infraccion'?`<div class="notice red" style="max-width:480px;margin:14px auto">⚠️ ${esc(reason)} (Se registró captura fotográfica de evidencia).</div>`:''}
+      <button class="btn topgap" id="closeFinished">Volver al inicio</button>
     </div>
   `;
-  $('backHomeBtn').onclick = async () => {
-    try{ if(document.fullscreenElement) await document.exitFullscreen(); }catch(_){}
-    $('examScreen').classList.add('hidden'); $('topBar').classList.remove('hidden'); $('mainApp').classList.remove('hidden'); renderStudent();
+  $('closeFinished').onclick = () => {
+    $('examScreen').classList.add('hidden'); $('topBar').classList.remove('hidden'); $('mainApp').classList.remove('hidden');
+    finalizing = false; renderStudent();
   };
 }
 
-document.addEventListener('visibilitychange', () => { if(live?.strict && document.hidden) finishExam('infraccion', 'Anulado por cambiar de pestaña.'); });
-window.addEventListener('blur', () => { if(live?.strict) finishExam('infraccion', 'Anulado por salir de la ventana.'); });
-document.addEventListener('fullscreenchange', () => { if(live?.strict && !document.fullscreenElement) finishExam('infraccion', 'Anulado por salir de pantalla completa.'); });
+document.addEventListener('visibilitychange', () => { if(live && live.strict && document.hidden) finishExam('infraccion', 'Cambio de pestaña / ventana.'); });
+window.addEventListener('blur', () => { if(live && live.strict) setTimeout(()=>{ if(live && live.strict && !document.hasFocus()) finishExam('infraccion', 'Pérdida de foco.'); }, 350); });
+document.addEventListener('fullscreenchange', () => { if(live && live.strict && !document.fullscreenElement) finishExam('infraccion', 'Salida de pantalla completa.'); });
 
-// Inicializar aplicación
-resetEditor();
-initCloud();
+// Iniciar conexión al cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+  initCloud();
+});
 </script>
 </body>
 </html>
