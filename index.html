@@ -803,6 +803,7 @@ const COL_EXAMS = 'jbp_exams';
 const COL_ATTEMPTS = 'jbp_attempts';
 const COL_TEACHERS = 'jbp_teachers';
 const COL_STUDENTS = 'jbp_custom_students';
+const COL_STUDENT_BLOCKS = 'jbp_student_exam_blocks';
 
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -812,6 +813,7 @@ let exams = [];
 let attempts = [];
 let teachers = [];
 let customStudents = [];
+let studentBlocks = {}; // Bloqueos administrativos por cédula (pensiones)
 let students = INITIAL_ROSTER.slice();
 
 let currentTeacher = null;
@@ -954,6 +956,14 @@ async function initCloud() {
       mergeRoster();
       resolveStudent();
       if (currentTeacher) renderRoster();
+    });
+
+    db.collection(COL_STUDENT_BLOCKS).onSnapshot(snap => {
+      studentBlocks = {};
+      snap.docs.forEach(d => { studentBlocks[d.id] = d.data(); });
+      if (currentTeacher) renderRoster();
+    }, err => {
+      console.warn('No se pudieron sincronizar los bloqueos de estudiantes:', err);
     });
 
   } catch (e) {
@@ -1183,6 +1193,7 @@ function resolveStudent(){
   if(!cedulaInput) return;
   const cedula = cedulaInput.value.trim();
   const s = students.find(s => s.cedula === cedula);
+  if ($('studentMessage')) $('studentMessage').innerHTML = '';
   if(s){
     $('studentName').value = s.name;
     $('studentName').readOnly = true;
@@ -1226,8 +1237,38 @@ function renderRoster(){
   if(!currentTeacher) return;
   const q = ($('rosterSearch').value || '').trim().toLocaleLowerCase('es');
   const matched = students.filter(s => !q || s.cedula.includes(q) || s.name.toLocaleLowerCase('es').includes(q));
-  $('rosterTable').innerHTML = `<p class="hint">${matched.length} de ${students.length} estudiantes</p><table class="report-table"><thead><tr><th>Cédula</th><th>Estudiante</th><th>Curso</th><th>Paralelo</th><th>Origen</th></tr></thead><tbody>${matched.slice(0,250).map(s=>`<tr><td>${esc(s.cedula)}</td><td>${esc(s.name)}</td><td>${esc(s.level)}</td><td>${esc(s.parallel)}</td><td>${s.manual?'Nube':'Institucional'}</td></tr>`).join('')}</tbody></table>`;
+  const actionHead = adminUnlocked ? '<th>Acceso a exámenes</th>' : '<th>Estado de acceso</th>';
+  $('rosterTable').innerHTML = `<p class="hint">${matched.length} de ${students.length} estudiantes. ${adminUnlocked ? 'Puedes habilitar o bloquear el acceso por pensiones desde la última columna.' : 'Para administrar bloqueos, desbloquea primero el acceso de administrador en Docentes y Contraseñas.'}</p><table class="report-table"><thead><tr><th>Cédula</th><th>Estudiante</th><th>Curso</th><th>Paralelo</th><th>Origen</th>${actionHead}</tr></thead><tbody>${matched.slice(0,250).map(s=>{ const blocked=studentBlocks[s.cedula]?.blocked===true; const action=adminUnlocked ? `<td><button type="button" class="btn ${blocked?'outline':'neutral'} small" data-fee-block="${esc(s.cedula)}">${blocked?'🔓 Habilitar examen':'🔒 Bloquear por pensiones'}</button><div class="hint" style="margin-top:4px">${blocked?'Bloqueado':'Habilitado'}</div></td>` : `<td><b style="color:${blocked?'#a12626':'#166a47'}">${blocked?'Bloqueado':'Habilitado'}</b></td>`; return `<tr><td>${esc(s.cedula)}</td><td>${esc(s.name)}</td><td>${esc(s.level)}</td><td>${esc(s.parallel)}</td><td>${s.manual?'Nube':'Institucional'}</td>${action}</tr>`; }).join('')}</tbody></table>`;
 }
+
+if($('rosterTable')) $('rosterTable').addEventListener('click', async e => {
+  const btn = e.target.closest('[data-fee-block]');
+  if(!btn) return;
+  if(!adminUnlocked) { alert('Se requiere acceso de administrador para modificar este estado.'); return; }
+  if(!cloudReady || !db) { alert('No hay conexión con la nube.'); return; }
+  const cedula = btn.dataset.feeBlock;
+  const pupil = students.find(s => s.cedula === cedula);
+  if(!pupil) return;
+  const currentlyBlocked = studentBlocks[cedula]?.blocked === true;
+  const nextBlocked = !currentlyBlocked;
+  const prompt = nextBlocked
+    ? `¿Deseas bloquear el acceso a los exámenes en línea de ${pupil.name} por tener pensiones pendientes? El estudiante verá un mensaje respetuoso y podrá comunicarse con Secretaría.`
+    : `¿Deseas habilitar nuevamente el acceso a los exámenes en línea de ${pupil.name}?`;
+  if(!confirm(prompt)) return;
+  btn.disabled = true;
+  try {
+    await db.collection(COL_STUDENT_BLOCKS).doc(cedula).set({
+      cedula, studentName: pupil.name, blocked: nextBlocked,
+      reason: nextBlocked ? 'Pensiones pendientes' : '',
+      updatedAt: Date.now(), updatedBy: currentTeacher?.name || 'Administrador'
+    }, { merge: true });
+    studentBlocks[cedula] = { ...(studentBlocks[cedula]||{}), cedula, studentName:pupil.name, blocked:nextBlocked, reason:nextBlocked?'Pensiones pendientes':'' };
+    renderRoster();
+  } catch(err) {
+    alert('No se pudo actualizar el acceso del estudiante: ' + err.message);
+    btn.disabled = false;
+  }
+});
 if($('rosterSearch')) $('rosterSearch').oninput = renderRoster;
 
 if($('rosterSaveBtn')) {
@@ -1551,6 +1592,7 @@ if($('unlockAdminBtn')) {
       $('adminVerifyBox').classList.add('hidden');
       $('teachersAdminContent').classList.remove('hidden');
       renderTeachersAdminTable();
+      if (!$('rosterView').classList.contains('hidden')) renderRoster();
     } else {
       alert('Clave maestra de administrador incorrecta.');
     }
@@ -1561,6 +1603,7 @@ if($('lockAdminBtn')) {
     adminUnlocked = false;
     $('adminVerifyBox').classList.remove('hidden');
     $('teachersAdminContent').classList.add('hidden');
+    if (!$('rosterView').classList.contains('hidden')) renderRoster();
   };
 }
 if($('refreshTeachersBtn')) {
@@ -3324,6 +3367,14 @@ if($('startExamBtn')) {
     startBtn.textContent = 'Verificando ingreso...';
 
     try {
+      const blockSnap = await db.collection(COL_STUDENT_BLOCKS).doc(cedula).get();
+      const blockData = blockSnap.exists ? blockSnap.data() : null;
+      if (blockData && blockData.blocked === true) {
+        showMessage('studentMessage', 'Estimado/a estudiante: por el momento no es posible habilitar tu acceso a esta evaluación en línea, debido a que en nuestros registros constan valores de pensiones pendientes. Te invitamos cordialmente a acercarte a Secretaría de la institución, donde podrán brindarte información y orientación para regularizar tu situación. Agradecemos tu comprensión.', 'red');
+        startBtn.disabled = false;
+        startBtn.textContent = 'Comenzar examen en pantalla completa →';
+        return;
+      }
       const existingSnap = await db.collection(COL_ATTEMPTS).where('examId', '==', exam.id).where('cedula', '==', cedula).get();
       if(!existingSnap.empty){
         showMessage('studentMessage', 'Ya registras un intento en la nube para esta evaluación.');
@@ -3331,7 +3382,12 @@ if($('startExamBtn')) {
         startBtn.textContent = 'Comenzar examen en pantalla completa →';
         return;
       }
-    } catch(e){}
+    } catch(e) {
+      showMessage('studentMessage', 'No fue posible verificar tu autorización para ingresar al examen. Por favor, inténtalo nuevamente en unos minutos o solicita ayuda en Secretaría.', 'red');
+      startBtn.disabled = false;
+      startBtn.textContent = 'Comenzar examen en pantalla completa →';
+      return;
+    }
 
     const preparedQuestions = exam.questions.map(q => {
       if (q.type === 'true_false') {
