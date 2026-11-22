@@ -206,8 +206,12 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
 .kid-chip.selected{background:var(--wine);color:#fff;border-color:var(--wine);transform:scale(1.05)}
 .kid-chip.used{opacity:.45;text-decoration:line-through}
 
-.tf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
-.tf-card{border:2px solid #e3e5ea;border-radius:16px;padding:22px;text-align:center;font-size:18px;font-weight:800;cursor:pointer;background:#fff;display:flex;flex-direction:column;align-items:center;gap:8px}
+/* VERDADERO O FALSO MÚLTIPLE */
+.tf-multi-item{border:1.5px solid #e2e6ee;border-radius:14px;padding:14px 16px;background:#fcfcfd;margin-bottom:12px}
+.tf-multi-item.is-true{border-color:#9dd6b9;background:#f4fbf7}
+.tf-multi-item.is-false{border-color:#f2bac6;background:#fff6f8}
+.tf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.tf-card{border:2px solid #e3e5ea;border-radius:14px;padding:14px 16px;text-align:center;font-size:16px;font-weight:800;cursor:pointer;background:#fff;display:flex;align-items:center;justify-content:center;gap:10px;transition:border-color .15s,background .15s}
 .tf-card:hover{border-color:#cfa9ba;background:#fff9fb}
 .tf-card.selected-true{background:#eaf7ee;border-color:var(--good);color:var(--good)}
 .tf-card.selected-false{background:#fff0f2;border-color:var(--bad);color:var(--bad)}
@@ -239,7 +243,8 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
 .exam-banner{border:2px solid #651b37;border-radius:8px;overflow:hidden;margin-bottom:20px}
 .exam-banner-top{background:#651b37;height:12px}
 .exam-banner-body{display:grid;grid-template-columns:110px 1fr 140px;background:#fff}
-.exam-logo-cell{display:grid;place-items:center;padding:10px;border-right:1px solid #651b37}
+.exam-logo-cell{display:grid;place-items:center;padding:8px;border-right:1px solid #651b37}
+.exam-logo-cell img{width:82px;height:82px;object-fit:contain;display:block}
 .exam-titles-cell{text-align:center;padding:10px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid #651b37}
 .exam-titles-cell h3{margin:0;font-size:13px;font-weight:700;color:#222}
 .exam-titles-cell h2{margin:2px 0;font-size:14px;font-weight:900;color:#651b37}
@@ -250,12 +255,19 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
 .exam-grade-box{width:80px;height:45px;background:#fff;border:2px solid #651b37;border-radius:6px;display:grid;place-items:center;font-size:18px;font-weight:900;color:#651b37}
 .exam-banner-bottom{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #651b37;font-size:12px;padding:8px 12px;background:#fff;gap:10px}
 .exam-banner-bottom div{line-height:1.6}
+.print-instructions{border:1.5px solid #651b37;background:#fdf7fa;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:12px;line-height:1.55;color:#181c25;page-break-inside:avoid}
+.print-instructions b{color:#651b37}
+.print-manual-lines{margin-top:8px;display:grid;gap:14px}
+.print-manual-line{border-bottom:1px solid #888;height:16px}
+.print-signatures{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center;font-size:11.5px;page-break-inside:avoid}
+.print-sig-col{border-top:1px solid #333;padding-top:6px;line-height:1.35}
 
 @media print{
   body *{visibility:hidden}
   #printExamModal,#printExamModal *{visibility:visible}
   #printExamModal{position:absolute;inset:0;background:#fff;padding:0;z-index:99999}
   .modal-backdrop{background:transparent!important;padding:0!important}
+  .no-print{display:none!important}
 }
 
 @media(max-width:760px){
@@ -349,7 +361,7 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
           <div class="notice red"><b>Política de infracciones y cámara:</b> durante el examen, minimizar la ventana, cambiar de pestaña, perder el foco o salir de pantalla completa tomará una <b>captura fotográfica de evidencia</b> y provocará la anulación inmediata con calificación de <b>0/10</b>.</div>
           <div class="tile"><b>📸 Supervisión por cámara web</b><p>El sistema realiza capturas periódicas de seguridad y registra evidencia fotográfica en la nube para verificación del docente.</p></div>
           <div class="tile"><b>⏱ Publicación de calificaciones</b><p>Al terminar la prueba, tu nota se guarda en la nube. Podrás consultarla haciendo clic en <b>"Mis calificaciones"</b> una vez que el docente las haya publicado oficialmente.</p></div>
-          <div class="tile"><b>🧩 Actividades Interactivas y Ecuaciones</b><p>Los exámenes incluyen crucigramas, sopas de letras, unir con líneas, completar frases, verdadero/falso, gráficos para etiquetar partes y renderizado matemático.</p></div>
+          <div class="tile"><b>🧩 Actividades Interactivas y Ecuaciones</b><p>Los exámenes incluyen crucigramas, sopas de letras, unir con líneas, completar frases, verdadero o falso múltiple, gráficos para etiquetar partes y renderizado matemático.</p></div>
         </div>
       </div>
     </div>
@@ -419,7 +431,7 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
               <h3 id="editorTitle" style="margin:0">Crear examen</h3>
               <button class="btn neutral small hidden" id="newExamBtn">Nuevo examen</button>
             </div>
-            <p class="hint">El plazo de disponibilidad empieza en la fecha/hora programada y dura las horas indicadas.</p>
+            <p class="hint">Define directamente la fecha y hora exacta de inicio y de cierre de la evaluación.</p>
             <form id="examForm" class="stack topgap">
               <div class="form-grid">
                 <label class="field fullspan"><span>Título del examen</span><input id="examTitle" placeholder="Ej. Evaluación del segundo trimestre" required maxlength="120"></label>
@@ -427,26 +439,28 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
                 <label class="field"><span>Materia</span><input id="examSubject" placeholder="Ej. Matemáticas / Ciencias Naturales" required maxlength="100"></label>
                 <label class="field"><span>Nivel / Curso al que pertenece el examen</span><select id="examLevel" required></select></label>
                 <label class="field"><span>Paralelo</span><select id="examParallel" required></select></label>
-                <label class="field"><span>Fecha de inicio</span><input id="examDate" type="date" required></label>
-                <label class="field"><span>Hora de inicio</span><input id="examTime" type="time" required></label>
-                <label class="field"><span>Horas habilitado</span><input id="examHours" type="number" min="0.25" max="720" step="0.25" value="2" required></label>
-                <label class="field"><span>Segundos por pregunta</span><input id="examSeconds" type="number" min="5" max="3600" step="1" value="60" required></label>
+                <label class="field"><span>Fecha y hora de inicio</span><input id="examStartDateTime" type="datetime-local" required></label>
+                <label class="field"><span>Fecha y hora de cierre</span><input id="examEndDateTime" type="datetime-local" required></label>
+                <label class="field fullspan"><span>Segundos por pregunta</span><input id="examSeconds" type="number" min="5" max="3600" step="1" value="60" required></label>
               </div>
               <div class="divider" style="margin:5px 0"></div>
               <div class="row between">
                 <h3 style="margin:0">Banco de preguntas</h3>
                 <button class="btn light small" id="addQuestionBtn" type="button">+ Añadir pregunta</button>
               </div>
-              <p class="hint" style="margin:0">Elige entre preguntas tradicionales, <b>Verdadero o Falso</b>, <b>Complete</b>, <b>Unir con línea</b>, <b>Crucigrama</b>, <b>Sopa de letras</b> o <b>Partes de un gráfico</b>.</p>
+              <p class="hint" style="margin:0">Elige entre preguntas tradicionales, <b>Verdadero o Falso (con una o varias opciones)</b>, <b>Complete</b>, <b>Unir con línea</b>, <b>Crucigrama</b>, <b>Sopa de letras</b> o <b>Partes de un gráfico</b>.</p>
               <div id="questionEditor"></div>
-              <button type="submit" class="btn" id="saveExamBtn">Guardar examen en la nube</button>
+              <div class="row">
+                <button type="submit" class="btn" id="saveExamBtn" style="flex:1">Guardar examen en la nube</button>
+                <button type="button" class="btn outline" id="printDraftExamBtn">🖨️ Imprimir examen (hoja manual)</button>
+              </div>
               <div id="editorMessage" aria-live="polite"></div>
             </form>
           </div>
 
           <div class="card">
             <h3 style="margin:0 0 6px">Exámenes en la nube</h3>
-            <p class="hint">Disponibles inmediatamente para tus estudiantes.</p>
+            <p class="hint">Disponibles inmediatamente para tus estudiantes o para imprimir en formato manual.</p>
             <div id="examList" class="stack topgap"></div>
           </div>
         </div>
@@ -681,7 +695,7 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
 <!-- MODAL VISTA PREVIA EXAMEN INSTITUCIONAL IMPRESO -->
 <div id="printExamModal" class="modal-backdrop hidden">
   <div class="modal-card" style="max-width:850px">
-    <div class="row between" style="margin-bottom:15px">
+    <div class="row between no-print" style="margin-bottom:15px">
       <span class="tag good">Vista de Impresión Oficial</span>
       <div class="row">
         <button type="button" class="btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
@@ -780,6 +794,7 @@ const LEVELS=["Primero de Básica","Segundo de Básica","Tercero de Básica","Cu
 const parallelOptions=['GENERAL','A','B','C','D','E','F'];
 const MATH_COMBOS = ['A1','A2','A3','A4','B1','B2','B3','B4','C1','C2','C3','C4','D1','D2','D3','D4'];
 const MATCH_COLORS = ['#651b37','#166a47','#1d5bb8','#b85d00','#7c2ae8','#007c91','#b01e4a','#3f6212'];
+const INSTITUTION_LOGO_SRC = 'JBP.jpg';
 
 const MASTER_ADMIN_KEY = 'admin2026';
 
@@ -923,7 +938,6 @@ async function initCloud() {
     setCloudStatus(true, '✓ Nube Conectada');
     loadCloudAiKey();
 
-    // Para estudiantes: solo escuchamos exámenes y estudiantes personalizados (ligero y rápido)
     db.collection(COL_EXAMS).onSnapshot(snap => {
       exams = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       renderStudent();
@@ -967,10 +981,32 @@ async function hashText(v){
   return 'local-' + Array.from(v).map(c => c.charCodeAt(0).toString(16)).join('-');
 }
 
-const localDateValue=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-const localTimeValue=(d=new Date())=>`${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
-const startAt=e=>new Date(`${e.date}T${e.time}:00`).getTime();
-const endAt=e=>startAt(e)+e.hours*3600000;
+// Formateadores de fecha/hora para datetime-local y cálculo de ventana (con compatibilidad hacia atrás)
+function toDatetimeLocalValue(ms = Date.now()) {
+  const d = new Date(ms);
+  const pad = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+function startAt(e) {
+  if (e.startDateTime) {
+    const t = new Date(e.startDateTime).getTime();
+    if (!Number.isNaN(t)) return t;
+  }
+  if (e.date && e.time) {
+    return new Date(`${e.date}T${e.time}:00`).getTime();
+  }
+  return Date.now();
+}
+
+function endAt(e) {
+  if (e.endDateTime) {
+    const t = new Date(e.endDateTime).getTime();
+    if (!Number.isNaN(t)) return t;
+  }
+  return startAt(e) + (Number(e.hours || 2) * 3600000);
+}
+
 const formatDate=ms=>new Date(ms).toLocaleString('es-EC',{dateStyle:'medium',timeStyle:'short'});
 const status=e=>Date.now()<startAt(e)?'Próximamente':Date.now()>=endAt(e)?'Finalizado':'Disponible';
 const formatClock=s=>{s=Math.max(0,Math.ceil(s));const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;return h>0?`${h}:${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`};
@@ -1252,11 +1288,11 @@ function renderSelection(){
   const info = $('selectedExamInfo');
   if(!select || !info) return;
   const e = exams.find(ex => ex.id === select.value);
-  info.innerHTML = e ? `<div class="tile"><b>${esc(e.subject)} · ${esc(e.teacher)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>Inicio: ${esc(formatDate(startAt(e)))}<br>Fin: ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg · <b>${status(e)}</b></p></div>` : '';
+  info.innerHTML = e ? `<div class="tile"><b>${esc(e.subject)} · ${esc(e.teacher)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>Abre: ${esc(formatDate(startAt(e)))}<br>Cierra: ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg · <b>${status(e)}</b></p></div>` : '';
 }
 if($('studentExam')) $('studentExam').onchange = renderSelection;
 
-// Consulta bajo demanda de calificaciones del estudiante (ahorra datos y acelera carga)
+// Consulta bajo demanda de calificaciones del estudiante
 if($('openMyGradesModalBtn')) {
   $('openMyGradesModalBtn').onclick = () => {
     const cedula = $('studentCedula').value.trim();
@@ -1981,6 +2017,20 @@ function buildCrosswordLayout(entries) {
 // ==========================================
 // 6. BANCO DE PREGUNTAS (TODAS LAS ACTIVIDADES)
 // ==========================================
+function normalizeTfStatements(q) {
+  if (Array.isArray(q.tfStatements) && q.tfStatements.length > 0) {
+    return q.tfStatements.map(st => ({
+      text: String(st.text ?? ''),
+      correctBool: st.correctBool !== false
+    }));
+  }
+  // Retrocompatibilidad con formato anterior de una sola opción verdadero/falso
+  return [{
+    text: String(q.text ?? ''),
+    correctBool: q.correctBool !== false
+  }];
+}
+
 function defaultQuestionObj(type='multiple'){
   return {
     type,
@@ -1988,7 +2038,7 @@ function defaultQuestionObj(type='multiple'){
     imageUrl: '',
     options: ['','','',''],
     correct: 0,
-    correctBool: true,
+    tfStatements: [{ text: '', correctBool: true }],
     rubric: '',
     gradingMode: 'ai',
     procedures: ['','','',''],
@@ -2013,11 +2063,11 @@ function defaultQuestionObj(type='multiple'){
 function resetEditor(){
   editingId=null; editingQuestions=[]; if($('examForm')) $('examForm').reset();
   if($('examTeacher') && currentTeacher) $('examTeacher').value = currentTeacher.name;
-  if($('examDate')) $('examDate').value = localDateValue(); 
-  if($('examTime')) $('examTime').value = localTimeValue();
+  const nowMs = Date.now();
+  if($('examStartDateTime')) $('examStartDateTime').value = toDatetimeLocalValue(nowMs);
+  if($('examEndDateTime')) $('examEndDateTime').value = toDatetimeLocalValue(nowMs + 2 * 3600000);
   if($('examLevel')) $('examLevel').value = ''; 
   if($('examParallel')) $('examParallel').value = 'GENERAL'; 
-  if($('examHours')) $('examHours').value = 2; 
   if($('examSeconds')) $('examSeconds').value = 60;
   if($('editorTitle')) $('editorTitle').textContent = 'Crear examen'; 
   if($('saveExamBtn')) $('saveExamBtn').textContent = 'Guardar examen en la nube';
@@ -2033,7 +2083,7 @@ function addQuestion(q=defaultQuestionObj('multiple')){
     imageUrl: q.imageUrl||'',
     options: Array.isArray(q.options)?[...q.options]:['','','',''],
     correct: Number(q.correct??0),
-    correctBool: q.correctBool !== false,
+    tfStatements: normalizeTfStatements(q),
     rubric: q.rubric||'',
     gradingMode: q.gradingMode||'ai',
     procedures: Array.isArray(q.procedures)?[...q.procedures]:['','','',''],
@@ -2061,8 +2111,12 @@ function syncQuestions(){
     if(type==='open'){
       return {type:'open', text, imageUrl, rubric:box.querySelector('[data-rubric]').value, gradingMode:box.querySelector('[data-grading-mode]').value};
     } else if(type==='true_false'){
-      const tfSel = box.querySelector('[data-tf-correct]');
-      return {type:'true_false', text, imageUrl, correctBool: tfSel ? tfSel.value === 'true' : true};
+      const stmtRows = [...box.querySelectorAll('[data-tf-stmt-row]')];
+      const tfStatements = stmtRows.length ? stmtRows.map(row => ({
+        text: row.querySelector('[data-tf-stmt-text]')?.value || '',
+        correctBool: row.querySelector('[data-tf-stmt-bool]')?.value === 'true'
+      })) : [{ text, correctBool: true }];
+      return {type:'true_false', text, imageUrl, tfStatements};
     } else if(type==='fill_blank'){
       return {type:'fill_blank', text, imageUrl};
     } else if(type==='matching'){
@@ -2113,6 +2167,23 @@ function renderOptionWithMathBtn(label, attrName, idx, val) {
     </div>
   `;
 }
+
+window.addTfStatementRow = (qIdx) => {
+  syncQuestions();
+  if (editingQuestions[qIdx]) {
+    if (!Array.isArray(editingQuestions[qIdx].tfStatements)) editingQuestions[qIdx].tfStatements = [];
+    editingQuestions[qIdx].tfStatements.push({ text: '', correctBool: true });
+    renderQuestionEditor();
+  }
+};
+
+window.removeTfStatementRow = (qIdx, sIdx) => {
+  syncQuestions();
+  if (editingQuestions[qIdx] && Array.isArray(editingQuestions[qIdx].tfStatements) && editingQuestions[qIdx].tfStatements.length > 1) {
+    editingQuestions[qIdx].tfStatements.splice(sIdx, 1);
+    renderQuestionEditor();
+  }
+};
 
 window.addMatchPairRow = (qIdx) => {
   syncQuestions();
@@ -2188,14 +2259,26 @@ function renderQuestionEditor(){
     if(qType==='open'){
       bodyHtml=`<div class="stack topgap"><label class="field"><span>Rúbrica / Palabras clave</span><textarea data-rubric placeholder="Conceptos esperados...">${esc(q.rubric||'')}</textarea></label><div class="question-editor-actions"><span class="hint">Calificación:</span><select class="select-small" data-grading-mode><option value="ai" ${q.gradingMode!=='manual'?'selected':''}>Automática con IA</option><option value="manual" ${q.gradingMode==='manual'?'selected':''}>Revisión manual docente</option></select></div></div>`;
     } else if(qType==='true_false'){
+      const stmts = normalizeTfStatements(q);
       bodyHtml=`
         <div class="topgap" style="background:#f5f9ff;border:1px solid #c7dcf7;padding:14px;border-radius:12px">
-          <div class="row between">
-            <span style="font-size:13px;font-weight:800;color:#1d5bb8">✔️ Respuesta correcta (Verdadero o Falso):</span>
-            <select class="select-small" data-tf-correct style="font-weight:800">
-              <option value="true" ${q.correctBool!==false?'selected':''}>✅ VERDADERO</option>
-              <option value="false" ${q.correctBool===false?'selected':''}>❌ FALSO</option>
-            </select>
+          <div class="row between" style="margin-bottom:8px">
+            <span style="font-size:13px;font-weight:800;color:#1d5bb8">✔️ Afirmaciones / Opciones de Verdadero o Falso (${stmts.length})</span>
+            <button type="button" class="btn light xs" onclick="addTfStatementRow(${i})">+ Añadir opción V/F</button>
+          </div>
+          <p class="hint" style="margin:0 0 10px">Puedes poner una o varias afirmaciones dentro de esta misma pregunta y definir si cada una es <b>Verdadero</b> o <b>Falso</b>.</p>
+          <div class="stack" style="gap:10px">
+            ${stmts.map((st, sIdx) => `
+              <div data-tf-stmt-row="${sIdx}" class="row" style="align-items:center;background:#fff;padding:10px;border-radius:10px;border:1px solid #d5e2f5">
+                <span class="tag" style="min-width:26px;justify-content:center">${sIdx+1}</span>
+                <input type="text" data-tf-stmt-text="${sIdx}" value="${esc(st.text||'')}" placeholder="Afirmación / opción #${sIdx+1}..." required style="flex:1;padding:8px 10px;border:1px solid #d6d9e1;border-radius:8px">
+                <select class="select-small" data-tf-stmt-bool="${sIdx}" style="font-weight:800">
+                  <option value="true" ${st.correctBool!==false?'selected':''}>✅ VERDADERO</option>
+                  <option value="false" ${st.correctBool===false?'selected':''}>❌ FALSO</option>
+                </select>
+                <button type="button" class="btn danger xs" onclick="removeTfStatementRow(${i}, ${sIdx})" ${stmts.length<=1?'disabled':''}>✕</button>
+              </div>
+            `).join('')}
           </div>
         </div>
       `;
@@ -2327,7 +2410,7 @@ function renderQuestionEditor(){
     const placeholdersByType = {
       wordsearch: 'Ej. Encuentra en la sopa de letras los siguientes planetas del Sistema Solar:',
       image_labels: 'Ej. Selecciona el nombre correcto para cada parte de la planta señalada en el dibujo:',
-      true_false: 'Ej. La Tierra gira alrededor del Sol en aproximadamente 365 días.',
+      true_false: 'Ej. Indica si cada una de las siguientes afirmaciones es Verdadera o Falsa:',
       fill_blank: 'Ej. La capital del Ecuador es [Quito] y su puerto principal es [Guayaquil].',
       matching: 'Ej. Une con una línea cada animal con su clasificación correspondiente:',
       crossword: 'Ej. Completa el siguiente crucigrama leyendo las pistas horizontales y verticales:'
@@ -2388,6 +2471,9 @@ function renderQuestionEditor(){
       const currentImg = imgEl ? imgEl.getAttribute('src') : '';
       const fresh=defaultQuestionObj(sel.value);
       fresh.text=currentText;
+      if (sel.value === 'true_false' && currentText.trim()) {
+        fresh.tfStatements = [{ text: currentText.trim(), correctBool: true }];
+      }
       fresh.imageUrl=(currentImg && (currentImg.startsWith('data:')||currentImg.startsWith('http')))?currentImg:'';
       editingQuestions[idx]=fresh;
       renderQuestionEditor();
@@ -2449,7 +2535,18 @@ if($('examForm')) {
     event.preventDefault(); syncQuestions();
     if(!currentTeacher || !cloudReady || !db) { showMessage('editorMessage', 'Esperando conexión con la nube...'); return; }
     const title = $('examTitle').value.trim(), subject = $('examSubject').value.trim(), level = $('examLevel').value, parallel = $('examParallel').value;
-    const date = $('examDate').value, time = $('examTime').value, hours = Number($('examHours').value), seconds = Number($('examSeconds').value);
+    const startDateTime = $('examStartDateTime').value, endDateTime = $('examEndDateTime').value, seconds = Number($('examSeconds').value);
+
+    const startMs = new Date(startDateTime).getTime();
+    const endMs = new Date(endDateTime).getTime();
+    if (!startDateTime || !endDateTime || Number.isNaN(startMs) || Number.isNaN(endMs)) {
+      showMessage('editorMessage', 'Selecciona una fecha y hora válida de inicio y de cierre.');
+      return;
+    }
+    if (endMs <= startMs) {
+      showMessage('editorMessage', 'La fecha y hora de cierre debe ser posterior a la fecha y hora de inicio.');
+      return;
+    }
 
     let validQuestions = editingQuestions.length > 0;
     let specificErr = 'Completa todos los campos obligatorios.';
@@ -2457,6 +2554,14 @@ if($('examForm')) {
       const q = editingQuestions[k];
       if(!q.text.trim()) { validQuestions = false; break; }
       if(q.type === 'multiple' && q.options.some(o => !o.trim())) { validQuestions = false; break; }
+      if(q.type === 'true_false') {
+        const stmts = normalizeTfStatements(q);
+        if (!stmts.length || stmts.some(st => !st.text.trim())) {
+          validQuestions = false;
+          specificErr = `Pregunta ${k+1} (Verdadero o Falso): completa el texto de todas las afirmaciones/opciones.`;
+          break;
+        }
+      }
       if(q.type === 'math_combo' && (q.options.some(o => !o.trim()) || q.procedures.some(p => !p.trim()))) { validQuestions = false; break; }
       if(q.type === 'fill_blank') {
         const blanks = parseFillBlankTemplate(q.text);
@@ -2483,7 +2588,7 @@ if($('examForm')) {
         if(q.imageLabels.some(p => !p.label.trim())) { validQuestions = false; specificErr = `Pregunta ${k+1}: escribe el nombre de todas las partes numeradas.`; break; }
       }
     }
-    if(!title || !subject || !level || !parallel || !date || !time || !validQuestions){
+    if(!title || !subject || !level || !parallel || !validQuestions){
       showMessage('editorMessage', specificErr); return;
     }
 
@@ -2491,7 +2596,10 @@ if($('examForm')) {
     const cleanQuestions = editingQuestions.map(q => {
       const baseQ = { text: q.text.trim(), imageUrl: (q.imageUrl||'').trim() };
       if(q.type === 'open') return {type:'open', ...baseQ, rubric:q.rubric.trim(), gradingMode:q.gradingMode};
-      if(q.type === 'true_false') return {type:'true_false', ...baseQ, correctBool: Boolean(q.correctBool)};
+      if(q.type === 'true_false') {
+        const stmts = normalizeTfStatements(q).map(st => ({ text: st.text.trim(), correctBool: Boolean(st.correctBool) }));
+        return {type:'true_false', ...baseQ, tfStatements: stmts, correctBool: stmts[0]?.correctBool ?? true};
+      }
       if(q.type === 'fill_blank') return {type:'fill_blank', ...baseQ, blanks: parseFillBlankTemplate(q.text)};
       if(q.type === 'matching') return {type:'matching', ...baseQ, matchPairs: q.matchPairs.map(p => ({ left: p.left.trim(), right: p.right.trim() }))};
       if(q.type === 'crossword') return {type:'crossword', ...baseQ, crosswordEntries: q.crosswordEntries.filter(e => cleanCrosswordWord(e.word).length >= 2 && e.clue.trim()).map(e => ({ word: cleanCrosswordWord(e.word), clue: e.clue.trim() }))};
@@ -2501,7 +2609,21 @@ if($('examForm')) {
       return {type:'multiple', ...baseQ, options:q.options.map(o=>o.trim()), correct:q.correct};
     });
 
-    const item = { id: examId, ownerId: currentTeacher.id, title, teacher: currentTeacher.name, subject, level, parallel, date, time, hours, seconds, questions: cleanQuestions, createdAt: Date.now(), updatedAt: Date.now() };
+    const item = {
+      id: examId,
+      ownerId: currentTeacher.id,
+      title,
+      teacher: currentTeacher.name,
+      subject,
+      level,
+      parallel,
+      startDateTime,
+      endDateTime,
+      seconds,
+      questions: cleanQuestions,
+      createdAt: Date.now(),
+      updatedAt: Date.now()
+    };
 
     const btn = $('saveExamBtn'); btn.disabled = true; btn.textContent = 'Guardando en la nube...';
     try {
@@ -2519,9 +2641,13 @@ function renderExamList(){
   const listEl = $('examList');
   if(!listEl) return;
   const mine = myExams();
-  listEl.innerHTML = mine.length ? mine.map(e=>`<div class="tile"><div class="row between"><h3>${esc(e.subject)}</h3><span class="tag ${status(e)==='Disponible'?'good':'warn'}">${status(e)}</span></div><b style="font-size:13px">${esc(e.title)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>${esc(formatDate(startAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg</p><div class="row"><button class="btn light small" data-edit="${esc(e.id)}">Editar</button><button class="btn danger small" data-delete="${esc(e.id)}">Eliminar</button></div></div>`).join('') : '<div class="empty">No hay exámenes en la nube.</div>';
+  listEl.innerHTML = mine.length ? mine.map(e=>`<div class="tile"><div class="row between"><h3>${esc(e.subject)}</h3><span class="tag ${status(e)==='Disponible'?'good':'warn'}">${status(e)}</span></div><b style="font-size:13px">${esc(e.title)}</b><p>Curso: ${esc(e.level)} · ${esc(e.parallel)}<br>Abre: ${esc(formatDate(startAt(e)))}<br>Cierra: ${esc(formatDate(endAt(e)))}<br>${e.questions.length} preguntas · ${e.seconds} s/preg</p><div class="row"><button class="btn light small" data-edit="${esc(e.id)}">Editar</button><button class="btn outline small" data-print="${esc(e.id)}">🖨️ Imprimir</button><button class="btn danger small" data-delete="${esc(e.id)}">Eliminar</button></div></div>`).join('') : '<div class="empty">No hay exámenes en la nube.</div>';
 
   document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editExam(b.dataset.edit));
+  document.querySelectorAll('[data-print]').forEach(b=>b.onclick=()=>{
+    const e = myExams().find(x=>x.id===b.dataset.print);
+    if(e) renderOfficialPrintSheet(e, null);
+  });
   document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=async()=>{
     const e = myExams().find(x=>x.id===b.dataset.delete);
     if(e && confirm(`¿Eliminar examen "${e.title}" de la nube?`)){
@@ -2533,9 +2659,17 @@ function renderExamList(){
 
 function editExam(id){
   const e = myExams().find(x=>x.id===id); if(!e) return;
-  editingId = id; $('examTitle').value = e.title; $('examSubject').value = e.subject; $('examLevel').value = e.level||''; $('examParallel').value = e.parallel||'GENERAL'; $('examDate').value = e.date; $('examTime').value = e.time; $('examHours').value = e.hours; $('examSeconds').value = e.seconds;
+  editingId = id;
+  $('examTitle').value = e.title;
+  $('examSubject').value = e.subject;
+  $('examLevel').value = e.level||'';
+  $('examParallel').value = e.parallel||'GENERAL';
+  $('examStartDateTime').value = toDatetimeLocalValue(startAt(e));
+  $('examEndDateTime').value = toDatetimeLocalValue(endAt(e));
+  $('examSeconds').value = e.seconds;
   editingQuestions = JSON.parse(JSON.stringify(e.questions)).map(q => ({
     ...q,
+    tfStatements: q.type === 'true_false' ? normalizeTfStatements(q) : [{ text: '', correctBool: true }],
     wordsRaw: q.wordsRaw || (Array.isArray(q.words) ? q.words.join(', ') : '')
   }));
   renderQuestionEditor();
@@ -2667,9 +2801,20 @@ window.openReviewModal = (attemptId) => {
     if(qType === 'open'){
       ansHtml = `<div style="background:#f8f9fb;padding:10px;border-radius:8px;margin-top:6px"><small class="hint">Respuesta:</small><div style="white-space:pre-wrap;margin-top:4px">${esc(detail.studentAnswerText||'Sin respuesta')}</div></div>${detail.aiFeedback?`<div class="notice good" style="margin-top:8px;padding:8px 12px">${esc(detail.aiFeedback)}</div>`:''}`;
     } else if(qType === 'true_false'){
-      const stuVal = detail.selectedBool === true ? 'VERDADERO' : detail.selectedBool === false ? 'FALSO' : 'Sin responder';
-      const corVal = q.correctBool !== false ? 'VERDADERO' : 'FALSO';
-      ansHtml = `<div style="margin-top:6px"><span class="tag ${earned===1?'good':'bad'}">Marcó: ${stuVal} (Correcta: ${corVal})</span></div>`;
+      const stmts = normalizeTfStatements(q);
+      const stuArr = Array.isArray(detail.tfAnswers)
+        ? detail.tfAnswers
+        : (detail.selectedBool !== undefined ? [detail.selectedBool] : []);
+      ansHtml = `<div style="margin-top:8px;display:grid;gap:6px;font-size:13px">${stmts.map((st, sIdx) => {
+        const sVal = stuArr[sIdx];
+        const sLabel = sVal === true ? 'VERDADERO' : sVal === false ? 'FALSO' : 'Sin responder';
+        const cLabel = st.correctBool !== false ? 'VERDADERO' : 'FALSO';
+        const ok = sVal === (st.correctBool !== false);
+        return `<div style="padding:7px 10px;border-radius:8px;background:#f8f9fb;border:1px solid var(--line)">
+          <b>${sIdx+1}. ${esc(st.text)}</b><br>
+          <span class="tag ${ok?'good':'bad'}" style="margin-top:4px">Marcó: ${sLabel} · Correcta: ${cLabel}</span>
+        </div>`;
+      }).join('')}</div>`;
     } else if(qType === 'fill_blank'){
       const stuArr = Array.isArray(detail.filledBlanks) ? detail.filledBlanks : [];
       const corArr = Array.isArray(q.blanks) ? q.blanks : parseFillBlankTemplate(q.text);
@@ -2721,19 +2866,127 @@ window.openReviewModal = (attemptId) => {
 };
 if($('closeReviewModal')) $('closeReviewModal').onclick = () => $('reviewModal').classList.add('hidden');
 
-if($('printExamSheetBtn')) {
-  $('printExamSheetBtn').onclick = () => {
-    const att = attempts.find(a => a.id === reviewingAttemptId); if(!att) return;
-    const exam = exams.find(e => e.id === att.examId) || { questions: [], subject: att.subject, title: att.examTitle, level: att.level, parallel: att.parallel, teacher: att.teacher };
-    const dateStr = new Date(att.startedAt || Date.now()).toLocaleDateString('es-EC');
+// Generación unificada del examen oficial con membrete, logo institucional y 3 firmas (incluyendo Mgtr. Rita Loor)
+function renderOfficialPrintSheet(examObj, att = null) {
+  const isManualBlank = !att;
+  const exam = examObj || {};
+  const rawDate = att ? (att.startedAt || Date.now()) : (exam.startDateTime ? new Date(exam.startDateTime).getTime() : Date.now());
+  const dateStr = !Number.isNaN(rawDate) ? new Date(rawDate).toLocaleDateString('es-EC') : '____ / ____ / 202__';
+  const questions = Array.isArray(exam.questions) ? exam.questions : [];
+  const perQuestionPts = questions.length ? (10 / questions.length).toFixed(2) : '1.00';
 
-    const questionsHtml = (exam.questions||[]).map((q, idx)=>{
-      const detail = (att.details||[])[idx] || {};
-      const qType = q.type || 'multiple';
-      const pts = Number(detail.pointsEarned ?? 0).toFixed(2);
-      const imgHtml = q.imageUrl ? `<div style="margin:8px 0"><img src="${esc(q.imageUrl)}" style="max-height:140px;max-width:100%;border:1px solid #ccc;border-radius:6px"></div>` : '';
+  const questionsHtml = questions.map((q, idx) => {
+    const detail = (!isManualBlank && att.details) ? (att.details[idx] || {}) : {};
+    const qType = q.type || 'multiple';
+    const ptsLabel = isManualBlank
+      ? `[ _____ / ${perQuestionPts} pts ]`
+      : `[${Number(detail.pointsEarned ?? 0).toFixed(2)} / 1.00 pt]`;
+    const imgHtml = (q.imageUrl && qType !== 'image_labels')
+      ? `<div style="margin:8px 0;text-align:center"><img src="${esc(q.imageUrl)}" style="max-height:145px;max-width:100%;border:1px solid #ccc;border-radius:6px"></div>`
+      : '';
 
-      let bodyPrint = '';
+    let headingPrint = `${idx + 1}. ${esc(q.text)}`;
+    let bodyPrint = '';
+
+    if (isManualBlank) {
+      // MODO EXAMEN EN BLANCO PARA APLICACIÓN MANUAL DEL ESTUDIANTE
+      if (qType === 'open') {
+        bodyPrint = `
+          <div class="print-manual-lines">
+            <div class="print-manual-line"></div>
+            <div class="print-manual-line"></div>
+            <div class="print-manual-line"></div>
+          </div>
+        `;
+      } else if (qType === 'true_false') {
+        const stmts = normalizeTfStatements(q);
+        bodyPrint = `<div style="font-size:12px;margin-top:8px;display:grid;gap:6px">${stmts.map((st, sIdx) => `
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px dotted #ddd;padding-bottom:4px">
+            <span>${stmts.length > 1 ? `<b>${sIdx + 1})</b> ` : ''}${esc(st.text)}</span>
+            <span style="white-space:nowrap;font-weight:bold;font-size:11.5px">( &nbsp;&nbsp; ) V &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp; ) F</span>
+          </div>
+        `).join('')}</div>`;
+      } else if (qType === 'fill_blank') {
+        headingPrint = `${idx + 1}. Complete los espacios en blanco según corresponda:`;
+        const sentenceBlanked = esc(q.text).replace(/\[([^\]]+)\]/g, '<span style="display:inline-block;min-width:120px;border-bottom:1.5px solid #222;margin:0 4px">&nbsp;</span>');
+        bodyPrint = `<div style="font-size:12.5px;line-height:2;margin-top:6px;padding:6px 8px;background:#fafafa;border-radius:4px">${sentenceBlanked}</div>`;
+      } else if (qType === 'matching') {
+        const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
+        const rightShuffled = [...pairs.map(p => p.right)].sort(() => Math.random() - 0.5);
+        bodyPrint = `
+          <div style="font-size:12px;margin-top:8px;display:grid;grid-template-columns:1fr 60px 1fr;gap:8px;align-items:center">
+            <div style="display:grid;gap:8px">${pairs.map((p, pIdx) => `<div style="border:1px solid #888;border-radius:4px;padding:5px 8px">${pIdx + 1}. ${esc(p.left)}</div>`).join('')}</div>
+            <div style="text-align:center;color:#777;font-size:11px">Unir<br>con<br>línea</div>
+            <div style="display:grid;gap:8px">${rightShuffled.map(rText => `<div style="border:1px solid #888;border-radius:4px;padding:5px 8px">• ${esc(rText)}</div>`).join('')}</div>
+          </div>
+        `;
+      } else if (qType === 'crossword') {
+        const cw = buildCrosswordLayout(q.crosswordEntries || []);
+        const horiz = cw.words.filter(w => w.dir === 'H');
+        const vert = cw.words.filter(w => w.dir === 'V');
+        bodyPrint = `
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:14px;margin-top:8px;align-items:start">
+            <table style="border-collapse:collapse">
+              ${cw.grid.map(row => `<tr>${row.map(cell => cell
+                ? `<td style="width:22px;height:22px;border:1.5px solid #222;position:relative;background:#fff">${cell.num ? `<span style="position:absolute;top:0;left:2px;font-size:8px;font-weight:bold">${cell.num}</span>` : ''}</td>`
+                : `<td style="width:22px;height:22px;background:#e9e9e9;border:1px solid #ccc"></td>`
+              ).join('')}</tr>`).join('')}
+            </table>
+            <div style="font-size:11.5px;line-height:1.45">
+              ${horiz.length ? `<div style="margin-bottom:6px"><b>Horizontales:</b><br>${horiz.map(w => `${w.num}. ${esc(w.clue)}`).join('<br>')}</div>` : ''}
+              ${vert.length ? `<div><b>Verticales:</b><br>${vert.map(w => `${w.num}. ${esc(w.clue)}`).join('<br>')}</div>` : ''}
+            </div>
+          </div>
+        `;
+      } else if (qType === 'wordsearch') {
+        const ws = buildWordSearchGrid(q.wordsRaw || (q.words || []).join(','), q.gridSize || 10);
+        const targetWords = ws.placed.map(p => p.word);
+        bodyPrint = `
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:14px;margin-top:8px;align-items:start">
+            <table style="border-collapse:collapse;font-family:monospace;font-weight:bold;font-size:12px">
+              ${ws.grid.map(row => `<tr>${row.map(ch => `<td style="width:21px;height:21px;border:1px solid #777;text-align:center">${esc(ch)}</td>`).join('')}</tr>`).join('')}
+            </table>
+            <div style="font-size:11.5px">
+              <b>Palabras a encontrar:</b>
+              <div style="margin-top:4px;display:flex;flex-wrap:wrap;gap:6px">${targetWords.map(w => `<span style="border:1px solid #888;padding:2px 6px;border-radius:4px">☐ ${esc(w)}</span>`).join('')}</div>
+            </div>
+          </div>
+        `;
+      } else if (qType === 'image_labels') {
+        const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
+        const bank = [...pins.map(p => p.label)].sort(() => Math.random() - 0.5);
+        bodyPrint = `
+          <div style="margin-top:8px">
+            ${q.imageUrl ? `
+              <div style="position:relative;display:inline-block;max-width:100%">
+                <img src="${esc(q.imageUrl)}" style="max-height:220px;max-width:100%;border:1px solid #999;border-radius:6px;display:block">
+                ${pins.map((p, pIdx) => `<div style="position:absolute;left:${p.x}%;top:${p.y}%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#651b37;color:#fff;border:2px solid #fff;font-size:11px;font-weight:bold;display:grid;place-items:center">${pIdx + 1}</div>`).join('')}
+              </div>
+            ` : ''}
+            <div style="font-size:11.5px;margin-top:6px"><b>Banco de palabras:</b> ${bank.map(b => `[ ${esc(b)} ]`).join('  ')}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;font-size:12px">
+              ${pins.map((_, pIdx) => `<div><b>${pIdx + 1}.</b> ___________________________</div>`).join('')}
+            </div>
+          </div>
+        `;
+      } else if (qType === 'math_combo') {
+        bodyPrint = `
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;margin-top:6px">
+            <div><b>Opciones:</b><br>${(q.options || []).map((o, j) => `${'ABCD'[j]}) ${esc(o)}`).join('<br>')}</div>
+            <div><b>Procedimientos:</b><br>${(q.procedures || []).map((p, j) => `${j + 1}) ${esc(p)}`).join('<br>')}</div>
+          </div>
+          <div style="font-size:12px;margin-top:8px"><b>Respuesta / Combinación elegida (ej. A2):</b> ______________</div>
+          ${q.requireWrittenProc ? `<div class="print-manual-lines"><div class="print-manual-line"></div><div class="print-manual-line"></div></div>` : ''}
+        `;
+      } else {
+        bodyPrint = `
+          <div style="font-size:12px;margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            ${(q.options || []).map((o, j) => `<div style="padding:3px 6px"><b>${'ABCD'[j]})</b> ${esc(o)}</div>`).join('')}
+          </div>
+        `;
+      }
+    } else {
+      // MODO REPORTE DE EVALUACIÓN RENDIDA POR EL ESTUDIANTE
       if (qType === 'open') {
         bodyPrint = `
           <div style="border:1px solid #bbb;border-radius:6px;padding:8px;background:#f9f9f9;margin-top:6px;font-size:12px">
@@ -2743,9 +2996,13 @@ if($('printExamSheetBtn')) {
           ${detail.aiFeedback ? `<div style="font-size:11px;color:#166a47;margin-top:4px"><i>Observación: ${esc(detail.aiFeedback)}</i></div>` : ''}
         `;
       } else if (qType === 'true_false') {
-        const stuVal = detail.selectedBool === true ? 'VERDADERO' : detail.selectedBool === false ? 'FALSO' : 'Sin responder';
-        const corVal = q.correctBool !== false ? 'VERDADERO' : 'FALSO';
-        bodyPrint = `<div style="font-size:12px;margin-top:6px"><b>Marcó:</b> ${stuVal} (Correcta: ${corVal})</div>`;
+        const stmts = normalizeTfStatements(q);
+        const stuArr = Array.isArray(detail.tfAnswers) ? detail.tfAnswers : (detail.selectedBool !== undefined ? [detail.selectedBool] : []);
+        bodyPrint = `<div style="font-size:12px;margin-top:6px">${stmts.map((st, sIdx) => {
+          const sVal = stuArr[sIdx] === true ? 'VERDADERO' : stuArr[sIdx] === false ? 'FALSO' : 'Sin responder';
+          const cVal = st.correctBool !== false ? 'VERDADERO' : 'FALSO';
+          return `<div style="margin-bottom:3px">${sIdx+1}) <b>${esc(st.text)}</b> → Marcó: <b>${sVal}</b> (Correcta: ${cVal})</div>`;
+        }).join('')}</div>`;
       } else if (qType === 'fill_blank') {
         const stuArr = Array.isArray(detail.filledBlanks) ? detail.filledBlanks : [];
         bodyPrint = `<div style="font-size:12px;margin-top:6px"><b>Palabras completadas:</b> ${esc(stuArr.join(', ') || 'Sin completar')}</div>`;
@@ -2782,60 +3039,115 @@ if($('printExamSheetBtn')) {
           </div>
         `;
       }
+    }
 
-      return `
-        <div style="border-bottom:1px solid #e0e0e0;padding-bottom:12px;margin-bottom:12px;page-break-inside:avoid">
-          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:#651b37">
-            <span>${idx+1}. ${esc(q.text)}</span>
-            <span>[${pts} / 1.00 pt]</span>
-          </div>
-          ${imgHtml}
-          ${bodyPrint}
+    return `
+      <div style="border-bottom:1px solid #e0e0e0;padding-bottom:12px;margin-bottom:12px;page-break-inside:avoid">
+        <div style="display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:bold;color:#651b37">
+          <span>${headingPrint}</span>
+          <span style="white-space:nowrap">${ptsLabel}</span>
         </div>
-      `;
-    }).join('');
-
-    $('printSheetContainer').innerHTML = `
-      <div class="print-sheet">
-        <div class="exam-banner">
-          <div class="exam-banner-top"></div>
-          <div class="exam-banner-body">
-            <div class="exam-logo-cell">
-              <div style="width:65px;height:65px;border-radius:16px;background:#651b37;color:#fff;display:grid;place-items:center;font-weight:900;font-size:22px;letter-spacing:-1px">JBP</div>
-            </div>
-            <div class="exam-titles-cell">
-              <h3>UNIDAD EDUCATIVA PARTICULAR</h3>
-              <h2>“JACINTO BURGOS PINARGOTE”</h2>
-              <h4>${esc(exam.title)}</h4>
-              <div class="subject-line">${esc(exam.subject)}</div>
-            </div>
-            <div class="exam-grade-cell">
-              <span>CALIFICACIÓN</span>
-              <div class="exam-grade-box">${Number(att.score||0).toFixed(2)}</div>
-            </div>
-          </div>
-          <div class="exam-banner-bottom">
-            <div>
-              <b>ESTUDIANTE:</b> ${esc(att.studentName)}<br>
-              <b>CÉDULA:</b> ${esc(att.cedula)}<br>
-              <b>CURSO:</b> ${esc(att.level || exam.level || '')} · <b>PARALELO:</b> ${esc(att.parallel || exam.parallel || '')}
-            </div>
-            <div>
-              <b>DOCENTE:</b> ${esc(exam.teacher || att.teacher || '')}<br>
-              <b>FECHA:</b> ${esc(dateStr)}<br>
-              <b>ESTADO:</b> ${att.status==='infraccion'?'ANULADO POR INFRACCIÓN':'EVALUADO EN LÍNEA'}
-            </div>
-          </div>
-        </div>
-        <div>${questionsHtml}</div>
-        <div style="margin-top:35px;display:grid;grid-template-columns:1fr 1fr;gap:40px;text-align:center;font-size:12px">
-          <div style="border-top:1px solid #333;padding-top:6px"><b>${esc(exam.teacher || att.teacher || 'DOCENTE')}</b><br>FIRMA DEL DOCENTE</div>
-          <div style="border-top:1px solid #333;padding-top:6px"><b>${esc(att.studentName)}</b><br>FIRMA DEL ESTUDIANTE</div>
-        </div>
+        ${imgHtml}
+        ${bodyPrint}
       </div>
     `;
-    renderMathSafe($('printSheetContainer'));
-    $('printExamModal').classList.remove('hidden');
+  }).join('');
+
+  const studentLine = isManualBlank
+    ? `<b>ESTUDIANTE:</b> ______________________________________<br><b>CÉDULA:</b> ______________________<br>`
+    : `<b>ESTUDIANTE:</b> ${esc(att.studentName)}<br><b>CÉDULA:</b> ${esc(att.cedula)}<br>`;
+  const gradeValue = isManualBlank ? '&nbsp;' : Number(att.score || 0).toFixed(2);
+  const statusValue = isManualBlank
+    ? 'EVALUACIÓN ESCRITA / MANUAL'
+    : (att.status === 'infraccion' ? 'ANULADO POR INFRACCIÓN' : 'EVALUADO EN LÍNEA');
+  const studentSignName = isManualBlank ? 'ESTUDIANTE' : esc(att.studentName);
+  const manualInstructionsHtml = isManualBlank
+    ? `<div class="print-instructions"><b>INSTRUCCIONES:</b> Lea cada pregunta, Si hay ejercicios deben de incluir (Datos, Formulas y Procedimiento), Evite tachones, borrones y corrector, Realice el examen con honestidad: el fraude o la deshonestidad académica constituye una falta.</div>`
+    : '';
+
+  $('printSheetContainer').innerHTML = `
+    <div class="print-sheet">
+      <div class="exam-banner">
+        <div class="exam-banner-top"></div>
+        <div class="exam-banner-body">
+          <div class="exam-logo-cell">
+            <img src="${INSTITUTION_LOGO_SRC}" alt="Logo Unidad Educativa Particular Jacinto Burgos Pinargote" onerror="this.outerHTML='<div style=&quot;width:65px;height:65px;border-radius:16px;background:#651b37;color:#fff;display:grid;place-items:center;font-weight:900;font-size:22px;letter-spacing:-1px&quot;>JBP</div>'">
+          </div>
+          <div class="exam-titles-cell">
+            <h3>UNIDAD EDUCATIVA PARTICULAR</h3>
+            <h2>“JACINTO BURGOS PINARGOTE”</h2>
+            <h4>${esc(exam.title || 'EVALUACIÓN ACADÉMICA')}</h4>
+            <div class="subject-line">${esc(exam.subject || 'ASIGNATURA')}</div>
+          </div>
+          <div class="exam-grade-cell">
+            <span>CALIFICACIÓN</span>
+            <div class="exam-grade-box">${gradeValue}</div>
+          </div>
+        </div>
+        <div class="exam-banner-bottom">
+          <div>
+            ${studentLine}
+            <b>CURSO:</b> ${esc((att && att.level) || exam.level || '________________')} · <b>PARALELO:</b> ${esc((att && att.parallel) || exam.parallel || '______')}
+          </div>
+          <div>
+            <b>DOCENTE:</b> ${esc(exam.teacher || (att && att.teacher) || '')}<br>
+            <b>FECHA:</b> ${esc(dateStr)}<br>
+            <b>MODALIDAD:</b> ${statusValue}
+          </div>
+        </div>
+      </div>
+      ${manualInstructionsHtml}
+      <div>${questionsHtml}</div>
+      <div class="print-signatures">
+        <div class="print-sig-col"><b>${esc(exam.teacher || (att && att.teacher) || 'DOCENTE')}</b><br>FIRMA DEL DOCENTE</div>
+        <div class="print-sig-col"><b>Mgtr. Rita Loor</b><br>VICERRECTORA</div>
+        <div class="print-sig-col"><b>${studentSignName}</b><br>FIRMA DEL ESTUDIANTE</div>
+      </div>
+    </div>
+  `;
+  renderMathSafe($('printSheetContainer'));
+  $('printExamModal').classList.remove('hidden');
+}
+
+if($('printDraftExamBtn')) {
+  $('printDraftExamBtn').onclick = () => {
+    syncQuestions();
+    const title = ($('examTitle')?.value || '').trim() || 'EVALUACIÓN ACADÉMICA';
+    const subject = ($('examSubject')?.value || '').trim() || 'ASIGNATURA';
+    const level = $('examLevel')?.value || '';
+    const parallel = $('examParallel')?.value || 'GENERAL';
+    const startDateTime = $('examStartDateTime')?.value || '';
+    const teacherName = ($('examTeacher')?.value || (currentTeacher && currentTeacher.name) || 'DOCENTE').trim();
+
+    if (!editingQuestions.length || !editingQuestions.some(q => (q.text || '').trim())) {
+      showMessage('editorMessage', 'Añade al menos una pregunta con enunciado antes de generar la hoja impresa.');
+      return;
+    }
+
+    const draftExam = {
+      title,
+      subject,
+      level,
+      parallel,
+      startDateTime,
+      teacher: teacherName,
+      questions: editingQuestions.map(q => ({
+        ...q,
+        text: (q.text || '').trim(),
+        tfStatements: q.type === 'true_false' ? normalizeTfStatements(q) : undefined,
+        blanks: q.type === 'fill_blank' ? parseFillBlankTemplate(q.text) : undefined,
+        words: q.type === 'wordsearch' ? parseWordsList(q.wordsRaw) : undefined
+      }))
+    };
+    renderOfficialPrintSheet(draftExam, null);
+  };
+}
+
+if($('printExamSheetBtn')) {
+  $('printExamSheetBtn').onclick = () => {
+    const att = attempts.find(a => a.id === reviewingAttemptId); if(!att) return;
+    const exam = exams.find(e => e.id === att.examId) || { questions: [], subject: att.subject, title: att.examTitle, level: att.level, parallel: att.parallel, teacher: att.teacher };
+    renderOfficialPrintSheet(exam, att);
   };
 }
 if($('closePrintModal')) $('closePrintModal').onclick = () => $('printExamModal').classList.add('hidden');
@@ -2979,6 +3291,9 @@ if($('startExamBtn')) {
     } catch(e){}
 
     const preparedQuestions = exam.questions.map(q => {
+      if (q.type === 'true_false') {
+        return { ...q, tfStatements: normalizeTfStatements(q) };
+      }
       if (q.type === 'wordsearch') {
         const wsData = buildWordSearchGrid(q.wordsRaw || (q.words||[]).join(','), q.gridSize || 10);
         return { ...q, _ws: wsData };
@@ -3005,7 +3320,10 @@ if($('startExamBtn')) {
       attemptId, exam: { ...exam, questions: preparedQuestions }, studentName: pupil.name, cedula, level: pupil.level, parallel: pupil.parallel,
       index: 0, answers: preparedQuestions.map(q=>{
         if(q.type==='open') return {text:''};
-        if(q.type==='true_false') return {boolVal:null};
+        if(q.type==='true_false') {
+          const count = normalizeTfStatements(q).length;
+          return {tfAnswers: Array(count).fill(null)};
+        }
         if(q.type==='fill_blank') return {blanks: []};
         if(q.type==='matching') return {connections: {}, selectedLeft: null};
         if(q.type==='crossword') return {cells: {}};
@@ -3141,16 +3459,31 @@ function renderLiveQuestion(){
   if(qType === 'open'){
     bodyHtml = `<textarea id="liveOpenInput" rows="5" style="width:100%;border:2px solid #e3e5ea;border-radius:13px;padding:15px" placeholder="Escribe tu respuesta aquí...">${esc(ans.text||'')}</textarea>`;
   } else if(qType === 'true_false'){
+    const stmts = normalizeTfStatements(q);
+    if (!Array.isArray(ans.tfAnswers)) ans.tfAnswers = Array(stmts.length).fill(null);
     bodyHtml = `
-      <div class="tf-grid">
-        <button type="button" class="tf-card ${ans.boolVal===true?'selected-true':''}" data-tf-pick="true">
-          <span style="font-size:34px">✅</span>
-          <span>VERDADERO</span>
-        </button>
-        <button type="button" class="tf-card ${ans.boolVal===false?'selected-false':''}" data-tf-pick="false">
-          <span style="font-size:34px">❌</span>
-          <span>FALSO</span>
-        </button>
+      <div class="stack" style="gap:12px;margin-top:10px">
+        ${stmts.map((st, sIdx) => {
+          const picked = ans.tfAnswers[sIdx];
+          const itemClass = picked === true ? 'is-true' : picked === false ? 'is-false' : '';
+          return `
+            <div class="tf-multi-item ${itemClass}">
+              <div style="font-size:15px;font-weight:700;color:var(--ink)">
+                ${stmts.length > 1 ? `<span class="tag" style="margin-right:8px">${sIdx+1}</span>` : ''}${esc(st.text)}
+              </div>
+              <div class="tf-grid">
+                <button type="button" class="tf-card ${picked===true?'selected-true':''}" data-tf-stmt="${sIdx}" data-tf-pick="true">
+                  <span style="font-size:22px">✅</span>
+                  <span>VERDADERO</span>
+                </button>
+                <button type="button" class="tf-card ${picked===false?'selected-false':''}" data-tf-stmt="${sIdx}" data-tf-pick="false">
+                  <span style="font-size:22px">❌</span>
+                  <span>FALSO</span>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('')}
       </div>
     `;
   } else if(qType === 'fill_blank'){
@@ -3189,24 +3522,31 @@ function renderLiveQuestion(){
         <div class="match-col">
           ${rightItems.map((rObj) => {
             const connectedLeft = Object.keys(conns).find(k => conns[k] === rObj.idx);
-            const color = connectedLeft !== undefined ? MATCH_COLORS[Number(connectedLeft) % MATCH_COLORS.length] : '';
+            const isConnected = connectedLeft !== undefined;
+            const color = isConnected ? MATCH_COLORS[Number(connectedLeft) % MATCH_COLORS.length] : '#cfd5e0';
             return `
-              <button type="button" class="match-node" data-match-r="${rObj.idx}" style="${connectedLeft!==undefined?`border-color:${color};background:#fff`:''}">
-                <span class="match-dot" style="${connectedLeft!==undefined?`background:${color}`:''}"></span>
+              <button type="button" class="match-node" data-match-r="${rObj.idx}" style="${isConnected?`border-color:${color}`:''}">
+                <span class="match-dot" style="background:${color}"></span>
                 <span style="flex:1;text-align:right">${esc(rObj.text)}</span>
               </button>
             `;
           }).join('')}
         </div>
       </div>
+      <div class="row between topgap">
+        <span class="tag good">${Object.keys(conns).length} de ${pairs.length} parejas unidas</span>
+        <button type="button" class="btn neutral xs" id="clearMatchingBtn">Borrar líneas</button>
+      </div>
     `;
   } else if(qType === 'crossword'){
-    const cw = q._cw || { rows: 1, cols: 1, grid: [['']], words: [] };
+    const cw = q._cw || buildCrosswordLayout(q.crosswordEntries || []);
+    q._cw = cw;
     const horiz = cw.words.filter(w => w.dir === 'H');
     const vert = cw.words.filter(w => w.dir === 'V');
+
     bodyHtml = `
       <div class="cw-layout">
-        <div style="overflow-x:auto;text-align:center">
+        <div style="overflow-x:auto;max-width:100%">
           <div class="cw-board" style="grid-template-columns:repeat(${cw.cols}, 1fr)">
             ${cw.grid.map((row, r) => row.map((cell, c) => {
               if (!cell) return `<div class="cw-cell blocked"></div>`;
@@ -3222,96 +3562,94 @@ function renderLiveQuestion(){
           </div>
         </div>
         <div class="cw-clues">
-          ${horiz.length ? `<div class="cw-clue-box"><h4>➡️ Horizontales</h4>${horiz.map(w => `<div style="margin-bottom:4px"><b>${w.num}.</b> ${esc(w.clue)}</div>`).join('')}</div>` : ''}
-          ${vert.length ? `<div class="cw-clue-box"><h4>⬇️ Verticales</h4>${vert.map(w => `<div style="margin-bottom:4px"><b>${w.num}.</b> ${esc(w.clue)}</div>`).join('')}</div>` : ''}
+          ${horiz.length ? `
+            <div class="cw-clue-box">
+              <h4>➡️ Horizontales</h4>
+              <div class="stack" style="gap:6px">
+                ${horiz.map(w => `<div><b>${w.num}.</b> ${esc(w.clue)} <small class="hint">(${w.word.length} letras)</small></div>`).join('')}
+              </div>
+            </div>
+          ` : ''}
+          ${vert.length ? `
+            <div class="cw-clue-box">
+              <h4>⬇️ Verticales</h4>
+              <div class="stack" style="gap:6px">
+                ${vert.map(w => `<div><b>${w.num}.</b> ${esc(w.clue)} <small class="hint">(${w.word.length} letras)</small></div>`).join('')}
+              </div>
+            </div>
+          ` : ''}
         </div>
       </div>
     `;
   } else if(qType === 'math_combo'){
-    bodyHtml = `
-      <div class="math-matrix">
-        <div><span class="math-col-title">Opciones</span>${(q.options||[]).map((o,j)=>`<div style="font-size:14px;margin-bottom:4px"><b>${'ABCD'[j]}.</b> ${esc(o)}</div>`).join('')}</div>
-        <div><span class="math-col-title">Procedimientos</span>${(q.procedures||[]).map((p,j)=>`<div style="font-size:14px;margin-bottom:4px"><b>${j+1}.</b> ${esc(p)}</div>`).join('')}</div>
-      </div>
-      <div class="combo-grid topgap">${MATH_COMBOS.map(c=>`<div class="combo-chip ${ans.combo===c?'selected':''}" data-pick-combo="${c}">${c}</div>`).join('')}</div>
-      ${q.requireWrittenProc?`<textarea id="liveProcInput" rows="3" class="topgap" style="width:100%;border:1px solid #d6d9e1;border-radius:10px;padding:10px" placeholder="Justifica tu procedimiento...">${esc(ans.writtenProcedure||'')}</textarea>`:''}
-    `;
+    bodyHtml = `<div class="math-matrix"><div><span class="math-col-title">Opciones</span>${q.options.map((o,j)=>`<div style="margin:6px 0;font-size:14px"><b>${'ABCD'[j]})</b> ${esc(o)}</div>`).join('')}</div><div><span class="math-col-title">Procedimientos</span>${q.procedures.map((p,j)=>`<div style="margin:6px 0;font-size:14px"><b>${j+1})</b> ${esc(p)}</div>`).join('')}</div></div><div class="combo-grid">${MATH_COMBOS.map(c=>`<button type="button" class="combo-chip ${ans.combo===c?'selected':''}" data-combo-pick="${c}">${c}</button>`).join('')}</div>${q.requireWrittenProc?`<textarea id="liveProcInput" rows="3" class="topgap" style="width:100%;border:2px solid #e3e5ea;border-radius:12px;padding:12px" placeholder="Escribe tu procedimiento...">${esc(ans.writtenProcedure||'')}</textarea>`:''}`;
   } else if(qType === 'wordsearch'){
-    const ws = q._ws || { gridSize: 10, grid: [], placed: [] };
+    const ws = q._ws || buildWordSearchGrid(q.wordsRaw || (q.words||[]).join(','), q.gridSize || 10);
+    q._ws = ws;
     const targetWords = ws.placed.map(p => p.word);
     bodyHtml = `
       <div class="ws-container">
-        <div style="font-size:13px;font-weight:700;color:var(--wine)">👆 Arrastra el ratón o tu dedo sobre las letras para encerrar cada palabra (${ans.foundWords.length}/${targetWords.length} encontradas)</div>
+        <div class="hint" style="text-align:center">✨ <b>Desliza el dedo o el ratón</b> desde la primera hasta la última letra de cada palabra escondida.</div>
+        <div class="ws-words-list">
+          ${targetWords.map(w => `<span class="ws-word-pill ${ans.foundWords.includes(w)?'found':''}">${ans.foundWords.includes(w)?'✓ ':''}${esc(w)}</span>`).join('')}
+        </div>
         <div class="ws-grid" id="liveWsGrid" style="grid-template-columns:repeat(${ws.gridSize}, 1fr)">
-          ${ws.grid.map((row, r) => row.map((ch, c) => {
+          ${ws.grid.map((row, r) => row.map((letter, c) => {
             const isFound = ans.foundCoords.includes(`${r},${c}`);
-            return `<div class="ws-cell ${isFound?'found':''}" data-r="${r}" data-c="${c}">${esc(ch)}</div>`;
+            return `<div class="ws-cell ${isFound?'found':''}" data-r="${r}" data-c="${c}">${esc(letter)}</div>`;
           }).join('')).join('')}
         </div>
-        <div class="ws-words-list">
-          ${targetWords.map(w => `<span class="ws-word-pill ${ans.foundWords.includes(w)?'found':''}">${esc(w)}</span>`).join('')}
-        </div>
+        <div class="tag good">Encontradas: ${ans.foundWords.length} de ${targetWords.length}</div>
       </div>
     `;
   } else if(qType === 'image_labels'){
     const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
-    const chips = Array.isArray(q._shuffledLabels) ? q._shuffledLabels : pins.map(p=>p.label);
-    const usedValues = Object.values(ans.labelsMap || {});
+    const bank = Array.isArray(q._shuffledLabels) ? q._shuffledLabels : pins.map(p => p.label);
+    const usedLabels = Object.values(ans.labelsMap || {});
     bodyHtml = `
-      <div style="text-align:center;margin-top:10px">
-        <div class="notice good" style="margin-bottom:12px;text-align:left">
-          <b>¿Cómo resolver?</b> 1️⃣ Toca una etiqueta de palabra abajo para seleccionarla y 2️⃣ toca el círculo numerado correspondiente sobre el dibujo.
-        </div>
+      <div class="notice good" style="margin-bottom:12px">
+        <b>¿Cómo responder?</b> 1️⃣ Toca una palabra del banco de abajo y 2️⃣ toca el círculo numerado en el dibujo donde corresponde.
+      </div>
+      <div style="text-align:center">
         <div class="label-stage-wrap">
           <img src="${esc(q.imageUrl)}" alt="Gráfico a etiquetar">
           ${pins.map((p, pIdx) => {
-            const placedWord = ans.labelsMap[pIdx];
-            const isTarget = ans.selectedChip !== null && !placedWord;
-            return `<button type="button" class="label-pin-student ${placedWord?'assigned':''} ${isTarget?'target-active':''}" data-pin-idx="${pIdx}" style="left:${p.x}%;top:${p.y}%">${placedWord ? `${pIdx+1}: ${esc(placedWord)}` : pIdx+1}</button>`;
-          }).join('')}
-        </div>
-        <div class="word-bank-kids">
-          ${chips.map(word => {
-            const isSelected = ans.selectedChip === word;
-            const isUsed = usedValues.includes(word);
-            return `<button type="button" class="kid-chip ${isSelected?'selected':''} ${isUsed?'used':''}" data-kid-word="${esc(word)}">${esc(word)}</button>`;
+            const assignedText = ans.labelsMap[pIdx];
+            return `<button type="button" class="label-pin-student ${assignedText?'assigned':'target-active'}" data-live-pin="${pIdx}" style="left:${p.x}%;top:${p.y}%">${pIdx+1}${assignedText ? ': ' + esc(assignedText) : ''}</button>`;
           }).join('')}
         </div>
       </div>
+      <div class="word-bank-kids">
+        ${bank.map(lbl => {
+          const isSelected = ans.selectedChip === lbl;
+          const isUsed = usedLabels.includes(lbl);
+          return `<button type="button" class="kid-chip ${isSelected?'selected':''} ${isUsed?'used':''}" data-kid-chip="${esc(lbl)}">${esc(lbl)}</button>`;
+        }).join('')}
+      </div>
     `;
   } else {
-    bodyHtml = (q.options||[]).map((o,j)=>`<label class="answer ${ans.option===j?'selected':''}"><input type="radio" name="opt" value="${j}" ${ans.option===j?'checked':''}><span><b>${'ABCD'[j]}.</b> ${esc(o)}</span></label>`).join('');
+    bodyHtml = q.options.map((o,j)=>`<label class="answer ${ans.option===j?'selected':''}" data-pick="${j}"><input type="radio" name="q" ${ans.option===j?'checked':''}><span><b>${'ABCD'[j]})</b> ${esc(o)}</span></label>`).join('');
   }
 
-  $('examQuestionArea').innerHTML = `
-    <span class="tag">Pregunta ${live.index+1} de ${live.exam.questions.length}</span>
-    ${questionHeadingHtml}
-    ${imgHtml}
-    ${bodyHtml}
-    <div class="exam-bottom">
-      <button type="button" class="btn neutral" id="skipBtn">Pasar</button>
-      <button type="button" class="btn" id="nextBtn">${live.index===live.exam.questions.length-1?'Finalizar y enviar →':'Siguiente →'}</button>
-    </div>
-  `;
+  $('examQuestionArea').innerHTML = `<span class="tag">Pregunta ${live.index+1} de ${live.exam.questions.length}</span>${questionHeadingHtml}${imgHtml}${bodyHtml}<div class="exam-bottom"><span class="hint">Al avanzar no podrás retroceder.</span><button class="btn" id="nextBtn">${live.index===live.exam.questions.length-1?'Finalizar y enviar a la nube':'Guardar y siguiente →'}</button></div>`;
 
   renderMathSafe($('examQuestionArea'));
 
-  if(qType==='open') {
-    $('liveOpenInput').oninput = e => live.answers[live.index].text = e.target.value;
-  } else if(qType==='true_false'){
-    document.querySelectorAll('[data-tf-pick]').forEach(btn => {
+  if(qType === 'open') $('liveOpenInput').oninput = e => ans.text = e.target.value;
+  else if(qType === 'true_false') {
+    document.querySelectorAll('[data-tf-stmt]').forEach(btn => {
       btn.onclick = () => {
-        live.answers[live.index].boolVal = (btn.dataset.tfPick === 'true');
+        const sIdx = Number(btn.dataset.tfStmt);
+        const pick = btn.dataset.tfPick === 'true';
+        ans.tfAnswers[sIdx] = pick;
         renderLiveQuestion();
       };
     });
-  } else if(qType==='fill_blank'){
+  } else if(qType === 'fill_blank') {
     document.querySelectorAll('[data-blank-idx]').forEach(inp => {
-      inp.oninput = () => {
-        live.answers[live.index].blanks[Number(inp.dataset.blankIdx)] = inp.value;
-      };
+      inp.oninput = () => { ans.blanks[Number(inp.dataset.blankIdx)] = inp.value; };
     });
-  } else if(qType==='matching'){
+  } else if(qType === 'matching') {
     setTimeout(drawMatchingLines, 30);
     document.querySelectorAll('[data-match-l]').forEach(btn => {
       btn.onclick = () => {
@@ -3324,77 +3662,71 @@ function renderLiveQuestion(){
       btn.onclick = () => {
         const rIdx = Number(btn.dataset.matchR);
         if (ans.selectedLeft !== null) {
-          for (const k of Object.keys(ans.connections)) {
-            if (ans.connections[k] === rIdx) delete ans.connections[k];
-          }
+          Object.keys(ans.connections).forEach(k => { if (ans.connections[k] === rIdx) delete ans.connections[k]; });
           ans.connections[ans.selectedLeft] = rIdx;
           ans.selectedLeft = null;
           renderLiveQuestion();
-        } else {
-          for (const k of Object.keys(ans.connections)) {
-            if (ans.connections[k] === rIdx) delete ans.connections[k];
-          }
-          renderLiveQuestion();
         }
       };
     });
-  } else if(qType==='crossword'){
+    if($('clearMatchingBtn')) {
+      $('clearMatchingBtn').onclick = () => {
+        ans.connections = {}; ans.selectedLeft = null; renderLiveQuestion();
+      };
+    }
+  } else if(qType === 'crossword') {
     document.querySelectorAll('[data-cw-r]').forEach(inp => {
       inp.oninput = () => {
-        const r = Number(inp.dataset.cwR);
-        const c = Number(inp.dataset.cwC);
-        const letter = inp.value.toUpperCase().replace(/[^A-ZÑ]/g, '').slice(0, 1);
-        inp.value = letter;
-        ans.cells[`${r},${c}`] = letter;
-        if (letter) {
-          const rightCell = document.querySelector(`[data-cw-r="${r}"][data-cw-c="${c + 1}"]`);
-          const downCell = document.querySelector(`[data-cw-r="${r + 1}"][data-cw-c="${c}"]`);
-          if (rightCell) rightCell.focus();
-          else if (downCell) downCell.focus();
+        const r = Number(inp.dataset.cwR), c = Number(inp.dataset.cwC);
+        const val = inp.value.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-ZÑ]/g, '');
+        inp.value = val;
+        ans.cells[`${r},${c}`] = val;
+        if (val) {
+          const nextRight = document.querySelector(`[data-cw-r="${r}"][data-cw-c="${c+1}"]`);
+          const nextDown = document.querySelector(`[data-cw-r="${r+1}"][data-cw-c="${c}"]`);
+          if (nextRight) nextRight.focus();
+          else if (nextDown) nextDown.focus();
         }
       };
     });
-  } else if(qType==='math_combo'){
-    document.querySelectorAll('[data-pick-combo]').forEach(el => el.onclick = () => { live.answers[live.index].combo = el.dataset.pickCombo; renderLiveQuestion(); });
-    if($('liveProcInput')) $('liveProcInput').oninput = e => live.answers[live.index].writtenProcedure = e.target.value;
-  } else if(qType==='wordsearch'){
+  } else if(qType === 'math_combo'){
+    document.querySelectorAll('[data-combo-pick]').forEach(b=>b.onclick=()=>{ans.combo=b.dataset.comboPick; renderLiveQuestion();});
+    if(q.requireWrittenProc) $('liveProcInput').oninput = e => ans.writtenProcedure = e.target.value;
+  } else if(qType === 'wordsearch'){
     const gridEl = $('liveWsGrid');
     if (gridEl) {
-      gridEl.onpointerdown = e => {
+      gridEl.addEventListener('pointerdown', e => {
         const cell = e.target.closest('.ws-cell');
         if (!cell) return;
         e.preventDefault();
         wsDragStart = [Number(cell.dataset.r), Number(cell.dataset.c)];
         wsDragCurrent = [wsDragStart];
         updateWsHighlight();
-      };
-      gridEl.onpointermove = e => {
+      });
+      gridEl.addEventListener('pointermove', e => {
         if (!wsDragStart) return;
-        const elUnder = document.elementFromPoint(e.clientX, e.clientY);
-        const cell = elUnder?.closest('.ws-cell');
+        const target = document.elementFromPoint(e.clientX, e.clientY);
+        const cell = target ? target.closest('.ws-cell') : null;
         if (!cell) return;
-        wsDragCurrent = getLineCells(wsDragStart[0], wsDragStart[1], Number(cell.dataset.r), Number(cell.dataset.c));
+        const r1 = Number(cell.dataset.r), c1 = Number(cell.dataset.c);
+        wsDragCurrent = getLineCells(wsDragStart[0], wsDragStart[1], r1, c1);
         updateWsHighlight();
-      };
-      window.onpointerup = () => {
-        if (wsDragStart) commitWsSelection();
-      };
+      });
+      window.addEventListener('pointerup', commitWsSelection, { once: true });
     }
-  } else if(qType==='image_labels'){
-    document.querySelectorAll('[data-kid-word]').forEach(chip => {
-      chip.onclick = () => {
-        const w = chip.dataset.kidWord;
-        ans.selectedChip = (ans.selectedChip === w) ? null : w;
+  } else if(qType === 'image_labels'){
+    document.querySelectorAll('[data-kid-chip]').forEach(chipBtn => {
+      chipBtn.onclick = () => {
+        const lbl = chipBtn.dataset.kidChip;
+        ans.selectedChip = (ans.selectedChip === lbl) ? null : lbl;
         renderLiveQuestion();
       };
     });
-    document.querySelectorAll('[data-pin-idx]').forEach(pinBtn => {
+    document.querySelectorAll('[data-live-pin]').forEach(pinBtn => {
       pinBtn.onclick = () => {
-        const pIdx = Number(pinBtn.dataset.pinIdx);
+        const pIdx = Number(pinBtn.dataset.livePin);
         if (ans.selectedChip) {
-          for (const k of Object.keys(ans.labelsMap)) {
-            if (ans.labelsMap[k] === ans.selectedChip) delete ans.labelsMap[k];
-          }
+          Object.keys(ans.labelsMap).forEach(k => { if (ans.labelsMap[k] === ans.selectedChip) delete ans.labelsMap[k]; });
           ans.labelsMap[pIdx] = ans.selectedChip;
           ans.selectedChip = null;
           renderLiveQuestion();
@@ -3405,169 +3737,178 @@ function renderLiveQuestion(){
       };
     });
   } else {
-    document.querySelectorAll('input[name="opt"]').forEach(r => r.onchange = () => { live.answers[live.index].option = Number(r.value); renderLiveQuestion(); });
+    document.querySelectorAll('[data-pick]').forEach(l=>l.onclick=()=>{ans.option=Number(l.dataset.pick); renderLiveQuestion();});
   }
-
-  $('skipBtn').onclick = () => advanceQuestion();
-  $('nextBtn').onclick = () => advanceQuestion();
-}
-
-function advanceQuestion(){
-  if(!live) return;
-  if(live.index < live.exam.questions.length - 1){
-    live.index++; live.questionDeadline = Date.now() + live.exam.seconds * 1000; renderLiveQuestion();
-  } else {
-    finishExam('finalizado', '');
-  }
+  $('nextBtn').onclick = () => nextQuestion(false);
 }
 
 function startTimer(){
   clearInterval(interval);
-  interval = setInterval(()=>{
+  const tick=()=>{
     if(!live) return;
-    const now = Date.now(), qRem = (live.questionDeadline - now)/1000, wRem = (endAt(live.exam) - now)/1000;
-    $('questionTime').textContent = formatClock(qRem); $('windowTime').textContent = formatClock(wRem);
-    if(wRem <= 0){ finishExam('tiempo_agotado', 'Se agotó la ventana de disponibilidad.'); return; }
-    if(qRem <= 0) advanceQuestion();
-  }, 250);
+    const now=Date.now(), qLeft=(live.questionDeadline-now)/1000, wLeft=(endAt(live.exam)-now)/1000;
+    $('questionTime').textContent=formatClock(qLeft); $('windowTime').textContent=formatClock(wLeft);
+    $('questionTimerBox').classList.toggle('urgent', qLeft<=10); $('windowTimerBox').classList.toggle('urgent', wLeft<=60);
+    if(wLeft<=0) finishExam('finalizado','Se cerró la ventana horaria del examen.');
+    else if(qLeft<=0) nextQuestion(true);
+  };
+  tick(); interval=setInterval(tick,250);
 }
 
-async function finishExam(statusText, reason){
-  if(!live || finalizing) return;
-  finalizing = true; clearInterval(interval);
+function nextQuestion(){
+  if(!live) return;
+  if(live.index < live.exam.questions.length - 1){
+    live.index++; live.questionDeadline = Date.now() + live.exam.seconds * 1000; renderLiveQuestion();
+  } else finishExam('finalizado','Examen completado y guardado en la nube.');
+}
 
-  if (statusText === 'infraccion') {
-    captureProctorSnapshot('⚠️ ' + (reason || 'Infracción detectada'), true);
+async function finishExam(statusName, reason){
+  if(!live || finalizing) return; finalizing = true; live.strict = false; clearInterval(interval);
+  
+  if (statusName === 'infraccion') {
+    captureProctorSnapshot(`INFRACCIÓN: ${reason}`, true);
   } else {
     captureProctorSnapshot('Fin de evaluación', false);
   }
+  const finalSnapshots = Array.isArray(live.snapshots) ? live.snapshots : [];
+
   stopProctorCamera();
+  const s = live; live = null;
 
-  const current = live; live = null; current.strict = false;
-  $('examQuestionArea').innerHTML = '<div style="text-align:center;padding:40px"><h3>Sincronizando respuestas y evidencia con la nube...</h3><p class="hint">Por favor espera un momento.</p></div>';
+  $('examQuestionArea').innerHTML = `<div class="empty"><h3>Enviando evaluación y evidencia a la nube...</h3><p class="hint">Evaluando tus respuestas...</p></div>`;
 
-  const totalQ = current.exam.questions.length;
-  const details = [];
-  let earnedTotal = 0;
-
-  if(statusText !== 'infraccion'){
-    for(let i=0; i<totalQ; i++){
-      const q = current.exam.questions[i], ans = current.answers[i] || {}, qType = q.type||'multiple';
-      if(qType === 'open'){
-        const res = q.gradingMode==='ai' ? await evaluateOpenAnswerWithAI(q.text, q.rubric, ans.text, { subject: current.exam.subject, level: current.level }) : {score:0, feedback:'Pendiente de revisión docente'};
-        details.push({type:'open', studentAnswerText:ans.text||'', pointsEarned:res.score, aiFeedback:res.feedback});
-        earnedTotal += res.score;
-      } else if(qType === 'true_false'){
-        const expected = q.correctBool !== false;
-        const ok = ans.boolVal === expected ? 1 : 0;
-        details.push({type:'true_false', selectedBool: ans.boolVal, pointsEarned: ok});
-        earnedTotal += ok;
-      } else if(qType === 'fill_blank'){
-        const expectedBlanks = Array.isArray(q.blanks) ? q.blanks : parseFillBlankTemplate(q.text);
-        const stuBlanks = Array.isArray(ans.blanks) ? ans.blanks : [];
-        let correctBlanks = 0;
-        expectedBlanks.forEach((expW, bIdx) => {
-          if (normCompare(stuBlanks[bIdx]) === normCompare(expW)) correctBlanks++;
-        });
-        const pts = expectedBlanks.length ? Math.round((correctBlanks / expectedBlanks.length) * 100) / 100 : 0;
-        details.push({type:'fill_blank', filledBlanks: stuBlanks, pointsEarned: pts});
-        earnedTotal += pts;
-      } else if(qType === 'matching'){
-        const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
-        const conns = ans.connections || {};
-        const matchedPairs = {};
-        let correctPairs = 0;
-        pairs.forEach((p, lIdx) => {
-          const rIdx = conns[lIdx];
-          if (rIdx !== undefined && pairs[rIdx]) {
-            matchedPairs[lIdx] = pairs[rIdx].right;
-            if (rIdx === lIdx) correctPairs++;
-          }
-        });
-        const pts = pairs.length ? Math.round((correctPairs / pairs.length) * 100) / 100 : 0;
-        details.push({type:'matching', matchedPairs, pointsEarned: pts});
-        earnedTotal += pts;
-      } else if(qType === 'crossword'){
-        const cwWords = q._cw?.words || [];
-        const cells = ans.cells || {};
-        let correctWords = 0;
-        const crosswordResults = cwWords.map(wObj => {
-          const typed = wObj.cells.map(c => cells[`${c.r},${c.c}`] || '').join('');
-          const isOk = typed === wObj.word;
-          if (isOk) correctWords++;
-          return { word: wObj.word, typed, correct: isOk };
-        });
-        const pts = cwWords.length ? Math.round((correctWords / cwWords.length) * 100) / 100 : 0;
-        details.push({type:'crossword', crosswordResults, pointsEarned: pts});
-        earnedTotal += pts;
-      } else if(qType === 'math_combo'){
-        const ok = ans.combo === q.correctCombo ? 1 : 0;
-        details.push({type:'math_combo', selectedCombo:ans.combo, writtenProcedure:ans.writtenProcedure||'', pointsEarned:ok});
-        earnedTotal += ok;
-      } else if(qType === 'wordsearch'){
-        const totalWords = (q._ws?.placed?.length || q.words?.length || 1);
-        const foundCount = (ans.foundWords || []).length;
-        const pts = Math.min(1, Math.round((foundCount / totalWords) * 100) / 100);
-        details.push({type:'wordsearch', foundWords:ans.foundWords||[], pointsEarned:pts});
-        earnedTotal += pts;
-      } else if(qType === 'image_labels'){
-        const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
-        const stuMap = ans.labelsMap || {};
-        let correctPins = 0;
-        pins.forEach((p, idx) => {
-          if (stuMap[idx] === p.label) correctPins++;
-        });
-        const pts = pins.length ? Math.round((correctPins / pins.length) * 100) / 100 : 0;
-        details.push({type:'image_labels', studentLabels:stuMap, pointsEarned:pts});
-        earnedTotal += pts;
+  let earnedPoints = 0; const details = []; let hasManualPending = false;
+  for(let i=0; i<s.exam.questions.length; i++){
+    const q = s.exam.questions[i], ans = s.answers[i]||{}, qType = q.type||'multiple';
+    if(statusName === 'infraccion'){
+      details.push({ type:qType, pointsEarned:0, aiFeedback:'Anulado por infracción.' });
+    } else if(qType === 'open'){
+      const txt = (ans.text||'').trim();
+      if(q.gradingMode === 'manual'){
+        hasManualPending = true;
+        details.push({ type:'open', studentAnswerText:txt, pointsEarned:0, aiFeedback:'Pendiente de revisión docente' });
       } else {
-        const ok = ans.option === q.correct ? 1 : 0;
-        details.push({type:'multiple', selectedOption:ans.option, pointsEarned:ok});
-        earnedTotal += ok;
+        const res = await evaluateOpenAnswerWithAI(q.text, q.rubric, txt, { subject: s.exam.subject, level: s.level });
+        earnedPoints += res.score;
+        details.push({ type:'open', studentAnswerText:txt, pointsEarned:res.score, aiFeedback:res.feedback });
       }
+    } else if(qType === 'true_false'){
+      const stmts = normalizeTfStatements(q);
+      const stuArr = Array.isArray(ans.tfAnswers) ? ans.tfAnswers : [];
+      let hits = 0;
+      stmts.forEach((st, sIdx) => {
+        if (stuArr[sIdx] === (st.correctBool !== false)) hits++;
+      });
+      const pts = stmts.length ? Number((hits / stmts.length).toFixed(2)) : 0;
+      earnedPoints += pts;
+      details.push({ type:'true_false', tfAnswers: stuArr, selectedBool: stuArr[0] ?? null, pointsEarned: pts });
+    } else if(qType === 'fill_blank'){
+      const expected = Array.isArray(q.blanks) ? q.blanks : parseFillBlankTemplate(q.text);
+      const typed = Array.isArray(ans.blanks) ? ans.blanks : [];
+      let hits = 0;
+      expected.forEach((cWord, bIdx) => {
+        if (normCompare(typed[bIdx]) === normCompare(cWord)) hits++;
+      });
+      const pts = expected.length ? Number((hits / expected.length).toFixed(2)) : 0;
+      earnedPoints += pts;
+      details.push({ type:'fill_blank', filledBlanks: typed, pointsEarned: pts });
+    } else if(qType === 'matching'){
+      const pairs = Array.isArray(q.matchPairs) ? q.matchPairs : [];
+      const conns = ans.connections || {};
+      const matchedPairsText = {};
+      let hits = 0;
+      pairs.forEach((p, lIdx) => {
+        const chosenRightIdx = conns[lIdx];
+        const chosenRightText = chosenRightIdx !== undefined && pairs[chosenRightIdx] ? pairs[chosenRightIdx].right : '';
+        matchedPairsText[lIdx] = chosenRightText;
+        if (chosenRightText === p.right) hits++;
+      });
+      const pts = pairs.length ? Number((hits / pairs.length).toFixed(2)) : 0;
+      earnedPoints += pts;
+      details.push({ type:'matching', matchedPairs: matchedPairsText, pointsEarned: pts });
+    } else if(qType === 'crossword'){
+      const cw = q._cw || buildCrosswordLayout(q.crosswordEntries || []);
+      const cells = ans.cells || {};
+      let hits = 0;
+      const cwResults = cw.words.map(w => {
+        const typedWord = w.cells.map(c => (cells[`${c.r},${c.c}`] || '')).join('');
+        const ok = typedWord === w.word;
+        if (ok) hits++;
+        return { word: w.word, typed: typedWord, correct: ok };
+      });
+      const pts = cw.words.length ? Number((hits / cw.words.length).toFixed(2)) : 0;
+      earnedPoints += pts;
+      details.push({ type:'crossword', crosswordResults: cwResults, pointsEarned: pts });
+    } else if(qType === 'math_combo'){
+      const pts = ans.combo === q.correctCombo ? 1 : 0; earnedPoints += pts;
+      details.push({ type:'math_combo', selectedCombo:ans.combo, writtenProcedure:(ans.writtenProcedure||'').trim(), pointsEarned:pts });
+    } else if(qType === 'wordsearch'){
+      const targetWords = q._ws ? q._ws.placed.map(p => p.word) : (q.words || []);
+      const found = Array.isArray(ans.foundWords) ? ans.foundWords : [];
+      const pts = targetWords.length ? Number((found.length / targetWords.length).toFixed(2)) : 0;
+      earnedPoints += pts;
+      details.push({ type:'wordsearch', foundWords: found, pointsEarned: pts });
+    } else if(qType === 'image_labels'){
+      const pins = Array.isArray(q.imageLabels) ? q.imageLabels : [];
+      const stuMap = ans.labelsMap || {};
+      let hits = 0;
+      pins.forEach((p, idx) => { if (stuMap[idx] === p.label) hits++; });
+      const pts = pins.length ? Number((hits / pins.length).toFixed(2)) : 0;
+      earnedPoints += pts;
+      details.push({ type:'image_labels', studentLabels: stuMap, pointsEarned: pts });
+    } else {
+      const pts = ans.option === q.correct ? 1 : 0; earnedPoints += pts;
+      details.push({ type:'multiple', selectedOption:ans.option, pointsEarned:pts });
     }
   }
 
-  const score = (statusText === 'infraccion' || !totalQ) ? 0 : Number(((earnedTotal/totalQ)*10).toFixed(2));
-  const hasManual = current.exam.questions.some(q=>q.type==='open' && q.gradingMode==='manual');
-  const finalStatus = statusText === 'infraccion' ? 'infraccion' : hasManual ? 'pendiente_revision' : 'finalizado';
+  const score = statusName === 'infraccion' ? 0 : (s.exam.questions.length ? Number(((earnedPoints/s.exam.questions.length)*10).toFixed(2)) : 0);
+  const finalStatus = statusName === 'infraccion' ? 'infraccion' : (hasManualPending ? 'pendiente_revision' : 'finalizado');
 
-  try {
-    await db.collection(COL_ATTEMPTS).doc(current.attemptId).update({
-      score, status: finalStatus, reason, finishedAt: Date.now(), details, published: false,
-      proctorSnapshots: current.snapshots || []
+  if(cloudReady && db){
+    await db.collection(COL_ATTEMPTS).doc(s.attemptId).set({
+      id: s.attemptId, examId: s.exam.id, examTitle: s.exam.title, subject: s.exam.subject, teacher: s.exam.teacher,
+      studentName: s.studentName, cedula: s.cedula, level: s.level, parallel: s.parallel, score, published: false, status: finalStatus,
+      reason, startedAt: s.startedAt, finishedAt: Date.now(), details, proctorSnapshots: finalSnapshots
     });
-  } catch(e) { console.error(e); }
-
-  if(document.fullscreenElement) try{ await document.exitFullscreen(); }catch(_){}
+  }
 
   $('examQuestionArea').innerHTML = `
-    <div style="text-align:center;padding:10px 0">
-      <div class="eyebrow" style="color:var(--wine)">Evaluación enviada correctamente</div>
-      <h2 style="margin-top:14px">${esc(current.studentName)}</h2>
-      <p class="hint">${esc(current.exam.subject)} · ${esc(current.exam.title)}</p>
-      <div class="notice good" style="max-width:480px;margin:20px auto;text-align:left">
-        <b>✓ Respuestas y supervisión registradas en la nube:</b><br>
-        Tu evaluación ha sido enviada al docente (${esc(current.exam.teacher)}). Podrás consultar tu calificación oficial haciendo clic en <b>"Mis calificaciones"</b> una vez que el profesor las haya publicado.
-      </div>
-      ${statusText==='infraccion'?`<div class="notice red" style="max-width:480px;margin:14px auto">⚠️ ${esc(reason)} (Se registró captura fotográfica de evidencia).</div>`:''}
-      <button class="btn topgap" id="closeFinished">Volver al inicio</button>
+    <span class="tag ${statusName==='infraccion'?'bad':'good'}">${statusName==='infraccion'?'Anulado por infracción':'Examen enviado exitosamente'}</span>
+    <h2 style="margin-top:14px">${statusName==='infraccion'?'Evaluación anulada (0.00 / 10)':'¡Tus respuestas han sido enviadas a la nube!'}</h2>
+    <p class="hint" style="font-size:15px;line-height:1.6">${esc(reason)}</p>
+    <div class="notice ${statusName==='infraccion'?'red':'good'}" style="margin-top:16px">
+      ${statusName==='infraccion'
+        ? 'Se registró una evidencia fotográfica y tu evaluación quedó anulada automáticamente.'
+        : 'Tu calificación quedará disponible en el botón <b>"Mis calificaciones"</b> una vez que el docente revise y publique oficialmente los resultados.'}
     </div>
+    <button class="btn topgap" id="exitExamBtn">Volver al inicio</button>
   `;
-  $('closeFinished').onclick = () => {
+  $('exitExamBtn').onclick = async () => {
+    if(document.fullscreenElement) try{ await document.exitFullscreen(); } catch(_){}
     $('examScreen').classList.add('hidden'); $('topBar').classList.remove('hidden'); $('mainApp').classList.remove('hidden');
-    finalizing = false; renderStudent();
   };
 }
 
-document.addEventListener('visibilitychange', () => { if(live && live.strict && document.hidden) finishExam('infraccion', 'Cambio de pestaña / ventana.'); });
-window.addEventListener('blur', () => { if(live && live.strict) setTimeout(()=>{ if(live && live.strict && !document.hasFocus()) finishExam('infraccion', 'Pérdida de foco.'); }, 350); });
-document.addEventListener('fullscreenchange', () => { if(live && live.strict && !document.fullscreenElement) finishExam('infraccion', 'Salida de pantalla completa.'); });
+document.addEventListener('visibilitychange', () => { if(live && live.strict && document.hidden) finishExam('infraccion','Cambio o minimización de pestaña detectado.'); });
+window.addEventListener('blur', () => { if(live && live.strict) finishExam('infraccion','Pérdida de foco o salida de la ventana del examen.'); });
+document.addEventListener('fullscreenchange', () => { if(live && live.strict && !document.fullscreenElement) finishExam('infraccion','Salida del modo pantalla completa.'); });
+window.addEventListener('beforeunload', e => { if(live){ e.preventDefault(); e.returnValue = ''; } });
 
-// Iniciar conexión al cargar el DOM
-document.addEventListener('DOMContentLoaded', () => {
+// ==========================================
+// 8. ARRANQUE INICIAL DE LA APLICACIÓN
+// ==========================================
+function bootApp() {
+  resetEditor();
+  renderStudent();
   initCloud();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootApp);
+} else {
+  bootApp();
+}
 </script>
 </body>
 </html>
