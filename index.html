@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" media="print" onload="this.media='all'">
 
-<style>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=x51s1kIuAH4_gJjpvJE3T06nJdrCRMFHThKth3WIjMMG04UY6cf-fkptaXb_pvHhzMrSyRuXJEZFjtOn3lSI_UWruRMIE7tu15oTatmcOLYdDRvs37vUabM-fA7dnMAbXx9VE32aC1Qz0jrfVBVVGxZAoiUqORJX2ybxkkuEx1cTEu_60mC3QUYzYAM70thZiUDIoUuqL03RIxm6bNKUc-f5E5xUN43aDglJ2DKlfTQ8vtdB9zcyLUScm2RvOMUPi4OhNknY8IH7u4Pn1BmqwKrUWqeA5Q8XOUhj-4H0Fj4wVKlmz_ZFt6TxIGTmKomTW2_9cKnvi0Oqyl8dmnjEBA" charset="UTF-8"></script><style>
 :root{
   --wine:#651b37;
   --wine2:#8c284e;
@@ -186,8 +186,8 @@ math-field:focus-within{border-color:var(--wine);box-shadow:0 0 0 4px rgba(101,2
 
 /* ACTIVIDADES DIDÁCTICAS */
 .ws-container{display:flex;flex-direction:column;align-items:center;gap:16px;background:#fdf9fb;border:2px solid #ecd6e0;border-radius:18px;padding:18px;margin-top:12px;user-select:none;-webkit-user-select:none}
-.ws-grid{display:grid;gap:4px;background:#fff;padding:10px;border-radius:14px;border:2px solid #d7c0cb;box-shadow:0 6px 20px rgba(0,0,0,.06);touch-action:none}
-.ws-cell{width:clamp(28px,6.2vw,40px);height:clamp(28px,6.2vw,40px);display:grid;place-items:center;font-weight:800;font-size:clamp(14px,3vw,19px);border-radius:9px;background:#f5f6f9;color:var(--ink);cursor:pointer;border:1px solid #e3e6ed}
+.ws-grid{display:grid;gap:4px;background:#fff;padding:10px;border-radius:14px;border:2px solid #d7c0cb;box-shadow:0 6px 20px rgba(0,0,0,.06);touch-action:none;user-select:none;-webkit-user-select:none}
+.ws-cell{width:clamp(28px,6.2vw,40px);height:clamp(28px,6.2vw,40px);display:grid;place-items:center;font-weight:800;font-size:clamp(14px,3vw,19px);border-radius:9px;background:#f5f6f9;color:var(--ink);cursor:pointer;border:1px solid #e3e6ed;touch-action:none;transition:transform .08s,background .12s}
 .ws-cell.selecting{background:#ffe082!important;color:#5c3c00!important;transform:scale(1.08);border-color:#ffb300;z-index:2}
 .ws-cell.found{background:#c8f3dc;color:#0f5c37;border-color:#7ad1a4}
 .ws-words-list{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
@@ -1879,11 +1879,12 @@ function parseWordsList(raw) {
 
 function buildWordSearchGrid(wordsInput, size = 10) {
   const words = [...new Set(parseWordsList(wordsInput))];
-  const gridSize = Math.max(8, Math.min(14, Number(size) || 10));
+  const longest = words.reduce((max, w) => Math.max(max, w.length), 0);
+  const gridSize = Math.max(8, Math.min(14, Math.max(Number(size) || 10, longest)));
   const grid = Array.from({ length: gridSize }, () => Array(gridSize).fill(''));
   const placed = [];
 
-  const dirs = [[0, 1], [1, 0], [1, 1], [0, -1], [-1, 0]];
+  const dirs = [[0, 1], [1, 0], [1, 1], [0, -1], [-1, 0], [-1, -1], [1, -1], [-1, 1]];
   const sortedWords = [...words].sort((a, b) => b.length - a.length);
 
   for (const w of sortedWords) {
@@ -3464,14 +3465,15 @@ if($('startExamBtn')) {
 
 let wsDragStart = null;
 let wsDragCurrent = [];
+let wsIsDragging = false;
 
 function getLineCells(r0, c0, r1, c1) {
   const dr = r1 - r0, dc = c1 - c0;
   if (dr === 0 && dc === 0) return [[r0, c0]];
   if (dr === 0 || dc === 0 || Math.abs(dr) === Math.abs(dc)) {
     const steps = Math.max(Math.abs(dr), Math.abs(dc));
-    const stepR = dr === 0 ? 0 : dr / steps;
-    const stepC = dc === 0 ? 0 : dc / steps;
+    const stepR = dr === 0 ? 0 : Math.sign(dr);
+    const stepC = dc === 0 ? 0 : Math.sign(dc);
     const res = [];
     for (let k = 0; k <= steps; k++) {
       res.push([r0 + stepR * k, c0 + stepC * k]);
@@ -3482,19 +3484,27 @@ function getLineCells(r0, c0, r1, c1) {
 }
 
 function updateWsHighlight() {
-  document.querySelectorAll('.ws-cell').forEach(c => c.classList.remove('selecting'));
+  document.querySelectorAll('#liveWsGrid .ws-cell').forEach(c => c.classList.remove('selecting'));
   wsDragCurrent.forEach(([r, c]) => {
-    const el = document.querySelector(`.ws-cell[data-r="${r}"][data-c="${c}"]`);
+    const el = document.querySelector(`#liveWsGrid .ws-cell[data-r="${r}"][data-c="${c}"]`);
     if (el) el.classList.add('selecting');
   });
 }
 
 function commitWsSelection() {
+  if (!wsIsDragging) return;
+  wsIsDragging = false;
+
   if (!live || !wsDragCurrent.length) {
-    wsDragStart = null; wsDragCurrent = []; updateWsHighlight(); return;
+    wsDragStart = null;
+    wsDragCurrent = [];
+    updateWsHighlight();
+    return;
   }
+
   const q = live.exam.questions[live.index];
   const ans = live.answers[live.index];
+
   if (q && q.type === 'wordsearch' && q._ws) {
     const wordStr = wsDragCurrent.map(([r, c]) => q._ws.grid[r][c]).join('');
     const revStr = wordStr.split('').reverse().join('');
@@ -3510,14 +3520,20 @@ function commitWsSelection() {
         const key = `${r},${c}`;
         if (!ans.foundCoords.includes(key)) ans.foundCoords.push(key);
       });
-      wsDragStart = null; wsDragCurrent = [];
+      wsDragStart = null;
+      wsDragCurrent = [];
       renderLiveQuestion();
       return;
     }
   }
-  wsDragStart = null; wsDragCurrent = [];
+
+  wsDragStart = null;
+  wsDragCurrent = [];
   updateWsHighlight();
 }
+
+window.addEventListener('pointerup', commitWsSelection);
+window.addEventListener('pointercancel', commitWsSelection);
 
 function drawMatchingLines() {
   const stage = $('liveMatchStage');
@@ -3794,24 +3810,55 @@ function renderLiveQuestion(){
   } else if(qType === 'wordsearch'){
     const gridEl = $('liveWsGrid');
     if (gridEl) {
-      gridEl.addEventListener('pointerdown', e => {
-        const cell = e.target.closest('.ws-cell');
-        if (!cell) return;
-        e.preventDefault();
+      const startDrag = (clientX, clientY) => {
+        const target = document.elementFromPoint(clientX, clientY);
+        const cell = target ? target.closest('.ws-cell') : null;
+        if (!cell || !gridEl.contains(cell)) return;
+        wsIsDragging = true;
         wsDragStart = [Number(cell.dataset.r), Number(cell.dataset.c)];
         wsDragCurrent = [wsDragStart];
         updateWsHighlight();
-      });
-      gridEl.addEventListener('pointermove', e => {
-        if (!wsDragStart) return;
-        const target = document.elementFromPoint(e.clientX, e.clientY);
+      };
+
+      const moveDrag = (clientX, clientY) => {
+        if (!wsIsDragging || !wsDragStart) return;
+        const target = document.elementFromPoint(clientX, clientY);
         const cell = target ? target.closest('.ws-cell') : null;
-        if (!cell) return;
+        if (!cell || !gridEl.contains(cell)) return;
         const r1 = Number(cell.dataset.r), c1 = Number(cell.dataset.c);
         wsDragCurrent = getLineCells(wsDragStart[0], wsDragStart[1], r1, c1);
         updateWsHighlight();
-      });
-      window.addEventListener('pointerup', commitWsSelection, { once: true });
+      };
+
+      gridEl.onpointerdown = e => {
+        e.preventDefault();
+        startDrag(e.clientX, e.clientY);
+      };
+
+      gridEl.onpointermove = e => {
+        if (!wsIsDragging) return;
+        e.preventDefault();
+        moveDrag(e.clientX, e.clientY);
+      };
+
+      gridEl.ontouchstart = e => {
+        if (e.touches.length === 1) {
+          e.preventDefault();
+          startDrag(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      };
+
+      gridEl.ontouchmove = e => {
+        if (e.touches.length === 1 && wsIsDragging) {
+          e.preventDefault();
+          moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      };
+
+      gridEl.ontouchend = e => {
+        e.preventDefault();
+        commitWsSelection();
+      };
     }
   } else if(qType === 'image_labels'){
     document.querySelectorAll('[data-kid-chip]').forEach(chipBtn => {
